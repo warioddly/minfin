@@ -41,6 +41,21 @@ class PermissionsSeeder extends Seeder
             'delete-roles',
             'edit-roles',
 
+            'show-documents',
+            'add-documents',
+            'delete-documents',
+            'edit-documents',
+
+            'show-translates',
+            'add-translates',
+            'delete-translates',
+            'edit-translates',
+
+            'show-content-settings',
+            'add-content-settings',
+            'delete-content-settings',
+            'edit-content-settings',
+
             'show-logs',
             'show-filemanager',
         ];

@@ -39,6 +39,35 @@
                         </div>
                     </div>
 
+                    @if(count($post->attachmentFiles) != 0)
+                        <div class="row mx-n1 g-0">
+                            <p class="h4">{{ __('Attached files') }}</p>
+                            @foreach($post->attachmentFiles as $document)
+                                <div class="col-xxl-3 col-lg-6">
+                                    <div class="card m-1 shadow-none border">
+                                        <div class="p-2">
+                                            <div class="row align-items-center flex-nowrap overflow-hidden">
+                                                <div class="col-auto">
+                                                    <div class="avatar-sm">
+                                                        @if(in_array($document->extension, ['img', 'svg', 'image', 'ico', 'jpeg', 'gif']))
+                                                            <img data-dz-thumbnail src="{{ $document->path }}" class="avatar-sm rounded bg-light " style="object-fit: cover" alt="">
+                                                        @else
+                                                            <i class="mdi mdi-file-document-outline font-24 px-2" ></i>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                                <div class="col ps-0">
+                                                    <a href="{{ $document->path }}" class="text-muted fw-bold">{{ $document->title }}</a>
+                                                    <p class="mb-0 font-13">{{ $document->size }} kb</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    @endif
+
                     <div class="d-print-none mt-4">
                         <div class="text-end">
                             <a href="{{ route('post-edit', $post->id) }}" class="btn btn-primary"><i class="mdi mdi-file-edit"></i></a>

@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Page;
 use App\Models\Post;
 use App\Services\CheckPermissionService;
+use App\Services\DocumentService;
 use App\Services\PostService;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
@@ -47,14 +48,6 @@ class PostController extends Controller
         $categories = Category::latest()->get();
 
         return view('admin.posts.edit', compact('post', 'categories'));
-    }
-
-    public function Update(PostRequest $request, PostService $postService, $id){
-        $post = Post::find($id);
-        $data = $postService->validateData($request, $id);
-        $post->update($data);
-
-        return redirect()->route('post-show', $request->id);
     }
 
     public function Publish($id){

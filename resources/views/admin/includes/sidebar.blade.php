@@ -56,9 +56,18 @@
 
             @if(auth()->user()->can('show-documents'))
                 <li class="side-nav-item">
-                    <a href="#" class="side-nav-link">
+                    <a href="{{ route('documents') }}" class="side-nav-link">
                         <i class="mdi mdi-file-document"></i>
                         <span> {{ __('Documents') }} </span>
+                    </a>
+                </li>
+            @endif
+
+            @if(auth()->user()->can('show-translates'))
+                <li class="side-nav-item">
+                    <a href="#" class="side-nav-link">
+                        <i class="mdi mdi-earth"></i>
+                        <span> {{ __('Translates') }} </span>
                     </a>
                 </li>
             @endif
@@ -66,8 +75,8 @@
             @if(auth()->user()->can('show-categories'))
                 <li class="side-nav-item">
                     <a href="#" class="side-nav-link">
-                        <i class="mdi mdi-earth"></i>
-                        <span> {{ __('Translates') }} </span>
+                        <i class="mdi mdi-slide"></i>
+                        <span> {{ __('Другие') }} </span>
                     </a>
                 </li>
             @endif

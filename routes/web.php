@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(["namespace" => "App\Http\Controllers\Front"], function () {
+    Route::get('/', 'IndexController@index')->name('index');
 });
 
 // ADMIN CONTROLLERS
@@ -28,6 +28,10 @@ Route::group(["namespace" => "App\Http\Controllers\Admin", "prefix" => "dashboar
         Route::get('/{id}', 'PostController@Show')->name('post-show')->middleware('can:show-posts');
         Route::get('/{id}/edit', 'PostController@Edit')->name('post-edit')->middleware('can:edit-posts');
         Route::get('/{id}/publish', 'PostController@Publish')->name('post-publish')->middleware('can:edit-posts');
+    });
+
+    Route::group(["namespace" => "DocumentController", "prefix" => "documents"], function () {
+        Route::get('/', 'DocumentController@Index')->name('documents')->middleware('can:show-documents');
     });
 
     Route::group(["namespace" => "CategoryController", "prefix" => "categories"], function () {
@@ -52,7 +56,6 @@ Route::group(["namespace" => "App\Http\Controllers\Admin", "prefix" => "dashboar
             Route::get('/{parentId}/create', 'PagePostController@Create')->name('page-post-create')->middleware('can:create-posts');
             Route::get('/{id}', 'PagePostController@Show')->name('page-post-show')->middleware('can:show-posts');
             Route::post('/{parentId}/store', 'PagePostController@Store')->name('page-post-store')->middleware('can:add-posts');
-            Route::get('/{id}/edit', 'PagePostController@Edit')->name('page-post-edit')->middleware('can:edit-posts');
             Route::patch('/{id}/', 'PagePostController@Update')->name('page-post-update')->middleware('can:edit-posts');
         });
     });

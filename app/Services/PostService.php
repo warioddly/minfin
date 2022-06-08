@@ -4,7 +4,6 @@ namespace App\Services;
 
 
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Spatie\Permission\Models\Role;
 
@@ -13,6 +12,7 @@ class PostService
 
     public function validateData($request, $id, $parentId = null){
         $data = $request->all();
+        unset($data['documents']);
 
         if($request->hasFile('preview_image')) {
             $image = $data['preview_image'];
@@ -40,6 +40,7 @@ class PostService
 
     public function validateUpdateData($request, $id){
         $data = $request->all();
+        unset($data['documents']);
 
         if($request->hasFile('preview_image')) {
             $image = $data['preview_image'];

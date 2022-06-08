@@ -9,6 +9,7 @@ use App\Models\Page;
 use App\Models\Post;
 use App\Services\CheckPermissionService;
 use App\Services\PageService;
+use App\Services\DocumentService;
 use App\Services\PostService;
 
 class PagePostController extends Controller
@@ -38,12 +39,15 @@ class PagePostController extends Controller
         return view('admin.pages.posts.create', compact('categories', 'parentId'));
     }
 
-    public function Store(PostRequest $request, PostService $postService, $parentId){
+    public function Store(PostRequest $request, PostService $postService, DocumentService $documentService, $parentId){
         $data = $postService->validateData($request, $request->route('id'), $parentId);
 
         Page::whereId($parentId)->update(['type' => 3 ]);
-        Post::create($data);
+        $lastCreatedPostId = Post::create($data)->id;
 
+        if($request->hasFile('documents')) {
+            $documentService->validateData($request['documents'], $lastCreatedPostId);
+        }
         return redirect()->route('show-pages', $parentId);
     }
 
@@ -54,10 +58,14 @@ class PagePostController extends Controller
         return view('admin.pages.posts.edit', compact('post', 'categories'));
     }
 
-    public function Update(PostRequest $request, PostService $service, $id){
+    public function Update(PostRequest $request, PostService $service,  DocumentService $documentService, $id){
         $post = Post::find($id);
         $data = $service->validateUpdateData($request, $id);
         $post->update($data);
+
+        if($request->hasFile('documents')) {
+            $documentService->validateData($request['documents'], $id);
+        }
 
         return redirect()->route('post-show', $request->id);
     }

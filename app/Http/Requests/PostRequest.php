@@ -31,6 +31,7 @@ class PostRequest extends FormRequest
             'is_published' => ['nullable', 'string'],
             'content' => ['nullable', 'string', 'max:60000'],
             'page_id' => ['nullable', 'integer'],
+            'documents[]' => ['nullable', 'file', 'max:50240'],
         ];
     }
 }

@@ -25,7 +25,7 @@ Route::group(["namespace" => "App\Http\Controllers\Admin", "prefix" => "dashboar
         Route::post('/deleteUser', 'ApiController@deleteUser')->name('delete-user');
     });
 
-    Route::group(["prefix" => "users"], function () {
+    Route::group(["prefix" => "posts"], function () {
         Route::post('/deletePost', 'ApiController@deletePost')->name('post-delete');
     });
 
@@ -33,8 +33,8 @@ Route::group(["namespace" => "App\Http\Controllers\Admin", "prefix" => "dashboar
         Route::post('/deleteCategory', 'ApiController@deleteCategory')->name('delete-category');
     });
 
-    Route::group(["prefix" => "tags"], function () {
-        Route::post('/deleteTag', 'ApiController@deleteTag')->name('delete-tag');
+    Route::group(["prefix" => "documents"], function () {
+        Route::post('/deleteDocument', 'ApiController@deleteDocument')->name('delete-document');
     });
 
     Route::group(["prefix" => "roles"], function () {

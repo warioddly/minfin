@@ -24,4 +24,8 @@ class Post extends Model
         $user = User::find($this->user_id);
         return $user;
     }
+
+    public function attachmentFiles(){
+        return $this->hasMany(Document::class, 'post_id');
+    }
 }

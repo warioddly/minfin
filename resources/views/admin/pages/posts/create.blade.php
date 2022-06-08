@@ -14,7 +14,10 @@
                 <div class="card-body">
                     <div class="row mb-3">
                         <div class="col">
-                            <form action="{{ route('page-post-store', $parentId) }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('page-post-store', $parentId) }}" method="POST" enctype="multipart/form-data"
+                                  class="" id="myAwesomeDropzone" data-plugin="dropzone" data-previews-container="#file-previews"
+                                  data-upload-preview-template="#uploadPreviewTemplate"
+                            >
                                 @csrf
                                 <div class="form-group mt-2">
                                     <div class="row">
@@ -51,12 +54,18 @@
 
                                 <div class="form-group mt-2">
                                     <strong>{{__('Description')}}:</strong>
-                                    <textarea name="description" id="" cols="30" rows="2" placeholder="{{__('Post description')}}" class="form-control" maxlength="255" data-toggle="maxlength" data-threshold="255" required></textarea>
+                                    <textarea name="description" id="" cols="30" rows="3" placeholder="{{__('Post description')}}" class="form-control" maxlength="255" data-toggle="maxlength" data-threshold="255" required></textarea>
                                 </div>
 
                                 <div class="form-group mt-2">
                                     <strong>Редактор</strong>
                                     <textarea id="editor" name="content"></textarea>
+                                </div>
+
+                                <div class="form-group mt-2">
+                                    <strong>Прикрепить документы</strong>
+                                    <input type="file" name="documents[]" id="attachment-files" class="form-control" multiple>
+                                    <div class="" id="uploadPreviewTemplate"></div>
                                 </div>
 
                                 <div class="form-group">
@@ -80,6 +89,7 @@
 @endpush
 
 @push('footer-scripts')
+    <script src="{{ asset('admin/plugins/UploadFile/FileUploader.js') }}"></script>
     <script type="text/javascript">
         initSample();
     </script>

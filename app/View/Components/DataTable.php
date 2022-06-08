@@ -13,13 +13,14 @@ class DataTable extends Component
     public $orederable;
     public $withactions;
     public $showLinks;
+    public $type;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($items, $links, $actions, $excepts, $showLinks = null,  $orederable=true, $withactions = true)
+    public function __construct($items, $links, $actions, $excepts, $type = null, $showLinks = null,  $orederable=true, $withactions = true)
     {
         $this->items = $items;
         $this->links = $links;
@@ -28,6 +29,7 @@ class DataTable extends Component
         $this->orederable = $orederable;
         $this->withactions = $withactions;
         $this->showLinks = $showLinks;
+        $this->type = $type;
     }
 
     /**

@@ -45,8 +45,22 @@
                             @continue
                         @endif
 
+                        @if($key == 'title' && $type == 'documents')
+                            <td class="table-user">
+                                @if(in_array($item->extension, ['img', 'svg', 'image', 'ico', 'jpeg', 'gif']))
+                                    <img src="{{ $item->path }}" alt="..." class="me-2 rounded-circle" style="object-fit: cover">
+                                @else
+                                    <i class="mdi mdi-file-document-outline font-24 me-2" ></i>
+                                @endif
+                                <a href="{{ $item->path }}" class="text-body fw-semibold" target="_blank">
+                                    {{ \Illuminate\Support\Str::limit(__($item->title) , $limit = 35, $end = '...') }}
+                                </a>
+                            </td>
+                            @continue
+                        @endif
+
                         @if($key == 'title')
-                            <td>
+                            <td >
                                 <a href="@if($showLinks){{ route($links[1], $item->id) }}@elseif($links[1]){{ route($links[1], $item->id) }}@endif" class="text-body fw-semibold">
                                     {{ \Illuminate\Support\Str::limit(__($item->title) , $limit = 35, $end = '...') }}
                                 </a>
@@ -66,6 +80,13 @@
 
                         @if($key == 'created_at')
                             <td>{{ $item->created_at->toDateTime()->format('d-m-Y') }}</td>
+                            @continue
+                        @endif
+
+                        @if($key == 'size')
+                                <td>
+                                    <span class="text-muted">{{ $value }}</span> <strong>kb</strong>
+                                </td>
                             @continue
                         @endif
 

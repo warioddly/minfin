@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Page;
 use App\Models\Post;
 use App\Models\User;
+use \App\Models\Document;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -70,11 +71,12 @@ class ApiController extends Controller
 
         $parentPage = Page::find($post->page_id);
 
-        if(count($parentPage->ChildPages) == 0){
+        $post->delete();
+
+        if(count($parentPage->posts) == 0){
             $parentPage->update(['type' => 0 ]);
         }
 
-        $post->delete();
     }
 
     public function deleteCategory(){
@@ -94,5 +96,9 @@ class ApiController extends Controller
                 $parentPage->update(['type' => 0 ]);
             }
         }
+    }
+
+    public function deleteDocument(){
+        Document::whereId(request()->get('id'))->delete();
     }
 }
