@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,6 +42,12 @@ Route::group(["namespace" => "App\Http\Controllers\Admin", "prefix" => "dashboar
         Route::patch('/{id}', 'CategoryController@Update')->name('update-category')->middleware('can:edit-categories');
     });
 
+    Route::group(["namespace" => "SettingController", "prefix" => "settings"], function () {
+        Route::get('/', 'SettingController@Index')->name('settings')->middleware('can:show-content-settings');
+        Route::post('/storeCarousel', 'SettingController@StoreCarousel')->name('store-carousel')->middleware('can:add-content-settings');
+        Route::patch('/{id}', 'SettingController@UpdateCarousel')->name('update-carousel')->middleware('can:edit-content-settings');
+    });
+
     Route::group(["namespace" => "PageController", "prefix" => "pages"], function () {
         Route::get('/', 'PageController@Index')->name('pages')->middleware('can:show-pages');
 
@@ -75,15 +82,15 @@ Route::group(["namespace" => "App\Http\Controllers\Admin", "prefix" => "dashboar
     Route::group(["namespace" => "ProfileController", "prefix" => "profile"], function () {
         Route::get('/', 'ProfileController@Index')->name('profile');
         Route::patch('/{id}', 'ProfileController@Update')->name('update-profile');
-        Route::post('/notes/store', 'NoteController@Store')->name('store-notes');
-        Route::delete('/notes/{id}', 'NoteController@Delete')->name('delete-notes');
     });
 
-    Route::group(["namespace" => "FeatureController", "prefix" => "logs"], function () {
+    Route::group(["namespace" => "FeatureController", "prefix" => "features"], function () {
         Route::get('/', 'LogController@Index')->name('logs')->middleware('can:show-logs');
         Route::get('/manager', 'FeatureController@fileManager')->name('file-manager')->middleware('can:show-filemanager');;
         Route::get('/{theme}', 'FeatureController@changeAdminTheme')->name('theme');
         Route::get('/{style}/style', 'FeatureController@postListStyle')->name('post-style')->middleware('can:show-posts');
+        Route::post('/notes/store', 'NoteController@Store')->name('store-notes');
+        Route::delete('/notes/{id}', 'NoteController@Delete')->name('delete-notes');
     });
 });
 
@@ -91,4 +98,4 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
 
-require __DIR__.'/auth.php';
+Auth::routes();

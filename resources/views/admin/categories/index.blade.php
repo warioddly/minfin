@@ -119,7 +119,7 @@
                     @method('PATCH')
                     <div class="modal-body">
                         <label for="edit-input" class="form-label">{{ __('Enter a new category name') }}</label>
-                        <input type="text" name="title" id="edit-input-name" class="form-control" value="" placeholder="{{ __('Enter a new category name') }}" required>
+                        <input type="text" name="title" id="edit-input" class="form-control" value="" placeholder="{{ __('Enter a new category name') }}" required>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Cancel') }}</button>

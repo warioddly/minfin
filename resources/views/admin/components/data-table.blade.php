@@ -120,7 +120,7 @@
                         @endif
                         @if(in_array('2', $actions))
                             <a href="@if($links[2]){{ route($links[2], $item->id) }} @else#edit @endif"
-                               @if(!$links[2]) data-bs-toggle="modal" data-id="{{ $item->id }}" role="button" @endif
+                               @if(!$links[2]) data-bs-toggle="modal" data-id="{{ $item->id }}" @if($item->title) data-title="{{ $item->title }}" @endif role="button" @endif
                                class="action-icon edit-button"><i class="mdi mdi-square-edit-outline"></i>
                             </a>
                         @endif

@@ -24,7 +24,6 @@ return new class extends Migration
             $table->boolean("is_published")->default(0);
             $table->unsignedBigInteger("category_id")->nullable();
             $table->unsignedBigInteger("page_id")->nullable();
-            $table->integer("childType")->nullable();
             $table->timestamps();
 
             $table->foreign('category_id')->on('categories')->references('id');

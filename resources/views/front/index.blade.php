@@ -11,7 +11,7 @@
                         <button type="button" data-bs-target="#carouseIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                         <button type="button" data-bs-target="#carouseIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
                         <button type="button" data-bs-target="#carouseIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                        <button type="button" data-bs-target="#carouseIndicators" data-bs-slide-to="2" aria-label="Slide 4"></button>
+                        <button type="button" data-bs-target="#carouseIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
                     </div>
                     <div class="carousel-inner">
                         @foreach($posts as $key => $post)
@@ -41,56 +41,18 @@
     <section id="secondary-carousel" class="mb-lg-5 mb-md-3 mb-3">
         <div class="container">
             <div class="owl-carousel owl-theme">
-                <div class="item">
-                    <div class="d-block">
-                        <div class="row mb-3">
-                            <img src="images/logo/opgz.svg" alt="" class="secondary__item_img">
-                        </div>
-                        <div class="row">
-                            <p class="text-center">ОПГЗ</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="d-block">
-                        <div class="row mb-3">
-                            <img src="images/logo/stim-grant.svg" alt="" class="secondary__item_img">
-                        </div>
-                        <div class="row">
-                            <p class="text-center">СтимГрант</p>
+                @foreach($carouselItems as $item)
+                    <div class="item">
+                        <div class="d-block">
+                            <div class="row mb-3">
+                                <img src="{{ $item->path }}" alt="" class="secondary__item_img">
+                            </div>
+                            <div class="row">
+                                <p class="text-center">{{ $item->title }}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="item">
-                    <div class="d-block">
-                        <div class="row mb-3">
-                            <img src="images/logo/golos-naroda.svg" alt="" class="secondary__item_img">
-                        </div>
-                        <div class="row">
-                            <p class="text-center">Голос народа</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="d-block">
-                        <div class="row mb-3">
-                            <img src="images/logo/institut.svg" alt="" class="secondary__item_img">
-                        </div>
-                        <div class="row">
-                            <p class="text-center">Институт Б-О</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="d-block">
-                        <div class="row mb-3">
-                            <img src="images/logo/institut.svg" alt="" class="secondary__item_img">
-                        </div>
-                        <div class="row">
-                            <p class="text-center">Институт Б-О</p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -125,7 +87,7 @@
                                     </div>
                                     <div class="position-relative">
                                         <p class="new_block__date pb-2 pb-md-1">{{ $post->created_at->toDateTime()->format('d.m.Y') }}</p>
-                                        <p class="new_block__title">{{ $post->description }}</p>
+                                        <p class="new_block__title">{{ \Illuminate\Support\Str::limit($post->title , $limit = 60, $end = '...') }}</p>
                                         <p class="new_block__category bottom-0">{{ $post->category->title }}</p>
                                     </div>
                                 </a>
@@ -139,7 +101,7 @@
                                     </div>
                                     <div class="position-relative">
                                         <p class="new_block__date pb-2 pb-md-1">{{ $post->created_at->toDateTime()->format('d.m.Y') }}</p>
-                                        <p class="new_block__title text-break">{{ \Illuminate\Support\Str::limit($post->title , $limit = 135, $end = '...') }}</p>
+                                        <p class="new_block__title">{{ \Illuminate\Support\Str::limit($post->title , $limit = 60, $end = '...') }}</p>
                                         <p class="new_block__category bottom-0">{{ $post->category->title  }}</p>
                                     </div>
                                 </a>
@@ -182,6 +144,15 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+    <section id="page-links">
+        <div class="container">
+            <div class="row mb-4 mt-4 g-3 justify-content-center">
+                <x-white-link-block
+                    :items="$pages"
+                ></x-white-link-block>
             </div>
         </div>
     </section>

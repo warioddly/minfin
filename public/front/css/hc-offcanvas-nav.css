@@ -18,12 +18,13 @@ body.hc-nav-open {
 .hc-offcanvas-nav.is-ios * {
     cursor: pointer !important;
 }
+
 .hc-offcanvas-nav .nav-container {
     position: fixed;
     z-index: 9998;
     top: 0;
     height: 100%;
-    max-width: 100%;
+    max-width: 50%;
     max-height: 100%;
     box-sizing: border-box;
     transition: transform .4s ease;
@@ -360,7 +361,7 @@ body.hc-nav-open {
 #hc-nav-1 > div > div > div > div > a > span{
     position: absolute;
     top: -40px;
-    left: -14px;
+    left: -23px;
 }
 .hc-offcanvas-nav .nav-content>.nav-close {
     position: relative;

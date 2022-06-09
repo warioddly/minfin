@@ -24,7 +24,7 @@
             </a>
         </li>
 
-        @canany(['show-posts', 'show-categories', 'show-tags', 'show-categories'])
+        @canany(['show-posts', 'show-translates', 'show-categories', 'show-documents', 'show-pages', 'show-content-settings', ])
             <li class="side-nav-title side-nav-item">{{ __('Content') }}</li>
 
             @if(auth()->user()->can('show-posts'))
@@ -72,11 +72,11 @@
                 </li>
             @endif
 
-            @if(auth()->user()->can('show-categories'))
+            @if(auth()->user()->can('show-content-settings'))
                 <li class="side-nav-item">
-                    <a href="#" class="side-nav-link">
-                        <i class="mdi mdi-slide"></i>
-                        <span> {{ __('Другие') }} </span>
+                    <a href="{{ route('settings') }}" class="side-nav-link">
+                        <i class="dripicons-gear noti-icon"></i>
+                        <span> {{ __('Other settings') }} </span>
                     </a>
                 </li>
             @endif

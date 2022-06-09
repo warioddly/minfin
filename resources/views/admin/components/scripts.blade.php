@@ -86,10 +86,11 @@
                 }
             }
 
-        @elseif($type == 'category')
-
+        @elseif($type == 'category' || $type == 'settings' )
+            let title = $(this).data('title');
             url = "{{ $urls[1] }}" + "/" + id;
             $("#edit-modal-form").attr('action', url);
+            $("#edit-input").attr('value', title);
 
         @elseif($type == 'pages')
 

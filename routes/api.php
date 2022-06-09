@@ -47,4 +47,7 @@ Route::group(["namespace" => "App\Http\Controllers\Admin", "prefix" => "dashboar
         Route::post('/deletePage', 'ApiController@deletePage')->name('delete-page');
     });
 
+    Route::group(["prefix" => "settings"], function () {
+        Route::post('/deleteCarouselItem', 'ApiController@deleteCarouselItem')->name('delete-carousel-item');
+    });
 });

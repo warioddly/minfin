@@ -18,6 +18,8 @@
     <main>
         @yield('content')
     </main>
+
+    @include('front.includes.footer')
 </div>
 
 @stack('footer-scripts')

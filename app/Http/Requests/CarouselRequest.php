@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PostRequest extends FormRequest
+class CarouselRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,13 +25,7 @@ class PostRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string', 'max:255'],
-            'description' => ['nullable', 'string', 'max:255'],
-            'category_id' => ['nullable', 'exists:categories,id'],
-            'preview_image' => ['nullable', 'image', 'max:10240'],
-            'is_published' => ['nullable', 'string'],
-            'content' => ['nullable', 'string', 'max:860000'],
-            'page_id' => ['nullable', 'integer'],
-            'documents[]' => ['nullable', 'file', 'max:50240'],
+            'image' => ['nullable', 'image', 'max:10240'],
         ];
     }
 }

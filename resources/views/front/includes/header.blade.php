@@ -39,7 +39,7 @@
                 <div class="row brand__row align-items-center ">
                     <div class="col-9 col-xs-6 col-sm-8 col-md-7 col-lg-6 col-xl-6 pe-0">
                         <div class="d-flex align-items-center">
-                            <img src="images/logo/Logo.svg" alt="" class="rounded-circle me-1 me-lg-3 brand-logo">
+                            <img src="{{ asset('front/images/logo/Logo.svg') }}" alt="" class="rounded-circle me-1 me-lg-3 brand-logo">
                             <p class="text-uppercase brand-name">министерство финансов Кыргызской Республики</p>
                         </div>
                     </div>
@@ -61,26 +61,72 @@
                             <li class="nav__item "><a href="#" class="item__link text-uppercase">Деятельность</a>
                                 <div class="dropdownContain">
                                     <div class="dropOut">
-                                        <ul class="sub_nav__items">
-                                            <li>
+                                        <ul class="firstChild sub_nav__items p-0">
+                                            <li class="firstList">
                                                 <a href="" class="nav-item-link">РУКОВОДСТВО</a>
-                                                <ul class="third_sub_nav__items">
-                                                    <li><a href="#" class="nav-item-link">НОРМАТИВНО-ПРАВОВАЯ БАЗА</a></li>
-                                                    <li><a href="#" class="nav-item-link pr-2">ПРИКАЗЫ МИНИСТЕРСТВА</a></li>
-                                                    <li><a href="#" class="nav-item-link">ПЛАН ДЕЙСТВИЙ МИНИСТРА</a></li>
-                                                    <li><a href="#" class="nav-item-link">КОЛЛЕГИЯ</a></li>
-                                                    <li><a href="#" class="nav-item-link">СТРУКТУРА МИНИСТЕРСТВА</a></li>
-                                                    <li><a href="#" class="nav-item-link">ТЕРРИТОРИАЛЬНЫЕ ОРГАНЫ</a></li>
-                                                    <li><a href="#" class="nav-item-link">МИНИСТЕРСТВУ 90 ЛЕТ!</a></li>
+                                                <ul class="second_sub_nav__items">
+                                                    <li class="secondList"><a href="#" class="nav-item-link">НОРМАТИВНО-ПРАВОВАЯ БАЗА</a></li>
+                                                    <li class="secondList"><a href="#" class="nav-item-link pr-2">ПРИКАЗЫ МИНИСТЕРСТВА</a></li>
+                                                    <li class="secondList"><a href="#" class="nav-item-link">ПЛАН ДЕЙСТВИЙ МИНИСТРА</a></li>
+                                                    <li class="secondList"><a href="#" class="nav-item-link">КОЛЛЕГИЯ</a></li>
+                                                    <li class="secondList"><a href="#" class="nav-item-link">СТРУКТУРА МИНИСТЕРСТВА</a></li>
+                                                    <li class="secondList"><a href="#" class="nav-item-link">ТЕРРИТОРИАЛЬНЫЕ ОРГАНЫ</a></li>
+                                                    <li class="secondList"><a href="#" class="nav-item-link">МИНИСТЕРСТВУ 90 ЛЕТ!</a></li>
+                                                    <li class="secondList"><a href="#" class="nav-item-link">МИНИСТЕРСТВУ 90 ЛЕТ!</a></li>
+                                                    <li class="secondList"><a href="#" class="nav-item-link">МИНИСТЕРСТВУ 90 ЛЕТ!</a></li>
+                                                    <li class="secondList"><a href="#" class="nav-item-link">МИНИСТЕРСТВУ 90 ЛЕТ!</a></li>
+                                                    <li class="secondList"><a href="#" class="nav-item-link">МИНИСТЕРСТВУ 90 ЛЕТ!</a></li>
+                                                    <li class="secondList"><a href="#" class="nav-item-link">МИНИСТЕРСТВУ 90 ЛЕТ!</a></li>
+                                                    <li class="secondList"><a href="#" class="nav-item-link">МИНИСТЕРСТВУ 90 ЛЕТ!</a></li>
+                                                    <li class="secondList"><a href="#" class="nav-item-link">МИНИСТЕРСТВУ 90 ЛЕТ!</a></li>
+                                                    <li class="secondList"><a href="#" class="nav-item-link">МИНИСТЕРСТВУ 90 ЛЕТ!</a></li>
+                                                    <li class="secondList"><a href="#" class="nav-item-link">МИНИСТЕРСТВУ 90 ЛЕТ!</a></li>
+                                                    <li class="secondList"><a href="#" class="nav-item-link">МИНИСТЕРСТВУ 90 ЛЕТ!</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="#" class="nav-item-link">НОРМАТИВНО-ПРАВОВАЯ БАЗА</a></li>
-                                            <li><a href="#" class="nav-item-link pr-2">ПРИКАЗЫ МИНИСТЕРСТВА</a></li>
-                                            <li><a href="#" class="nav-item-link">ПЛАН ДЕЙСТВИЙ МИНИСТРА</a></li>
-                                            <li><a href="#" class="nav-item-link">КОЛЛЕГИЯ</a></li>
-                                            <li><a href="#" class="nav-item-link">СТРУКТУРА МИНИСТЕРСТВА</a></li>
-                                            <li><a href="#" class="nav-item-link">ТЕРРИТОРИАЛЬНЫЕ ОРГАНЫ</a></li>
-                                            <li><a href="#" class="nav-item-link">МИНИСТЕРСТВУ 90 ЛЕТ!</a></li>
+                                            <li class="firstList"><a href="#" class="nav-item-link">НОРМАТИВНО-ПРАВОВАЯ БАЗА</a></li>
+                                            <li class="firstList"><a href="#" class="nav-item-link pr-2">ПРИКАЗЫ МИНИСТЕРСТВА</a></li>
+                                            <li class="firstList"><a href="#" class="nav-item-link">ПЛАН ДЕЙСТВИЙ МИНИСТРА</a></li>
+                                            <li class="firstList">
+                                                <a href="#" class="nav-item-link">КОЛЛЕГИЯ</a>
+                                                <ul class="second_sub_nav__items">
+                                                    <li class="secondList"><a href="#" class="nav-item-link">НОРМАТИВНО-ПРАВОВАЯ БАЗА</a></li>
+                                                    <li class="secondList"><a href="#" class="nav-item-link pr-2">ПРИКАЗЫ МИНИСТЕРСТВА</a></li>
+                                                    <li class="secondList"><a href="#" class="nav-item-link">ПЛАН ДЕЙСТВИЙ МИНИСТРА</a></li>
+                                                    <li class="secondList">
+                                                        <a href="#" class="nav-item-link">КОЛЛЕГИЯ</a>
+                                                        <ul class="third_sub_nav__items">
+                                                            <li class="thirdList"><a href="#" class="nav-item-link">НОРМАТИВНО-ПРАВОВАЯ БАЗА</a></li>
+                                                            <li class="thirdList"><a href="#" class="nav-item-link pr-2">ПРИКАЗЫ МИНИСТЕРСТВА</a></li>
+                                                            <li class="thirdList"><a href="#" class="nav-item-link">ПЛАН ДЕЙСТВИЙ МИНИСТРА</a></li>
+                                                            <li class="thirdList"><a href="#" class="nav-item-link">КОЛЛЕГИЯ</a></li>
+                                                            <li class="thirdList"><a href="#" class="nav-item-link">СТРУКТУРА МИНИСТЕРСТВА</a></li>
+                                                            <li class="thirdList"><a href="#" class="nav-item-link">ТЕРРИТОРИАЛЬНЫЕ ОРГАНЫ</a></li>
+                                                            <li class="thirdList">
+                                                                <a href="#" class="nav-item-link">МИНИСТЕРСТВУ 90 ЛЕТ!</a>
+                                                                <ul class="fourth_sub_nav__items">
+                                                                    <li class="fourthList"><a href="#" class="nav-item-link">НОРМАТИВНО-ПРАВОВАЯ БАЗА</a></li>
+                                                                    <li class="fourthList"><a href="#" class="nav-item-link pr-2">ПРИКАЗЫ МИНИСТЕРСТВА</a></li>
+                                                                    <li class="fourthList"><a href="#" class="nav-item-link">ПЛАН ДЕЙСТВИЙ МИНИСТРА</a></li>
+                                                                    <li class="fourthList"><a href="#" class="nav-item-link">КОЛЛЕГИЯ</a></li>
+                                                                    <li class="fourthList"><a href="#" class="nav-item-link">СТРУКТУРА МИНИСТЕРСТВА</a></li>
+                                                                    <li class="fourthList"><a href="#" class="nav-item-link">ТЕРРИТОРИАЛЬНЫЕ ОРГАНЫ</a></li>
+                                                                    <li class="fourthList"><a href="#" class="nav-item-link">МИНИСТЕРСТВУ 90 ЛЕТ!</a></li>
+                                                                    <li class="fourthList"><a href="#" class="nav-item-link">Посмотреть все пункты</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li class="thirdList"><a href="#" class="nav-item-link">Посмотреть все пункты</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="secondList"><a href="#" class="nav-item-link">СТРУКТУРА МИНИСТЕРСТВА</a></li>
+                                                    <li class="secondList"><a href="#" class="nav-item-link">ТЕРРИТОРИАЛЬНЫЕ ОРГАНЫ</a></li>
+                                                    <li class="secondList"><a href="#" class="nav-item-link">МИНИСТЕРСТВУ 90 ЛЕТ!</a></li>
+                                                    <li class="secondList"><a href="#" class="nav-item-link">Посмотреть все пункты</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="firstList"><a href="#" class="nav-item-link">СТРУКТУРА МИНИСТЕРСТВА</a></li>
+                                            <li class="firstList"><a href="#" class="nav-item-link">ТЕРРИТОРИАЛЬНЫЕ ОРГАНЫ</a></li>
+                                            <li class="firstList"><a href="#" class="nav-item-link">МИНИСТЕРСТВУ 90 ЛЕТ!</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -150,142 +196,41 @@
             </div>
         </nav>
         <div id="mobile-menu" class="wrapper cf d-none">
-            <nav class="" id="main-nav">
-
+            <nav id="main-nav">
                 <ul class="first-nav">
                     @foreach($pages as $page)
                         <li class="cryptocurrency">
-                            <a href="#" rel="noreferrer">{{ __($page->title) }}</a>
+                            <a href="https://www.google.com/search?q=Crypto" rel="noreferrer" target="_self">{{ __($page->title) }}</a>
                             @if(count($page->ChildPages) != 0)
                                 <ul>
                                     @forelse($page->ChildPages ?? [] as $secondChild)
-                                    <li><a href="#">{{ __($secondChild->title) }}</a></li>
+                                    <li><a href="#" target="_self">{{ __($secondChild->title) }}</a>
+                                        @if(count($secondChild->ChildPages) != 0)
+                                            <ul>
+                                                @forelse($secondChild->ChildPages ?? [] as $thirdChild)
+                                                    <li><a href="#" target="_self">{{ __($thirdChild->title) }}</a>
+                                                        @if(count($thirdChild->ChildPages) != 0)
+                                                            <ul>
+                                                                @forelse($thirdChild->ChildPages ?? [] as $fourthChild)
+                                                                    <li><a href="#" target="_self">{{ __($fourthChild->title) }}</a></li>
+                                                                @empty
+                                                                @endforelse
+                                                            </ul>
+                                                        @endif
+                                                    </li>
+                                                @empty
+                                                @endforelse
+                                            </ul>
+                                        @endif
+                                    </li>
                                     @empty
                                     @endforelse
                                 </ul>
                             @endif
                         </li>
                     @endforeach
-                    <li class="cryptocurrency">
-                        <a href="https://www.google.com/search?q=Crypto" rel="noreferrer" target="_blank">Cryptocurrency</a>
-                        <ul>
-                            <li><a href="#">Bitcoin</a></li>
-                            <li><a href="#">Ethereum</a></li>
-                            <li class="add">
-                                <a href="#" data-nav-close="false" data-add="['Litecoin','Dogecoin','Bitcoin Cash','ZCash']">Add Coin</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="devices">
-                        <span>Devices</span>
-                        <ul>
-                            <li class="mobile">
-                                <a href="#">Mobile Phones</a>
-                                <ul>
-                                    <li><a href="#">Super Smart Phone</a></li>
-                                    <li><a href="#">Thin Magic Mobile</a></li>
-                                    <li><a href="#">Performance Crusher</a></li>
-                                    <li><a href="#">Futuristic Experience</a></li>
-                                </ul>
-                            </li>
-                            <li class="television">
-                                <a href="#">Televisions</a>
-                                <div class="subnav-container">
-                                    <ul>
-                                        <li><a href="#">Flat Superscreen</a></li>
-                                        <li><a href="#">Gigantic LED</a></li>
-                                        <li><a href="#">Power Eater</a></li>
-                                        <li><a href="#">3D Experience</a></li>
-                                        <li><a href="#">Classic Comfort</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="camera">
-                                <a href="#">Cameras</a>
-                                <ul>
-                                    <li><a href="#">Smart Shot</a></li>
-                                    <li><a href="#">Power Shooter</a></li>
-                                    <li><a href="#">Easy Photo Maker</a></li>
-                                    <li><a href="#">Super Pixel</a></li>
-                                </ul>
-                            </li>
-                            <li data-nav-custom-content>
-                                <div class="custom-message">
-                                    You can add any custom content to your navigation items. This text is just an example.
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="magazines">
-                        <a href="#magazines">Magazines</a>
-                        <ul>
-                            <li><a href="#">National Geographic</a></li>
-                            <li><a href="#">Scientific American</a></li>
-                            <li><a href="#">The Spectator</a></li>
-                            <li><a href="#">The Rambler</a></li>
-                            <li><a href="#">Physics World</a></li>
-                            <li><a href="#">Popular Science</a></li>
-                            <li><a href="#">Popular Mechanics</a></li>
-                            <li><a href="#">Sky & Telescope</a></li>
-                            <li><a href="#">Discover</a></li>
-                            <li><a href="#">New Scientist</a></li>
-                            <li><a href="#">Psychology Today</a></li>
-                            <li><a href="#">Man's Health</a></li>
-                            <li><a href="#">Wired</a></li>
-                            <li><a href="#">Vogue</a></li>
-                            <li><a href="#">Elle</a></li>
-                            <li><a href="#">Cosmopolitan</a></li>
-                        </ul>
-                    </li>
-                    <li class="store">
-                        <a href="#">Store</a>
-                        <ul>
-                            <li>
-                                <a href="#">Clothes</a>
-                                <ul>
-                                    <li>
-                                        <a href="#">Women's Clothing</a>
-                                        <ul>
-                                            <li><a href="#">Tops</a></li>
-                                            <li><a href="#">Dresses</a></li>
-                                            <li><a href="#">Trousers</a></li>
-                                            <li><a href="#">Shoes</a></li>
-                                            <li><a href="#">Sale</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="#">Men's Clothing</a>
-                                        <ul>
-                                            <li><a href="#">Shirts</a></li>
-                                            <li><a href="#">Trousers</a></li>
-                                            <li><a href="#">Shoes</a></li>
-                                            <li><a href="#">Sale</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Jewelry</a></li>
-                            <li><a href="#">Music</a></li>
-                            <li>
-                                <a href="#">Grocery</a>
-                                <h3>Fruits</h3>
-                                <ul>
-                                    <li><a href="#">Citruses and southern fruits</a></li>
-                                    <li><a href="#">Exotic fruits</a></li>
-                                    <li><a href="#">Apples and pears</a></li>
-                                    <li><a href="#">Nuts</a></li>
-                                </ul>
-                                <h3>Vegetables</h3>
-                                <ul>
-                                    <li><a href="#">Root vegetables</a></li>
-                                    <li><a href="#">Exotic vegetables</a></li>
-                                    <li><a href="#">Herbs</a></li>
-                                    <li><a href="#">Salads</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
                 </ul>
+
             </nav>
         </div>
     </header>

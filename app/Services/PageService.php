@@ -18,8 +18,8 @@ class PageService
         if($request->hasFile('icon')) {
             $image = $data['icon'];
             $name = md5(Carbon::now() . "_" . $image->getClientOriginalName()) . '.' . $image->getClientOriginalExtension();
-            $filepath = Storage::disk('public')->putFileAs('/', $image, $name);
-            $data['icon'] =  url('/storage/files/shares/Иконки страниц/' . $filepath);
+            $filepath = Storage::disk('public')->putFileAs('/files/shares/Иконки Страниц/', $image, $name);
+            $data['icon'] =  url('/storage/' . $filepath);
         }
 
         $parentPage = Page::find($id);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\CarouselItem;
 use App\Models\Category;
 use App\Models\Page;
 use App\Models\Post;
@@ -100,5 +101,9 @@ class ApiController extends Controller
 
     public function deleteDocument(){
         Document::whereId(request()->get('id'))->delete();
+    }
+
+    public function deleteCarouselItem(){
+        CarouselItem::whereId(request()->get('id'))->delete();
     }
 }
