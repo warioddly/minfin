@@ -1,46 +1,52 @@
-@extends('layouts.app')
+@extends('front.layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+<div class="account-pages pt-4 pt-sm-4 pb-4 pb-sm-4">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xxl-4 col-lg-5">
+                <div class="card mb-0">
+                    <div class="card-body p-1 p-sm-3 p-lg-4">
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
+                        <div class="text-center w-75 m-auto">
+                            <h4 class="text-dark-50 text-center mt-0 fw-bold">{{ __('Sign In') }}</h4>
+                            <p class="text-muted mb-4">{{ __('Enter your email address and password to access admin panel.') }}</p>
+                        </div>
 
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
+                        <form action="{{ route('login') }}" method="POST" >
+                            @csrf
+                            <div class="mb-3">
+                                <label for="email" class="form-label">{{ __('Email address') }}</label>
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"
+                                       value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Enter your email">
                                 @error('email')
-                                    <span class="invalid-feedback" role="alert">
+                                <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-                        </div>
 
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+                            <div class="mb-3">
+                                @if (Route::has('password.request'))
+                                    <a href="{{ route('password.request') }}" class="text-muted float-end"><small>{{ __('Forgot Your Password?') }}</small></a>
+                                @endif
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
+                                <label for="password" class="form-label">{{ __('Password') }}</label>
+                                <div class="input-group input-group-merge">
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"
+                                           required autocomplete="current-password"  placeholder="Enter your password">
+                                    <div class="input-group-text" data-password="false">
+                                        <span class="password-eye"></span>
+                                    </div>
+                                </div>
                                 @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
-                        </div>
 
-                        <div class="row mb-3">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="mb-3 mb-3">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
@@ -49,25 +55,34 @@
                                     </label>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                            <div class="mb-1 mb-0 text-center">
+                                <button type="submit" class="btn btn-primary px-3">
                                     {{ __('Login') }}
                                 </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 @endsection
+
+@push('head-scripts')
+    <link href="{{ asset('admin/css/app-modern.min.css ') }}" rel="stylesheet" type="text/css" id="light-style" />
+    <style>
+        dl, ol, ul, p{
+            margin: 0;
+        }
+        ol, ul{
+            padding-left: 0;
+        }
+    </style>
+@endpush
+
+@push('footer-scripts')
+    <script src="{{ asset('admin/js/vendor.min.js') }}"></script>
+    <script src="{{ asset('admin/js/app.js') }}"></script>
+@endpush

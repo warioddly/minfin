@@ -223,5 +223,13 @@
     "Statistics": "Статистика",
     "Update statistic data": "Обновить статистику",
     "Change": "Изменить",
-    "Are you sure you want to delete this?": "Вы действительно хотите удалить это?"
+    "Are you sure you want to delete this?": "Вы действительно хотите удалить это?",
+    "Sign In": "Войти",
+    "Email address": "Адрес электронной почты",
+    "Forgot Your Password?": "Забыли свой пароль?",
+    "Remember Me": "Запомнить меня",
+    "These credentials do not match our records.": "Эти учетные данные не соответствуют нашим записям.",
+    "Login": "Войти",
+    "To list": "К списку",
+    "Enter your email address and password to access admin panel.": "Введите свой адрес электронной почты и пароль для доступа к панели администратора."
 }

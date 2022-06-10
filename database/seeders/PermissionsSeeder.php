@@ -46,11 +46,6 @@ class PermissionsSeeder extends Seeder
             'delete-documents',
             'edit-documents',
 
-            'show-documents',
-            'add-documents',
-            'delete-documents',
-            'edit-documents',
-
             'show-content-settings',
             'add-content-settings',
             'delete-content-settings',

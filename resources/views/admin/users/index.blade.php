@@ -93,7 +93,7 @@
                         <div class="col-12 col-md-6">
                             <label for="roles-multiselect" class="form-label">{{ __('Roles') }}</label>
                             <select class="select2 form-control select2-multiple" name="roles[]" data-toggle="select2" id="multiselect-create"
-                                    multiple="multiple" data-placeholder="Choose ...">
+                                    multiple="multiple" data-placeholder="Choose ..." required>
                                 @foreach($roles as $role)
                                     @if($role->name == 'guest')
                                         <option value="{{ $role->id }}" selected>{{ __($role->name) }}</option>
@@ -105,7 +105,7 @@
                         </div>
                         <div class="col-12 col-md-6">
                             <label for="about-textarea" class="form-label">{{ __('About') }}</label>
-                            <textarea class="form-control" name="about" id="about-textarea" rows="4" maxlength="120" data-toggle="maxlength" data-threshold="12"></textarea>
+                            <textarea class="form-control" name="about" id="about-textarea" rows="4" maxlength="120" data-toggle="maxlength" data-threshold="12" required></textarea>
                             <span class="font-13 text-muted">{{ __('Not necessary') }}</span>
                         </div>
                     </div>
@@ -165,7 +165,7 @@
                         <div class="col-12 col-md-6">
                             <label for="roles-multiselect" class="form-label">{{ __('Roles') }}</label>
                             <select class="select2 form-control select2-multiple" name="roles[]" data-toggle="select2" id="multiselect-edit"
-                                    multiple="multiple" data-placeholder="Choose ...">
+                                    multiple="multiple" required>
                                 @foreach($roles as $role)
                                     <option value="{{ $role->id }}">{{ __($role->name) }}</option>
                                 @endforeach
@@ -173,7 +173,7 @@
                         </div>
                         <div class="col-12 col-md-6">
                             <label for="about-textarea" class="form-label">{{ __('About') }}</label>
-                            <textarea class="form-control" name="about" id="about-textarea" rows="4" maxlength="120" data-toggle="maxlength" data-threshold="12"></textarea>
+                            <textarea class="form-control" name="about" id="about-textarea" rows="4" maxlength="120" data-toggle="maxlength" data-threshold="12" required></textarea>
                             <span class="font-13 text-muted">{{ __('Not necessary') }}</span>
                         </div>
                     </div>

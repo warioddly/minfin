@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Page;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\URL;
@@ -29,5 +30,6 @@ class AppServiceProvider extends ServiceProvider
     {
         $latestUsers = User::latest()->take(3)->get();
         View::share('latestUsers', $latestUsers);
+        View::share('pages',  Page::where('parent_id', null)->get());
     }
 }

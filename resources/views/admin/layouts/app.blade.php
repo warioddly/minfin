@@ -51,7 +51,6 @@
             </div>
         </div>
     </div>
-
 {{--    @include('admin.includes.right-sidebar')--}}
 
     @stack('modal')

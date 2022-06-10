@@ -9,7 +9,7 @@ use App\Models\Post;
 
 class IndexController extends Controller
 {
-    public function index(){
+    public function Index(){
         $posts = Post::where('is_published', true)->get();
         $pages = Page::where('parent_id', null)->get();
         $carouselItems = CarouselItem::latest()->get();

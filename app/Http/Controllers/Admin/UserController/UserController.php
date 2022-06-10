@@ -32,10 +32,8 @@ class UserController extends Controller
     }
 
     public function Update(UserUpdateRequest $request, UserService $userService, $id){
-
         $user = User::find($id);
         $data = $userService->validateData($request);
-
         $user->update($data);
         $userService->userRoleSync($request, $user);
 

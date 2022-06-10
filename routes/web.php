@@ -15,7 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(["namespace" => "App\Http\Controllers\Front"], function () {
-    Route::get('/', 'IndexController@index')->name('index');
+    Route::get('/', 'IndexController@Index')->name('index');
+
+    Route::group(['prefix' => 'posts'], function () {
+        Route::get('/{id}', 'PostController@Show')->name('front-post-show');
+    });
 });
 
 // ADMIN CONTROLLERS
@@ -98,4 +102,4 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
 
-Auth::routes();
+Auth::routes(['register' => false, 'reset' => false]);

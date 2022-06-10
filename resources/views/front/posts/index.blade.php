@@ -13,17 +13,19 @@
                         <button type="button" data-bs-target="#carouseIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                         <button type="button" data-bs-target="#carouseIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
                     </div>
+                    <div class="carousel-inner">
                         @foreach($posts as $key => $post)
                             @if($key == 4)
                                 @break
                             @endif
-                            <div class="carousel-item @if($key == 0)active @endif">
+                            <div class="carousel-item @if($key == 0) active @endif">
                                 <img src="{{ $post->preview_image }}" class="d-block w-100 img-fluid" alt="...">
                                 <div class="carousel-caption d-md-block">
-                                    <h3>{{ \Illuminate\Support\Str::limit(__($post->title), $limit=30, $end="...") }}</h3>
+                                    <h3>{{ $post->title }}</h3>
                                 </div>
                             </div>
                         @endforeach
+                    </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouseIndicators" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
@@ -69,7 +71,7 @@
                         <div class="position-relative p-lg-4 p-md-2 pt-3 pt-md-2">
                             <p class="new_block__date pb-4 pb-md-2 pt-md-2">{{ $posts[0]->created_at->toDateTime()->format('d.m.Y') }}</p>
                             <p class="new_block__description text-break">{{ $posts[0]->description }}
-                                <a href="{{ route('front-post-show', $posts[0]->id) }}" class="new_block__read_more">читать далее</a>
+                                <a href="#" class="new_block__read_more">читать далее</a>
                             </p>
                             <p class="new_block__category bottom-0 mb-md-2 mb-lg-3">{{ $posts[0]->category->title }}</p>
                         </div>
@@ -77,12 +79,9 @@
                 </div>
                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 news_block justify-content-between">
                     @foreach($posts as $key => $post)
-                        @if($key == 4)
-                            @break
-                        @endif
                         @if($key == 0)
                             <div class="main-new__mobile_block new_block mb-lg-3 mb-2">
-                                <a href="{{ route('front-post-show', $post->id) }}" class="p-0 d-flex">
+                                <a href="#" class="p-0 d-flex">
                                     <div class="position-relative me-2 me-md-2">
                                         <img src="{{ $post->preview_image  }}" alt="" class="new_block__image">
                                     </div>
@@ -96,7 +95,7 @@
                             @continue
                         @endif
                         <div class="col-md-12 col-lg-12 col new_block mb-lg-3 mb-2">
-                                <a href="{{ route('front-post-show', $post->id) }}" class="p-0 d-flex">
+                                <a href="#" class="p-0 d-flex">
                                     <div class="position-relative me-2 me-md-2">
                                         <img src="{{ $post->preview_image  }}" alt="" class="new_block__image">
                                     </div>

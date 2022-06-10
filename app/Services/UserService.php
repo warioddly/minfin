@@ -24,8 +24,11 @@ class UserService
 
         unset($data['roles']);
 
-        if(array_key_exists('password', $request->all())){
+        if(array_key_exists('password', $data) && $data['password'] != null){
             $data['password'] = Hash::make($data['password']);
+        }
+        else{
+            unset($data['password']);
         }
 
         return $data;

@@ -30,7 +30,7 @@ class UserRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'middle_name' => ['nullable', 'string', 'max:255'],
             'avatar' => ['nullable', 'image', 'max:10240'],
-            'about' => ['nullable', 'string', 'max:120'],
+            'about' => ['required', 'string', 'max:120'],
             'password' => ['required', 'string', 'min:8'],
             'email' => ['required', 'email', 'unique:users,email'],
             'roles[]' => ['nullable', 'array', 'min:1'],
@@ -40,7 +40,8 @@ class UserRequest extends FormRequest
     public function messages()
     {
         return [
-            'email.unique' => __('This email already exists, try another email')
+            'email.unique' => __('This email already exists, try another email'),
+            'about' => __('This email already exists, try another email')
         ];
     }
 }
