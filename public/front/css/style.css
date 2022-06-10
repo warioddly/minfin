@@ -857,6 +857,60 @@ footer{
     color: #393B3E;
 }
 
+#post-page .post-title{
+    font-family: var(--source-sans-family);
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 150.6%;
+    color: #393B3E;
+}
+
+
+#post-page .post-preview-image{
+    object-fit: cover;
+    height: 500px;
+    width: 100%;
+    border-radius: 3px;
+}
+
+#post-page .post-content{
+    font-family: var(--source-sans-family);
+}
+
+#post-page .post-content p{
+    margin-bottom: 1rem !important;
+}
+
+#post-page .post_information{
+    border: 0.5px solid #083C6F;
+    border-radius: 6px;
+}
+
+#post-page .post_document_name {
+    font-family: var(--source-sans-family);
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 150.6%;
+    color: #393B3E;
+}
+
+#post-page .post_document__download-link {
+    font-family: var(--source-sans-family);
+    font-weight: 600;
+    font-size: 18px;
+    background: #083C6F;
+    border-radius: 15px;
+    color: white;
+    padding: 10px 47px;
+    transition: .3s;
+}
+
+
+#post-page .post_document__download-btn:hover {
+    background: #0e579c;
+    color: white;
+}
+
 @media screen and (max-width: 767px) {
 
     .apexcharts-legend::-webkit-scrollbar{
@@ -974,7 +1028,5 @@ footer{
     .container_footer p {
         font-size: clamp(0.375rem, 0.25572519083969464rem + 0.5089058524173028vw, 0.5rem);
     }
-
-
 
 }

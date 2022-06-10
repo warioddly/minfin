@@ -28,4 +28,8 @@ class Post extends Model
     public function attachmentFiles(){
         return $this->hasMany(Document::class, 'post_id');
     }
+
+    public function InPage(){
+        return $this->belongsTo(Page::class, 'page_id');
+    }
 }

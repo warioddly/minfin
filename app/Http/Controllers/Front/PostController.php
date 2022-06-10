@@ -10,7 +10,7 @@ use App\Models\Post;
 class PostController extends Controller
 {
     public function Show($id){
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
         return view('front.posts.show', compact('post'));
     }
 }
