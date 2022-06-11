@@ -613,6 +613,17 @@ nav .desktop-menu{
     text-align: center;
 }
 
+#economic-map .kyrgyz-republic-map{
+    height: clamp(17.8125rem, 2.4011287625418056rem + 32.10702341137124vw, 29.8125rem);
+    position: relative;
+}
+
+#economic-map .kyrgyz-republic-map svg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
 .map svg{
     position: relative;
     left: 0;
@@ -628,9 +639,45 @@ nav .desktop-menu{
     fill: var(--secindary-color) ;
 }
 
+#floatingmes {
+    font-family: var(--source-sans-family);
+    position:absolute;
+    z-index:999;
+    top:0;
+    left:0;
+    width: 136px;
+    background: rgb(10, 75, 128);
+    padding: 4px;
+    border: 1px solid #eeeeee;
+    border-radius: 4px;
+    justify-content: center;
+    font-size: 18px;
+    color: white;
+    display: flex;
+}
+
+.apexcharts-legend{
+    width: 185px !important;
+}
+
 .economic-statistic__card{
     background: #FFFFFF;
     border-radius: 8px;
+}
+
+.back-to-btn{
+    background: #153B86;
+    border: 0.5px solid #000000;
+    border-radius: 5px;
+    font-family: var(--source-sans-family);
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 150.6%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    width: 100px;
 }
 
 .economic-statistic__card .card-header-text{
@@ -666,11 +713,11 @@ nav .desktop-menu{
 }
 
 .apexcharts-legend::-webkit-scrollbar-track{
-    box-shadow: inset 0 0 6px rgba(243, 243, 243, 0.3);
+    box-shadow: inset 0 0 6px rgba(243, 243, 243, 0.75);
 }
 
 .apexcharts-legend::-webkit-scrollbar-thumb {
-    background-color: #efebeb;
+    background-color: #efebeb !important;
 }
 
 /* Bottom White Blocks */
@@ -1142,5 +1189,10 @@ footer{
     #main-carousel .carousel-caption a{
         font-size: clamp(0.9375rem, -0.2552480916030535rem + 5.089058524173028vw, 2.1875rem);
         line-height: clamp(1.25rem, -0.18129770992366412rem + 6.106870229007634vw, 2.75rem);
+    }
+
+    #economic-map .kyrgyz-republic-map{
+        height: clamp(15.0625rem, 12.438454198473282rem + 11.195928753180661vw, 17.8125rem);
+        position: relative;
     }
 }

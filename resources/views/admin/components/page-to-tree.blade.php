@@ -21,8 +21,18 @@
                                                 <a href="{{ route('show-pages', $thirdChild->id) }}">{{ \Illuminate\Support\Str::limit(__($thirdChild->title), $limit = 10, $end = '...') }}</a>
                                                 @forelse($thirdChild->ChildPages ?? [] as $fourthChild)
                                                     <ul>
-                                                        <li data-jstree='{ "disabled" : false @if($fourthChild->type == '0'), "type" : "file" @endif }'>
+                                                        <li data-jstree='{ "disabled" : false @if($fourthChild->type == '0'), "type" : "file" @endif
+                                                        @if($pageIs == $fourthChild->id) ,"opened" : true, "selected": true @else ,"opened" : false @endif
+                                                            }'>
                                                             <a href="{{ route('show-pages', $fourthChild->id) }}">{{ \Illuminate\Support\Str::limit(__($fourthChild->title), $limit = 10, $end = '...') }}</a>
+                                                            @forelse($fourthChild->ChildPages ?? [] as $fifthChild)
+                                                                <ul>
+                                                                    <li data-jstree='{ "disabled" : false @if($fifthChild->type == '0'), "type" : "file" @endif }'>
+                                                                        <a href="{{ route('show-pages', $fifthChild->id) }}">{{ \Illuminate\Support\Str::limit(__($fifthChild->title), $limit = 10, $end = '...') }}</a>
+                                                                    </li>
+                                                                </ul>
+                                                            @empty
+                                                            @endforelse
                                                         </li>
                                                     </ul>
                                                 @empty

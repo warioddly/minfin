@@ -24,11 +24,11 @@ class PageService
 
         $parentPage = Page::find($id);
 
-        if($parentPage->level + 1 != 3 && $parentPage->level != 3){
+        if($parentPage->level + 1 != 4 && $parentPage->level != 4){
             $data['level'] = $parentPage->level + 1;
         }
         else{
-            $data['level'] = 3;
+            $data['level'] = 4;
         }
 
         $data['parent_id'] = $id;

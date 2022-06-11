@@ -42,7 +42,7 @@
                         <div class="row mb-2">
                             @can('add-pages')
                                 <div class="">
-                                    @if($page->level != 3)
+                                    @if($page->level != 4)
                                         <a data-bs-toggle="modal" href="#create" role="button"
                                            class="btn btn-primary mb-2"> <i class="uil-folder-medical me-1"></i> {{ __('Create directory') }}
                                         </a>
