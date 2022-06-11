@@ -18,9 +18,10 @@
                                 @break
                             @endif
                             <div class="carousel-item @if($key == 0)active @endif">
+                                <span class="new__image_overflow"></span>
                                 <img src="{{ $post->preview_image }}" class="d-block w-100 img-fluid" alt="...">
                                 <div class="carousel-caption d-md-block">
-                                    <h3>{{ \Illuminate\Support\Str::limit(__($post->title), $limit=30, $end="...") }}</h3>
+                                    <a href="{{ route('front-post-show', $post->id) }}">{{ \Illuminate\Support\Str::limit(__($post->title), $limit=50, $end="...") }}</a>
                                 </div>
                             </div>
                         @endforeach

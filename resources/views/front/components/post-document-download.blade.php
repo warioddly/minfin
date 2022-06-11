@@ -1,20 +1,16 @@
 @foreach($items as $item)
-    <div class="row align-items-center">
+    <div class="row align-items-center py-2 mb-2">
         <div class="col-lg-1">
-            @if(in_array($item->extension, ['img', 'svg', 'image', 'ico', 'jpeg', 'gif']))
-                <img data-dz-thumbnail src="{{ $item->path }}" class="avatar-sm rounded bg-light " style="object-fit: cover" alt="">
-            @else
-                <i class="mdi mdi-file-document-outline font-24 px-2" ></i>
-            @endif
+            <img src="{{ asset('front/images/icons/document.svg') }}" class="document-image" style="object-fit: cover" alt="">
         </div>
         <div class="col-lg-1">
-            <p class="">{{ $item->extension }}</p>
+            <p class="document-text">{{ $item->extension }}</p>
         </div>
-        <div class="col-lg-1 ">
-            <p class="text-center">{{ $item->size }}MB</p>
+        <div class="col-2">
+            <p class="text-center document-size document-text">{{ \Illuminate\Support\Str::limit($item->size, $limit=5, $end='') }}MB</p>
         </div>
         <div class="col-lg-3 col-md-2 col-3">
-            <p class="post_document_name">{{ __($item->title) }}</p>
+            <p class="post_document_name">{{ \Illuminate\Support\Str::limit($item->title, $limit=18, $end='...') }}</p>
         </div>
         <div class="col-lg-3 text-end ">
             <a href="{{ $item->path }}" target="_blank" class="post_document__download-link">{{ __('Download') }}</a>
