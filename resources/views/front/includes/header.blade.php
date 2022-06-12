@@ -284,7 +284,16 @@
                                                     @if(count($thirdChild->ChildPages) != 0)
                                                         <ul>
                                                             @forelse($thirdChild->ChildPages ?? [] as $fourthChild)
-                                                                <li><a href="#" target="_self">{{ __($fourthChild->title) }}</a></li>
+                                                                <li><a href="#" target="_self">{{ __($fourthChild->title) }}</a>
+                                                                    @if(count($fourthChild->ChildPages) != 0)
+                                                                        <ul>
+                                                                            @forelse($fourthChild->ChildPages ?? [] as $fifthChild)
+                                                                                <li><a href="#" target="_self">{{ __($fifthChild->title) }}</a></li>
+                                                                            @empty
+                                                                            @endforelse
+                                                                        </ul>
+                                                                    @endif
+                                                                </li>
                                                             @empty
                                                             @endforelse
                                                         </ul>

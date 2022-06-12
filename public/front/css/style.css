@@ -605,6 +605,7 @@ nav .desktop-menu{
     letter-spacing: 0.8px;
     color: var(--heading-color);
     border-left: 11px solid;
+    padding-left: 10px;
 }
 
 #economic-map .map{
@@ -657,7 +658,7 @@ nav .desktop-menu{
 }
 
 .apexcharts-legend{
-    width: 185px !important;
+    width: clamp(5.9375rem, -1.286580267558529rem + 15.050167224080269vw, 11.5625rem) !important;
 }
 
 .economic-statistic__card{
@@ -701,7 +702,7 @@ nav .desktop-menu{
 
 .apex-chart-info-text{
     font-family: var(--arial-font-family);
-    font-size: clamp(0.5rem, -0.30267558528428085rem + 1.6722408026755853vw, 1.125rem);
+    font-size: clamp(0.6875rem, 0.2861622073578596rem + 0.8361204013377926vw, 1rem);
     line-height: clamp(0.6875rem, -0.11517558528428085rem + 1.6722408026755853vw, 1.3125rem);;
     color: #9FA5AD;
     white-space: nowrap;
@@ -1194,5 +1195,9 @@ footer{
     #economic-map .kyrgyz-republic-map{
         height: clamp(15.0625rem, 12.438454198473282rem + 11.195928753180661vw, 17.8125rem);
         position: relative;
+    }
+
+    .apexcharts-legend{
+        width: clamp(5.9375rem, 13.876431297709924rem + -16.539440203562343vw, 10rem) !important;
     }
 }

@@ -40,7 +40,7 @@ let options = {
             options: {
                 chart: {
                     type: 'donut',
-                    height: '100px',
+                    height: '130px',
                 },
                 legend: {
                     position: 'left',
@@ -48,7 +48,7 @@ let options = {
                     fontSize: '12px',
                     fontFamily: 'Arial',
                     fontWeight: 400,
-                    offsetY: -28,
+                    offsetY: -18,
                     markers: {
                         width: 6,
                         height: 6,
@@ -57,8 +57,8 @@ let options = {
                 plotOptions: {
                     pie: {
                         offsetX: 0,
-                        offsetY: 0,
-                        customScale: 1.20,
+                        offsetY: -5,
+                        customScale: 1,
                         dataLabels: {
                             offset: 0,
                             minAngleToShowLabel: 10
@@ -92,26 +92,19 @@ let options = {
             }
         },
         {
-            breakpoint: 768,
+            breakpoint: 426,
             options: {
-                states: {
-                    hover: {
-                        filter: {
-                            type: 'none',
-                        }
-                    },
-                },
                 chart: {
                     type: 'donut',
-                    height: '100px',
+                    height: '150px',
                 },
                 legend: {
                     position: 'left',
                     horizontalAlign: 'center',
-                    fontSize: '12px',
+                    fontSize: '16px',
                     fontFamily: 'Arial',
                     fontWeight: 400,
-                    offsetY: -28,
+                    offsetY: -18,
                     markers: {
                         width: 6,
                         height: 6,
@@ -119,9 +112,9 @@ let options = {
                 },
                 plotOptions: {
                     pie: {
-                        offsetX: 30,
+                        offsetX: 0,
                         offsetY: 0,
-                        customScale: 1.20,
+                        customScale: 1.1,
                         dataLabels: {
                             offset: 0,
                             minAngleToShowLabel: 10
@@ -136,7 +129,63 @@ let options = {
                     offsetX: 0,
                     offsetY: 0,
                     style: {
-                        fontSize: '11px',
+                        fontSize: '14px',
+                        fontFamily: 'Arial, sans-serif',
+                        fontWeight: 'bold',
+                        colors: undefined
+                    },
+
+                    background: {
+                        enabled: true,
+                        foreColor: '#fff',
+                        padding: 4,
+                        borderRadius: 2,
+                        borderWidth: 1,
+                        borderColor: '#fff',
+                        opacity: 0.9,
+                    },
+                }
+            }
+        },
+        {
+            breakpoint: 515,
+            options: {
+                chart: {
+                    type: 'donut',
+                    height: '150px',
+                },
+                legend: {
+                    position: 'left',
+                    horizontalAlign: 'center',
+                    fontSize: '16px',
+                    fontFamily: 'Arial',
+                    fontWeight: 400,
+                    offsetY: -18,
+                    markers: {
+                        width: 6,
+                        height: 6,
+                    },
+                },
+                plotOptions: {
+                    pie: {
+                        offsetX: 30,
+                        offsetY: 0,
+                        customScale: 1.1,
+                        dataLabels: {
+                            offset: 0,
+                            minAngleToShowLabel: 10
+                        },
+                        donut: {
+                            size: '50%',
+                        },
+                    }
+                },
+                dataLabels: {
+                    enabled: true,
+                    offsetX: 0,
+                    offsetY: 0,
+                    style: {
+                        fontSize: '14px',
                         fontFamily: 'Arial, sans-serif',
                         fontWeight: 'bold',
                         colors: undefined
@@ -164,7 +213,7 @@ let options = {
                 legend: {
                     position: 'left',
                     horizontalAlign: 'center',
-                    fontSize: '8px',
+                    fontSize: '11px',
                     fontFamily: 'Arial',
                     fontWeight: 400,
                     offsetY: -28,
@@ -175,7 +224,7 @@ let options = {
                 },
                 plotOptions: {
                     pie: {
-                        offsetX: 30,
+                        offsetX: 0,
                         offsetY: 0,
                         customScale: 1.25,
                         dataLabels: {
@@ -242,6 +291,27 @@ let options = {
                         },
                     }
                 },
+                dataLabels: {
+                    enabled: true,
+                    offsetX: 0,
+                    offsetY: 0,
+                    style: {
+                        fontSize: '11px',
+                        fontFamily: 'Arial, sans-serif',
+                        fontWeight: 'bold',
+                        colors: undefined
+                    },
+
+                    background: {
+                        enabled: true,
+                        foreColor: '#fff',
+                        padding: 4,
+                        borderRadius: 2,
+                        borderWidth: 1,
+                        borderColor: '#fff',
+                        opacity: 0.9,
+                    },
+                }
             }
         },
         {
@@ -277,42 +347,27 @@ let options = {
                         },
                     }
                 },
-            }
-        },
-        {
-            breakpoint: 3800,
-            options: {
-                chart: {
-                    type: 'donut',
-                    height: '250px',
-                    width: '100%',
-                },
-                legend: {
-                    position: 'left',
-                    horizontalAlign: 'center',
-                    fontSize: '18px',
-                    fontFamily: 'Arial',
-                    fontWeight: 400,
-                    offsetY: -18,
-                    markers: {
-                        width: 12,
-                        height: 12,
+                dataLabels: {
+                    enabled: true,
+                    offsetX: 0,
+                    offsetY: 0,
+                    style: {
+                        fontSize: '15px',
+                        fontFamily: 'Arial, sans-serif',
+                        fontWeight: 'bold',
+                        colors: undefined
                     },
-                },
-                plotOptions: {
-                    pie: {
-                        offsetX: 0,
-                        offsetY: 5,
-                        customScale: 1.1,
-                        dataLabels: {
-                            offset: 0,
-                            minAngleToShowLabel: 10
-                        },
-                        donut: {
-                            size: '50%',
-                        },
-                    }
-                },
+
+                    background: {
+                        enabled: true,
+                        foreColor: '#fff',
+                        padding: 4,
+                        borderRadius: 2,
+                        borderWidth: 1,
+                        borderColor: '#fff',
+                        opacity: 0.9,
+                    },
+                }
             }
         },
         {
@@ -340,6 +395,63 @@ let options = {
                         offsetX: 0,
                         offsetY: 5,
                         customScale: 1.18,
+                        dataLabels: {
+                            offset: 0,
+                            minAngleToShowLabel: 10
+                        },
+                        donut: {
+                            size: '50%',
+                        },
+                    }
+                },
+                dataLabels: {
+                    enabled: true,
+                    offsetX: 0,
+                    offsetY: 0,
+                    style: {
+                        fontSize: '18px',
+                        fontFamily: 'Arial, sans-serif',
+                        fontWeight: 'bold',
+                        colors: undefined
+                    },
+
+                    background: {
+                        enabled: true,
+                        foreColor: '#fff',
+                        padding: 4,
+                        borderRadius: 2,
+                        borderWidth: 1,
+                        borderColor: '#fff',
+                        opacity: 0.9,
+                    },
+                }
+            }
+        },
+        {
+            breakpoint: 3800,
+            options: {
+                chart: {
+                    type: 'donut',
+                    height: '250px',
+                    width: '100%',
+                },
+                legend: {
+                    position: 'left',
+                    horizontalAlign: 'center',
+                    fontSize: '18px',
+                    fontFamily: 'Arial',
+                    fontWeight: 400,
+                    offsetY: -18,
+                    markers: {
+                        width: 12,
+                        height: 12,
+                    },
+                },
+                plotOptions: {
+                    pie: {
+                        offsetX: 0,
+                        offsetY: 5,
+                        customScale: 1.1,
                         dataLabels: {
                             offset: 0,
                             minAngleToShowLabel: 10
