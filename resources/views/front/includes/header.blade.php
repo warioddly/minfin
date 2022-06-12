@@ -25,9 +25,9 @@
                         </a>
                     </div>
                     <div class="localization-languages d-flex">
-                        <a href="#" class="text-uppercase me-2">Кырг</a>
-                        <a href="#" class="text-uppercase me-2 active">Рус</a>
-                        <a href="#" class="text-uppercase me-2">Eng</a>
+                        <a href="{{ route('locale', 'kg') }}" class="text-uppercase me-2 @if( App::getLocale() == 'kg')active @endif">Кырг</a>
+                        <a href="{{ route('locale', 'ru') }}" class="text-uppercase me-2 @if( App::getLocale() == 'ru')active @endif">Рус</a>
+                        <a href="{{ route('locale', 'en') }}" class="text-uppercase me-2 @if( App::getLocale() == 'en')active @endif">Eng</a>
                     </div>
                 </div>
             </div>

@@ -146,8 +146,8 @@ nav.fix{
     z-index: 4;
 }
 
-.MenuToggleButton span{
-    display: none;
+.MenuToggleButton span, .MenuToggleButton{
+    display: none !important;
 }
 
 #dl-menu{
@@ -861,15 +861,15 @@ footer{
         display: none !important;
     }
 
-    .MenuToggleButton span{
-        display: block;
+    .MenuToggleButton span, .MenuToggleButton{
+        display: block !important;
     }
 
     .hc-nav-trigger{
-        top: 20px;
+        top: clamp(3.5rem, 1.3461538461538463rem + 4.487179487179487vw, 3.9375rem);
         z-index: 9980;
         width: 30px;
-        min-height: clamp(6.5625rem, 2.8173828125rem + 7.8125vw, 7.8125rem);
+        min-height: 36px;
     }
 
     .brand.fix{
@@ -889,7 +889,7 @@ footer{
     }
 
     .brand.fix .hc-nav-trigger{
-        top: 20px;
+        top: 23px;
         z-index: 9980;
         width: 30px;
         min-height: 30px;
@@ -1074,14 +1074,18 @@ footer{
     }
 
     .hc-nav-trigger{
-        min-height: 27px;
+        top: 16px;
+        z-index: 9980;
+        width: 30px;
+        min-height: 36px;
     }
+
     .hc-offcanvas-nav .nav-container{
         max-width: 100%;
     }
 
     .brand.fix .hc-nav-trigger{
-        min-height: 27px;
+        min-height: 22px;
     }
 
     .banner{
