@@ -116,7 +116,7 @@
     @endif
     <section id="economic-map" class="mt-3 pb-4">
         <div class="container">
-            <p class="header-text">Экономическая карта</p>
+            <p class="header-text">{{ __('Economic map') }}</p>
             <div class="row justify-content-between">
                 <div id="floatingmes" class="d-none"></div>
                 <div class="map col-12 col-lg-8 col-md-8 col-xl-8">
@@ -302,7 +302,7 @@
                 </div>
                 <div class="static col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 pt-3">
                     <div class="economic-statistic__card pb-3">
-                        <p class="text-center card-header-text pt-lg-3 pt-md-2 pt-2">Выделеные средства</p>
+                        <p class="text-center card-header-text pt-lg-3 pt-md-2 pt-2">{{ __('Allocated funds') }}</p>
                         <hr class="mt-2 mb-2"/>
                         <div class="p-lg-3 p-md-2 pb-0 p-2">
                             <h5 class="card-title ps-2">СоцФонд</h5>

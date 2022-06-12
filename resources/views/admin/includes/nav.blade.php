@@ -1,7 +1,7 @@
 <div class="navbar-custom topnav-navbar topnav-navbar-dark">
     <div class="container-fluid">
 
-        <a href="/" class="topnav-logo">
+        <a href="/" class="topnav-logo d-none d-sm-block d-lg-block">
             <span class="topnav-logo-lg">
                 <img src="{{ asset('front/images/Logo.svg') }}" alt="" height="60">
             </span>
@@ -25,18 +25,30 @@
 
             <li class="dropdown notification-list topbar-dropdown d-none d-lg-block">
                 <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" id="topbar-languagedrop" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                    <img src=" {{ asset('admin/images/flags/us.jpg') }}" alt="user-image" class="me-1" height="12"> <span class="align-middle">English</span> <i class="mdi mdi-chevron-down"></i>
+                    @if( App::getLocale() == 'en')
+                        <img src=" {{ asset('admin/images/flags/us.jpg') }}" alt="user-image" class="me-1" height="12"> <span class="align-middle">English</span> <i class="mdi mdi-chevron-down"></i>
+                    @elseif(App::getLocale() == 'ru')
+                        <img src="{{ asset('admin/images/flags/russia.jpg') }}" alt="user-image" class="me-1" height="12"> <span class="align-middle">Русский</span> <i class="mdi mdi-chevron-down"></i>
+                    @elseif(App::getLocale() == 'kg')
+                        <img src="{{ asset('admin/images/flags/kg.svg') }}" alt="user-image" class="me-1" height="12"> <span class="align-middle">Кыргызча</span> <i class="mdi mdi-chevron-down"></i>
+                    @endif
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu" aria-labelledby="topbar-languagedrop">
-
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <img src="{{ asset('admin/images/flags/kg.svg') }}" alt="user-image" class="me-1" height="12"> <span class="align-middle">Кыргызча</span>
-                    </a>
-
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <img src="{{ asset('admin/images/flags/russia.jpg') }}" alt="user-image" class="me-1" height="12"> <span class="align-middle">Russian</span>
-                    </a>
-
+                    @if( App::getLocale() != 'en')
+                        <a href="{{ route('locale', 'en') }}" class="dropdown-item notify-item">
+                            <img src="{{ asset('admin/images/flags/us.jpg') }}" alt="user-image" class="me-1" height="12"> <span class="align-middle">English</span>
+                        </a>
+                    @endif
+                    @if(App::getLocale() != 'kg')
+                        <a href="{{ route('locale', 'kg') }}" class="dropdown-item notify-item">
+                            <img src="{{ asset('admin/images/flags/kg.svg') }}" alt="user-image" class="me-1" height="12"> <span class="align-middle">Кыргызча</span>
+                        </a>
+                    @endif
+                    @if(App::getLocale() != 'ru')
+                        <a href="{{ route('locale', 'ru') }}" class="dropdown-item notify-item">
+                            <img src="{{ asset('admin/images/flags/russia.jpg') }}" alt="user-image" class="me-1" height="12"> <span class="align-middle">Русский</span>
+                        </a>
+                    @endif
                 </div>
             </li>
 

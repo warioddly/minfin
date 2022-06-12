@@ -33,10 +33,6 @@
                                 <td>{{ __('Total post views') }}</td>
                                 <td class="text-end">{{ $category->TotalPostViews() }}</td>
                             </tr>
-                            <tr>
-                                <td>IE</td>
-                                <td class="text-end">1689</td>
-                            </tr>
                             </tbody>
                         </table>
                     </div>
@@ -61,9 +57,9 @@
                     <tbody>
                         @foreach($popularPosts as $post)
                             <tr class='post-row' data-href="{{ route('post-show', $post->id) }}">
-                                <td>{{ \Illuminate\Support\Str::limit($post->title, $limit = 35, $end = '...') }}</td>
+                                <td><a href="{{ route('post-show', $post->id) }}" class="text-secondary ">{{ \Illuminate\Support\Str::limit($post->title, $limit = 35, $end = '...') }}</a></td>
                                 <td class="d-none d-xl-table-cell">{{ $post->views }}</td>
-                                <td class="d-none d-xl-table-cell">{{ $post->author }}</td>
+                                <td class="d-none d-xl-table-cell">{{ $post->getUserName($post->user_id) }}</td>
                                 <td class="d-none d-xl-table-cell">{{ $post->created_at->toDateTime()->format('d-m-Y') }}</td>
                             </tr>
                         @endforeach
@@ -83,11 +79,11 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             new Chart(document.getElementById("chartjs-dashboard-pie"), {
-                type: "pie",
+                type: "line",
                 data: {
-                    labels: ["{{ __('Amount of posts') }}", "{{ __('Total post views') }}", "IE"],
+                    labels: ["{{ __('Amount of posts') }}", "{{ __('Total post views') }}"],
                     datasets: [{
-                        data: [{{ count($category->posts) }}, {{ $category->TotalPostViews() }}, 4],
+                        data: [{{ count($category->posts) }}, {{ $category->TotalPostViews() }}],
                         backgroundColor: [ '#3edcd9', '#ba0909', '#e59d36' ],
                         borderWidth: 5
                     }]

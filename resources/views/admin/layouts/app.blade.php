@@ -5,7 +5,7 @@
     <title>@yield('title-page') {{ __('Ministry of Finance of the Kyrgyz Republic') }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="{{ env('APP_DESCRIPTION') }}" name="{{ env('APP_AUTHOR') }}" />
-    <link rel="shortcut icon" href="{{ asset('admin/images/favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ asset('front/images/Logo.svg') }}">
 
     <link href="{{ asset('admin/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     @if(session('theme') == 'dark')

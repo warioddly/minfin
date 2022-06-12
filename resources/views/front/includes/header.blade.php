@@ -15,13 +15,13 @@
                 <div class="col d-flex justify-content-end">
                     <div class="d-flex social-media me-4">
                         <a href="" class="me-2">
-                            <img src="images/icons/social/Facebook.svg" alt="">
+                            <img src="{{ asset('front/images/icons/social/Facebook.svg') }}" alt="">
                         </a>
                         <a href="" class="me-2">
-                            <img src="images/icons/social/instagram.svg" alt="">
+                            <img src="{{ asset('front/images/icons/social/instagram.svg') }}" alt="">
                         </a>
                         <a href="" class="me-2">
-                            <img src="images/icons/social/telegram.svg" alt="">
+                            <img src="{{ asset('front/images/icons/social/telegram.svg') }}" alt="">
                         </a>
                     </div>
                     <div class="localization-languages d-flex">
@@ -37,10 +37,10 @@
     <div class="brand">
         <div class="container">
             <div class="row brand__row align-items-center ">
-                <div class="col-9 col-xs-6 col-sm-8 col-md-7 col-lg-6 col-xl-6 pe-0">
+                <div class="col-9 col-xs-6 col-sm-8 col-md-7 col-lg-6 @if(App::getLocale() == 'en')col-xl-5 @else col-xl-6 @endif  pe-0">
                     <a href="{{ route('index') }}" class="d-flex align-items-center ">
                         <img src="{{ asset('front/images/logo/Logo.svg') }}" alt="" class="rounded-circle me-1 me-lg-3 brand-logo">
-                        <span class="text-uppercase brand-name">министерство финансов Кыргызской Республики</span>
+                        <span class="text-uppercase brand-name">{{ __('Ministry of Finance of the Kyrgyz Republic') }}</span>
                     </a>
                 </div>
                 <div class="col ps-0 d-flex justify-content-end">
@@ -155,7 +155,7 @@
                                     </li>
                                 @endif
                         @endforeach
-                        <li class="nav__item"><a href="#" class="item__link text-uppercase">Документы</a></li>
+                        <li class="nav__item"><a href="#" class="item__link text-uppercase">{{ __('Documents') }}</a></li>
                         @foreach($pages as $page)
                                 @if($page->title == 'Press center')
                                     <li class="nav__item">
@@ -205,14 +205,14 @@
                                     </li>
                                 @endif
                             @endforeach
-                        <li class="nav__item"><a href="./html/contacts.html" class="item__link text-uppercase">Контакты</a></li>
+                        <li class="nav__item"><a href="./html/contacts.html" class="item__link text-uppercase">{{ __('Contacts') }}</a></li>
                     </ul>
                 </div>
                 <div class="col d-flex justify-content-end ">
                     <ul class="nav__items d-flex">
                         <li class="nav__item m-0">
                             <a href="#" class="item__link text-uppercase d-flex ">
-                                <img class="search-icon me-2" src="images/icons/search-icon.svg" alt="">Поиск
+                                <img class="search-icon me-2" src="{{ asset('front/images/icons/search-icon.svg') }}" alt="">{{ __('Search') }}
                             </a>
                             <div class="dropdownContain">
                                 <div class="searchDropOut">
@@ -220,7 +220,7 @@
                                         <form action="#" method="POST">
                                             <div class="form-group d-flex">
                                                 <input type="search" name="search" id="search-input">
-                                                <button type="submit">ПОИСК</button>
+                                                <button type="submit" class="text-uppercase">{{ __('Search') }}</button>
                                             </div>
                                         </form>
                                     </div>
@@ -311,7 +311,6 @@
                     </li>
                 @endforeach
             </ul>
-
         </nav>
     </div>
 </header>

@@ -206,6 +206,7 @@ nav .desktop-menu{
 .navigation .dropOut,
 .navigation .searchDropOut{
     width: clamp(48rem, 0rem + 100vw, 85.375rem);
+    height: clamp(15.25rem, 9.955378250591018rem + 8.983451536643026vw, 17.625rem);
     padding: 16px 16px 32px;
     background: #e8e8e8;
     float: left;
@@ -224,6 +225,7 @@ nav .desktop-menu{
     padding: 10px 0;
     display: grid;
 }
+
 .navigation .dropOut ul li {
     text-align: left;
     float: left;
@@ -745,16 +747,17 @@ footer{
     background-color:#1068B1 ;
 }
 
-.container_footer{
+.footer_container{
     height:clamp(5rem, -0.2976588628762542rem + 11.036789297658862vw, 9.125rem);
 }
 
-.container_footer p{
+.footer_container a{
     font-family: var(--main-font-family);
     font-size: clamp(0.5rem, 0.018394648829431426rem + 1.0033444816053512vw, 0.875rem);
     line-height:clamp(0.625rem, -0.017140468227424766rem + 1.3377926421404682vw, 1.125rem);
     text-align: center;
     color: #FFFFFF;
+    display: block;
 }
 
 .footer_info{
@@ -768,15 +771,15 @@ footer{
     color: #FFFFFF;
 }
 
-.container_footer div:nth-child(1) img{
+.footer_container div:nth-child(1) img{
     width:clamp(6.8125rem, -0.491847826086957rem + 15.217391304347828vw, 12.5rem);
 }
 
-.container_footer div:nth-child(2) img{
+.footer_container div:nth-child(2) img{
     width:clamp(5.375rem, -0.3239966555183944rem + 11.872909698996656vw, 9.8125rem);
 }
 
-.container_footer div:nth-child(3) img{
+.footer_container div:nth-child(3) img{
     width:clamp(2.125rem, -0.12249163879598646rem + 4.682274247491638vw, 3.875rem);
 }
 
@@ -1163,7 +1166,7 @@ footer{
 
     /* MERGED styles */
 
-    .container_footer p {
+    .footer_container a{
         font-size: clamp(0.375rem, 0.25572519083969464rem + 0.5089058524173028vw, 0.5rem);
     }
 

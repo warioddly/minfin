@@ -16,11 +16,7 @@ class Category extends Model
     }
 
     public function TotalPostViews(){
-        $sum = 0;
-        foreach ($this->posts()->get() as $post){
-            $sum += $post->views;
-        }
-        return $sum;
+        return $this->hasMany(Post::class)->sum('views');
     }
 
     public function getUserName($id){

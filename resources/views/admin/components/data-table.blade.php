@@ -8,12 +8,11 @@
                     @if(!in_array($column, $excepts))
 
                         @if($index == 1)
-                            <th data-priority="1">{{ __($column) }}</th>
+                            <th data-priority="1" class="text-capitalize">{{ __($column) }}</th>
                             @continue
                         @endif
-                        <th >{{ __($column) }}</th>
+                        <th class="text-capitalize">{{ __($column) }}</th>
                     @endif
-
                 @endforeach
                 @break
             @endforeach
@@ -87,6 +86,13 @@
                                 <td>
                                     <span class="text-muted">{{ $value }}</span> <strong>kb</strong>
                                 </td>
+                            @continue
+                        @endif
+
+                        @if($key == 'views' && $type == 'category')
+                            <td>
+                                {{ $item->TotalPostViews() }}
+                            </td>
                             @continue
                         @endif
 

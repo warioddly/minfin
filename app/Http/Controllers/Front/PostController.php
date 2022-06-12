@@ -11,6 +11,9 @@ class PostController extends Controller
 {
     public function Show($id){
         $post = Post::findOrFail($id);
+
+        $post->increment('views', 1);
+
         return view('front.posts.show', compact('post'));
     }
 }

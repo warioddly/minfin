@@ -35,6 +35,7 @@
                                 :excepts="['updated_at', 'id']"
                                 :links="['', 'show-category', null, null]"
                                 :actions="$userCanActions"
+                                type="category"
                             ></x-data-table>
                         </div>
 

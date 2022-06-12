@@ -234,5 +234,11 @@
     "Download": "Скачать",
     "Publication date": "Дата публикации",
     "Direction": "Направление",
-    "Enter your email address and password to access admin panel.": "Введите свой адрес электронной почты и пароль для доступа к панели администратора."
+    "Enter your email address and password to access admin panel.": "Введите свой адрес электронной почты и пароль для доступа к панели администратора.",
+    "Economic map": "Экономическая карта",
+    "Allocated funds": "Выделенные средства",
+    "Expenses": "Расходы",
+    "Amount of category": "Количество категориев",
+    "Views for the current month": "Просмотры за текущий месяц",
+    "Popular news": "Популярные новости"
 }
