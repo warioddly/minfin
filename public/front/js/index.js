@@ -1,15 +1,15 @@
 $('.owl-carousel').owlCarousel({
     loop: true,
     margin: 10,
-    autoplay: true,
+    autoplay: false,
     autoPlayTimeout: 600,
     autoplaySpeed: 6000,
     autoplayHoverPause: true,
     dots: false,
     nav: true,
     navText : ["<img src='../../../../front/images/icons/chevron-left.svg' alt=''>","<img src='../../../../front/images/icons/chevron-right.svg' alt=''>"],
-    autoHeight: false,
     autoHeightClass: 'owl-height',
+    autoHeight: false,
     responsive : {
         320 : {
             items: 2,
@@ -22,6 +22,7 @@ $('.owl-carousel').owlCarousel({
         }
     }
 })
+
 let chartData = [68511052.4, 22224506.3]
 let labelData = [`Доход</br><p class="ms-lg-3 ms-md-2 apex-chart-info-text">${ chartData[0] } тыс. сом</p>`,
     `Расход</br><p class="ms-lg-3 ms-md-2 apex-chart-info-text position-absolute">${ chartData[1] } тыс. сом</p>`]
@@ -445,6 +446,7 @@ let options = {
                     markers: {
                         width: 12,
                         height: 12,
+                        offsetX: 0,
                     },
                 },
                 plotOptions: {
@@ -461,6 +463,27 @@ let options = {
                         },
                     }
                 },
+                dataLabels: {
+                    enabled: true,
+                    offsetX: 0,
+                    offsetY: 0,
+                    style: {
+                        fontSize: '20px',
+                        fontFamily: 'Arial, sans-serif',
+                        fontWeight: 'bold',
+                        colors: undefined
+                    },
+
+                    background: {
+                        enabled: true,
+                        foreColor: '#fff',
+                        padding: 4,
+                        borderRadius: 2,
+                        borderWidth: 1,
+                        borderColor: '#fff',
+                        opacity: 0.9,
+                    },
+                }
             }
         },
     ],
@@ -532,6 +555,9 @@ let options = {
             borderColor: '#fff',
             opacity: 0.9,
         },
+    },
+    tooltip: {
+        enabled: false,
     }
 };
 
@@ -656,7 +682,7 @@ $('.district').hover((event) => {
 
     $(event.currentTarget).mousemove((pos) => {
         $("#floatingmes").removeClass('d-none');
-        $("#floatingmes").css('left',(pos.pageX -185)+'px').css('top',(pos.pageY - 35)+'px').css('width', 200);
+        $("#floatingmes").css('left',(pos.pageX -185)+'px').css('top',(pos.pageY - 35)+'px').css('width', 237);
     }).mouseleave(() => { $("#floatingmes").addClass('d-none'); });
 
     if(currentDistrict === 'Tonkskiy') {

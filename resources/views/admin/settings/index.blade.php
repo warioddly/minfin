@@ -54,19 +54,8 @@
                                 <span class="d-md-block">{{ __('Statistics') }}</span>
                             </a>
                         </div>
-
-                        <div class="mt-5">
-                            <h4><span class="badge rounded-pill p-1 px-2 badge-secondary-lighten">FREE</span></h4>
-                            <h6 class="text-uppercase mt-3">Storage</h6>
-                            <div class="progress my-2 progress-sm">
-                                <div class="progress-bar progress-lg bg-success" role="progressbar" style="width: 46%" aria-valuenow="46" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <p class="text-muted font-12 mb-0">7.02 GB (46%) of 15 GB used</p>
-                        </div>
-
                     </div>
                     <div class="page-aside-right">
-
                         <div class="tab-content" id="v-pills-tabContent">
                             <div class="tab-pane fade" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                                 <p class="mb-0">wadawdawd</p>
@@ -95,7 +84,7 @@
 
                                                     <div class="mt-3">
                                                         <div class="ratio ratio-16x9">
-                                                            <img src="{{ $item->path }}" alt="" width="560" height="315">
+                                                            <img src="{{ $item->path }}" alt="" width="560" height="315" style="object-fit: cover;">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -131,10 +120,13 @@
                         @csrf
                         <div class="modal-body">
                             <label for="create-input" class="form-label">{{ __('Enter title') }}</label>
-                            <input name="title" type="text" id="create-input" class="form-control mb-2" maxlength="25" required>
+                            <input name="title" type="text" id="create-input" class="form-control mb-2" maxlength="60" data-toggle="maxlength" data-threshold="60" required>
 
                             <label for="file-input" class="form-label">{{ __('Select image') }}</label>
-                            <input name="image" type="file" id="file-input" class="form-control" accept="image/*" required>
+                            <input name="image" type="file" id="file-input" class="form-control mb-2" accept="image/*" required>
+
+                            <label for="create-link-input" class="form-label">{{ __('Input link') }}</label>
+                            <input name="link" type="text" id="create-link-input" class="form-control">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Cancel') }}</button>
@@ -161,10 +153,13 @@
                         @method('PATCH')
                         <div class="modal-body">
                             <label for="edit-input" class="form-label">{{ __('Enter a new title') }}</label>
-                            <input name="title" type="text" id="edit-input" class="form-control mb-2" maxlength="25" required>
+                            <input name="title" type="text" id="edit-input" class="form-control mb-2" maxlength="60" data-toggle="maxlength" data-threshold="60" required>
 
                             <label for="file-input" class="form-label">{{ __('Select image') }}</label>
-                            <input name="image" type="file" id="file-input" class="form-control" accept="image/*">
+                            <input name="image" type="file" id="file-input" class="form-control mb-2" accept="image/*">
+
+                            <label for="create-link-input" class="form-label">{{ __('Input link') }}</label>
+                            <input name="link" type="text" id="create-link-input" class="form-control">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Cancel') }}</button>

@@ -17,7 +17,7 @@
                         <div class="col-12 col-md-12 col-lg-8">
                             <x-data-table
                                 :items="$pages"
-                                :excepts="['updated_at', 'id', 'type', 'icon', 'level', 'parent_id']"
+                                :excepts="['updated_at', 'id', 'type', 'icon', 'level', 'parent_id', 'icon_type', 'description']"
                                 :links="['', 'show-pages', null, null]"
                                 :actions="[null, null, null, null]"
                                 :withactions="false"

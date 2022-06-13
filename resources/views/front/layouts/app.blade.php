@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <link rel="shortcut icon" href="{{ asset('front/images/Logo.svg') }}">
     <link href="{{ asset('admin/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="{{ asset('front/css/app.css ') }}">
     <link rel="stylesheet" href="{{ asset('front/css/hc-offcanvas-nav.css') }}">

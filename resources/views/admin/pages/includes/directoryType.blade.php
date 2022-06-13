@@ -11,7 +11,7 @@
     <div class="col-12 col-md-12 col-lg-8">
         <x-data-table
             :items="$ChildPages"
-            :excepts="['updated_at', 'id', 'icon', 'parent_id', 'description', 'type', 'content', 'level']"
+            :excepts="['updated_at', 'id', 'icon', 'parent_id', 'description', 'type', 'content', 'level', 'icon_type']"
             :links="['', 'show-pages', null, null]"
             :actions="$userCanActions"
             :showLinks="$parentId"
@@ -41,7 +41,7 @@
                         @csrf
                         <div class="modal-body">
                             <label for="create-input" class="form-label">{{ __('Enter a page name') }}</label>
-                            <input name="title" type="text" id="create-input" class="form-control mb-3" maxlength="50" required>
+                            <input name="title" type="text" id="create-input" class="form-control mb-3" maxlength="45" data-toggle="maxlength" data-threshold="45" required>
                             <label for="description" class="form-label">{{ __('Enter a page description') }}</label>
                             <textarea name="description" type="text" maxlength="500"
                                       id="description" class="form-control mb-3" required
@@ -49,8 +49,18 @@
                                       rows="5"
                             ></textarea>
 
-                            <label for="page-icon" class="form-label">{{ __('Choice icon') }}</label>
-                            <input name="icon" type="file" id="page-icon" class="form-control" accept="image/*">
+                            <label for="page-image-icon" class="form-label">{{ __('Choice icon') }}</label>
+                            <input name="image" type="file" id="page-image-icon" class="form-control mb-3" accept="image/*">
+
+                            <div class="form-group">
+                                <label for="page-image-icon" class="form-label">{{ __('Or') }} {{ __('enter MDI icon') }}</label>
+                                <div class="form-group d-flex">
+                                    <input name="icon" type="text" id="page-icon" class="form-control me-2 p-1">
+                                    <a data-bs-toggle="modal" href="#choiceicon" role="button"
+                                       class="btn btn-primary">{{ __('Choice') }}
+                                    </a>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="modal-footer">
@@ -86,16 +96,26 @@
                                       rows="5"
                             ></textarea>
 
-                            <label for="roles-multiselect" class="form-label">{{ __('Move to') }}</label>
-                            <select class="select2 form-control select2-selection--single" name="parent_id" data-toggle="select2" id="select-edit"
-                                    data-placeholder="Choose ...">
-                                @foreach($parentPages as $page)
-                                    <option value="{{ $page->id }}">{{ __($page->title) }}</option>
-                                @endforeach
-                            </select>
+{{--                            <label for="roles-multiselect" class="form-label">{{ __('Move to') }}</label>--}}
+{{--                            <select class="select2 form-control select2-selection--single" name="parent_id" data-toggle="select2" id="select-edit"--}}
+{{--                                    data-placeholder="Choose ...">--}}
+{{--                                @foreach($parentPages as $page)--}}
+{{--                                    <option value="{{ $page->id }}">{{ __($page->title) }}</option>--}}
+{{--                                @endforeach--}}
+{{--                            </select>--}}
 
-                            <label for="page-icon" class="form-label mt-2">{{ __('Choice icon') }}</label>
-                            <input name="icon" type="file" id="page-icon" class="form-control mt" accept="image/*">
+                            <label for="page-image-icon" class="form-label mt-3">{{ __('Choice icon') }}</label>
+                            <input name="image" type="file" id="page-image-icon" class="form-control mb-3" accept="image/*">
+
+                            <div class="form-group">
+                                <label for="page-image-icon" class="form-label">{{ __('Or') }} {{ __('enter MDI icon') }}</label>
+                                <div class="form-group d-flex">
+                                    <input name="icon" type="text" id="page-icon" class="form-control me-2 p-1">
+                                    <a data-bs-toggle="modal" href="#choiceicon" role="button"
+                                       class="btn btn-primary">{{ __('Choice') }}
+                                    </a>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="modal-footer">
@@ -129,4 +149,30 @@
             </div>
         </div>
     @endcan
+
+    <div class="modal fade" id="choiceicon" data-bs-backdrop="static" data-bs-keyboard="false"
+         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">{{ __('Mdi Icons') }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <x-icon-modal></x-icon-modal>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">{{ __('Close') }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+@endpush
+
+@push('footer-scripts')
+    <x-scripts
+        type="pages"
+        :pageParentId="$parentId"
+        :urls="[route('get-pages'), route('directory-update-child-page', array_merge([$parentId], [''])), route('delete-page')]"
+    ></x-scripts>
 @endpush

@@ -12,15 +12,25 @@ class PageService
 
     public function validateData($request, $id){
         $data = $request->all();
-        unset($data['_token']);
-        unset($data['_method']);
 
-        if($request->hasFile('icon')) {
-            $image = $data['icon'];
+        if($request->hasFile('image')) {
+            $image = $data['image'];
             $name = md5(Carbon::now() . "_" . $image->getClientOriginalName()) . '.' . $image->getClientOriginalExtension();
             $filepath = Storage::disk('public')->putFileAs('/files/shares/Иконки Страниц/', $image, $name);
             $data['icon'] =  url('/storage/' . $filepath);
+            $data['icon_type'] =  'image';
         }
+        else{
+            $data['icon_type'] =  'mdi';
+        }
+
+        if($data['icon'] == null || $data['icon'] == ''){
+            unset($data['icon']);
+        }
+
+        unset($data['image']);
+        unset($data['_token']);
+        unset($data['_method']);
 
         $parentPage = Page::find($id);
 
@@ -31,7 +41,9 @@ class PageService
             $data['level'] = 4;
         }
 
-        $data['parent_id'] = $id;
+        if(!isset($data['parent_id'])){
+            $data['parent_id'] = $id;
+        }
 
         return $data;
     }

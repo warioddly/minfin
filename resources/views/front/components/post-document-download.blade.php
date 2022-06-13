@@ -13,7 +13,7 @@
             <p class="post_document_name">{{ \Illuminate\Support\Str::limit($item->title, $limit=18, $end='...') }}</p>
         </div>
         <div class="col-lg-3 text-end ">
-            <a href="{{ $item->path }}" target="_blank" class="post_document__download-link">{{ __('Download') }}</a>
+            <a href="{{ $item->path }}" target="_blank" class="post_document__download-link" download>{{ __('Download') }}</a>
         </div>
     </div>
 @endforeach

@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('middle_name')->nullable();
             $table->string('email')->unique();
             $table->string('about')->default('Пока тут ничего нету');
-            $table->string('avatar')->default(url('/storage/files/1/Аватар/default-avatar.jpg'));
+            $table->string('avatar')->default(url("storage/files/shares/Аватар/default-avatar.jpg"));
             $table->string('status')->default('offline');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();

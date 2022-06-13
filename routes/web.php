@@ -24,6 +24,12 @@ Route::middleware(['setLocale'])->group(function(){
         Route::group(['prefix' => 'posts'], function () {
             Route::get('/{id}', 'PostController@Show')->name('front-post-show');
         });
+
+        Route::group(['prefix' => 'pages'], function () {
+            Route::get('/{id}', 'PageController@Show')->name('front-page-show');
+        });
+
+        Route::get('/contacts', 'PageController@Contacts')->name('contacts');
     });
 
     // ADMIN CONTROLLERS

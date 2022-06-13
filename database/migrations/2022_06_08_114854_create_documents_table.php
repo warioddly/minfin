@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('path');
             $table->string('size')->default(0);
             $table->string('extension');
-            $table->string('icon')->default('document.svg');
+            $table->string('icon')->default('mdi-file-document');
             $table->string('author')->nullable();
             $table->unsignedBigInteger('post_id')->nullable();
             $table->timestamps();

@@ -16,8 +16,9 @@ return new class extends Migration
         Schema::create('pages', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('description')->default('Это стандартная описание страницы');
-            $table->string('icon')->default(url('/storage/files/1/Аватар/default-avatar.jpg'));
+            $table->longText('description')->nullable();
+            $table->string('icon')->default('mdi-book-open-page-variant-outline');
+            $table->string('icon_type')->default('mdi');
             $table->integer('type')->default(0);
             $table->integer('level')->default(0);
             $table->unsignedBigInteger('parent_id')->nullable();

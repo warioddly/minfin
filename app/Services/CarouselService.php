@@ -19,6 +19,9 @@ class CarouselService
             $filepath = Storage::disk('public')->putFileAs('/files/shares/Разные/', $image, $name);
             $data['path'] =  url('/storage/' . $filepath);
         }
+        if(!isset($data['link']) && $data['link'] == null){
+            unset($data['link']);
+        }
 
         unset($data['image']);
         unset($data['_token']);

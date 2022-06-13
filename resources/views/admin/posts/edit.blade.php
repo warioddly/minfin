@@ -60,7 +60,7 @@
 
                                 <div class="form-group mt-2">
                                     <strong>{{__('Description')}}:</strong>
-                                    <textarea name="description" id="" cols="30" rows="4" placeholder="{{__('Post description')}}" class="form-control" maxlength="255" required>{{ $post->description }}</textarea>
+                                    <textarea name="description" id="" cols="30" rows="4" placeholder="{{__('Post description')}}" class="form-control" maxlength="500" data-toggle="maxlength" data-threshold="500"  required>{{ $post->description }}</textarea>
                                 </div>
 
                                 <div class="form-group mt-2">

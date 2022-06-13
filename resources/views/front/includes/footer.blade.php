@@ -1,7 +1,7 @@
 <footer>
     <div class="container">
         <div class="footer_container text-center ">
-            <div class="row pt-2 pt-md-2 pt-lg-2">
+            <div class="row pt-2 pt-md-2 pt-lg-3">
                 <div class="col-lg-4 col-md-4 col-4 p-0">
                     <img src="{{ asset('front/images/logo/kabinet-kg.svg') }}" alt="" class="">
                     <a href="https://www.gov.kg/" class="mt-lg-2 mt-md-1 mt-sm-0 mt-2">  КАБИНЕТ МИНИСТРОВ <br>Кыргызcкой Республики</a>

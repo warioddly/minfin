@@ -22,7 +22,10 @@ class IndexController extends Controller
             'created_at', '>=', Carbon::now()->startOfMonth()->subMonth()->toDateString()
         )->get()->sum('views');
 
-        $viewsPercent = count($revenueMonth) / $viewCountCurrentMonth * 100;
+        $viewsPercent = 0;
+        if(count($revenueMonth) != 0 && $viewCountCurrentMonth != 0){
+            $viewsPercent = count($revenueMonth) / $viewCountCurrentMonth * 100;
+        }
 
         $notes = Notes::where('user_id', auth()->user()['id'])->latest()->get();
 

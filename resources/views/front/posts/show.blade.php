@@ -6,7 +6,7 @@
     <div class="container" id="post-page">
         <div class="row mt-4 mb-3">
             <div class="col">
-                waddddddddddddddddddddddddddd
+                {{ Breadcrumbs::render('Post', $post) }}
             </div>
         </div>
         <div class="row mb-5">
@@ -23,11 +23,13 @@
                             <span class="d-md-block">Новость</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#news-documents" data-bs-toggle="tab" aria-expanded="true" class="nav-link ">
-                            <span class=" d-md-block">Прикрепленные документы</span>
-                        </a>
-                    </li>
+                    @if(count($post->attachmentFiles) !=0)
+                        <li class="nav-item">
+                            <a href="#news-documents" data-bs-toggle="tab" aria-expanded="true" class="nav-link ">
+                                <span class=" d-md-block">Прикрепленные документы</span>
+                            </a>
+                        </li>
+                    @endif
                 </ul>
             </div>
         </div>

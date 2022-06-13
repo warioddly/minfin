@@ -13,12 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('carousel_items', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->string('path');
-            $table->text('link')->nullable();
-            $table->timestamps();
+        Schema::table('carousel_items', function (Blueprint $table) {
+            //
         });
     }
 
@@ -29,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('carousel_items');
+        Schema::table('carousel_items', function (Blueprint $table) {
+            //
+        });
     }
 };

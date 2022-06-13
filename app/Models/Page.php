@@ -16,7 +16,8 @@ class Page extends Model
         'description',
         'parent_id',
         'content',
-        'level'
+        'level',
+        'icon_type'
     ];
 
     public function ChildPages()

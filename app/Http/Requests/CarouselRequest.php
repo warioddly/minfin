@@ -24,8 +24,9 @@ class CarouselRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['required', 'string', 'max:255'],
+            'title' => ['required', 'string', 'max:60'],
             'image' => ['nullable', 'image', 'max:10240'],
+            'link' => ['nullable', 'string'],
         ];
     }
 }

@@ -51,7 +51,6 @@
     });
 
     $(".edit-button").click(function() {
-
         id = $(this).data('id');
         let url = '';
 

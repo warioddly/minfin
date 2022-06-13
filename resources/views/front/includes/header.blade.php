@@ -60,45 +60,65 @@
                         @foreach($pages as $page)
                             @if($page->title == 'About the ministry')
                                 <li class="nav__item">
-                                    <a href="#" class="item__link text-uppercase">{{ __('About the ministry') }}</a>
+                                    <a href="{{ route('front-page-show', $page->id) }}" class="item__link text-uppercase">{{ __('About the ministry') }}</a>
                                     @if(count($page->ChildPages) != 0)
                                         <div class="dropdownContain">
                                             <div class="dropOut">
                                                 <ul class="firstChild sub_nav__items p-0">
-                                                    @forelse($page->ChildPages ?? [] as $secondChild)
-                                                        <li class="firstList">
-                                                            <a href="#" class="nav-item-link">{{ __($secondChild->title) }}</a>
-                                                            @if(count($secondChild->ChildPages) != 0)
-                                                                <ul class="second_sub_nav__items">
-                                                                    @forelse($secondChild->ChildPages ?? [] as $thirdChild)
-                                                                        <li class="secondList">
-                                                                            <a href="#" class="nav-item-link">{{ __($thirdChild->title) }}</a>
-                                                                            @if(count($thirdChild->ChildPages) != 0)
-                                                                                <ul class="third_sub_nav__items">
-                                                                                    @forelse($thirdChild->ChildPages ?? [] as $fourthChild)
-                                                                                        <li class="thirdList">
-                                                                                            <a href="#" class="nav-item-link">{{ __($fourthChild->title) }}</a>
-                                                                                            @if(count($fourthChild->ChildPages) != 0)
-                                                                                                <ul class="fourth_sub_nav__items">
-                                                                                                    @forelse($fourthChild->ChildPages ?? [] as $fifthChild)
-                                                                                                        <li class="fourthList"><a href="#" class="nav-item-link">{{ __($fifthChild->title) }}</a></li>
-                                                                                                    @empty
-                                                                                                    @endforelse
-                                                                                                </ul>
-                                                                                            @endif
-                                                                                         </li>
-                                                                                    @empty
-                                                                                    @endforelse
-                                                                                </ul>
+                                                    @forelse($page->ChildPages ?? [] as $secondKey =>$secondChild)
+                                                        @if($secondKey + 1 <= 6)
+                                                            <li class="firstList">
+                                                                <a href="{{ route('front-page-show', $secondChild->id) }}" class="nav-item-link">{{ __($secondChild->title) }}</a>
+                                                                @if(count($secondChild->ChildPages) != 0)
+                                                                    <ul class="second_sub_nav__items">
+                                                                        @forelse($secondChild->ChildPages ?? [] as $thirdKey => $thirdChild)
+                                                                            @if($thirdKey + 1 <= 5)
+                                                                                <li class="secondList">
+                                                                                    <a href="{{ route('front-page-show', $thirdChild->id) }}" class="nav-item-link">{{ __($thirdChild->title) }}</a>
+                                                                                    @if(count($thirdChild->ChildPages) != 0)
+                                                                                        <ul class="third_sub_nav__items">
+                                                                                            @forelse($thirdChild->ChildPages ?? [] as $fourthKey => $fourthChild)
+                                                                                                @if($thirdKey + 1 <= 5)
+                                                                                                    <li class="thirdList">
+                                                                                                        <a href="{{ route('front-page-show', $fourthChild->id) }}" class="nav-item-link">{{ __($fourthChild->title) }}</a>
+                                                                                                        @if(count($fourthChild->ChildPages) != 0)
+                                                                                                            <ul class="fourth_sub_nav__items">
+                                                                                                                @forelse($fourthChild->ChildPages ?? [] as $fifthKey => $fifthChild)
+                                                                                                                    @if($thirdKey + 1 <= 5)
+                                                                                                                        <li class="fourthList"><a href="{{ route('front-page-show', $fifthChild->id) }}" class="nav-item-link">{{ __($fifthChild->title) }}</a></li>
+                                                                                                                    @endif
+                                                                                                                @empty
+                                                                                                                @endforelse
+                                                                                                                <li class="thirdList">
+                                                                                                                    <a href="{{ route('front-page-show', $fourthChild->id) }}" class="nav-item-link">{{ __('View all') }}</a>
+                                                                                                                </li>
+                                                                                                            </ul>
+                                                                                                        @endif
+                                                                                                    </li>
+                                                                                                @endif
+                                                                                            @empty
+                                                                                            @endforelse
+                                                                                            <li class="thirdList">
+                                                                                                <a href="{{ route('front-page-show', $thirdChild->id) }}" class="nav-item-link">{{ __('View all') }}</a>
+                                                                                            </li>
+                                                                                        </ul>
+                                                                                    @endif
+                                                                                </li>
                                                                             @endif
+                                                                        @empty
+                                                                        @endforelse
+                                                                        <li class="secondList">
+                                                                            <a href="{{ route('front-page-show', $secondChild->id) }}" class="nav-item-link">{{ __('View all') }}</a>
                                                                         </li>
-                                                                    @empty
-                                                                    @endforelse
-                                                                </ul>
-                                                            @endif
-                                                        </li>
+                                                                    </ul>
+                                                                @endif
+                                                            </li>
+                                                        @endif
                                                     @empty
                                                     @endforelse
+                                                    <li class="firstList">
+                                                        <a href="{{ route('front-page-show', $page->id) }}" class="nav-item-link">{{ __('View all') }}</a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -107,105 +127,213 @@
                             @endif
                         @endforeach
                         @foreach($pages as $page)
-                                @if($page->title == 'Activity')
-                                    <li class="nav__item">
-                                        <a href="#" class="item__link text-uppercase">{{ __('Activity') }}</a>
-                                        @if(count($page->ChildPages) != 0)
-                                            <div class="dropdownContain">
-                                                <div class="dropOut">
-                                                    <ul class="firstChild sub_nav__items p-0">
-                                                        @forelse($page->ChildPages ?? [] as $secondChild)
+                            @if($page->title == 'Activity')
+                                <li class="nav__item">
+                                    <a href="{{ route('front-page-show', $page->id) }}" class="item__link text-uppercase">{{ __('Activity') }}</a>
+                                    @if(count($page->ChildPages) != 0)
+                                        <div class="dropdownContain">
+                                            <div class="dropOut">
+                                                <ul class="firstChild sub_nav__items p-0">
+                                                    @forelse($page->ChildPages ?? [] as $secondKey =>$secondChild)
+                                                        @if($secondKey + 1 <= 6)
                                                             <li class="firstList">
-                                                                <a href="#" class="nav-item-link">{{ __($secondChild->title) }}</a>
-                                                                @if(count($secondChild->ChildPages) != 0)
-                                                                    <ul class="second_sub_nav__items">
-                                                                        @forelse($secondChild->ChildPages ?? [] as $thirdChild)
+                                                            <a href="{{ route('front-page-show', $secondChild->id) }}" class="nav-item-link">{{ __($secondChild->title) }}</a>
+                                                            @if(count($secondChild->ChildPages) != 0)
+                                                                <ul class="second_sub_nav__items">
+                                                                    @forelse($secondChild->ChildPages ?? [] as $thirdKey => $thirdChild)
+                                                                        @if($thirdKey + 1 <= 5)
                                                                             <li class="secondList">
-                                                                                <a href="#" class="nav-item-link">{{ __($thirdChild->title) }}</a>
+                                                                                <a href="{{ route('front-page-show', $thirdChild->id) }}" class="nav-item-link">{{ __($thirdChild->title) }}</a>
                                                                                 @if(count($thirdChild->ChildPages) != 0)
                                                                                     <ul class="third_sub_nav__items">
-                                                                                        @forelse($thirdChild->ChildPages ?? [] as $fourthChild)
-                                                                                            <li class="thirdList">
-                                                                                                <a href="#" class="nav-item-link">{{ __($fourthChild->title) }}</a>
+                                                                                        @forelse($thirdChild->ChildPages ?? [] as $fourthKey => $fourthChild)
+                                                                                            @if($thirdKey + 1 <= 5)
+                                                                                                <li class="thirdList">
+                                                                                                <a href="{{ route('front-page-show', $fourthChild->id) }}" class="nav-item-link">{{ __($fourthChild->title) }}</a>
                                                                                                 @if(count($fourthChild->ChildPages) != 0)
                                                                                                     <ul class="fourth_sub_nav__items">
-                                                                                                        @forelse($fourthChild->ChildPages ?? [] as $fifthChild)
-                                                                                                            <li class="fourthList"><a href="#" class="nav-item-link">{{ __($fifthChild->title) }}</a></li>
+                                                                                                        @forelse($fourthChild->ChildPages ?? [] as $fifthKey => $fifthChild)
+                                                                                                            @if($thirdKey + 1 <= 5)
+                                                                                                            <li class="fourthList"><a href="{{ route('front-page-show', $fifthChild->id) }}" class="nav-item-link">{{ __($fifthChild->title) }}</a></li>
+                                                                                                            @endif
                                                                                                         @empty
                                                                                                         @endforelse
+                                                                                                        <li class="thirdList">
+                                                                                                            <a href="{{ route('front-page-show', $fourthChild->id) }}" class="nav-item-link">{{ __('View all') }}</a>
+                                                                                                        </li>
                                                                                                     </ul>
                                                                                                 @endif
                                                                                             </li>
+                                                                                            @endif
                                                                                         @empty
                                                                                         @endforelse
+                                                                                        <li class="thirdList">
+                                                                                            <a href="{{ route('front-page-show', $thirdChild->id) }}" class="nav-item-link">{{ __('View all') }}</a>
+                                                                                        </li>
                                                                                     </ul>
                                                                                 @endif
                                                                             </li>
-                                                                        @empty
-                                                                        @endforelse
-                                                                    </ul>
-                                                                @endif
+                                                                        @endif
+                                                                    @empty
+                                                                    @endforelse
+                                                                    <li class="secondList">
+                                                                        <a href="{{ route('front-page-show', $secondChild->id) }}" class="nav-item-link">{{ __('View all') }}</a>
+                                                                    </li>
+                                                                </ul>
+                                                            @endif
                                                             </li>
-                                                        @empty
-                                                        @endforelse
-                                                    </ul>
-                                                </div>
+                                                        @endif
+                                                    @empty
+                                                    @endforelse
+                                                    <li class="firstList">
+                                                        <a href="{{ route('front-page-show', $page->id) }}" class="nav-item-link">{{ __('View all') }}</a>
+                                                    </li>
+                                                </ul>
                                             </div>
-                                        @endif
-                                    </li>
-                                @endif
+                                        </div>
+                                    @endif
+                                </li>
+                            @endif
                         @endforeach
-                        <li class="nav__item"><a href="#" class="item__link text-uppercase">{{ __('Documents') }}</a></li>
                         @foreach($pages as $page)
-                                @if($page->title == 'Press center')
-                                    <li class="nav__item">
-                                        <a href="#" class="item__link text-uppercase">{{ __('Press center') }}</a>
-                                        @if(count($page->ChildPages) != 0)
-                                            <div class="dropdownContain">
-                                                <div class="dropOut">
-                                                    <ul class="firstChild sub_nav__items p-0">
-                                                        @forelse($page->ChildPages ?? [] as $secondChild)
+                            @if($page->title == 'Documents')
+                                <li class="nav__item">
+                                    <a href="{{ route('front-page-show', $page->id) }}" class="item__link text-uppercase">{{ __('Documents') }}</a>
+                                    @if(count($page->ChildPages) != 0)
+                                        <div class="dropdownContain">
+                                            <div class="dropOut">
+                                                <ul class="firstChild sub_nav__items p-0">
+                                                    @forelse($page->ChildPages ?? [] as $secondKey =>$secondChild)
+                                                        @if($secondKey + 1 <= 6)
                                                             <li class="firstList">
-                                                                <a href="#" class="nav-item-link">{{ __($secondChild->title) }}</a>
+                                                                <a href="{{ route('front-page-show', $secondChild->id) }}" class="nav-item-link">{{ __($secondChild->title) }}</a>
                                                                 @if(count($secondChild->ChildPages) != 0)
                                                                     <ul class="second_sub_nav__items">
-                                                                        @forelse($secondChild->ChildPages ?? [] as $thirdChild)
-                                                                            <li class="secondList">
-                                                                                <a href="#" class="nav-item-link">{{ __($thirdChild->title) }}</a>
-                                                                                @if(count($thirdChild->ChildPages) != 0)
-                                                                                    <ul class="third_sub_nav__items">
-                                                                                        @forelse($thirdChild->ChildPages ?? [] as $fourthChild)
-                                                                                            <li class="thirdList">
-                                                                                                <a href="#" class="nav-item-link">{{ __($fourthChild->title) }}</a>
-                                                                                                @if(count($fourthChild->ChildPages) != 0)
-                                                                                                    <ul class="fourth_sub_nav__items">
-                                                                                                        @forelse($fourthChild->ChildPages ?? [] as $fifthChild)
-                                                                                                            <li class="fourthList"><a href="#" class="nav-item-link">{{ __($fifthChild->title) }}</a></li>
-                                                                                                        @empty
-                                                                                                        @endforelse
-                                                                                                    </ul>
+                                                                        @forelse($secondChild->ChildPages ?? [] as $thirdKey => $thirdChild)
+                                                                            @if($thirdKey + 1 <= 5)
+                                                                                <li class="secondList">
+                                                                                    <a href="{{ route('front-page-show', $thirdChild->id) }}" class="nav-item-link">{{ __($thirdChild->title) }}</a>
+                                                                                    @if(count($thirdChild->ChildPages) != 0)
+                                                                                        <ul class="third_sub_nav__items">
+                                                                                            @forelse($thirdChild->ChildPages ?? [] as $fourthKey => $fourthChild)
+                                                                                                @if($thirdKey + 1 <= 5)
+                                                                                                    <li class="thirdList">
+                                                                                                        <a href="{{ route('front-page-show', $fourthChild->id) }}" class="nav-item-link">{{ __($fourthChild->title) }}</a>
+                                                                                                        @if(count($fourthChild->ChildPages) != 0)
+                                                                                                            <ul class="fourth_sub_nav__items">
+                                                                                                                @forelse($fourthChild->ChildPages ?? [] as $fifthKey => $fifthChild)
+                                                                                                                    @if($thirdKey + 1 <= 5)
+                                                                                                                        <li class="fourthList"><a href="{{ route('front-page-show', $fifthChild->id) }}" class="nav-item-link">{{ __($fifthChild->title) }}</a></li>
+                                                                                                                    @endif
+                                                                                                                @empty
+                                                                                                                @endforelse
+                                                                                                                <li class="thirdList">
+                                                                                                                    <a href="{{ route('front-page-show', $fourthChild->id) }}" class="nav-item-link">{{ __('View all') }}</a>
+                                                                                                                </li>
+                                                                                                            </ul>
+                                                                                                        @endif
+                                                                                                    </li>
                                                                                                 @endif
+                                                                                            @empty
+                                                                                            @endforelse
+                                                                                            <li class="thirdList">
+                                                                                                <a href="{{ route('front-page-show', $thirdChild->id) }}" class="nav-item-link">{{ __('View all') }}</a>
                                                                                             </li>
-                                                                                        @empty
-                                                                                        @endforelse
-                                                                                    </ul>
-                                                                                @endif
-                                                                            </li>
+                                                                                        </ul>
+                                                                                    @endif
+                                                                                </li>
+                                                                            @endif
                                                                         @empty
                                                                         @endforelse
+                                                                        <li class="secondList">
+                                                                            <a href="{{ route('front-page-show', $secondChild->id) }}" class="nav-item-link">{{ __('View all') }}</a>
+                                                                        </li>
                                                                     </ul>
                                                                 @endif
                                                             </li>
-                                                        @empty
-                                                        @endforelse
-                                                    </ul>
-                                                </div>
+                                                        @endif
+                                                    @empty
+                                                    @endforelse
+                                                    <li class="firstList">
+                                                        <a href="{{ route('front-page-show', $page->id) }}" class="nav-item-link">{{ __('View all') }}</a>
+                                                    </li>
+                                                </ul>
                                             </div>
-                                        @endif
-                                    </li>
-                                @endif
-                            @endforeach
-                        <li class="nav__item"><a href="./html/contacts.html" class="item__link text-uppercase">{{ __('Contacts') }}</a></li>
+                                        </div>
+                                    @endif
+                                </li>
+                            @endif
+                        @endforeach
+                        @foreach($pages as $page)
+                            @if($page->title == 'Press center')
+                                <li class="nav__item">
+                                    <a href="{{ route('front-page-show', $page->id) }}" class="item__link text-uppercase">{{ __('Press center') }}</a>
+                                    @if(count($page->ChildPages) != 0)
+                                        <div class="dropdownContain">
+                                            <div class="dropOut">
+                                                <ul class="firstChild sub_nav__items p-0">
+                                                    @forelse($page->ChildPages ?? [] as $secondKey =>$secondChild)
+                                                        @if($secondKey + 1 <= 6)
+                                                            <li class="firstList">
+                                                                <a href="{{ route('front-page-show', $secondChild->id) }}" class="nav-item-link">{{ __($secondChild->title) }}</a>
+                                                                @if(count($secondChild->ChildPages) != 0)
+                                                                    <ul class="second_sub_nav__items">
+                                                                        @forelse($secondChild->ChildPages ?? [] as $thirdKey => $thirdChild)
+                                                                            @if($thirdKey + 1 <= 5)
+                                                                                <li class="secondList">
+                                                                                    <a href="{{ route('front-page-show', $thirdChild->id) }}" class="nav-item-link">{{ __($thirdChild->title) }}</a>
+                                                                                    @if(count($thirdChild->ChildPages) != 0)
+                                                                                        <ul class="third_sub_nav__items">
+                                                                                            @forelse($thirdChild->ChildPages ?? [] as $fourthKey => $fourthChild)
+                                                                                                @if($thirdKey + 1 <= 5)
+                                                                                                    <li class="thirdList">
+                                                                                                        <a href="{{ route('front-page-show', $fourthChild->id) }}" class="nav-item-link">{{ __($fourthChild->title) }}</a>
+                                                                                                        @if(count($fourthChild->ChildPages) != 0)
+                                                                                                            <ul class="fourth_sub_nav__items">
+                                                                                                                @forelse($fourthChild->ChildPages ?? [] as $fifthKey => $fifthChild)
+                                                                                                                    @if($thirdKey + 1 <= 5)
+                                                                                                                        <li class="fourthList"><a href="{{ route('front-page-show', $fifthChild->id) }}" class="nav-item-link">{{ __($fifthChild->title) }}</a></li>
+                                                                                                                    @endif
+                                                                                                                @empty
+                                                                                                                @endforelse
+                                                                                                                <li class="thirdList">
+                                                                                                                    <a href="{{ route('front-page-show', $fourthChild->id) }}" class="nav-item-link">{{ __('View all') }}</a>
+                                                                                                                </li>
+                                                                                                            </ul>
+                                                                                                        @endif
+                                                                                                    </li>
+                                                                                                @endif
+                                                                                            @empty
+                                                                                            @endforelse
+                                                                                            <li class="thirdList">
+                                                                                                <a href="{{ route('front-page-show', $thirdChild->id) }}" class="nav-item-link">{{ __('View all') }}</a>
+                                                                                            </li>
+                                                                                        </ul>
+                                                                                    @endif
+                                                                                </li>
+                                                                            @endif
+                                                                        @empty
+                                                                        @endforelse
+                                                                        <li class="secondList">
+                                                                            <a href="{{ route('front-page-show', $secondChild->id) }}" class="nav-item-link">{{ __('View all') }}</a>
+                                                                        </li>
+                                                                    </ul>
+                                                                @endif
+                                                            </li>
+                                                        @endif
+                                                    @empty
+                                                    @endforelse
+                                                    <li class="firstList">
+                                                        <a href="{{ route('front-page-show', $page->id) }}" class="nav-item-link">{{ __('View all') }}</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    @endif
+                                </li>
+                            @endif
+                        @endforeach
+                        <li class="nav__item"><a href="{{ route('contacts') }}" class="item__link text-uppercase">{{ __('Contacts') }}</a></li>
                     </ul>
                 </div>
                 <div class="col d-flex justify-content-end ">
@@ -272,23 +400,23 @@
             <ul class="first-nav">
                 @foreach($pages as $page)
                     <li class="cryptocurrency">
-                        <a href="https://www.google.com/search?q=Crypto" rel="noreferrer" target="_self">{{ __($page->title) }}</a>
+                        <a href="{{ route('front-page-show', $page->id) }}" rel="noreferrer" target="_self">{{ __($page->title) }}</a>
                         @if(count($page->ChildPages) != 0)
                             <ul>
                                 @forelse($page->ChildPages ?? [] as $secondChild)
-                                <li><a href="#" target="_self">{{ __($secondChild->title) }}</a>
+                                <li><a href="{{ route('front-page-show', $secondChild->id) }}" target="_self">{{ __($secondChild->title) }}</a>
                                     @if(count($secondChild->ChildPages) != 0)
                                         <ul>
                                             @forelse($secondChild->ChildPages ?? [] as $thirdChild)
-                                                <li><a href="#" target="_self">{{ __($thirdChild->title) }}</a>
+                                                <li><a href="{{ route('front-page-show', $thirdChild->id) }}" target="_self">{{ __($thirdChild->title) }}</a>
                                                     @if(count($thirdChild->ChildPages) != 0)
                                                         <ul>
                                                             @forelse($thirdChild->ChildPages ?? [] as $fourthChild)
-                                                                <li><a href="#" target="_self">{{ __($fourthChild->title) }}</a>
+                                                                <li><a href="{{ route('front-page-show', $fourthChild->id) }}" target="_self">{{ __($fourthChild->title) }}</a>
                                                                     @if(count($fourthChild->ChildPages) != 0)
                                                                         <ul>
                                                                             @forelse($fourthChild->ChildPages ?? [] as $fifthChild)
-                                                                                <li><a href="#" target="_self">{{ __($fifthChild->title) }}</a></li>
+                                                                                <li><a href="{{ route('front-page-show', $fifthChild->id) }}" target="_self">{{ __($fifthChild->title) }}</a></li>
                                                                             @empty
                                                                             @endforelse
                                                                         </ul>

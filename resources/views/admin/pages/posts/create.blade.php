@@ -54,7 +54,7 @@
 
                                 <div class="form-group mt-2">
                                     <strong>{{__('Description')}}:</strong>
-                                    <textarea name="description" id="" cols="30" rows="3" placeholder="{{__('Post description')}}" class="form-control" maxlength="255" data-toggle="maxlength" data-threshold="255" required></textarea>
+                                    <textarea name="description" id="" cols="30" rows="3" placeholder="{{__('Post description')}}" class="form-control" maxlength="500" data-toggle="maxlength" data-threshold="500" required></textarea>
                                 </div>
 
                                 <div class="form-group mt-2">
