@@ -90,6 +90,7 @@ class ApiController extends Controller
         $page = Page::find(request()->get('id'));
         $parentPage = Page::find($page->parent_id);
 
+        $page->posts()->delete();
         $page->delete();
 
         if($parentPage->type == 1){

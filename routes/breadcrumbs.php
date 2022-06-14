@@ -18,6 +18,11 @@ Breadcrumbs::for('Post', function ($trail, $post) {
     $trail->push(\Illuminate\Support\Str::limit(__($post->title), $limit=25, $end='...'), route('front-page-show', $post->id));
 });
 
+Breadcrumbs::for('Contacts', function ($trail) {
+    $trail->parent('home');
+    $trail->push(__('Contacts'));
+});
+
 Breadcrumbs::for('Page', function ($trail, $page) {
     $trail->parent('home');
 

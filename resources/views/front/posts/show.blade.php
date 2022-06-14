@@ -57,7 +57,7 @@
             <div class="col-4 col-md-4 col-lg-3 mt-3 mb-3">
                 <div class="p-3 post_information">
                     <p class="header-info-text">{{ __('Publication date') }}</p>
-                    <h6 class="mb-lg-4 mt-lg-2 mb-md-3 mt-md-2 mb-2 mt-1 ">{{ Carbon\Carbon::parse($post->created_at)->format("d-F-Y - H:i") }}</h6>
+                    <h6 class="mb-lg-4 mt-lg-2 mb-md-3 mt-md-2 mb-2 mt-1 ">{{ Carbon\Carbon::parse($post->created_at)->format("d-m-Y - H:i") }}</h6>
                     <p class="header-info-text">{{ __('Category') }}</p>
                     <h6 class="mb-lg-4 mt-lg-2 mb-md-3 mt-md-2 mb-2 mt-1">{{ __($post->category->title) }}</h6>
                     <p class="header-info-text">{{ __('Published') }}</p>

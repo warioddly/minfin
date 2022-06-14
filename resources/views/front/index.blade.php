@@ -45,7 +45,7 @@
                     <div class="item" style="word-break: break-all">
                         @if($item->link != '' || $item->link != null)
                             <a href="{{ $item->link }}" class="d-block" target="_blank">
-                                <div class="row mb-3">
+                                <div class="row mb-2 mb-lg-3">
                                     <img src="{{ $item->path }}" alt="" class="secondary__item_img">
                                 </div>
                                 <div class="row">
@@ -54,7 +54,7 @@
                             </a>
                         @else
                             <div class="d-block">
-                                <div class="row mb-2">
+                                <div class="row mb-2 mb-lg-3">
                                     <img src="{{ $item->path }}" alt="" class="secondary__item_img">
                                 </div>
                                 <div class="row">
@@ -344,10 +344,10 @@
         <div class="container">
             <div class="row mb-4 mt-4 g-3 justify-content-center">
                 <x-white-link-block
-                    :items="$pages"
+                    :items="$pages[1]['childPages']"
                 ></x-white-link-block>
                 <div class="col-lg-4 col-md-6 col-12">
-                    <a href="#" class="links d-flex pe-1" >
+                    <a href="#" class="white_block_links d-flex pe-1" >
                         <i class="mdi mdi-dots-horizontal py-3 ms-2 me-2 d-flex white-link-block-icon"></i>
                         {{ __('View all') }}
                     </a>

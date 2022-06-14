@@ -7,12 +7,11 @@
         <div class="container">
             <div class="row mt-4 mb-3">
                 <div class="col">
-                    waddddddddddddddddddddddddddd
+                    {{ Breadcrumbs::render('Contacts') }}
                 </div>
             </div>
             <div class="d-flex align-items-center">
-                <img src="../images/icons/contact-icon.svg" alt="" class="content-header-icon me-3">
-                <p class="content-header-text">Контактные данные</p>
+                <p class="header-text mb-3">Контактные данные</p>
             </div>
         </div>
     </section>
@@ -43,14 +42,14 @@
                             <p class="social-media mb-3">Социальные сети</p>
                             <ul class="d-flex">
                                 <li>
-                                    <img src="../images/icons/social/Facebook.svg" alt="">
+                                    <img src="{{ asset('front/images/icons/social/Facebook.svg') }}" alt="">
 
                                 </li>
                                 <li>
-                                    <img src="../images/icons/social/instagram.svg" alt="">
+                                    <img src="{{ asset('front/images/icons/social/instagram.svg') }}" alt="">
                                 </li>
                                 <li>
-                                    <img src="../images/icons/social/telegram.svg" alt="">
+                                    <img src="{{ asset('front/images/icons/social/telegram.svg') }}" alt="">
                                 </li>
                             </ul>
                         </li>

@@ -5,7 +5,6 @@ namespace App\Providers;
 use App\Models\Page;
 use App\Models\User;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 

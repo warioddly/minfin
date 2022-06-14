@@ -1,24 +1,31 @@
 $('.owl-carousel').owlCarousel({
     loop: true,
     margin: 10,
-    autoplay: false,
-    autoPlayTimeout: 600,
-    autoplaySpeed: 6000,
-    autoplayHoverPause: true,
     dots: false,
     nav: true,
+    autoWidth:true,
+
+    center:true,
+    autoplay:true,
+    autoPlayTimeout:100,
+    autoplaySpeed:6000,
+    autoplayHoverPause:false,
+
     navText : ["<img src='../../../../front/images/icons/chevron-left.svg' alt=''>","<img src='../../../../front/images/icons/chevron-right.svg' alt=''>"],
     autoHeightClass: 'owl-height',
     autoHeight: false,
     responsive : {
         320 : {
             items: 2,
+            autoWidth:true,
         },
         425 : {
             items: 3,
+            autoWidth:true,
         },
         768 : {
             items: 4,
+            autoWidth:true,
         }
     }
 })
