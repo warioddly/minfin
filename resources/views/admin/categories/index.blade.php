@@ -41,30 +41,22 @@
 
                         <div class="col col-md-12 col-lg-4 mt-3">
                             <div class="border p-3 mt-4 mt-lg-0 rounded">
-                                <h4 class="header-title mb-3">Order Summary</h4>
+                                <h4 class="header-title mb-3">{{ __('Report') }}</h4>
 
                                 <div class="table-responsive">
                                     <table class="table mb-0">
                                         <tbody>
                                         <tr>
-                                            <td>Grand Total :</td>
-                                            <td>$1571.19</td>
+                                            <td>{{ __('Amount of categories') }}:</td>
+                                            <td>{{ count($categories) }}</td>
                                         </tr>
                                         <tr>
-                                            <td>Discount : </td>
-                                            <td>-$157.11</td>
+                                            <td>{{ __('Popular category') }}:</td>
+                                            <td>{{ __($popularCategory) }}</td>
                                         </tr>
                                         <tr>
-                                            <td>Shipping Charge :</td>
-                                            <td>$25</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Estimated Tax : </td>
-                                            <td>$19.22</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Total :</th>
-                                            <th>$1458.3</th>
+                                            <td>{{ __('Average views') }}</td>
+                                            <td>{{ substr($averageViews, 0, 5) }}%</td>
                                         </tr>
                                         </tbody>
                                     </table>

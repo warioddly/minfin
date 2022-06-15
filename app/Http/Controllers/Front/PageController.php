@@ -44,7 +44,13 @@ class PageController extends Controller
 
     public function Show($id){
         $page = Page::findOrFail($id);
-        $childPages = $this->getAllChildPages($page);
+
+        if($page->type == 2){
+            $sheet = Post::where('page_id', $page->id)->take(1)->get()[0];
+            return redirect()->route('front-sheet-show', $sheet->id);
+        }
+
+        $childPages = $this->getAllChildPages($page, 3);
         $childPagesIds = [];
         foreach ($childPages as $childPage) {
             foreach ($childPage['childs']['ids'] as $item) {
@@ -52,9 +58,15 @@ class PageController extends Controller
             }
         }
 
-        $posts = Post::whereIn('page_id', $childPagesIds)->paginate();
+        $posts = Post::whereIn('page_id', array_merge($childPagesIds, [$page->id]))->where('sheet', false)->latest()->paginate(10);
 
         return view('front.pages.show', compact('page', 'posts'));
+    }
+
+    public function ShowSheet($id){
+        $sheet = Post::find($id);
+
+        return view('front.pages.showSheet', compact('sheet'));
     }
 
     public function Contacts(){

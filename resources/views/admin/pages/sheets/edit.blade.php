@@ -2,79 +2,62 @@
 
 @section('page-information')
     <x-page-inform
-        title="Posts"
-        :breadcrumbs="['Posts', 'Editing']"
+        title="Pages"
+        :breadcrumbs="['Pages', 'Sheet']"
     ></x-page-inform>
 @endsection
 
-@section('content-title')
-    {{ __('Posts') }} - {{ __('Editing') }} {{ __('post-2') }}
-@endsection
-
 @section('content')
+    @if($errors->any())
+        @foreach ($errors->all() as $error)
+            <x-alert alertType="danger" message="{{ $error }}"></x-alert>
+        @endforeach
+    @endif
+
+    @if(session('status'))
+        <x-alert alertType="success" message="{{ session('status') }}"></x-alert>
+    @endif
+
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
                     <div class="row mb-3">
                         <div class="col">
-                            <form action="{{ route('page-post-update', $post->id) }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('page-sheet-update', $sheet->id) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PATCH')
                                 <div class="form-group mt-2">
                                     <div class="row">
-                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                        <div class="col-12 col-md-7 col-lg-7 col-xl-7">
                                             <strong>{{__('Title')}}:</strong>
-                                            <input type="text" name="title" placeholder="{{ __('Post title') }}" maxlength="255" value="{{ $post->title }}" class="form-control" required>
+                                            <input type="text" name="title" placeholder="{{ __('Sheet title') }}" maxlength="255" class="form-control" value="{{ $sheet->title }}"  data-toggle="maxlength" data-threshold="255" required>
                                         </div>
-                                        <div class="col col-md-6 col-lg-6 col-xl-6">
-                                            <strong>{{__('Category')}}:</strong>
-                                            <select name="category_id" aria-selected="{{ $post->category_id }}" class="form-control" required>
-                                                <option value="" disabled>-- {{ __('Select category') }} --</option>
-                                                @foreach($categories as $category)
-                                                    @if($category->id == $post->category_id)
-                                                        <option value="{{ $category->id }}" selected>{{ $category->title }}</option>
-                                                        @continue
-                                                    @endif
-                                                    <option value="{{ $category->id }}">{{ $category->title }}</option>
-                                                @endforeach
-                                            </select>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="page-image-icon" class="form-label m-0 text-capitalize">{{ __('enter MDI icon') }}</label>
+                                                <div class="form-group d-flex">
+                                                    <input name="icon" type="text" id="page-icon" class="form-control me-2" value="{{ $sheet->icon }}">
+                                                    <a data-bs-toggle="modal" href="#choiceicon" role="button"
+                                                       class="btn btn-primary">{{ __('Choice') }}
+                                                    </a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="form-group mt-2">
-                                    <div class="col-12 col-md-3 col-lg-3 col-xl-3 d-flex align-items-center pt-2">
-                                        <strong class="me-2" style="margin-top: -6px;">{{__('Publish')}}:</strong>
-                                        <span>
-                                            <input type="checkbox" id="switch" name="is_published" @if($post->is_published)checked @endif data-switch="primary"/>
-                                            <label for="switch" data-on-label="{{ __('Yes') }}" data-off-label="{{ __('No') }}"></label>
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <div class="form-group mt-2">
-                                    <strong>{{__('Preview image')}}:</strong>
-                                    <input name="preview_image" type="file" class="form-control" accept="image/*">
-                                </div>
-
-                                <div class="form-group mt-2">
-                                    <strong>{{__('Description')}}:</strong>
-                                    <textarea name="description" id="" cols="30" rows="4" placeholder="{{__('Post description')}}" class="form-control" maxlength="500" data-toggle="maxlength" data-threshold="500"  required>{{ $post->description }}</textarea>
-                                </div>
-
-                                <div class="form-group mt-2">
-                                    <strong>Редактор</strong>
-                                    <textarea id="editor" name="content">{{ $post->content }}</textarea>
-                                    <input type="hidden" name="page_id" value="{{ $post->page_id }}">
+                                    <strong>{{ __('Content') }}</strong>
+                                    <textarea id="editor" name="content">{{ $sheet->content }}</textarea>
                                 </div>
 
                                 <div class="form-group mt-2">
                                     <strong>{{ __('Attach document') }}</strong>
-                                        <input type="file" name="documents[]" id="attachment-files" class="form-control" multiple>
+                                    <input type="file" name="documents[]" id="attachment-files" class="form-control" multiple>
 
                                     <div class="" id="uploadPreviewTemplate">
-                                        @foreach($post->attachmentFiles as $file)
+                                        @foreach($sheet->attachmentFiles as $file)
                                             <div class="card mt-1 mb-0 shadow-none border">
                                                 <div class="p-2">
                                                     <div class="row align-items-center">
@@ -84,19 +67,19 @@
                                                             @else
                                                                 <i class="mdi mdi-file-document-outline font-24 px-2" ></i>
                                                             @endif
-                                                            </div>
+                                                        </div>
                                                         <div class="col ps-0">
                                                             <a href="{{ $file->path }}" class="text-muted fw-bold" data-dz-name>{{ $file->title }}</a>
                                                             <p class="mb-0" data-dz-size>{{ $file->size }}</p>
-                                                            </div>
+                                                        </div>
                                                         <div class="col-auto">
                                                             <p class="btn btn-link btn-lg text-muted m-0 remove-old-file-btn" data-dz-remove data-name="{{ $file->title }}" data-id="{{ $file->id }}">
                                                                 <i class="dripicons-cross"></i>
-                                                                </p>
-                                                            </div>
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </div>
                                         @endforeach
                                     </div>
                                 </div>
@@ -123,9 +106,7 @@
 
 @push('footer-scripts')
     <script src="{{ asset('admin/plugins/UploadFile/FileUploader.js') }}"></script>
-
     <script type="text/javascript">
-
         const removeButton = document.querySelector('.remove-old-file-btn');
 
         $('.remove-old-file-btn').click((event) => {
@@ -140,6 +121,24 @@
         });
 
         initSample();
-
     </script>
+@endpush
+@push('modal')
+    <div class="modal fade" id="choiceicon" data-bs-backdrop="static" data-bs-keyboard="false"
+         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">{{ __('Mdi Icons') }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <x-icon-modal></x-icon-modal>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">{{ __('Close') }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endpush

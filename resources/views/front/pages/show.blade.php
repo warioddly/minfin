@@ -50,13 +50,14 @@
                         <a href="#">{{ __('View all news') }}</a>
                     </div>
                 </div>
-                <div class="row justify-content-md-around justify-content-lg-around d-none d-lg-flex d-md-flex">
+                <div class="row justify-content-md-around justify-content-lg-around d-none d-lg-flex d-md-flex g-3">
                     <x-post-blocks
                         :items="$posts"
+                        limit="3"
                     ></x-post-blocks>
                 </div>
                 <div class="row" id="news-section">
-                    <div class="news_block">
+                    <div class="news_block d-block d-lg-none d-md-none">
                         <x-post-mini-block
                             :items="$posts"
                         ></x-post-mini-block>

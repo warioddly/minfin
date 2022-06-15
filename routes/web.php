@@ -27,6 +27,7 @@ Route::middleware(['setLocale'])->group(function(){
 
         Route::group(['prefix' => 'pages'], function () {
             Route::get('/{id}', 'PageController@Show')->name('front-page-show');
+            Route::get('sheet/{id}', 'PageController@ShowSheet')->name('front-sheet-show');
         });
 
         Route::get('/contacts', 'PageController@Contacts')->name('contacts');
@@ -60,10 +61,12 @@ Route::middleware(['setLocale'])->group(function(){
             Route::get('/', 'SettingController@Index')->name('settings')->middleware('can:show-content-settings');
             Route::post('/storeCarousel', 'SettingController@StoreCarousel')->name('store-carousel')->middleware('can:add-content-settings');
             Route::patch('/{id}', 'SettingController@UpdateCarousel')->name('update-carousel')->middleware('can:edit-content-settings');
+            Route::post('/changeBlocks', 'SettingController@ChangeBlocks')->name('changeBlocks')->middleware('can:edit-content-settings');
         });
 
         Route::group(["namespace" => "PageController", "prefix" => "pages"], function () {
             Route::get('/', 'PageController@Index')->name('pages')->middleware('can:show-pages');
+            Route::patch('/directory/{id}', 'PageController@DirectoryParentUpdate')->name('directory-update-parent-page')->middleware('can:edit-pages');
 
             Route::group(["prefix" => "{parentId}"], function () {
                 Route::get('/', 'PageController@Show')->name('show-pages')->middleware('can:show-pages');
@@ -78,6 +81,15 @@ Route::middleware(['setLocale'])->group(function(){
                 Route::get('/{id}', 'PagePostController@Show')->name('page-post-show')->middleware('can:show-posts');
                 Route::post('/{parentId}/store', 'PagePostController@Store')->name('page-post-store')->middleware('can:add-posts');
                 Route::patch('/{id}/', 'PagePostController@Update')->name('page-post-update')->middleware('can:edit-posts');
+            });
+
+            Route::group(["prefix" => "sheets"], function () {
+                Route::get('/show/{id}', 'PageSheetController@Show')->name('page-sheet-show');
+                Route::get('/{parentId}/create', 'PageSheetController@Create')->name('page-sheet-create');
+                Route::post('/sheetStore', 'PageSheetController@Store')->name('page-sheet-store');
+                Route::get('/sheetEdit/{id}', 'PageSheetController@Edit')->name('page-sheet-edit');
+                Route::patch('/sheetUpdate/{id}', 'PageSheetController@Update')->name('page-sheet-update');
+                Route::delete('/{id}', 'PageSheetController@Delete')->name('page-sheet-delete');
             });
         });
 

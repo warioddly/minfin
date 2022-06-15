@@ -22,7 +22,7 @@
                                 <img src="{{ $post->preview_image }}" class="d-block w-100 img-fluid" alt="...">
                                 <div class="carousel-caption d-md-block">
                                 <a href="{{ route('front-post-show', $post->id) }}">
-                                    @for($i = 0; $i < 7; $i++) {{ explode(" ", $post->title)[$i] }}@endfor...</a>
+                                    @for($i = 0; $i < 7; $i++) {{ explode(" ", $post->title)[$i] ?? ''}}@endfor...</a>
                                 </div>
                             </div>
                         @endforeach
@@ -81,9 +81,9 @@
                         </div>
                         <div class="position-relative p-lg-4 p-md-2 pt-3 pt-md-2">
                             <p class="new_block__date pb-4 pb-md-2 pt-md-2">{{ $posts[0]->created_at->toDateTime()->format('d.m.Y') }}</p>
-                            <p class="new_block__description text-break">{{ $posts[0]->description }}
-                                <a href="{{ route('front-post-show', $posts[0]->id) }}" class="new_block__read_more">{{ __('read more') }}</a>
+                            <p class="new_block__description text-break">{{ \Illuminate\Support\Str::limit($posts[0]->description , $limit = 255, $end = '...') }}
                             </p>
+                            <a href="{{ route('front-post-show', $posts[0]->id) }}" class="new_block__read_more">{{ __('read more') }}</a>
                             <p class="new_block__category bottom-0 mb-md-2 mb-lg-3">{{ $posts[0]->category->title }}</p>
                         </div>
                     </div>
@@ -344,14 +344,14 @@
         <div class="container">
             <div class="row mb-4 mt-4 g-3 justify-content-center">
                 <x-white-link-block
-                    :items="$pages[1]['childPages']"
+                    :items="$selectedMainPages"
                 ></x-white-link-block>
-                <div class="col-lg-4 col-md-6 col-12">
-                    <a href="#" class="white_block_links d-flex pe-1" >
-                        <i class="mdi mdi-dots-horizontal py-3 ms-2 me-2 d-flex white-link-block-icon"></i>
-                        {{ __('View all') }}
-                    </a>
-                </div>
+{{--                <div class="col-lg-4 col-md-6 col-12">--}}
+{{--                    <a href="#" class="white_block_links d-flex pe-1" >--}}
+{{--                        <i class="mdi mdi-dots-horizontal py-3 ms-2 me-2 d-flex white-link-block-icon"></i>--}}
+{{--                        {{ __('View all') }}--}}
+{{--                    </a>--}}
+{{--                </div>--}}
             </div>
         </div>
     </section>

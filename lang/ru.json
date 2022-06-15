@@ -335,5 +335,22 @@
     "Subsections": "Подразделы",
     "View all news": "Посмотреть все новости",
     "Subsection News": "Новости раздела",
-    "Are you sure you want to delete this page?": "Вы действительно хотите удалить эту страницу?"
+    "Are you sure you want to delete this page?": "Вы действительно хотите удалить эту страницу?",
+    "Change block in a main paige": "Изменить блоки на главной странице",
+    "blocks": "блоков",
+    "Changing": "Изменение",
+    "Partners": "Партнеры",
+    "Anti-corruption policy": "Антикоррупционная политика",
+    "Personnel policy": "Кадровая политика",
+    "Appeal of citizens": "Обращение граждан",
+    "Popular news": "Популярные посты",
+    "Report": "Отчет",
+    "Popular category": "Популярная категория",
+    "Amount of categories": "Количество категориев",
+    "Average views": "Среднестатистический просмотр",
+    "Sheet": "Лист",
+    "Attach document": "Прикрепить документ",
+    "Sheet title": "Заголовок страницы",
+    "Page successfully deleted": "Страница успешно удалена",
+    "Cannot be added because data already exists": "Невозможно добавить, так как страница уже существует"
 }

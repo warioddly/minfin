@@ -3,5 +3,44 @@
 @section('content-title'){{ __($page->title) }}@endsection
 
 @section('content')
-awddddddddddddddddddddd
+    <div class="container" id="pages">
+        <div class="row mt-4 mb-2">
+            <div class="col">
+                {{ Breadcrumbs::render('Page', $page) }}
+            </div>
+        </div>
+        <div class="row page_title__row">
+            <div class="d-flex align-items-center border-0 p-0 pb-2">
+                @if($page->icon_type == 'mdi')
+                    <i class="mdi {{ $page->icon }} ms-2 me-2 d-flex white-link-block-icon"></i>
+                @else
+                    <img src="{{ $page->icon }}" alt="..." class="me-2 ms-2 rounded">
+                @endif
+                <p class="page_show__header">{{ __($page->title) }}</p>
+            </div>
+        </div>
+        <div class="row page_description__row mb-5">
+            <p class="">{{ __($page->description) }}</p>
+        </div>
+        @if($page->level != 3 && count($page->childPages) != 0)
+            <div class="row page_accordion__row mb-5">
+                <div class="accordion" id="accordionPanelsStayOpenExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                            <button class="accordion-button page_show__header" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                                {{ __('Subsections') }}
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                            <div class="accordion-body px-0 row g-3 pt-4 justify-content-center">
+                                <x-white-link-block
+                                    :items="$page['childPages']"
+                                ></x-white-link-block>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
+    </div>
 @endsection

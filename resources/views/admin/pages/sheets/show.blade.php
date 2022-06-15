@@ -2,8 +2,8 @@
 
 @section('page-information')
     <x-page-inform
-        title="Posts"
-        :breadcrumbs="['Posts']"
+        title="Pages"
+        :breadcrumbs="['Pages', 'Sheet']"
     ></x-page-inform>
 @endsection
 
@@ -14,38 +14,23 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm-9">
-                            <h2><b>{{ $post->title }}</b></h2>
-                            <div class="d-block d-sm-flex  text-break">
-                                <img src="{{ $post->preview_image }}" alt="" class="me-2" style="width: 300px; height: 191px; object-fit: cover">
-                                <p class="text-muted font-13">{{ $post->description }}...</p>
-                            </div>
-                        </div>
-                        <div class="col-sm-2 offset-sm-1 d-print-none mt-3">
-                            <div class="mt-1">
-                                <p class="font-13"><strong>{{ __('Created time') }}: </strong> <span class="float-end">{{ $post->created_at->toDateTime()->format('d-m-Y') }}</span></p>
-                                <p class="font-13"><strong>{{ __('Status') }}: </strong>
-                                    @if($post->is_published == 1)
-                                        <span class="badge bg-success float-end">{{ __('Published') }}</span>
-                                    @else
-                                        <span class="badge bg-secondary float-end">{{ __('Unpublished') }}</span>
-                                    @endif
-                                </p>
-                                <p class="font-13"><strong>{{ __('Category') }}</strong> <span class="float-end">{{ $post->category->title }}</span></p>
-                                <p class="font-13"><strong>{{ __('Author') }}</strong> <span class="float-end">{{ $post->getUserName($post->user_id) }}</span></p>
+                            <div class="d-flex">
+                                <i class="mdi {{ $sheet->icon }} d-flex me-2" style="font-size: 40px"></i>
+                                <h2><b>{{ $sheet->title }}</b></h2>
                             </div>
                         </div>
                     </div>
 
                     <div class="row mt-4">
                         <div class="col">
-                            {!! html_entity_decode( $post->content ) !!}
+                            {!! html_entity_decode( $sheet->content ) !!}
                         </div>
                     </div>
 
-                    @if(count($post->attachmentFiles) != 0)
+                    @if(count($sheet->attachmentFiles) != 0)
                         <div class="row mx-n1 g-0">
                             <p class="h4">{{ __('Attached files') }}</p>
-                            @foreach($post->attachmentFiles as $document)
+                            @foreach($sheet->attachmentFiles as $document)
                                 <div class="col-xxl-3 col-lg-6">
                                     <div class="card m-1 shadow-none border">
                                         <div class="p-2">
@@ -73,7 +58,10 @@
 
                     <div class="d-print-none mt-4">
                         <div class="text-end">
-                            <a href="{{ route('post-edit', $post->id) }}" class="btn btn-primary"><i class="mdi mdi-file-edit"></i></a>
+                            <a data-bs-toggle="modal" href="#delete" role="button"
+                               class="btn btn-danger"> <i class="mdi mdi-trash-can-outline me-1"></i> {{ __('Delete') }}
+                            </a>
+                            <a href="{{ route('page-sheet-edit', $sheet->id) }}" class="btn btn-primary"><i class="mdi mdi-file-edit"></i></a>
                             <a href="javascript:window.print()" class="btn btn-primary"><i class="mdi mdi-printer"></i> </a>
                             <a href="{{ url()->previous() }}" class="btn btn-secondary">{{ __('Back') }}</a>
                         </div>
@@ -83,3 +71,32 @@
         </div>
     </div>
 @endsection
+
+@push('modal')
+    @can('delete-posts')
+        <div class="modal fade" id="delete" aria-hidden="true"
+             aria-labelledby="deleteModalLabel"
+             tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalToggleLabel">{{ __('Removing') }} {{ __('page') }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="{{ route('page-sheet-delete', $sheet->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <div class="modal-body">
+                            {{ __('Are you sure you want to delete this page?') }}
+                            <input type="hidden" name="id"  id="delete-input-id" value="" />
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Cancel') }}</button>
+                                <button type="submit" id="item-delete" class="btn btn-danger">{{ __('Remove') }}</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    @endcan
+@endpush

@@ -7,8 +7,7 @@ $('.owl-carousel').owlCarousel({
 
     center:true,
     autoplay:true,
-    autoPlayTimeout:100,
-    autoplaySpeed:6000,
+    autoplayTimeout: 6000,
     autoplayHoverPause:false,
 
     navText : ["<img src='../../../../front/images/icons/chevron-left.svg' alt=''>","<img src='../../../../front/images/icons/chevron-right.svg' alt=''>"],

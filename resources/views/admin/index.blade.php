@@ -86,7 +86,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($popularPosts as $post)
+                            @foreach($popularPosts as $post)
                             <tr class='post-row' data-href="{{ route('post-show', $post->id) }}">
                                 <td><a href="{{ route('post-show', $post->id) }}" class="text-secondary ">{{ \Illuminate\Support\Str::limit($post->title, $limit = 35, $end = '...') }}</a></td>
                                 <td class="d-none d-xl-table-cell">{{ $post->views }}</td>

@@ -34,6 +34,9 @@
                                 <a data-bs-toggle="modal" href="#create" role="button"
                                    class="dropdown-item"><i class="mdi mdi-spin mdi-loading me-1"></i> {{ __('Update statistic data') }}
                                 </a>
+                                <a data-bs-toggle="modal" href="#changeMainPageBlocks" role="button"
+                                   class="dropdown-item change-button"><i class="mdi mdi-view-week mdi-loading me-1"></i> {{ __('Change block in a main paige') }}
+                                </a>
                             </div>
                         </div>
 
@@ -192,6 +195,36 @@
             </div>
         </div>
     @endcan
+
+    <div class="modal fade" id="changeMainPageBlocks" aria-hidden="true"
+         aria-labelledby="createModalLabel"
+         tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalToggleLabel">{{ __('Changing') }} {{ __('blocks') }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="{{ route('changeBlocks') }}" method="POST" class="needs-validation">
+                    @csrf
+                    <div class="modal-body">
+                        <label for="multiselect-change" class="form-label">{{ __('Pages') }}</label>
+                        <select class="select2 form-control select2-multiple" name="pages[]" data-toggle="select2" id="multiselect-change"
+                                multiple="multiple" data-placeholder="Choose ..." required>
+                            @foreach($pages as $page)
+                                <option value="{{ $page->id }}">{{ __($page->title) }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Cancel') }}</button>
+                        <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 @endpush
 
 <x-scripts

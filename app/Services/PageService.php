@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 class PageService
 {
 
-    public function validateData($request, $id){
+    public function validateData($request, $id, $child = true){
         $data = $request->all();
 
         if($request->hasFile('image')) {
@@ -32,17 +32,19 @@ class PageService
         unset($data['_token']);
         unset($data['_method']);
 
-        $parentPage = Page::find($id);
+        if($child){
+            $parentPage = Page::find($id);
 
-        if($parentPage->level + 1 != 4 && $parentPage->level != 4){
-            $data['level'] = $parentPage->level + 1;
-        }
-        else{
-            $data['level'] = 4;
-        }
+            if($parentPage->level + 1 != 4 && $parentPage->level != 4){
+                $data['level'] = $parentPage->level + 1;
+            }
+            else{
+                $data['level'] = 4;
+            }
 
-        if(!isset($data['parent_id'])){
-            $data['parent_id'] = $id;
+            if(!isset($data['parent_id'])){
+                $data['parent_id'] = $id;
+            }
         }
 
         return $data;

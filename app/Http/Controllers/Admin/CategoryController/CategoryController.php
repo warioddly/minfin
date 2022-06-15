@@ -13,10 +13,26 @@ class CategoryController extends Controller
 {
     public function Index(CheckPermissionService $permissionService){
         $categories = Category::latest()->get();
+        $categoryCount = Category::all()->count();
+
+        $popularCategory = '';
+        $temp = $categories[0]->TotalPostViews() ?? '';
+        $averageViews = $categories[0]->TotalPostViews() ?? '';
+
+        foreach ($categories as $category){
+            if($temp < $category->TotalPostViews()){
+                $temp = $category->TotalPostViews();
+                $popularCategory = $category->title;
+            }
+            $averageViews += $category->TotalPostViews() ?? 0;
+
+        }
+
+        $averageViews = $averageViews / $categoryCount ?? 0;
 
         $userCanActions = $permissionService->permissionsInCategories();
 
-        return view('admin.categories.index', compact('categories', 'userCanActions'));
+        return view('admin.categories.index', compact('categories', 'userCanActions', 'popularCategory', 'averageViews'));
     }
 
     public function Show($id){

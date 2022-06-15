@@ -17,7 +17,7 @@
                     <a href="{{ route('front-post-show', $item->id) }}" class="new_block__read_more">{{ __('read more') }}
                     </a>
                 </p>
-                <p class="new_block__category bottom-0 ">{{ $item->category->title  }}</p>
+                <p class="new_block__category bottom-0 ">{{ $item->category->title ?? '' }}</p>
             </div>
         </span>
     </div>

@@ -42,11 +42,11 @@
                         </span>
                     </span>
                     <span id="tooltip-container">
-                        <img src="{{ $item->getUser()->avatar }}" class="rounded-circle avatar-xs me-1" alt="friend">
+                        <img src="{{ $item->getUser()->avatar ?? url("storage/files/shares/Аватар/default-avatar.jpg?timestamp=1653539619") }}" class="rounded-circle avatar-xs me-1" alt="friend">
                         <a href="#" data-bs-container="#tooltip-container" data-bs-toggle="tooltip"
                            data-bs-placement="top"
-                           title="{{ $item->getUser()->name }}" class="d-inline-block text-muted">
-                            {{ $item->getUser()->name }}
+                           title="{{ $item->getUser()->name ?? "noname" }}" class="d-inline-block text-muted">
+                            {{  $item->getUser()->name ?? "noname"  }}
                         </a>
                     </span>
                 </p>

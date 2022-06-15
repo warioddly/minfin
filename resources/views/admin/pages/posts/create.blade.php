@@ -15,9 +15,7 @@
                     <div class="row mb-3">
                         <div class="col">
                             <form action="{{ route('page-post-store', $parentId) }}" method="POST" enctype="multipart/form-data"
-                                  class="" id="myAwesomeDropzone" data-plugin="dropzone" data-previews-container="#file-previews"
-                                  data-upload-preview-template="#uploadPreviewTemplate"
-                            >
+                                  class="" id="myAwesomeDropzone">
                                 @csrf
                                 <div class="form-group mt-2">
                                     <div class="row">
@@ -58,12 +56,12 @@
                                 </div>
 
                                 <div class="form-group mt-2">
-                                    <strong>Редактор</strong>
+                                    <strong>{{ __('Content') }}</strong>
                                     <textarea id="editor" name="content"></textarea>
                                 </div>
 
                                 <div class="form-group mt-2">
-                                    <strong>Прикрепить документы</strong>
+                                    <strong>{{ __('Attach document') }}</strong>
                                     <input type="file" name="documents[]" id="attachment-files" class="form-control" multiple>
                                     <div class="" id="uploadPreviewTemplate"></div>
                                 </div>

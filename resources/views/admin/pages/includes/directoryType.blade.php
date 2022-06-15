@@ -11,7 +11,7 @@
     <div class="col-12 col-md-12 col-lg-8">
         <x-data-table
             :items="$ChildPages"
-            :excepts="['updated_at', 'id', 'icon', 'parent_id', 'description', 'type', 'content', 'level', 'icon_type']"
+            :excepts="['updated_at', 'id', 'icon', 'parent_id', 'description', 'type', 'content', 'level', 'icon_type', 'visible_on_main_page']"
             :links="['', 'show-pages', null, null]"
             :actions="$userCanActions"
             :showLinks="$parentId"
@@ -95,14 +95,6 @@
                                       data-toggle="maxlength" data-threshold="500"
                                       rows="5"
                             ></textarea>
-
-{{--                            <label for="roles-multiselect" class="form-label">{{ __('Move to') }}</label>--}}
-{{--                            <select class="select2 form-control select2-selection--single" name="parent_id" data-toggle="select2" id="select-edit"--}}
-{{--                                    data-placeholder="Choose ...">--}}
-{{--                                @foreach($parentPages as $page)--}}
-{{--                                    <option value="{{ $page->id }}">{{ __($page->title) }}</option>--}}
-{{--                                @endforeach--}}
-{{--                            </select>--}}
 
                             <label for="page-image-icon" class="form-label mt-3">{{ __('Choice icon') }}</label>
                             <input name="image" type="file" id="page-image-icon" class="form-control mb-3" accept="image/*">

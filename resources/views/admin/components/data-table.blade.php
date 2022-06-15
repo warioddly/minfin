@@ -11,6 +11,10 @@
                             <th data-priority="1" class="text-capitalize">{{ __($column) }}</th>
                             @continue
                         @endif
+                        @if($column == 'views' && $type == 'category')
+                            <th class="text-capitalize">{{ __('Amount of posts') }}</th>
+                            @continue
+                        @endif
                         <th class="text-capitalize">{{ __($column) }}</th>
                     @endif
                 @endforeach
@@ -91,7 +95,7 @@
 
                         @if($key == 'views' && $type == 'category')
                             <td>
-                                {{ $item->TotalPostViews() }}
+                                {{ count($item->posts) }}
                             </td>
                             @continue
                         @endif

@@ -49,8 +49,8 @@
                                            class="btn btn-primary mb-2"> <i class="uil-folder-medical me-1"></i> {{ __('Create directory') }}
                                         </a>
                                     @endif
-                                    <a href="#" class="btn btn-primary mb-2"><i class="mdi mdi-plus"></i> {{ __('Create') }} {{ __('page-2') }}</a>
-                                    <a href="{{ route('page-post-create', $parentId) }}" class="btn btn-primary mb-2"><i class="mdi mdi-plus"></i> {{ __('Create') }} {{ __('post') }}</a>
+                                    <a href="{{ route('page-sheet-create', $parentId) }}" class="btn btn-primary mb-2"><i class="mdi mdi-book-open-page-variant"></i> {{ __('Create') }} {{ __('page-2') }}</a>
+                                    <a href="{{ route('page-post-create', $parentId) }}" class="btn btn-primary mb-2"><i class="mdi mdi-rss"></i> {{ __('Create') }} {{ __('post') }}</a>
                                 </div>
                             @endcan
                         </div>

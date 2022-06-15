@@ -17,7 +17,8 @@ class Page extends Model
         'parent_id',
         'content',
         'level',
-        'icon_type'
+        'icon_type',
+        'visible_on_main_page'
     ];
 
     public function ChildPages()

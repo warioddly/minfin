@@ -7,14 +7,16 @@ use Illuminate\View\Component;
 class PostBlocks extends Component
 {
     public $items;
+    public $blockLimit;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($items)
+    public function __construct($items, $limit=null)
     {
         $this->items = $items;
+        $this->blockLimit = $limit;
     }
 
     /**

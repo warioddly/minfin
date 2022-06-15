@@ -17,11 +17,29 @@ class PageController extends Controller
         $pages = Page::where('parent_id', null)->get();
         $userCanActions = $permissionService->permissionsInPages();
 
+        if($userCanActions[2] == 3 || $userCanActions[2] != null){
+            $userCanActions[2] = null;
+        }
+
         return view('admin.pages.index', compact('pages', 'userCanActions'));
     }
 
     public function Show(CheckPermissionService $permissionService, $parentId){
-        $page = Page::find($parentId);
+        $page = Page::findOrFail($parentId);
+
+        if($page->type == 2){
+            $sheet = Post::where('page_id', $page->id)->first();
+
+            if($sheet != null || $sheet != []){
+                return redirect()->route('page-sheet-show', $sheet->id);
+            }
+            else{
+                $page->update([
+                    'type' => 0,
+                ]);
+            }
+        }
+
         $parentPages = Page::where('parent_id', null)->get();
         $ChildPages = Page::where('parent_id', $parentId)->get();
         $posts = Post::where('page_id', $parentId)->get();
@@ -45,6 +63,14 @@ class PageController extends Controller
     public function DirectoryUpdate(PageUpdateRequest $request, PageService $service, $parentId){
 
         $data = $service->validateData($request, $parentId);
+        Page::where('id', $request->route('id'))->update($data);
+
+        return redirect()->back()->with('status', __('Page successfully created'));
+    }
+
+    public function DirectoryParentUpdate(PageUpdateRequest $request, PageService $service){
+
+        $data = $service->validateData($request, null, false);
         Page::where('id', $request->route('id'))->update($data);
 
         return redirect()->back()->with('status', __('Page successfully created'));

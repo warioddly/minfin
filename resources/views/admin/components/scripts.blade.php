@@ -103,6 +103,8 @@
                 $("#edit-modal-form").attr('action', url);
                 $("#edit-modal-form #create-input").val(data['page'].title);
                 $("#edit-modal-form #description").val(data['page'].description);
+                $("#edit-modal-form #page-icon").val(data['page'].icon);
+
                 $("#select-edit").select2({
                     dropdownParent: $('#edit .modal-content'),
                 });
@@ -159,9 +161,29 @@
         dropdownParent: $('#create .modal-content'),
     });
 
+    $("#multiselect-change").select2({
+        dropdownParent: $('#changeMainPageBlocks .modal-content'),
+        maximumSelectionLength: 15
+    });
+
     $(".delete-modal-button").click(function() {
         $("#delete-input-id[value]").val($(this).data('id'));
     });
+
+    $(".change-button").click(() => {
+
+        getSelectedPages()
+
+        async function getSelectedPages() {
+            let data = await bridge('{{ route('get-selected-page') }}', false, true)
+            $("#multiselect-change").select2({
+                dropdownParent: $('#changeMainPageBlocks .modal-content'),
+                maximumSelectionLength: 15
+            });
+
+            $("#multiselect-change").val(data['pages']).trigger("change");
+        }
+    })
 
 </script>
 @endpush

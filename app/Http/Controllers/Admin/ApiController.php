@@ -48,6 +48,12 @@ class ApiController extends Controller
         return response()->json(['page' => $page]);
     }
 
+    public function getSelectedPages(){
+        $pages = Page::where('visible_on_main_page', 1)->pluck('id');
+
+        return response()->json(['pages' => $pages]);
+    }
+
     public function deleteRole(){
         $role = Role::find(request()->get('id'));
 

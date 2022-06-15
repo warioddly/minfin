@@ -45,6 +45,7 @@ Route::group(["namespace" => "App\Http\Controllers\Admin", "prefix" => "dashboar
     Route::group(["prefix" => "pages"], function () {
         Route::post('/getPages', 'ApiController@getPageData')->name('get-pages');
         Route::post('/deletePage', 'ApiController@deletePage')->name('delete-page');
+        Route::post('/getSelectedPages', 'ApiController@getSelectedPages')->name('get-selected-page');
     });
 
     Route::group(["prefix" => "settings"], function () {
