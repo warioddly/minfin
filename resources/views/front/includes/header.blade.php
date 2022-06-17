@@ -28,6 +28,7 @@
                         <a href="{{ route('locale', 'kg') }}" class="text-uppercase me-2 @if( App::getLocale() == 'kg')active @endif">Кырг</a>
                         <a href="{{ route('locale', 'ru') }}" class="text-uppercase me-2 @if( App::getLocale() == 'ru')active @endif">Рус</a>
                         <a href="{{ route('locale', 'en') }}" class="text-uppercase me-2 @if( App::getLocale() == 'en')active @endif">Eng</a>
+                        <a href="{{ route('login') }}"><i class="mdi mdi-login" style="font-size: 21px; color: var(--heading-color);"></i></a>
                     </div>
                 </div>
             </div>

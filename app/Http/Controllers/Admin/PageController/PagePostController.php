@@ -35,8 +35,9 @@ class PagePostController extends Controller
     }
 
     public function Create($parentId){
-        $categories = Category::latest()->get();
-        return view('admin.pages.posts.create', compact('categories', 'parentId'));
+        $categories = Category::where('publisher', false)->latest()->get();
+        $publishers = Category::where('publisher', true)->latest()->get();
+        return view('admin.pages.posts.create', compact('categories', 'publishers', 'parentId'));
     }
 
     public function Store(PostRequest $request, PostService $postService, DocumentService $documentService, $parentId){

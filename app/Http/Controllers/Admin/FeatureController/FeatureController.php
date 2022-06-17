@@ -44,4 +44,14 @@ class FeatureController extends Controller
         return redirect()->back();
     }
 
+    public function isCategory($type){
+        if($type == 'category'){
+            session(['categoryView' => true]);
+        }
+        else{
+            session(['categoryView' => false]);
+        }
+        return redirect()->back();
+    }
+
 }

@@ -15,6 +15,11 @@ class Post extends Model
         return $this->belongsTo(Category::class, 'category_id');
     }
 
+    public function Publisher(){
+        return $this->belongsTo(Category::class, 'publisher_id');
+    }
+
+
     public function getUserName($id){
         $user = User::find($id)['name'] ?? "noname";
         return $user;

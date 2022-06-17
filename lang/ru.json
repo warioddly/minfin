@@ -366,5 +366,10 @@
     "sent Mail": "Отправленные",
     "trash": "Коризна",
     "spam": "Спам",
+    "Enter name-2": "Введите название",
+    "Publishers": "Публикаторы",
+    "As a publisher": "Как публиктор",
+    "Publisher": "Публикатор",
+    "Select publisher": "Выберите публикатора",
     "Cannot be added because data already exists": "Невозможно добавить, так как страница уже существует"
 }

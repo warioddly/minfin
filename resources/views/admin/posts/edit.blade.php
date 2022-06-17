@@ -23,20 +23,30 @@
                                 @method('PATCH')
                                 <div class="form-group mt-2">
                                     <div class="row">
-                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                        <div class="col">
                                             <strong>{{__('Title')}}:</strong>
                                             <input type="text" name="title" placeholder="{{ __('Post title') }}" maxlength="255" value="{{ $post->title }}" class="form-control" required>
                                         </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group mt-2">
+                                    <div class="row">
                                         <div class="col col-md-6 col-lg-6 col-xl-6">
                                             <strong>{{__('Category')}}:</strong>
-                                            <select name="category_id" aria-selected="{{ $post->category_id }}" class="form-control" required>
-                                                <option value="" disabled>-- {{ __('Select category') }} --</option>
+                                            <select name="category_id" class="form-control" required>
+                                                <option value="" disabled selected>-- {{ __('Select category') }} --</option>
                                                 @foreach($categories as $category)
-                                                    @if($category->id == $post->category_id)
-                                                        <option value="{{ $category->id }}" selected>{{ $category->title }}</option>
-                                                        @continue
-                                                    @endif
                                                     <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="col col-md-6 col-lg-6 col-xl-6">
+                                            <strong>{{__('Publisher')}}:</strong>
+                                            <select name="publisher_id" class="form-control" required>
+                                                <option value="" disabled selected>-- {{ __('Select publisher') }} --</option>
+                                                @foreach($publishers as $publisher)
+                                                    <option value="{{ $publisher->id }}">{{ $publisher->title }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -72,7 +82,6 @@
                                 <div class="form-group mt-2">
                                     <strong>{{ __('Attach document') }}</strong>
                                         <input type="file" name="documents[]" id="attachment-files" class="form-control" multiple>
-
                                     <div class="" id="uploadPreviewTemplate">
                                         @foreach($post->attachmentFiles as $file)
                                             <div class="card mt-1 mb-0 shadow-none border">

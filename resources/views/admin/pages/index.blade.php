@@ -83,6 +83,26 @@
     @endcan
 @endpush
 
+@push('modal')
+    <div class="modal fade" id="choiceicon" data-bs-backdrop="static" data-bs-keyboard="false"
+         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">{{ __('Mdi Icons') }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <x-icon-modal></x-icon-modal>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">{{ __('Close') }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+@endpush
+
 <x-scripts
     type="pages"
     :urls="[route('get-pages'), route('directory-update-parent-page', ''), '']"

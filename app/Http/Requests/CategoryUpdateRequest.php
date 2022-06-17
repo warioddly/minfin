@@ -26,6 +26,7 @@ class CategoryUpdateRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string', 'max:255', Rule::unique('categories', 'title')->ignore($this->id)],
+            'publisher' => ['nullable', 'string'],
         ];
     }
 

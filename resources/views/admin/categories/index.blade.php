@@ -22,17 +22,18 @@
                     <div class="row">
                         @can('add-categories')
                             <x-page-actions
-                                create="Create category"
+                                create="Create"
                                 icon="uil-file-plus-alt"
-                                rightSide="null"
+                                rightSide="typeInCategory"
                             ></x-page-actions>
                         @endcan
+
                     </div>
                     <div class="row justify-content-between">
                         <div class="col">
                             <x-data-table
                                 :items="$categories"
-                                :excepts="['updated_at', 'id']"
+                                :excepts="['updated_at', 'id', 'publisher']"
                                 :links="['', 'show-category', null, null]"
                                 :actions="$userCanActions"
                                 type="category"
@@ -78,14 +79,22 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalToggleLabel">{{ __('Creating') }} {{ __('category') }}</h5>
+                    <h5 class="modal-title" id="exampleModalToggleLabel">{{ __('Creating') }}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="{{ route('store-category') }}" method="POST" class="needs-validation">
                     @csrf
                     <div class="modal-body">
-                        <label for="create-input" class="form-label">{{ __('Enter a category name') }}</label>
+                        <label for="create-input" class="form-label">{{ __('Enter name-2') }}</label>
                         <input name="title" type="text" id="create-input" class="form-control" required>
+
+                        <div class="form-group mt-2 d-flex align-items-center">
+                            <strong class="me-2" style="margin-top: -6px;">{{__('As a publisher')}}:</strong>
+                            <span>
+                                <input type="checkbox" id="switch" name="publisher" data-switch="primary"/>
+                                <label for="switch" data-on-label="{{ __('Yes') }}" data-off-label="{{ __('No') }}"></label>
+                            </span>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Cancel') }}</button>
@@ -104,7 +113,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalToggleLabel">{{ __('Renaming') }} {{ __('category') }}</h5>
+                    <h5 class="modal-title" id="exampleModalToggleLabel">{{ __('Renaming') }}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form id="edit-modal-form" method="POST" class="needs-validation">

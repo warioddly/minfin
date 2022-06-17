@@ -117,6 +117,7 @@ Route::middleware(['setLocale'])->group(function(){
             Route::get('/manager', 'FeatureController@fileManager')->name('file-manager')->middleware('can:show-filemanager');;
             Route::get('/{theme}', 'FeatureController@changeAdminTheme')->name('theme');
             Route::get('/{type}/isDirectory', 'FeatureController@isDirectory')->name('isDirectory');
+            Route::get('/{type}/isCategory', 'FeatureController@isCategory')->name('isCategory');
             Route::get('/{style}/style', 'FeatureController@postListStyle')->name('post-style')->middleware('can:show-posts');
             Route::post('/notes/store', 'NoteController@Store')->name('store-notes');
             Route::delete('/notes/{id}', 'NoteController@Delete')->name('delete-notes');

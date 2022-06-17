@@ -27,6 +27,7 @@ class PostRequest extends FormRequest
             'title' => ['required', 'string', 'max:255'],
             'description' => ['nullable', 'string', 'max:500'],
             'category_id' => ['nullable', 'exists:categories,id'],
+            'publisher_id' => ['nullable', 'exists:categories,id'],
             'preview_image' => ['nullable', 'image', 'max:10240'],
             'is_published' => ['nullable', 'string'],
             'content' => ['nullable', 'string', 'max:860000'],

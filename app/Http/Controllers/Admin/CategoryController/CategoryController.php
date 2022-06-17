@@ -12,8 +12,14 @@ use App\Services\CheckPermissionService;
 class CategoryController extends Controller
 {
     public function Index(CheckPermissionService $permissionService){
-        $categories = Category::latest()->get();
-        $categoryCount = Category::all()->count();
+
+        if(session('categoryView') == true){
+            $categories = Category::where('publisher', 0)->latest()->get();
+        }
+        else{
+            $categories = Category::where('publisher', 1)->latest()->get();
+        }
+
 
         $popularCategory = '';
         $temp = $categories[0]->TotalPostViews() ?? '';
@@ -28,7 +34,7 @@ class CategoryController extends Controller
 
         }
 
-        $averageViews = $averageViews / $categoryCount ?? 0;
+        $averageViews = $averageViews / count($categories) ?? 0;
 
         $userCanActions = $permissionService->permissionsInCategories();
 
@@ -45,6 +51,13 @@ class CategoryController extends Controller
     public function Store(CategoryRequest $request){
         $data = $request->all();
         $data['user_id'] = auth()->user()['id'];
+        if($data['publisher'] == 'on'){
+            $data['publisher'] = true;
+        }
+        else{
+            $data['publisher'] = false;
+        }
+
         Category::create($data);
         return redirect()->back()->with('status', __('Category successfully created'));
     }

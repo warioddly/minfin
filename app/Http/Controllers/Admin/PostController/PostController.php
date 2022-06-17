@@ -45,9 +45,10 @@ class PostController extends Controller
 
     public function Edit($id){
         $post = Post::find($id);
-        $categories = Category::latest()->get();
+        $categories = Category::where('publisher', false)->latest()->get();
+        $publishers = Category::where('publisher', true)->latest()->get();
 
-        return view('admin.posts.edit', compact('post', 'categories'));
+        return view('admin.posts.edit', compact('post', 'categories', 'publishers'));
     }
 
     public function Publish($id){
