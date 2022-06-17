@@ -206,7 +206,7 @@ nav .desktop-menu{
 .navigation .dropOut,
 .navigation .searchDropOut{
     width: clamp(48rem, 0rem + 100vw, 85.375rem);
-    height: clamp(15.25rem, 9.955378250591018rem + 8.983451536643026vw, 17.625rem);
+    height: clamp(15.25rem, 9.955378250591018rem + 8.983451536643026vw, 18.625rem);
     padding: 16px 16px 32px;
     background: rgba(232, 232, 232, 0.93);
     float: left;
@@ -240,12 +240,35 @@ nav .desktop-menu{
     letter-spacing: 1px;
     text-decoration: none;
     color: var(--heading-color);
-    padding-bottom: 16px;
+    padding-bottom: 4px !important;
     text-transform: uppercase;
+    position: relative;
 }
+
+.navigation .dropOut ul li:after {
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 1px !important;
+    left: 50%;
+    background: var(--heading-color);
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+}
+.navigation .dropOut ul li:hover:after {
+    width: 95%;
+    left: 0;
+}
+
 .navigation  .dropOut ul li:hover > a {
     color: var(--secindary-color);
 }
+
+.navigation .dropOut ul li a:hover::after,
+.navigation .dropOut ul li a:focus::after{
+
+}
+
 .navigation ul li:hover .dropdownContain {
     top: clamp(2.375rem, 2.134197324414716rem + 0.5016722408026756vw, 2.5625rem);
 }

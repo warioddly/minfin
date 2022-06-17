@@ -26,7 +26,7 @@ class PageUpdateRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string', 'max:45', Rule::unique('pages', 'title')->ignore(request()->route('id'))],
-            'description' => ['required', 'string', 'max:500'],
+            'description' => ['required', 'string', 'max:700'],
             'icon' => ['nullable', 'string', 'max:255'],
             'image' => ['nullable', 'image', 'max:10240'],
         ];

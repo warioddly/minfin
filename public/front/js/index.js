@@ -587,27 +587,36 @@ $('.region').hover((event) => {
 
     if(currentRegion === 'Chui') {
         chartData = [563532, 222125.44]
+        chartData2 = [3422323, 222125.44]
     }
     else if(currentRegion === 'Naryn'){
         chartData = [3422323, 12431333.44]
+        chartData2 = [222125, 3422323.44]
     }
     else if(currentRegion === 'Talas'){
         chartData = [4422323, 131333.44]
+        chartData2 = [222125, 3422323.44]
     }
     else if(currentRegion === 'Osh'){
-        chartData = [122323, 121333.44]
+        chartData = [122323, 121333.44];
+        chartData2 = [1232323, 143523.44]
+
     }
     else if(currentRegion === 'Batken'){
         chartData = [122323, 1232323.44]
+        chartData2 = [143523, 143523.44]
     }
     else if(currentRegion === 'Issyk-kul'){
         chartData = [143523, 122323.44]
+        chartData2 = [1232323, 143523.44]
     }
     else if(currentRegion === 'Djalal-Abad'){
         chartData = [1232323, 141333.44]
+        chartData2 = [3422323, 143523.44]
     }
     else{
         chartData = [68511052.4, 22224506.3]
+        chartData2 = [3422323, 222125.44]
     }
 
     labelData = [`Доход</br><p class="ms-lg-3 ms-md-2 apex-chart-info-text">${ chartData[0] } тыс. сом</p>`,
@@ -617,6 +626,16 @@ $('.region').hover((event) => {
         series: chartData,
         labels: labelData,
     })
+
+    labelData = [`Доход</br><p class="ms-lg-3 ms-md-2 apex-chart-info-text">${ chartData2[0] } тыс. сом</p>`,
+        `Расход</br><p class="ms-lg-3 ms-md-2 apex-chart-info-text position-absolute">${ chartData2[1] } тыс. сом</p>`]
+
+    chart_2.updateOptions({
+        series: chartData2,
+        labels: labelData,
+    })
+
+    $('.card_region__names').text(region);
 })
 
 $('.region').click((event) => {
@@ -707,6 +726,8 @@ $('.district').hover((event) => {
     options['series'] = chartData
     options['labels'] = labelData
     chart_1.updateOptions(options)
+
+    $('.card_region__names').text(district);
 })
 
 $('.back-to-btn').click(() => {

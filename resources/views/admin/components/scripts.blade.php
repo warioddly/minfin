@@ -103,7 +103,10 @@
                 $("#edit-modal-form").attr('action', url);
                 $("#edit-modal-form #create-input").val(data['page'].title);
                 $("#edit-modal-form #description").val(data['page'].description);
-                $("#edit-modal-form #page-icon").val(data['page'].icon);
+
+                if(data['page'].icon.substring(0, 4).includes('mdi-')){
+                    $("#edit-modal-form #page-icon").val(data['page'].icon);
+                }
 
                 $("#select-edit").select2({
                     dropdownParent: $('#edit .modal-content'),

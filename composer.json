@@ -7,14 +7,17 @@
     "require": {
         "php": "^8.0.2",
         "ext-http": "*",
+        "dacastro4/laravel-gmail": "^6.0",
         "davejamesmiller/laravel-breadcrumbs": "*",
+        "google/apiclient": "*",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.11",
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^3.4",
         "spatie/laravel-permission": "^5.5",
-        "unisharp/laravel-filemanager": "master"
+        "unisharp/laravel-filemanager": "master",
+      "ext-curl": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

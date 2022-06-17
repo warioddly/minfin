@@ -70,7 +70,10 @@
     @if(count($posts) != 0)
         <section id="news-section" class="mb-lg-5 mb-md-3">
         <div class="container">
-            <p class="header-text mb-3">{{ __('News') }}</p>
+            <div class="col d-flex justify-content-between align-items-center">
+                <p class="header-text mb-3">{{ __('News') }}</p>
+                <a href="#">{{ __('View all news') }}</a>
+            </div>
             <div class="row">
                 <div class="col-md-6 main-new__block">
                     <div class="new_block d-flex">
@@ -79,8 +82,8 @@
                             <img src="{{ $posts[0]->preview_image }}" alt="..." class="new_block__image">
                             <p class="new_block__title text-break pe-2">{{ \Illuminate\Support\Str::limit($posts[0]->title , $limit = 135, $end = '...') }}</p>
                         </div>
-                        <div class="position-relative p-lg-4 p-md-2 pt-3 pt-md-2">
-                            <p class="new_block__date pb-4 pb-md-2 pt-md-2">{{ $posts[0]->created_at->toDateTime()->format('d.m.Y') }}</p>
+                        <div class="position-relative p-lg-4 p-md-2 pt-3 pt-md-2 pt-lg-2">
+                            <p class="new_block__date pb-4 pb-md-2 pt-md-2">{{ $posts[0]->created_at->toDateTime()->format('d.m.Y H:s') }}</p>
                             <p class="new_block__description text-break">{{ \Illuminate\Support\Str::limit($posts[0]->description , $limit = 255, $end = '...') }}
                             </p>
                             <a href="{{ route('front-post-show', $posts[0]->id) }}" class="new_block__read_more">{{ __('read more') }}</a>
@@ -100,7 +103,7 @@
                                         <img src="{{ $post->preview_image  }}" alt="" class="new_block__image">
                                     </div>
                                     <div class="position-relative">
-                                        <p class="new_block__date pb-2 pb-md-1">{{ $post->created_at->toDateTime()->format('d.m.Y') }}</p>
+                                        <p class="new_block__date pb-2 pb-md-1">{{ $post->created_at->toDateTime()->format('d.m.Y H:s') }}</p>
                                         <p class="new_block__title">{{ \Illuminate\Support\Str::limit($post->title , $limit = 60, $end = '...') }}</p>
                                         <p class="new_block__category bottom-0">{{ $post->category->title }}</p>
                                     </div>
@@ -114,7 +117,7 @@
                                         <img src="{{ $post->preview_image  }}" alt="" class="new_block__image">
                                     </div>
                                     <div class="position-relative">
-                                        <p class="new_block__date pb-2 pb-md-1">{{ $post->created_at->toDateTime()->format('d.m.Y') }}</p>
+                                        <p class="new_block__date pb-2 pb-md-1">{{ $post->created_at->toDateTime()->format('d.m.Y H:s') }}</p>
                                         <p class="new_block__title d-block d-sm-none d-md-none d-md-none">{{ \Illuminate\Support\Str::limit($post->title , $limit = 55, $end = '...') }}</p>
                                         <p class="new_block__title d-none d-sm-none d-md-block d-lg-block">
                                             @for($i = 0; $i < 12; $i++) {{ explode(" ", $post->title)[$i] ?? '' }} @endfor...
@@ -325,6 +328,7 @@
                 <div class="static col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 pt-3">
                     <div class="economic-statistic__card pb-3">
                         <p class="text-center card-header-text pt-lg-3 pt-md-2 pt-2">{{ __('Allocated funds') }}</p>
+                        <p class="text-center pt-2 card_region__names">{{ __('Chui region') }}</p>
                         <hr class="mt-2 mb-2"/>
                         <div class="p-lg-3 p-md-2 pb-0 p-2">
                             <h5 class="card-title ps-2">СоцФонд</h5>
@@ -346,12 +350,6 @@
                 <x-white-link-block
                     :items="$selectedMainPages"
                 ></x-white-link-block>
-{{--                <div class="col-lg-4 col-md-6 col-12">--}}
-{{--                    <a href="#" class="white_block_links d-flex pe-1" >--}}
-{{--                        <i class="mdi mdi-dots-horizontal py-3 ms-2 me-2 d-flex white-link-block-icon"></i>--}}
-{{--                        {{ __('View all') }}--}}
-{{--                    </a>--}}
-{{--                </div>--}}
             </div>
         </div>
     </section>

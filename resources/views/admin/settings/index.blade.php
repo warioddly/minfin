@@ -61,10 +61,11 @@
                     <div class="page-aside-right">
                         <div class="tab-content" id="v-pills-tabContent">
                             <div class="tab-pane fade" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                                <p class="mb-0">wadawdawd</p>
+                                <p class="h3 mt-0 mb-3">{{ __('Contacts') }}</p>
                             </div>
                             <div class="tab-pane fade active show" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                                 <div class="row">
+                                    <p class="h3 mt-0 mb-3">{{ __('Carousel') }}</p>
                                     @foreach($carouselItems as $item)
                                         <div class="col-4">
                                             <div class="card">

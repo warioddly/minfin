@@ -188,6 +188,7 @@ return [
         UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
+        Dacastro4\LaravelGmail\LaravelGmailServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -216,6 +217,7 @@ return [
 //        'Route'     => "Illuminate\Support\Facades\Route",
         'Image' => Intervention\Image\Facades\Image::class,
         'File' => Illuminate\Support\Facades\File::class,
+        'LaravelGmail' => Dacastro4\LaravelGmail\Facade\LaravelGmail::class,
     ])->toArray(),
 
 ];

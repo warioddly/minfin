@@ -1,5 +1,6 @@
 <?php
 
+use Dacastro4\LaravelGmail\Facade\LaravelGmail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -62,6 +63,7 @@ Route::middleware(['setLocale'])->group(function(){
             Route::post('/storeCarousel', 'SettingController@StoreCarousel')->name('store-carousel')->middleware('can:add-content-settings');
             Route::patch('/{id}', 'SettingController@UpdateCarousel')->name('update-carousel')->middleware('can:edit-content-settings');
             Route::post('/changeBlocks', 'SettingController@ChangeBlocks')->name('changeBlocks')->middleware('can:edit-content-settings');
+            Route::post('/contacts', 'SettingController@Contacts')->name('contacts')->middleware('can:edit-content-settings');
         });
 
         Route::group(["namespace" => "PageController", "prefix" => "pages"], function () {
@@ -114,19 +116,34 @@ Route::middleware(['setLocale'])->group(function(){
             Route::get('/', 'LogController@Index')->name('logs')->middleware('can:show-logs');
             Route::get('/manager', 'FeatureController@fileManager')->name('file-manager')->middleware('can:show-filemanager');;
             Route::get('/{theme}', 'FeatureController@changeAdminTheme')->name('theme');
+            Route::get('/{type}/isDirectory', 'FeatureController@isDirectory')->name('isDirectory');
             Route::get('/{style}/style', 'FeatureController@postListStyle')->name('post-style')->middleware('can:show-posts');
             Route::post('/notes/store', 'NoteController@Store')->name('store-notes');
             Route::delete('/notes/{id}', 'NoteController@Delete')->name('delete-notes');
         });
+
+        Route::group(["namespace" => "EmailController", "prefix" => "email"], function () {
+            Route::get('/authEmail', function (){
+                return LaravelGmail::redirect();
+            })->name('auth-email');
+            Route::get('/authMakeToken', function (){
+                LaravelGmail::makeToken();
+                return redirect()->route('email', 'inbox');
+            })->name('auth-make-token');
+            Route::get('/{page}', 'EmailController@Index')->name('email')->middleware('can:show-email');
+            Route::get('/show/{messageId}', 'EmailController@Show')->name('show-email')->middleware('can:show-email');
+            Route::get('/actions/{messageId}/{action}', 'EmailController@Actions')->name('action-email')->middleware('can:edit-email');
+            Route::post('/sendMessage', 'EmailController@SendMessage')->name('send-email')->middleware('can:show-email');
+        });
     });
+
     Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function (){
         \UniSharp\LaravelFilemanager\Lfm::routes();
     });
 
     // AUTH ROUTE
 
-    Auth::routes(['register' => false, 'reset' => false, 'confirm' => false]);
-
+    Auth::routes(['reset' => false, 'confirm' => false]);
 });
 
 Route::get('/locale/{locale}', 'App\Http\Controllers\LocaleController@Index')->name('locale');

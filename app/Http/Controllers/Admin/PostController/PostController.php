@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Storage;
 class PostController extends Controller
 {
     public function Index(CheckPermissionService $permissionService){
-        $posts = Post::latest()->get();
+        $posts = Post::where('sheet', 0)->latest()->get();
         $is_published = 'all';
 
         $userCanActions = $permissionService->permissionsInPosts();
@@ -26,11 +26,11 @@ class PostController extends Controller
 
     public function PublishedPosts(CheckPermissionService $permissionService, $is_published){
         if($is_published == 'published'){
-            $posts = Post::where('is_published', 1)->get();
+            $posts = Post::where('sheet', 0)->where('is_published', 1)->latest()->get();
             $is_published = 1;
         }
         else{
-            $posts = Post::where('is_published', 0)->get();
+            $posts = Post::where('sheet', 0)->where('is_published', 0)->latest()->get();
             $is_published = 0;
         }
         $userCanActions = $permissionService->permissionsInPosts();

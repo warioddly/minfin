@@ -33,4 +33,15 @@ class FeatureController extends Controller
     public function fileManager(){
         return view('admin.vendor.filemanager');
     }
+
+    public function isDirectory($type){
+        if($type == 'directory'){
+            session(['postView' => false]);
+        }
+        else{
+            session(['postView' => true]);
+        }
+        return redirect()->back();
+    }
+
 }

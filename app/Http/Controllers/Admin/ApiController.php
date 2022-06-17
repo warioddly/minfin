@@ -80,7 +80,7 @@ class ApiController extends Controller
 
         $post->delete();
 
-        if(count($parentPage->posts) == 0){
+        if(count($parentPage->posts) == 0 && count($parentPage->ChildPages) == 0){
             $parentPage->update(['type' => 0 ]);
         }
 
@@ -99,10 +99,8 @@ class ApiController extends Controller
         $page->posts()->delete();
         $page->delete();
 
-        if($parentPage->type == 1){
-            if(count($parentPage->ChildPages) == 0){
-                $parentPage->update(['type' => 0 ]);
-            }
+        if(count($parentPage->posts) == 0 && count($parentPage->ChildPages) == 0){
+            $parentPage->update(['type' => 0 ]);
         }
     }
 

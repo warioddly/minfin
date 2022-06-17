@@ -25,7 +25,7 @@ class PageStoreRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string', 'max:45', 'unique:pages,title'],
-            'description' => ['required', 'string', 'max:500', 'unique:pages,title'],
+            'description' => ['required', 'string', 'max:700', 'unique:pages,title'],
             'icon' => ['nullable', 'string', 'max:255', 'regex:/mdi-/i'],
             'image' => ['nullable', 'image', 'max:10240'],
         ];

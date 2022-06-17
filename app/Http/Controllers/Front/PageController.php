@@ -50,7 +50,7 @@ class PageController extends Controller
             return redirect()->route('front-sheet-show', $sheet->id);
         }
 
-        $childPages = $this->getAllChildPages($page, 3);
+        $childPages = $this->getAllChildPages($page, null);
         $childPagesIds = [];
         foreach ($childPages as $childPage) {
             foreach ($childPage['childs']['ids'] as $item) {
@@ -58,7 +58,7 @@ class PageController extends Controller
             }
         }
 
-        $posts = Post::whereIn('page_id', array_merge($childPagesIds, [$page->id]))->where('sheet', false)->latest()->paginate(10);
+        $posts = Post::whereIn('page_id', array_merge($childPagesIds, [$page->id]))->where('sheet', false)->where('is_published', true)->latest()->paginate(10);
 
         return view('front.pages.show', compact('page', 'posts'));
     }

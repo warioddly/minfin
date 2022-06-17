@@ -19,7 +19,8 @@ class MainPagesSeeder extends Seeder
             'Activity',
             'Documents',
             'Press center',
-            'Contact',
+            'Anti-corruption policy',
+            'Personnel policy',
         ];
 
         foreach ($pages as $page){

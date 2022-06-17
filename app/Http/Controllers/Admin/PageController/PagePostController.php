@@ -51,13 +51,6 @@ class PagePostController extends Controller
         return redirect()->route('show-pages', $parentId);
     }
 
-    public function Edit($id){
-        $post = Post::find($id);
-        $categories = Category::latest()->get();
-
-        return view('admin.pages.posts.edit', compact('post', 'categories'));
-    }
-
     public function Update(PostRequest $request, PostService $service,  DocumentService $documentService, $id){
         $post = Post::find($id);
         $data = $service->validateUpdateData($request, $id);

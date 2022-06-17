@@ -15,24 +15,25 @@
                 <i class="mdi mdi-arrow-left me-2"></i>{{ __('To list') }}
             </a>
         </div>
-        <div class="row justify-content-between align-items-center content-tab-row mb-lg-4 mb-sm-3 mb-2">
-            <div class="col-12">
-                <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                        <a href="#post" data-bs-toggle="tab" aria-expanded="false" class="nav-link active">
-                            <span class="d-md-block">Новость</span>
-                        </a>
-                    </li>
-                    @if(count($post->attachmentFiles) !=0)
+        @if(count($post->attachmentFiles) !=0)
+            <div class="row justify-content-between align-items-center content-tab-row mb-lg-4 mb-sm-3 mb-2">
+                <div class="col-12">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a href="#post" data-bs-toggle="tab" aria-expanded="false" class="nav-link active">
+                                <span class="d-md-block">Новость</span>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a href="#news-documents" data-bs-toggle="tab" aria-expanded="true" class="nav-link ">
                                 <span class=" d-md-block">Прикрепленные документы</span>
                             </a>
                         </li>
-                    @endif
-                </ul>
+                    </ul>
+                </div>
             </div>
-        </div>
+        @endif
+
         <div class="row mb-3">
             <div class="col-12 col-md-8 col-lg-9">
                 <div class="tab-content">

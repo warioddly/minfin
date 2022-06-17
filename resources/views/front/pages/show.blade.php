@@ -22,7 +22,7 @@
         <div class="row page_description__row mb-5">
             <p class="">{{ __($page->description) }}</p>
         </div>
-        @if($page->level != 3 && count($page->childPages) != 0)
+        @if($page->level != 4 && count($page->childPages) != 0)
             <div class="row page_accordion__row mb-5">
                 <div class="accordion" id="accordionPanelsStayOpenExample">
                 <div class="accordion-item">

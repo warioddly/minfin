@@ -93,8 +93,17 @@
         @endcanany
 
 
-        @canany(['show-users', 'show-roles', 'show-logs'])
+        @canany(['show-users', 'show-roles', 'show-logs', 'show-email'])
             <li class="side-nav-title side-nav-item">{{ __('Administration') }}</li>
+
+            @if(auth()->user()->can('auth-email'))
+                <li class="side-nav-item">
+                    <a href="@if(LaravelGmail::check()) {{ route('email', 'inbox') }} @else {{ route('auth-email') }} @endif" class="side-nav-link">
+                        <i class="uil-envelope"></i>
+                        <span> {{ __('Email') }} </span>
+                    </a>
+                </li>
+            @endif
 
             @if(auth()->user()->can('show-users'))
                 <li class="side-nav-item">

@@ -52,9 +52,9 @@
                             <label for="create-input" class="form-label">{{ __('Enter a page name') }}</label>
                             <input name="title" type="text" id="create-input" class="form-control mb-3" maxlength="50" required>
                             <label for="description" class="form-label">{{ __('Enter a page description') }}</label>
-                            <textarea name="description" type="text" maxlength="500"
+                            <textarea name="description" type="text" maxlength="700"
                                       id="description" class="form-control mb-3" required
-                                      data-toggle="maxlength" data-threshold="500"
+                                      data-toggle="maxlength" data-threshold="700"
                                       rows="5"
                             ></textarea>
 
