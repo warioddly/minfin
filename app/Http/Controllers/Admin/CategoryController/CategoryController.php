@@ -20,7 +20,6 @@ class CategoryController extends Controller
             $categories = Category::where('publisher', 1)->latest()->get();
         }
 
-
         $popularCategory = '';
         $temp = $categories[0]->TotalPostViews() ?? '';
         $averageViews = $categories[0]->TotalPostViews() ?? '';
@@ -43,8 +42,16 @@ class CategoryController extends Controller
 
     public function Show($id){
         $category = Category::find($id);
-        $popularPosts = Post::where('category_id', $id)->where('views', '!=', 0)->orderBy('views', 'desc')->take(7)->get();
-        $posts = Post::where('category_id', $id)->get();
+
+        if(session('categoryView') == true){
+            $popularPosts = Post::where('publisher_id', $id)->where('views', '!=', 0)->orderBy('views', 'desc')->take(7)->get();
+            $posts = Post::where('publisher_id', $id)->get();
+        }
+        else{
+            $popularPosts = Post::where('publisher_id', $id)->where('views', '!=', 0)->orderBy('views', 'desc')->take(7)->get();
+            $posts = Post::where('publisher_id', $id)->get();
+        }
+
         return view('admin.categories.show', compact('category', 'posts', 'popularPosts'));
     }
 

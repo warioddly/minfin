@@ -51,7 +51,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="col ps-0">
-                                                    <a href="{{ $document->path }}" class="text-muted fw-bold">{{ $document->title }}</a>
+                                                    <a href="{{ $document->path }}" class="text-muted fw-bold"
+                                                       style="overflow:hidden; white-space:nowrap;display:inline-block; text-overflow:ellipsis; width: 200px">{{ $document->title }}</a>
                                                     <p class="mb-0 font-13">{{ $document->size }} kb</p>
                                                 </div>
                                             </div>

@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <h4 class="mt-0">
-                    <a href="{{ route('post-show', $item->id) }}" class="text-title">{{ \Illuminate\Support\Str::limit($item->title, $limit = 18, $end = '') }}</a>
+                    <a href="{{ route('post-show', $item->id) }}" class="text-title">{{ \Illuminate\Support\Str::limit($item->title, $limit = 40, $end = '') }}</a>
                 </h4>
                 @if($item->is_published == true)
                     <div class="badge bg-success mb-3"> {{ __('Published') }} </div>

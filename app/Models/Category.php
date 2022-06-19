@@ -12,7 +12,7 @@ class Category extends Model
     protected $guarded = false;
 
     public function posts(){
-        return $this->hasMany(Post::class);
+        return $this->hasMany(Post::class, 'category_id');
     }
 
     public function TotalPostViews(){

@@ -71,6 +71,12 @@
                             @continue
                         @endif
 
+                        @if($key == 'publisher_id')
+                            <td>{{ $item->publisher->title ?? ''}}</td>
+                            @continue
+                        @endif
+
+
                         @if($key == 'category_id')
                                 <td>{{ $item->category->title }}</td>
                                 @continue

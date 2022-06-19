@@ -18,7 +18,18 @@
             </div>
         </div>
     </div>
-    <div class="footer_info d-flex justify-content-center align-items-center ">
-        <p> © {{ now()->year }} Министерство Финансов КР. Все права защищены.</p>
+    <div class="footer_info d-flex align-items-center">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col">
+                    <p class="pb-3 pt-3">720040, город Бишкек, бульвар Эркиндик, 58</p>
+                    <p class="pb-3">Тел: +996 (312) 62-42-35</p>
+                    <p class="pb-3">e-mail: <span class="text-warning">minfin@minfin.kg</span></p>
+                </div>
+                <div class="col">
+                    <p> © {{ now()->year }} Министерство Финансов КР. Все права защищены.</p>
+                </div>
+            </div>
+        </div>
     </div>
 </footer>

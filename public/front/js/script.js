@@ -2,6 +2,13 @@ $(document).scroll(() => {
     let height = $(document).scrollTop();
     let width = $(document).width();
 
+    if(height <= 354){
+        $('.post_information').removeClass('fix');
+    }
+    if(height > 354){
+        $('.post_information').addClass('fix');
+    }
+
     if(width <= 767 && height > 0){
         $('.brand').addClass('fix');
         $('main').addClass('fix');
@@ -34,6 +41,7 @@ $(document).scroll(() => {
         $('.brand').removeClass('fix');
         return
     }
+
 
     if(height > 145){
         $('nav').addClass('fix');
@@ -93,3 +101,4 @@ $('.navigation .dropOut ul.third_sub_nav__items .thirdList').hover((event) => {
     $('.navigation .dropOut ul.third_sub_nav__items > .thirdList').removeClass('active');
     $(event.currentTarget).addClass('active');
 })
+

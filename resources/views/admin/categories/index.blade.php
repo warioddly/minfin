@@ -48,13 +48,16 @@
                                     <table class="table mb-0">
                                         <tbody>
                                         <tr>
-                                            <td>{{ __('Amount of categories') }}:</td>
+                                            <td>@if(session('categoryView') == true){{ __('Amount of categories') }}  @else {{ __('Amount of publishers') }} @endif: </td>
                                             <td>{{ count($categories) }}</td>
                                         </tr>
-                                        <tr>
-                                            <td>{{ __('Popular category') }}:</td>
-                                            <td>{{ __($popularCategory) }}</td>
-                                        </tr>
+                                        @if(session('categoryView') == true)
+                                            <tr>
+                                                <td>{{ __('Popular category') }}:</td>
+                                                <td>{{ __($popularCategory) }}</td>
+                                            </tr>
+                                        @endif
+
                                         <tr>
                                             <td>{{ __('Average views') }}</td>
                                             <td>{{ substr($averageViews, 0, 5) }}%</td>

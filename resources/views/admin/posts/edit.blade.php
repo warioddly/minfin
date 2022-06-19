@@ -29,7 +29,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="form-group mt-2">
                                     <div class="row">
                                         <div class="col col-md-6 col-lg-6 col-xl-6">
@@ -37,6 +36,10 @@
                                             <select name="category_id" class="form-control" required>
                                                 <option value="" disabled selected>-- {{ __('Select category') }} --</option>
                                                 @foreach($categories as $category)
+                                                @if($category->id == $post->category_id)
+                                                        <option value="{{ $category->id }}" selected>{{ $category->title }}</option>
+                                                        @continue
+                                                    @endif
                                                     <option value="{{ $category->id }}">{{ $category->title }}</option>
                                                 @endforeach
                                             </select>
@@ -46,6 +49,10 @@
                                             <select name="publisher_id" class="form-control" required>
                                                 <option value="" disabled selected>-- {{ __('Select publisher') }} --</option>
                                                 @foreach($publishers as $publisher)
+                                                    @if($publisher->id == $post->publisher_id)
+                                                        <option value="{{ $publisher->id }}" selected>{{ $publisher->title }}</option>
+                                                        @continue
+                                                    @endif
                                                     <option value="{{ $publisher->id }}">{{ $publisher->title }}</option>
                                                 @endforeach
                                             </select>

@@ -31,6 +31,7 @@
                                     @endif
                                 </p>
                                 <p class="font-13"><strong>{{ __('Category') }}</strong> <span class="float-end">{{ $post->category->title }}</span></p>
+                                <p class="font-13"><strong>{{ __('Publisher') }}</strong> <span class="float-end">{{ $post->publisher->title ?? '' }}</span></p>
                                 <p class="font-13"><strong>{{ __('Author') }}</strong> <span class="float-end">{{ $post->getUserName($post->user_id) }}</span></p>
                             </div>
                         </div>

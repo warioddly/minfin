@@ -15,7 +15,7 @@ class Post extends Model
         return $this->belongsTo(Category::class, 'category_id');
     }
 
-    public function Publisher(){
+    public function publisher(){
         return $this->belongsTo(Category::class, 'publisher_id');
     }
 

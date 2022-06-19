@@ -4,7 +4,6 @@ $('.owl-carousel').owlCarousel({
     dots: false,
     nav: true,
     autoWidth:true,
-
     center:true,
     autoplay:true,
     autoplayTimeout: 6000,
@@ -29,9 +28,20 @@ $('.owl-carousel').owlCarousel({
     }
 })
 
+$('.owl-carousel.third-carousel').owlCarousel({
+    rtl: false,
+    loop:true,
+    margin:10,
+    nav:true,
+    items:1,
+    autoplay:true,
+    autoplayTimeout: 1000,
+    autoplayHoverPause:true,
+})
+
 let chartData = [68511052.4, 22224506.3]
-let labelData = [`Доход</br><p class="ms-lg-3 ms-md-2 apex-chart-info-text">${ chartData[0] } тыс. сом</p>`,
-    `Расход</br><p class="ms-lg-3 ms-md-2 apex-chart-info-text position-absolute">${ chartData[1] } тыс. сом</p>`]
+let labelData = [`Доход</br><p class="ms-lg-3 ms-md-2 apex-chart-info-text">${ NumberSeperator(chartData[0]) } тыс. сом</p>`,
+    `Расход</br><p class="ms-lg-3 ms-md-2 apex-chart-info-text position-absolute">${ NumberSeperator(chartData[1]) } тыс. сом</p>`]
 
 let options = {
     series: chartData,
@@ -619,16 +629,16 @@ $('.region').hover((event) => {
         chartData2 = [3422323, 222125.44]
     }
 
-    labelData = [`Доход</br><p class="ms-lg-3 ms-md-2 apex-chart-info-text">${ chartData[0] } тыс. сом</p>`,
-        `Расход</br><p class="ms-lg-3 ms-md-2 apex-chart-info-text position-absolute">${ chartData[1] } тыс. сом</p>`]
+    labelData = [`Доход</br><p class="ms-lg-3 ms-md-2 apex-chart-info-text">${  NumberSeperator(chartData[0]) } тыс. сом</p>`,
+        `Расход</br><p class="ms-lg-3 ms-md-2 apex-chart-info-text position-absolute">${  NumberSeperator(chartData[1]) } тыс. сом</p>`]
 
     chart_1.updateOptions({
         series: chartData,
         labels: labelData,
     })
 
-    labelData = [`Доход</br><p class="ms-lg-3 ms-md-2 apex-chart-info-text">${ chartData2[0] } тыс. сом</p>`,
-        `Расход</br><p class="ms-lg-3 ms-md-2 apex-chart-info-text position-absolute">${ chartData2[1] } тыс. сом</p>`]
+    labelData = [`Доход</br><p class="ms-lg-3 ms-md-2 apex-chart-info-text">${  NumberSeperator(chartData[0]) } тыс. сом</p>`,
+        `Расход</br><p class="ms-lg-3 ms-md-2 apex-chart-info-text position-absolute">${  NumberSeperator(chartData[1]) } тыс. сом</p>`]
 
     chart_2.updateOptions({
         series: chartData2,
@@ -692,8 +702,10 @@ $('.region').click((event) => {
         chartData = [68511052.4, 22224506.3]
     }
 
-    labelData = [`Доход</br><p class="ms-lg-3 ms-md-2 apex-chart-info-text">${ chartData[0] } тыс. сом</p>`,
-        `Расход</br><p class="ms-lg-3 ms-md-2 apex-chart-info-text position-absolute">${ chartData[1] } тыс. сом</p>`]
+
+
+    labelData = [`Доход</br><p class="ms-lg-3 ms-md-2 apex-chart-info-text">${ NumberSeperator(chartData[0]) } тыс. сом</p>`,
+        `Расход</br><p class="ms-lg-3 ms-md-2 apex-chart-info-text position-absolute">${ NumberSeperator(chartData[1]) } тыс. сом</p>`]
 
     options['series'] = chartData
     options['labels'] = labelData
@@ -712,20 +724,32 @@ $('.district').hover((event) => {
 
     if(currentDistrict === 'Tonkskiy') {
         chartData = [563532, 222125.44]
+        chartData2 = [3422323, 222125.44]
     }
     else if(currentDistrict === 'Djeti-oguz'){
         chartData = [3422323, 12431333.44]
+        chartData2 = [12431333, 222125.44]
     }
     else{
         chartData = [68511052.4, 22224506.3]
+        chartData2 = [3422323, 3422323.44]
     }
 
-    labelData = [`Доход</br><p class="ms-lg-3 ms-md-2 apex-chart-info-text">${ chartData[0] } тыс. сом</p>`,
-        `Расход</br><p class="ms-lg-3 ms-md-2 apex-chart-info-text position-absolute">${ chartData[1] } тыс. сом</p>`]
+    labelData = [`Доход</br><p class="ms-lg-3 ms-md-2 apex-chart-info-text">${  NumberSeperator(chartData[0]) } тыс. сом</p>`,
+        `Расход</br><p class="ms-lg-3 ms-md-2 apex-chart-info-text position-absolute">${  NumberSeperator(chartData[1]) } тыс. сом</p>`]
 
-    options['series'] = chartData
-    options['labels'] = labelData
-    chart_1.updateOptions(options)
+    chart_1.updateOptions({
+        series: chartData,
+        labels: labelData,
+    })
+
+    labelData = [`Доход</br><p class="ms-lg-3 ms-md-2 apex-chart-info-text">${  NumberSeperator(chartData[0]) } тыс. сом</p>`,
+        `Расход</br><p class="ms-lg-3 ms-md-2 apex-chart-info-text position-absolute">${  NumberSeperator(chartData[1]) } тыс. сом</p>`]
+
+    chart_2.updateOptions({
+        series: chartData2,
+        labels: labelData,
+    })
 
     $('.card_region__names').text(district);
 })
@@ -742,3 +766,10 @@ $('.back-to-btn').click(() => {
     });
 
 })
+
+
+function NumberSeperator(number){
+    return number.toString()
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+        .replace('.', ",");
+}
