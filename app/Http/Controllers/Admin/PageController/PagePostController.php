@@ -8,9 +8,9 @@ use App\Models\Category;
 use App\Models\Page;
 use App\Models\Post;
 use App\Services\CheckPermissionService;
-use App\Services\PageService;
 use App\Services\DocumentService;
 use App\Services\PostService;
+use JoeDixon\Translation\Drivers\Translation;
 
 class PagePostController extends Controller
 {
@@ -40,7 +40,7 @@ class PagePostController extends Controller
         return view('admin.pages.posts.create', compact('categories', 'publishers', 'parentId'));
     }
 
-    public function Store(PostRequest $request, PostService $postService, DocumentService $documentService, $parentId){
+    public function Store(Translation $translation, PostRequest $request, PostService $postService, DocumentService $documentService, $parentId){
         $data = $postService->validateData($request, $request->route('id'), $parentId);
 
         Page::whereId($parentId)->update(['type' => 3 ]);
@@ -49,6 +49,11 @@ class PagePostController extends Controller
         if($request->hasFile('documents')) {
             $documentService->validateData($request['documents'], $lastCreatedPostId);
         }
+
+        $translation->addGroupTranslation(session('locale'), 'post-description', $request->get('description'), $request->get('description'));
+        $translation->addGroupTranslation(session('locale'), 'post-content', $request->get('content'), $request->get('content'));
+        $translation->addGroupTranslation(session('locale'), 'post-title', $request->get('title'), $request->get('title'));
+
         return redirect()->route('show-pages', $parentId);
     }
 

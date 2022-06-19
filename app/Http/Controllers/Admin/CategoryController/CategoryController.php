@@ -8,6 +8,7 @@ use App\Http\Requests\CategoryUpdateRequest;
 use App\Models\Category;
 use App\Models\Post;
 use App\Services\CheckPermissionService;
+use JoeDixon\Translation\Drivers\Translation;
 
 class CategoryController extends Controller
 {
@@ -55,10 +56,10 @@ class CategoryController extends Controller
         return view('admin.categories.show', compact('category', 'posts', 'popularPosts'));
     }
 
-    public function Store(CategoryRequest $request){
+    public function Store(Translation $translation, CategoryRequest $request){
         $data = $request->all();
         $data['user_id'] = auth()->user()['id'];
-        if($data['publisher'] == 'on'){
+        if(isset($data['publisher'])){
             $data['publisher'] = true;
         }
         else{
@@ -66,6 +67,9 @@ class CategoryController extends Controller
         }
 
         Category::create($data);
+
+        $translation->addGroupTranslation(session('locale'), 'category', $request->get('title'), $request->get('title'));
+
         return redirect()->back()->with('status', __('Category successfully created'));
     }
 

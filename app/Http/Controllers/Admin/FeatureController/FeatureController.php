@@ -54,4 +54,7 @@ class FeatureController extends Controller
         return redirect()->back();
     }
 
+    public function Translations(){
+        return view('admin.vendor.translations');
+    }
 }

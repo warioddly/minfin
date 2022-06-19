@@ -63,11 +63,11 @@
                 </li>
             @endif
 
-            @if(auth()->user()->can('show-translates'))
+            @if(auth()->user()->can('show-translations'))
                 <li class="side-nav-item">
-                    <a href="#" class="side-nav-link">
+                    <a href="{{ route('translations') }}" class="side-nav-link">
                         <i class="mdi mdi-earth"></i>
-                        <span> {{ __('Translates') }} </span>
+                        <span> {{ __('Translations') }} </span>
                     </a>
                 </li>
             @endif

@@ -3,15 +3,10 @@
 namespace App\Http\Controllers\Admin\PostController;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\PostRequest;
 use App\Models\Category;
-use App\Models\Page;
 use App\Models\Post;
 use App\Services\CheckPermissionService;
-use App\Services\DocumentService;
-use App\Services\PostService;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Storage;
+use JoeDixon\Translation\Drivers\Translation;
 
 class PostController extends Controller
 {

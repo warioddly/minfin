@@ -345,7 +345,7 @@
     </section>
     <section class="add mb-5">
         <a href="#" class="add__row">
-            <img src="{{ asset('front/images//image 74 (1).png') }}" alt="" class="img-fluid">
+            <img src="{{ asset('/front/images/add.png') }}" alt="" class="img-fluid">
         </a>
     </section>
     <section id="page-links" class="mb-5">

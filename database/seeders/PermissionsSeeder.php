@@ -53,6 +53,11 @@ class PermissionsSeeder extends Seeder
 
             'show-logs',
             'show-filemanager',
+
+            'show-translations',
+            'show-email',
+            'edit-email',
+            'send-email',
         ];
 
         foreach ($permissions as $permission){

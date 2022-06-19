@@ -72,13 +72,13 @@
                         @endif
 
                         @if($key == 'publisher_id')
-                            <td>{{ $item->publisher->title ?? ''}}</td>
+                            <td>{{ __($item->publisher->title ?? '') }}</td>
                             @continue
                         @endif
 
 
                         @if($key == 'category_id')
-                                <td>{{ $item->category->title }}</td>
+                                <td>{{ __($item->category->title) }}</td>
                                 @continue
                         @endif
 
@@ -121,7 +121,7 @@
 
                         @if(!in_array($key, $excepts))
                             <td>
-                                {{ $value }}
+                                {{ __($value) }}
                             </td>
                         @endif
 

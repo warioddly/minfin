@@ -63,7 +63,6 @@ Route::middleware(['setLocale'])->group(function(){
             Route::post('/storeCarousel', 'SettingController@StoreCarousel')->name('store-carousel')->middleware('can:add-content-settings');
             Route::patch('/{id}', 'SettingController@UpdateCarousel')->name('update-carousel')->middleware('can:edit-content-settings');
             Route::post('/changeBlocks', 'SettingController@ChangeBlocks')->name('changeBlocks')->middleware('can:edit-content-settings');
-            Route::post('/contacts', 'SettingController@Contacts')->name('contacts')->middleware('can:edit-content-settings');
         });
 
         Route::group(["namespace" => "PageController", "prefix" => "pages"], function () {
@@ -114,6 +113,7 @@ Route::middleware(['setLocale'])->group(function(){
 
         Route::group(["namespace" => "FeatureController", "prefix" => "features"], function () {
             Route::get('/', 'LogController@Index')->name('logs')->middleware('can:show-logs');
+            Route::get('/translations', 'FeatureController@Translations')->name('translations')->middleware('can:show-translations');
             Route::get('/manager', 'FeatureController@fileManager')->name('file-manager')->middleware('can:show-filemanager');;
             Route::get('/{theme}', 'FeatureController@changeAdminTheme')->name('theme');
             Route::get('/{type}/isDirectory', 'FeatureController@isDirectory')->name('isDirectory');

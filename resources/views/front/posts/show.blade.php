@@ -39,9 +39,9 @@
                 <div class="tab-content">
                     <div class="tab-pane show active" id="post">
                         <div class="show-post-block">
-                            <p class="p-2 post-title"> {{ $post->title }}</p>
+                            <p class="p-2 post-title"> {{ __($post->title) }}</p>
                             <img src="{{ $post->preview_image }}" alt="..." class="img-fluid post-preview-image mt-2 mb-3">
-                            <div class="post-content">{!! html_entity_decode( $post->content ) !!}</div>
+                            <div class="post-content">{!! html_entity_decode( __($post->content) ) !!}</div>
                         </div>
                     </div>
                     <div class="tab-pane" id="news-documents">
@@ -62,7 +62,7 @@
                     <p class="header-info-text">{{ __('Category') }}</p>
                     <h6 class="mb-lg-4 mt-lg-2 mb-md-3 mt-md-2 mb-2 mt-1">{{ __($post->category->title) }}</h6>
                     <p class="header-info-text">{{ __('Published') }}</p>
-                    <h6 class="mb-lg-4 mt-lg-2 mb-md-3 mt-md-2 mb-2 mt-1 info-blue-text">{{ $post->publisher->title }}</h6>
+                    <h6 class="mb-lg-4 mt-lg-2 mb-md-3 mt-md-2 mb-2 mt-1 info-blue-text">{{ __($post->publisher->title) }}</h6>
                     <p class="header-info-text mb-2">{{ __('Direction') }}</p>
                     <a href="#" class="mt-lg-2 mt-md-2 mt-2 info-blue-text">{{ __($post->InPage->title) }}</a>
                 </div>
