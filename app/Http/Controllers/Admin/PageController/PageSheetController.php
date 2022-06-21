@@ -31,10 +31,9 @@ class PageSheetController extends Controller
             $documentService->validateData($request['documents'], $sheet->id);
         }
 
-        $translation->addGroupTranslation(session('locale'), 'sheet-description', $request->get('description'), $request->get('description'));
-        $translation->addGroupTranslation(session('locale'), 'sheet-content', $request->get('content'), $request->get('content'));
-        $translation->addGroupTranslation(session('locale'), 'sheet-title', $request->get('title'), $request->get('title'));
-
+//        $translation->addGroupTranslation(session('locale'), 'sheet-description', $request->get('description'), $request->get('description'));
+//        $translation->addGroupTranslation(session('locale'), 'sheet-content', $request->get('content'), $request->get('content'));
+//        $translation->addGroupTranslation(session('locale'), 'sheet-title', $request->get('title'), $request->get('title'));
 
         return redirect()->route('page-sheet-show', $sheet->id);
     }

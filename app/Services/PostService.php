@@ -18,7 +18,7 @@ class PostService
             $image = $data['preview_image'];
             $name = md5(Carbon::now() . "_" . $image->getClientOriginalName()) . '.' . $image->getClientOriginalExtension();
             $filepath = Storage::disk('public')->putFileAs('/files/shares/Новости/', $image, $name);
-            $data['preview_image'] =  url('/storage/' . $filepath);
+            $data['preview_image'] =  '/storage/' . $filepath;
         }
 
         if(array_key_exists('is_published', $data)){
@@ -46,7 +46,7 @@ class PostService
             $image = $data['preview_image'];
             $name = md5(Carbon::now() . "_" . $image->getClientOriginalName()) . '.' . $image->getClientOriginalExtension();
             $filepath = Storage::disk('public')->putFileAs('/files/shares/Новости/', $image, $name);
-            $data['preview_image'] =  url('/storage/' . $filepath);
+            $data['preview_image'] =  '/storage/' . $filepath;
         }
 
         if(array_key_exists('is_published', $data)){

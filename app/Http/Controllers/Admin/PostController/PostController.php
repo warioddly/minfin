@@ -12,6 +12,7 @@ class PostController extends Controller
 {
     public function Index(CheckPermissionService $permissionService){
         $posts = Post::where('sheet', 0)->latest()->get();
+
         $is_published = 'all';
 
         $userCanActions = $permissionService->permissionsInPosts();

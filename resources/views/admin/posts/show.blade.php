@@ -21,16 +21,29 @@
                             </div>
                         </div>
                         <div class="col-sm-2 offset-sm-1 d-print-none mt-3">
+{{--                            <div class="mt-1">--}}
+{{--                                <p class="font-13"><strong>{{ __('Created time') }}: </strong> <span class="float-end">{{ $post->created_at->toDateTime()->format('d-m-Y') }}</span></p>--}}
+{{--                                <p class="font-13"><strong>{{ __('Status') }}: </strong>--}}
+{{--                                    @if($post->is_published == 1)--}}
+{{--                                        <span class="badge bg-success float-end">{{ __('Published') }}</span>--}}
+{{--                                    @else--}}
+{{--                                        <span class="badge bg-secondary float-end">{{ __('Unpublished') }}</span>--}}
+{{--                                    @endif--}}
+{{--                                </p>--}}
+{{--                                <p class="font-13"><strong>{{ __('Category') }}</strong> <span class="float-end">{{ $post->category->title }}</span></p>--}}
+{{--                                <p class="font-13"><strong>{{ __('Publisher') }}</strong> <span class="float-end">{{ $post->publisher->title ?? '' }}</span></p>--}}
+{{--                                <p class="font-13"><strong>{{ __('Author') }}</strong> <span class="float-end">{{ $post->getUserName($post->user_id) }}</span></p>--}}
+{{--                            </div>--}}
                             <div class="mt-1">
-                                <p class="font-13"><strong>{{ __('Created time') }}: </strong> <span class="float-end">{{ $post->created_at->toDateTime()->format('d-m-Y') }}</span></p>
-                                <p class="font-13"><strong>{{ __('Status') }}: </strong>
+                                <p class="font-13"><strong>Дата создания: </strong> <span class="float-end">{{ $post->created_at->toDateTime()->format('d-m-Y') }}</span></p>
+                                <p class="font-13"><strong>Статус: </strong>
                                     @if($post->is_published == 1)
-                                        <span class="badge bg-success float-end">{{ __('Published') }}</span>
+                                        <span class="badge bg-success float-end">Опубликованные</span>
                                     @else
-                                        <span class="badge bg-secondary float-end">{{ __('Unpublished') }}</span>
+                                        <span class="badge bg-secondary float-end">Неопубликованные</span>
                                     @endif
                                 </p>
-                                <p class="font-13"><strong>{{ __('Category') }}</strong> <span class="float-end">{{ $post->category->title }}</span></p>
+                                <p class="font-13"><strong>Категория</strong> <span class="float-end">{{ $post->category->title }}</span></p>
                                 <p class="font-13"><strong>{{ __('Publisher') }}</strong> <span class="float-end">{{ $post->publisher->title ?? '' }}</span></p>
                                 <p class="font-13"><strong>{{ __('Author') }}</strong> <span class="float-end">{{ $post->getUserName($post->user_id) }}</span></p>
                             </div>
@@ -61,7 +74,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col ps-0">
-                                                    <a href="{{ $document->path }}" class="text-muted fw-bold">{{ $document->title }}</a>
+                                                    <a href="{{ $document->path }}" class="text-muted fw-bold"  style="overflow:hidden; white-space:nowrap;display:inline-block; text-overflow:ellipsis; width: 200px">{{ $document->title }}</a>
                                                     <p class="mb-0 font-13">{{ $document->size }} kb</p>
                                                 </div>
                                             </div>

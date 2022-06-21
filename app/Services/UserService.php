@@ -3,7 +3,6 @@
 
 namespace App\Services;
 
-
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -19,7 +18,7 @@ class UserService
             $image = $data['avatar'];
             $name = md5(Carbon::now() . "_" . $image->getClientOriginalName()) . '.' . $image->getClientOriginalExtension();
             $filepath = Storage::disk('public')->putFileAs('/files/shares/Аватар', $image, $name);
-            $data['avatar'] =  url('/storage/' . $filepath);
+            $data['avatar'] = '/storage/' . $filepath;
         }
 
         unset($data['roles']);

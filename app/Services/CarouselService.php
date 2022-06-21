@@ -17,7 +17,7 @@ class CarouselService
             $image = $data['image'];
             $name = md5(Carbon::now() . "_" . $image->getClientOriginalName()) . '.' . $image->getClientOriginalExtension();
             $filepath = Storage::disk('public')->putFileAs('/files/shares/Разные/', $image, $name);
-            $data['path'] =  url('/storage/' . $filepath);
+            $data['path'] = '/storage/' . $filepath;
         }
         if(!isset($data['link']) && $data['link'] == null){
             unset($data['link']);

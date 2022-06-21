@@ -51,7 +51,6 @@
             </div>
         </div>
     </div>
-{{--    @include('admin.includes.right-sidebar')--}}
 
     @stack('modal')
 
@@ -60,7 +59,7 @@
     @if(request()->routeIs('dashboard'))
         <script src="{{ asset('admin/js/vendor/Chart.bundle.min.js') }}"></script>
         <script src="{{ asset('admin/js/vendor/apexcharts.min.js') }}"></script>
-        <script src="{{ asset('admin/js/pages/demo.dashboard.js ') }}"></script>
+        <script src="{{ asset('admin/js/vendor/dashboard.js ') }}"></script>
     @endif
     @stack('footer-scripts')
 </body>

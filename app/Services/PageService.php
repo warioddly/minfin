@@ -17,7 +17,7 @@ class PageService
             $image = $data['image'];
             $name = md5(Carbon::now() . "_" . $image->getClientOriginalName()) . '.' . $image->getClientOriginalExtension();
             $filepath = Storage::disk('public')->putFileAs('/files/shares/Иконки Страниц/', $image, $name);
-            $data['icon'] =  url('/storage/' . $filepath);
+            $data['icon'] =  '/storage/' . $filepath;
             $data['icon_type'] =  'image';
         }
         else{

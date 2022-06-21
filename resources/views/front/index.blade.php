@@ -65,9 +65,9 @@
     </section>
     <section id="news-section" class="mb-lg-5 mb-md-3">
         <div class="container">
-            <div class="col d-flex justify-content-between align-items-center">
-                <p class="header-text mb-3">{{ __('News') }}</p>
-                <a href="#">{{ __('View all news') }}</a>
+            <div class="col d-flex justify-content-between align-items-center mb-3">
+                <p class="header-text">{{ __('News') }}</p>
+                <a href="#" class="view_all-news-btn">{{ __('View all news') }}</a>
             </div>
             <div class="row">
                 <div class="col-md-6 main-new__block">
@@ -77,7 +77,7 @@
                             <img src="{{ $posts[0]->preview_image }}" alt="..." class="new_block__image">
                             <p class="new_block__title text-break pe-2">{{ \Illuminate\Support\Str::limit($posts[0]->title , $limit = 135, $end = '...') }}</p>
                         </div>
-                        <div class="position-relative p-lg-4 p-md-2 pt-3 pt-md-2 pt-lg-2">
+                        <div class="position-relative p-lg-4 ps-lg-3 p-md-2 pt-3 pt-md-2 pt-lg-2">
                             <p class="new_block__date pb-4 pb-md-2 pt-md-2">{{ $posts[0]->created_at->toDateTime()->format('d.m.Y H:s') }}</p>
                             <p class="new_block__description text-break">{{ \Illuminate\Support\Str::limit($posts[0]->description , $limit = 255, $end = '...') }}
                             </p>
@@ -92,42 +92,50 @@
                             @break
                         @endif
                         @if($key == 0)
-                            <div class="main-new__mobile_block new_block mb-lg-3 mb-2">
-                                <a href="{{ route('front-post-show', $post->id) }}" class="p-0 d-flex">
-                                    <div class="position-relative me-2 me-md-2">
-                                        <img src="{{ $post->preview_image  }}" alt="" class="new_block__image">
-                                    </div>
-                                    <div class="position-relative">
-                                        <p class="new_block__date pb-2 pb-md-1">{{ $post->created_at->toDateTime()->format('d.m.Y H:s') }}</p>
-                                        <p class="new_block__title">{{ \Illuminate\Support\Str::limit($post->title , $limit = 60, $end = '...') }}</p>
-                                        <p class="new_block__category bottom-0">{{ $post->category->title }}</p>
-                                    </div>
-                                </a>
+                            <div class="main-new__mobile_block col-md-12 col-lg-12 col new_block mb-lg-3 mb-2">
+                                <span class="p-0 d-flex">
+                                    <a href="{{ route('front-post-show', $post->id) }}">
+                                        <div class="position-relative">
+                                            <img src="{{ $post->preview_image  }}" alt="" class="new_block__image">
+                                        </div>
+                                        <div class="position-relative new_text-information">
+                                            <p class="new_block__date pb-1 pb-lg-2 pb-md-1 pt-2">{{ $post->created_at->toDateTime()->format('d.m.Y H:s') }}</p>
+                                            <p class="new_block__title d-block d-sm-none d-md-none d-md-none">
+                                                @for($i = 0; $i < 6; $i++) {{ explode(" ", $post->title)[$i] ?? '' }} @endfor...
+                                                <a class="new_block__read_more">{{ __('read more') }}</a>
+                                            </p>
+                                            <p class="new_block__title d-none d-sm-block d-md-block d-lg-block">
+                                                @for($i = 0; $i < 11; $i++) {{ explode(" ", $post->title)[$i] ?? '' }} @endfor...
+                                                <a class="new_block__read_more">{{ __('read more') }}</a>
+                                            </p>
+                                            <p class="new_block__category bottom-0 pb-2">{{ $post->category->title }}</p>
+                                        </div>
+                                    </a>
+                                </span>
                             </div>
                             @continue
                         @endif
                         <div class="col-md-12 col-lg-12 col new_block mb-lg-3 mb-2">
-                                <span class="p-0 d-flex">
+                            <span class="p-0 d-flex">
+                                <a href="{{ route('front-post-show', $post->id) }}">
                                     <div class="position-relative">
                                         <img src="{{ $post->preview_image  }}" alt="" class="new_block__image">
                                     </div>
                                     <div class="position-relative new_text-information">
-                                        <p class="new_block__date pb-2 pb-md-1">{{ $post->created_at->toDateTime()->format('d.m.Y H:s') }}</p>
-                                        <p class="new_block__title d-block d-sm-none d-md-none d-md-none">{{ \Illuminate\Support\Str::limit($post->title , $limit = 55, $end = '...') }}</p>
-                                        <p class="new_block__title d-none d-sm-none d-md-block d-lg-block">
-                                            @for($i = 0; $i < 12; $i++) {{ explode(" ", $post->title)[$i] ?? '' }} @endfor...
-                                            <a href="{{ route('front-post-show', $post->id) }}" class="new_block__read_more">{{ __('read more') }}
-                                            </a>
+                                        <p class="new_block__date pb-1 pb-lg-2 pb-md-1 pt-2">{{ $post->created_at->toDateTime()->format('d.m.Y H:s') }}</p>
+                                        <p class="new_block__title d-block d-sm-none d-md-none d-md-none">
+                                            @for($i = 0; $i < 6; $i++) {{ explode(" ", $post->title)[$i] ?? '' }} @endfor...
+                                            <a class="new_block__read_more">{{ __('read more') }}</a>
                                         </p>
-                                        <p class="new_block__title d-none d-sm-block d-md-none d-lg-none ">
-                                            @for($i = 0; $i < 35; $i++) {{ explode(" ", $post->description)[$i] ?? '' }}@endfor...
-                                            <a href="{{ route('front-post-show', $post->id) }}" class="new_block__read_more">{{ __('read more') }}
-                                            </a>
+                                        <p class="new_block__title d-none d-sm-block d-md-block d-lg-block">
+                                            @for($i = 0; $i < 11; $i++) {{ explode(" ", $post->title)[$i] ?? '' }} @endfor...
+                                            <a class="new_block__read_more">{{ __('read more') }}</a>
                                         </p>
-                                        <p class="new_block__category">{{ $post->category->title  }}</p>
+                                        <p class="new_block__category bottom-0 pb-2">{{ $post->category->title }}</p>
                                     </div>
-                                </span>
-                            </div>
+                                </a>
+                            </span>
+                        </div>
                     @endforeach
                 </div>
             </div>
@@ -326,8 +334,8 @@
                             <div id="economic-chart-1"></div>
                         </div>
                         <hr class="mt-2 mb-3"/>
-                        <h5 class="card-title ps-3 p-lg-3 p-md-2 pb-md-1 pt-md-0">КапСтрой</h5>
-                        <div class="p-lg-3 p-md-2 pb-0 pt-0 p-2">
+                        <h5 class="card-title ps-3 p-lg-3 p-md-2 pb-md-1 pb-lg-0 pt-md-0">КапСтрой</h5>
+                        <div class="p-lg-3 pt-lg-1 p-md-2 pb-0 pt-0 p-2">
                             <div id="economic-chart-2" class="mt-lg-0 mt-md-1"></div>
                         </div>
                     </div>
@@ -348,54 +356,60 @@
             <img src="{{ asset('/front/images/add.png') }}" alt="" class="img-fluid">
         </a>
     </section>
-    <section id="page-links" class="mb-5">
+    <section id="page-links" class="mb-3 mb-lg-5">
         <div class="container">
-            <p class="header-text">{{ __('Subsections') }} бюджета</p>
-            <div class="row mb-4 mt-2 g-3 justify-content-center">
+            <p class="header-text">{{ __('Subsections') }}</p>
+            <div class="row mt-2 g-3 justify-content-center">
                 <x-white-link-block
                     :items="$selectedMainPages"
                 ></x-white-link-block>
+                <div class="col-lg-4 col-md-6 col-12 ">
+                    <a href="#" class="white_block_links d-flex pe-1" >
+                        <i class="mdi mdi-dots-horizontal py-3 ms-2 ms-lg-3 me-2 d-flex white-link-block-icon"></i>
+                        {{ __("View all") }}
+                    </a>
+                </div>
             </div>
         </div>
     </section>
-    <section id="second-post-subsections" class="mb-5">
-        <div class="container">
-            <p class="header-text mb-3">{{ __('News') }} бюджета</p>
-            <div class="row main_new mb-4">
-                <div class="col-8">
-                    <div class="main_new__block">
-                        <span class="new__image_overflow"></span>
-                        <img src="{{ $posts[0]->preview_image }}" alt="..." class="main_new__image">
-                        <div class="new__text-information">
-                            <a href="{{ route('front-post-show', $posts[0]->id) }}" class="main_new__title position-absolute">
-                                @for($i = 0; $i < 12; $i++) {{ explode(" ", $post->title)[$i] ?? '' }} @endfor...
-                            </a>
-                            <div class="main_new__date position-absolute">{{ $post->created_at->toDateTime()->format('d.m.Y H:s') }}</div>
-                            <div class="main_new__category position-absolute">{{ $post->category->title }}</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <p class="main_new__description"> @for($i = 0; $i < 35; $i++) {{ explode(" ", $posts[0]->description)[$i] ?? '' }}@endfor<br />
-                        <a href="{{ route('front-post-show', $posts[0]->id) }}" class="new_block__read_more">{{ __('read more') }}</a>
-                    </p>
-                </div>
-            </div>
-            <div class="row subsection_posts">
-                @foreach($posts as $key => $post)
-                    @if($key == 0)
-                        @continue
-                    @elseif($key == 9)
-                        @break
-                    @endif
-                    <x-subsection-new-block
-                        :item="$post"
-                    >
-                    </x-subsection-new-block>
-                @endforeach
-            </div>
-        </div>
-    </section>
+    {{--    <section id="second-post-subsections" class="mb-5">--}}
+    {{--        <div class="container">--}}
+    {{--            <p class="header-text mb-3">{{ __('News') }} бюджета</p>--}}
+    {{--            <div class="row main_new mb-4">--}}
+    {{--                <div class="col-8">--}}
+    {{--                    <div class="main_new__block">--}}
+    {{--                        <span class="new__image_overflow"></span>--}}
+    {{--                        <img src="{{ $posts[0]->preview_image }}" alt="..." class="main_new__image">--}}
+    {{--                        <div class="new__text-information">--}}
+    {{--                            <a href="{{ route('front-post-show', $posts[0]->id) }}" class="main_new__title position-absolute">--}}
+    {{--                                @for($i = 0; $i < 12; $i++) {{ explode(" ", $post->title)[$i] ?? '' }} @endfor...--}}
+    {{--                            </a>--}}
+    {{--                            <div class="main_new__date position-absolute">{{ $post->created_at->toDateTime()->format('d.m.Y H:s') }}</div>--}}
+    {{--                            <div class="main_new__category position-absolute">{{ $post->category->title }}</div>--}}
+    {{--                        </div>--}}
+    {{--                    </div>--}}
+    {{--                </div>--}}
+    {{--                <div class="col">--}}
+    {{--                    <p class="main_new__description"> @for($i = 0; $i < 35; $i++) {{ explode(" ", $posts[0]->description)[$i] ?? '' }}@endfor<br />--}}
+    {{--                        <a href="{{ route('front-post-show', $posts[0]->id) }}" class="new_block__read_more">{{ __('read more') }}</a>--}}
+    {{--                    </p>--}}
+    {{--                </div>--}}
+    {{--            </div>--}}
+    {{--            <div class="row subsection_posts">--}}
+    {{--                @foreach($posts as $key => $post)--}}
+    {{--                    @if($key == 0)--}}
+    {{--                        @continue--}}
+    {{--                    @elseif($key == 9)--}}
+    {{--                        @break--}}
+    {{--                    @endif--}}
+    {{--                    <x-subsection-new-block--}}
+    {{--                        :item="$post"--}}
+    {{--                    >--}}
+    {{--                    </x-subsection-new-block>--}}
+    {{--                @endforeach--}}
+    {{--            </div>--}}
+    {{--        </div>--}}
+    {{--    </section>--}}
 @endsection
 
 @push('head-scripts')

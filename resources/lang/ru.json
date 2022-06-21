@@ -375,5 +375,6 @@
     "publisher_id": "Публикатор",
     "Breaking news": "Главное на сегодня",
     "Translations": "Переводы",
+    "Keyword search": "Поиск по ключевым словам",
     "Cannot be added because data already exists": "Невозможно добавить, так как страница уже существует"
 }

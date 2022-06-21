@@ -67,8 +67,8 @@ class CategoryController extends Controller
         }
 
         Category::create($data);
-
-        $translation->addGroupTranslation(session('locale'), 'category', $request->get('title'), $request->get('title'));
+//
+//        $translation->addGroupTranslation(session('locale'), 'category', $request->get('title'), $request->get('title'));
 
         return redirect()->back()->with('status', __('Category successfully created'));
     }

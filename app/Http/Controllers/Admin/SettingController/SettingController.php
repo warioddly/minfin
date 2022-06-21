@@ -14,6 +14,7 @@ class SettingController extends Controller
 {
     public function index(){
         $carouselItems = CarouselItem::latest()->get();
+
         $pages = Page::latest()->get();
         return view('admin.settings.index', compact('carouselItems', 'pages'));
     }
