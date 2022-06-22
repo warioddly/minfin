@@ -9,7 +9,7 @@
                 {{ Breadcrumbs::render('Post', $post) }}
             </div>
         </div>
-        <div class="row mb-5">
+        <div class="row mb-4 mb-md-5">
             <p class="main-post-header mb-3 d-none d-sm-block d-md-block d-xl-block">{{ __($post->title) }}</p>
             <a href="{{ url()->previous() }}" class="back-to-list-btn">
                 <i class="mdi mdi-arrow-left me-2"></i>{{ __('To list') }}
@@ -34,7 +34,7 @@
             </div>
         @endif
         <div class="row mb-3">
-            <div class="col-12 col-md-8 col-lg-9 mb-3 mb-lg-0">
+            <div class="col-12 col-md-8 col-lg-9 mb-3 mb-lg-0 post-show-content">
                 <div class="tab-content">
                     <div class="tab-pane show active" id="post">
                         <div class="show-post-block">

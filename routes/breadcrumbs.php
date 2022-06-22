@@ -10,7 +10,12 @@ Breadcrumbs::for('home', function ($trail) {
 
 Breadcrumbs::for('Posts', function ($trail) {
     $trail->parent('home');
-    $trail->push(__('Posts'), '');
+    $trail->push(__('Posts'), route('front-posts'));
+});
+
+Breadcrumbs::for('Pages', function ($trail) {
+    $trail->parent('home');
+    $trail->push(__('Pages'), route('front-pages'));
 });
 
 Breadcrumbs::for('Post', function ($trail, $post) {
@@ -51,15 +56,3 @@ Breadcrumbs::for('Page', function ($trail, $page) {
 
     $trail->push(__($childPage->title), route('front-page-show', $childPage->id));
 });
-
-//// Home > Blog > [Category]
-//Breadcrumbs::for('category', function ($trail, $category) {
-//    $trail->parent('blog');
-//    $trail->push($category->title, route('category', $category->id));
-//});
-//
-//// Home > Blog > [Category] > [Post]
-//Breadcrumbs::for('post', function ($trail, $post) {
-//    $trail->parent('category', $post->category);
-//    $trail->push($post->title, route('post', $post->id));
-//});

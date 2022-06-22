@@ -450,7 +450,7 @@
 {{--                    </div>--}}
 {{--                </li>--}}
                 <li class="search">
-                    <form action="#" method="POST" class="search-form position-relative">
+                    <form action="#" method="POST" class="search-form position-relative d-flex">
                         @csrf
                         <input type="text" maxlength="255" placeholder="{{ __('Keyword search') }}">
                         <button type="submit" class="search-icon-btn">
@@ -499,16 +499,56 @@
                     </li>
                 @endforeach
             </ul>
+{{--            <ul role="menu" aria-level="1" class="bottom-nav">--}}
+{{--                <li class="nav-item">--}}
+{{--                    <div class="nav-item-wrapper">--}}
+{{--                        <div class="localization-languages d-flex justify-content-between align-items-center">--}}
+{{--                            <div class="d-flex">--}}
+{{--                                <a href="{{ route('locale', 'kg') }}" class="text-uppercase me-2 @if( App::getLocale() == 'kg')active @endif">Кырг</a>--}}
+{{--                                <a href="{{ route('locale', 'ru') }}" class="text-uppercase me-2 @if( App::getLocale() == 'ru')active @endif">Рус</a>--}}
+{{--                                <a href="{{ route('locale', 'en') }}" class="text-uppercase me-2 @if( App::getLocale() == 'en')active @endif">Eng</a>--}}
+{{--                            </div>--}}
+{{--                            <a href="{{ route('login') }}"><i class="mdi mdi-login" style="font-size: 21px; color: var(--heading-color);"></i></a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </li>--}}
+{{--            </ul>--}}
             <ul role="menu" aria-level="1" class="bottom-nav">
                 <li class="nav-item">
                     <div class="nav-item-wrapper">
                         <div class="localization-languages d-flex justify-content-between align-items-center">
+                            <div class="col minfin-address ">
+                                <p class="mb-3 d-flex align-items-center">
+                                    <img src="{{ asset('front/images/icons/phone-white-icon.svg') }}" alt="" class="me-2">
+                                    Тел: +996 312 607 080
+                                </p>
+                                <p class="d-flex align-items-center">
+                                    <img src="{{ asset('front/images/icons/map-pin-white.svg ') }}" alt="" class="me-2">
+                                    Адрес: бульвар Эркиндик, 58
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="nav-item-wrapper">
+                        <div class="localization-languages d-flex justify-content-between align-items-center">
+                            <div class="d-flex social-media me-4">
+                                <a href="" class="me-2">
+                                    <img src="{{ asset('front/images/icons/social/Facebook.svg') }}" alt="..." width="30px">
+                                </a>
+                                <a href="" class="me-2">
+                                    <img src="{{ asset('front/images/icons/social/instagram.svg') }}" alt="..." width="30px">
+                                </a>
+                                <a href="" class="me-2">
+                                    <img src="{{ asset('front/images/icons/social/telegram.svg') }}" alt="..." width="30px">
+                                </a>
+                            </div>
                             <div class="d-flex">
                                 <a href="{{ route('locale', 'kg') }}" class="text-uppercase me-2 @if( App::getLocale() == 'kg')active @endif">Кырг</a>
                                 <a href="{{ route('locale', 'ru') }}" class="text-uppercase me-2 @if( App::getLocale() == 'ru')active @endif">Рус</a>
                                 <a href="{{ route('locale', 'en') }}" class="text-uppercase me-2 @if( App::getLocale() == 'en')active @endif">Eng</a>
                             </div>
-                            <a href="{{ route('login') }}"><i class="mdi mdi-login" style="font-size: 21px; color: var(--heading-color);"></i></a>
                         </div>
                     </div>
                 </li>

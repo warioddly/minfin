@@ -24,9 +24,11 @@ Route::middleware(['setLocale'])->group(function(){
 
         Route::group(['prefix' => 'posts'], function () {
             Route::get('/{id}', 'PostController@Show')->name('front-post-show');
+            Route::get('/', 'PostController@Index')->name('front-posts');
         });
 
         Route::group(['prefix' => 'pages'], function () {
+            Route::get('/', 'PageController@Index')->name('front-pages');
             Route::get('/{id}', 'PageController@Show')->name('front-page-show');
             Route::get('sheet/{id}', 'PageController@ShowSheet')->name('front-sheet-show');
         });

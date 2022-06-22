@@ -27,12 +27,8 @@
                         <div class="btn-group d-block mb-2">
                             <button type="button" class="btn btn-primary dropdown-toggle w-100" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ __('Control') }}</button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#"><i class="mdi mdi-file-phone-outline me-1"></i>{{ __('Change contacts') }}</a>
                                 <a data-bs-toggle="modal" href="#create" role="button"
                                    class="dropdown-item"><i class="mdi mdi-spin mdi-star me-1"></i> {{ __('Add carousel item') }}
-                                </a>
-                                <a data-bs-toggle="modal" href="#create" role="button"
-                                   class="dropdown-item"><i class="mdi mdi-spin mdi-loading me-1"></i> {{ __('Update statistic data') }}
                                 </a>
                                 <a data-bs-toggle="modal" href="#changeMainPageBlocks" role="button"
                                    class="dropdown-item change-button"><i class="mdi mdi-view-week mdi-loading me-1"></i> {{ __('Change block in a main paige') }}
@@ -50,11 +46,6 @@
                                aria-selected="false">
                                 <i class="mdi mdi-google-drive font-18 align-middle me-2"></i>
                                 <span class="d-md-block">{{ __('Carousel') }}</span>
-                            </a>
-                            <a class="nav-link d-flex align-items-center" id="v-pills-profile-tab" data-bs-toggle="pill" href="#v-pills-statistics" role="tab" aria-controls="v-pills-profile"
-                               aria-selected="false">
-                                <i class="mdi mdi-google-drive font-18 align-middle me-2"></i>
-                                <span class="d-md-block">{{ __('Statistics') }}</span>
                             </a>
                         </div>
                     </div>
@@ -96,9 +87,6 @@
                                         </div>
                                     @endforeach
                                 </div>
-                            </div>
-                            <div class="tab-pane fade" id="v-pills-statistics" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                                <p class="mb-0">awdawdddddd</p>
                             </div>
                         </div>
                     </div>

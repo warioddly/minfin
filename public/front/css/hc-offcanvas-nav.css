@@ -288,6 +288,7 @@ body.hc-nav-open {
     border-bottom: 1px solid #2c5d8f;
     transition: background .1s ease;
     font-family: var(--source-sans-family);
+    text-transform: uppercase;
 }
 .hc-offcanvas-nav .nav-item-link:focus, .hc-offcanvas-nav .nav-item-link:focus-within, .hc-offcanvas-nav li.nav-close a:focus, .hc-offcanvas-nav li.nav-close a:focus-within, .hc-offcanvas-nav .nav-back a:focus, .hc-offcanvas-nav .nav-back a:focus-within {
     z-index: 10;
@@ -592,5 +593,5 @@ body.hc-nav-open {
 }
 
 .hc-offcanvas-nav .search .nav-item-link {
-    padding: 0;
+    padding: 7px 15px;
 }

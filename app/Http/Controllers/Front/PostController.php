@@ -16,4 +16,10 @@ class PostController extends Controller
 
         return view('front.posts.show', compact('post'));
     }
+
+    public function Index(){
+        $posts = Post::where('sheet', false)->latest()->paginate(23);
+
+        return view('front.posts.index', compact('posts'));
+    }
 }

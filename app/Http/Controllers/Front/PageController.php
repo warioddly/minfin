@@ -5,44 +5,17 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Models\Page;
 use App\Models\Post;
+use App\Services\PageFrontService;
 
 class PageController extends Controller
 {
-    public function getAllChildPages($page, $type = null, $childPages = []){
-        foreach ($page->childPages as $item) {
-            if (count($item->childPages) > 0) {
-                $allChilds = $this->getAllChildPages($item, $type, $childPages);
-                $childPages[$item->id] = [
-                    'page' => $item,
-                    'childs' => [
-                        'ids' => array_merge(
-                            !$type || $item->type === $type ? [$item->id] : [],
-                            array_filter(array_map(function ($v) use ($type) {
-                                if ($type === $v['page']->type) {
-                                    return $v['childs']['ids'][0];
-                                }
-                            }, $allChilds), function ($v) {
-                                return (bool)$v;
-                            })
-                        ),
-                        'items' => $allChilds
-                    ]
-                ];
-            } else {
-                $childPages[$item->id] = [
-                    'page' => $item,
-                    'childs' => [
-                        'ids' => !$type || $item->type === $type ? [$item->id] : [],
-                        'items' => []
-                    ]
-                ];
-            }
-        }
+    public function Index(){
+        $pages = Page::all();
 
-        return $childPages;
+        return view('front.pages.index', compact('pages'));
     }
 
-    public function Show($id){
+    public function Show(PageFrontService $service,$id){
         $page = Page::findOrFail($id);
 
         if($page->type == 2){
@@ -50,13 +23,7 @@ class PageController extends Controller
             return redirect()->route('front-sheet-show', $sheet->id);
         }
 
-        $childPages = $this->getAllChildPages($page, null);
-        $childPagesIds = [];
-        foreach ($childPages as $childPage) {
-            foreach ($childPage['childs']['ids'] as $item) {
-                array_push($childPagesIds, $item);
-            }
-        }
+        $childPagesIds = $service->getAllChildPages($page, null);
 
         $posts = Post::whereIn('page_id', array_merge($childPagesIds, [$page->id]))->where('sheet', false)->where('is_published', true)->latest()->paginate(10);
 

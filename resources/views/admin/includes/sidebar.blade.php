@@ -54,6 +54,15 @@
                 </li>
             @endif
 
+            @if(auth()->user()->can('show-categories'))
+                <li class="side-nav-item">
+                    <a href="#" class="side-nav-link">
+                        <i class="dripicons-user-group"></i>
+                        <span> {{ __('Appeal of citizens') }} </span>
+                    </a>
+                </li>
+            @endif
+
             @if(auth()->user()->can('show-documents'))
                 <li class="side-nav-item">
                     <a href="{{ route('documents') }}" class="side-nav-link">
@@ -91,7 +100,6 @@
             @endif
 
         @endcanany
-
 
         @canany(['show-users', 'show-roles', 'show-logs', 'show-email'])
             <li class="side-nav-title side-nav-item">{{ __('Administration') }}</li>
@@ -134,16 +142,6 @@
 
         @endcanany
     </ul>
-
-{{--    <div class="help-box help-box-light text-center">--}}
-{{--        <a href="javascript: void(0);" class="float-end close-btn text-body">--}}
-{{--            <i class="mdi mdi-close"></i>--}}
-{{--        </a>--}}
-{{--        <img src="{{ asset('admin/images/help-icon.svg') }}" height="90" alt="Helper Icon Image" />--}}
-{{--        <h5 class="mt-3">Unlimited Access</h5>--}}
-{{--        <p class="mb-3">Upgrade to plan to get access to unlimited reports</p>--}}
-{{--        <a href="javascript: void(0);" class="btn btn-outline-primary btn-sm">Upgrade</a>--}}
-{{--    </div>--}}
 
     <div class="clearfix"></div>
 </div>

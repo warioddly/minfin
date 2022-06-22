@@ -67,7 +67,7 @@
         <div class="container">
             <div class="col d-flex justify-content-between align-items-center mb-3">
                 <p class="header-text">{{ __('News') }}</p>
-                <a href="#" class="view_all-news-btn">{{ __('View all news') }}</a>
+                <a href="{{ route('front-posts') }}" class="view_all-news-btn">{{ __('View all news') }}</a>
             </div>
             <div class="row">
                 <div class="col-md-6 main-new__block">
@@ -117,23 +117,21 @@
                         @endif
                         <div class="col-md-12 col-lg-12 col new_block mb-lg-3 mb-2">
                             <span class="p-0 d-flex">
-                                <a href="{{ route('front-post-show', $post->id) }}">
-                                    <div class="position-relative">
-                                        <img src="{{ $post->preview_image  }}" alt="" class="new_block__image">
-                                    </div>
-                                    <div class="position-relative new_text-information">
-                                        <p class="new_block__date pb-1 pb-lg-2 pb-md-1 pt-2">{{ $post->created_at->toDateTime()->format('d.m.Y H:s') }}</p>
-                                        <p class="new_block__title d-block d-sm-none d-md-none d-md-none">
-                                            @for($i = 0; $i < 6; $i++) {{ explode(" ", $post->title)[$i] ?? '' }} @endfor...
-                                            <a class="new_block__read_more">{{ __('read more') }}</a>
-                                        </p>
-                                        <p class="new_block__title d-none d-sm-block d-md-block d-lg-block">
-                                            @for($i = 0; $i < 11; $i++) {{ explode(" ", $post->title)[$i] ?? '' }} @endfor...
-                                            <a class="new_block__read_more">{{ __('read more') }}</a>
-                                        </p>
-                                        <p class="new_block__category bottom-0 pb-2">{{ $post->category->title }}</p>
-                                    </div>
-                                </a>
+                                <div class="position-relative">
+                                    <img src="{{ $post->preview_image  }}" alt="" class="new_block__image">
+                                </div>
+                                <div class="position-relative new_text-information">
+                                    <p class="new_block__date pb-1 pb-lg-2 pb-md-1 pt-2">{{ $post->created_at->toDateTime()->format('d.m.Y H:s') }}</p>
+                                    <p class="new_block__title d-block d-sm-none d-md-none d-md-none">
+                                        @for($i = 0; $i < 6; $i++) {{ explode(" ", $post->title)[$i] ?? '' }} @endfor...
+                                        <a class="new_block__read_more" href="{{ route('front-post-show', $post->id) }}">{{ __('read more') }}</a>
+                                    </p>
+                                    <p class="new_block__title d-none d-sm-block d-md-block d-lg-block">
+                                        @for($i = 0; $i < 11; $i++) {{ explode(" ", $post->title)[$i] ?? '' }} @endfor...
+                                        <a class="new_block__read_more" href="{{ route('front-post-show', $post->id) }}">{{ __('read more') }}</a>
+                                    </p>
+                                    <p class="new_block__category bottom-0 pb-2">{{ $post->category->title }}</p>
+                                </div>
                             </span>
                         </div>
                     @endforeach
@@ -343,7 +341,7 @@
             </div>
         </div>
     </section>
-    <section id="third-post-subsection" class="mb-5">
+    <section id="third-post-subsection" class="mb-3 mb-md-5">
         <div class="container">
             <p class="header-text mb-4">{{ __('News') }} о министерстве</p>
             <x-third-new-subsection-block
@@ -351,10 +349,24 @@
             ></x-third-new-subsection-block>
         </div>
     </section>
-    <section class="add mb-5">
-        <a href="#" class="add__row">
-            <img src="{{ asset('/front/images/add.png') }}" alt="" class="img-fluid">
-        </a>
+    <section class="add mb-3 mb-md-5">
+       <div class="container">
+           <div class="row">
+               <div class="col-3 position-relative add-col add-left-col">
+                   <img src="https://wallpaperaccess.com/full/2651909.jpg" alt="" class="add-img">
+                   <img src="{{ asset('/front/images/add-arrow-right.svg') }}" alt="" class="position-absolute add-left-arrow d-none d-sm-block">
+                   <img src="{{ asset('/front/images/add-arrow-right-mobile.svg') }}" alt="" class="position-absolute add-left-arrow d-block d-sm-none">
+               </div>
+               <div class="col-6 position-relative add-col add-center-col justify-content-center">
+                    <p>Вложения в 12-месячные ГКВ стали выгоднее на 20.8%</p>
+               </div>
+               <div class="col-3 position-relative add-col add-right-col">
+                   <img src="{{ asset('/front/images/add-arrow-right.svg') }}" alt="" class="position-absolute add-right-arrow d-none d-sm-block">
+                   <img src="{{ asset('/front/images/add-arrow-right-mobile.svg') }}" alt="" class="position-absolute add-right-arrow d-block d-sm-none">
+                   <img src="https://wallpaperaccess.com/full/2651913.jpg" alt="" class="add-img">
+               </div>
+           </div>
+       </div>
     </section>
     <section id="page-links" class="mb-3 mb-lg-5">
         <div class="container">
@@ -364,7 +376,7 @@
                     :items="$selectedMainPages"
                 ></x-white-link-block>
                 <div class="col-lg-4 col-md-6 col-12 ">
-                    <a href="#" class="white_block_links d-flex pe-1" >
+                    <a href="{{ route('front-pages') }}" class="white_block_links d-flex pe-1" >
                         <i class="mdi mdi-dots-horizontal py-3 ms-2 ms-lg-3 me-2 d-flex white-link-block-icon"></i>
                         {{ __("View all") }}
                     </a>
