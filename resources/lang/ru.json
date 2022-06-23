@@ -13,6 +13,10 @@
     "Shopokov":"Шопоков ",
     "Kara-Balta":"Кара-Балта",
     "Kant":"Кант",
+    "Sverdlov district":"Свердловский район",
+    "October district":"Октябрьский район",
+    "Pervomaisky district":"Первомайский район",
+    "Leninsky district":"Ленинский район",
 
     "Talas region":"Таласская область",
     "Talas":"Талас",
@@ -20,7 +24,6 @@
     "Manas district":"Манасский район",
     "Talas district":"Таласский район",
     "Bakai-Ata district":"Бакай-Атинский район",
-
 
     "Jalal-Abad region":"Джалал-Абадская область",
     "Chatkal district":"Чаткальский район",
@@ -47,6 +50,7 @@
     "Naryn district":"Нарынский район",
     "At-Bashy district":"Ат-Башынский район",
     "Naryn city":"Нарын",
+    "Bishkek":"Бишкек",
 
 
     "Issyk-Kul region":"Иссык-Кульская область",
@@ -344,7 +348,8 @@
     "Partners": "Партнеры",
     "Anti-corruption policy": "Антикоррупционная политика",
     "Personnel policy": "Кадровая политика",
-    "Appeal of citizens": "Обращение граждан",
+    "Appeal Of Citizens": "Обращение граждан",
+    "Ask a Questions": "Задать вопрос",
     "Popular news": "Популярные посты",
     "Report": "Отчет",
     "Popular category": "Популярная категория",
@@ -378,5 +383,20 @@
     "Keyword search": "Поиск по ключевым словам",
     "Latest news-2": "Последние новости",
     "Subsection": "Подраздел",
+    "Ask a Question": "Задать вопрос",
+    "Enter text": "Введите текст",
+    "Publication period": "Период публикации",
+    "View answer": "Посмотреть ответ",
+    "Hide answer": "Скрыть ответ",
+    "Answer": "Ответ",
+    "Send": "Отправить",
+    "Region": "Область",
+    "District": "Район",
+    "Address": "Адрес",
+    "Leave a question": "Оставить вопрос",
+    "Number": "Номер телефона",
+    "Name of the organization": "Название организации",
+    "Your question": "Ваш вопрос",
+    "Fields marked with an asterisk are required": "Поля помеченные звездочкой (*) обязательны для заполнения",
     "Cannot be added because data already exists": "Невозможно добавить, так как страница уже существует"
 }

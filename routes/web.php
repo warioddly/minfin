@@ -21,19 +21,21 @@ Route::middleware(['setLocale'])->group(function(){
 
     Route::group(["namespace" => "App\Http\Controllers\Front"], function () {
         Route::get('/', 'IndexController@Index')->name('index');
-
         Route::group(['prefix' => 'posts'], function () {
             Route::get('/{id}', 'PostController@Show')->name('front-post-show');
             Route::get('/', 'PostController@Index')->name('front-posts');
         });
-
         Route::group(['prefix' => 'pages'], function () {
             Route::get('/', 'PageController@Index')->name('front-pages');
             Route::get('/{id}', 'PageController@Show')->name('front-page-show');
             Route::get('sheet/{id}', 'PageController@ShowSheet')->name('front-sheet-show');
         });
-
         Route::get('/contacts', 'PageController@Contacts')->name('contacts');
+        Route::group(["prefix" => "appealofcitizens"], function () {
+            Route::get('/', 'PageController@AppealOfCitizens')->name('appeal-of-citizens');
+            Route::get('/ask-a-question', 'PageController@AskAQuestions')->name('ask-a-question');
+            Route::post('/appeal-question', 'PageController@AppealQuestion')->name('appeal-question');
+        });
     });
 
     // ADMIN CONTROLLERS

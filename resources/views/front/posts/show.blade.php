@@ -44,13 +44,11 @@
                         </div>
                     </div>
                     <div class="tab-pane" id="news-documents">
-                        <div class="main-documents mt-3">
-                            <div class="row">
-                                <x-post-document-download
-                                    :items="$post['attachmentFiles']"
-                                ></x-post-document-download>
-                            </div>
-                        </div>
+                       <div class="main-documents mt-3 px-2 px-md-0">
+                           <x-post-document-download
+                               :items="$post['attachmentFiles']"
+                           ></x-post-document-download>
+                       </div>
                     </div>
                 </div>
             </div>

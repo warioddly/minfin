@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AppealOfCitizensRequest;
+use App\Models\Category;
 use App\Models\Page;
 use App\Models\Post;
 use App\Services\PageFrontService;
@@ -38,5 +40,19 @@ class PageController extends Controller
 
     public function Contacts(){
         return view('front.vendor.contacts');
+    }
+
+    public function AppealOfCitizens(){
+        return view('front.appealofcitizens.appealofcitizens');
+    }
+
+    public function AskAQuestions(){
+        $categories = Category::where('publisher', false)->get();
+        return view('front.appealofcitizens.askaquestions', compact('categories'));
+    }
+
+    public function AppealQuestion(AppealOfCitizensRequest $request){
+        dd($request->all());
+        return view('front.appealofcitizens.askaquestions', compact('categories'));
     }
 }

@@ -1,6 +1,6 @@
 @foreach($items as $key => $item)
     @if($key != $blockLimit)
-        <div class="col-4 d-flex justify-content-center">
+        <div class="col-4 col-md-5 col-lg-4 d-flex justify-content-center">
             <div class="card new_card__block">
                 <img src="{{ $item->preview_image }}" class="card-img-top" alt="...">
                 <div class="card-body">

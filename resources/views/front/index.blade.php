@@ -139,7 +139,7 @@
             </div>
         </div>
     </section>
-    <section id="economic-map" class="mt-3 mb-4">
+    <section id="economic-map" class="mt-3 mb-5 mb-md-4">
         <div class="container">
             <p class="header-text">{{ __('Economic map') }}</p>
             <div class="row justify-content-between">
@@ -341,7 +341,7 @@
             </div>
         </div>
     </section>
-    <section id="third-post-subsection" class="mb-3 mb-md-5">
+    <section id="third-post-subsection" class="mb-3 mb-md-5 mt-4 mt-md-0">
         <div class="container">
             <p class="header-text mb-4">{{ __('News') }} о министерстве</p>
             <x-third-new-subsection-block
@@ -375,6 +375,12 @@
                 <x-white-link-block
                     :items="$selectedMainPages"
                 ></x-white-link-block>
+                <div class="col-lg-4 col-md-6 col-12 ">
+                    <a href="{{ route('appeal-of-citizens') }}" class="white_block_links d-flex pe-1" >
+                        <i class="mdi mdi-account-edit-outline py-3 ms-2 ms-lg-3 me-2 d-flex white-link-block-icon"></i>
+                        {{ __("Appeal of citizens") }}
+                    </a>
+                </div>
                 <div class="col-lg-4 col-md-6 col-12 ">
                     <a href="{{ route('front-pages') }}" class="white_block_links d-flex pe-1" >
                         <i class="mdi mdi-dots-horizontal py-3 ms-2 ms-lg-3 me-2 d-flex white-link-block-icon"></i>

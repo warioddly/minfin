@@ -1,7 +1,5 @@
 <?php
 
-// Home
-use App\Models\Page;
 use DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs;
 
 Breadcrumbs::for('home', function ($trail) {
@@ -26,6 +24,16 @@ Breadcrumbs::for('Post', function ($trail, $post) {
 Breadcrumbs::for('Contacts', function ($trail) {
     $trail->parent('home');
     $trail->push(__('Contacts'));
+});
+
+Breadcrumbs::for('AppealOfCitizens', function ($trail) {
+    $trail->parent('home');
+    $trail->push(__('Appeal Of Citizens'), route('appeal-of-citizens'));
+});
+
+Breadcrumbs::for('AskAQuestions', function ($trail) {
+    $trail->parent('AppealOfCitizens');
+    $trail->push(__('Ask a Questions'));
 });
 
 Breadcrumbs::for('Page', function ($trail, $page) {

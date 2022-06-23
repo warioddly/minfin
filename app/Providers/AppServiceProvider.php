@@ -32,6 +32,6 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrap();
         $latestUsers = User::latest()->take(3)->get();
         View::share('latestUsers', $latestUsers);
-        View::share('pages',  Page::where('parent_id', null)->get());
+        View::share('navPages',  Page::where('parent_id', null)->get());
     }
 }

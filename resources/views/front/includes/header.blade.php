@@ -58,7 +58,7 @@
             <div class="d-flex navigation justify-content-around align-items-center">
                 <div class="col">
                     <ul class="nav__items d-flex">
-                        @foreach($pages as $page)
+                        @foreach($navPages as $page)
                                 @if($page->title == 'About the ministry')
                                     <li class="nav__item">
                                         <a href="{{ route('front-page-show', $page->id) }}" class="item__link text-uppercase">{{ __('About the ministry') }}</a>
@@ -138,7 +138,7 @@
                                     </li>
                                 @endif
                         @endforeach
-                        @foreach($pages as $page)
+                        @foreach($navPages as $page)
                             @if($page->title == 'Activity')
                                 <li class="nav__item">
                                     <a href="{{ route('front-page-show', $page->id) }}" class="item__link text-uppercase">{{ __('Activity') }}</a>
@@ -216,7 +216,7 @@
                                 </li>
                             @endif
                         @endforeach
-                        @foreach($pages as $page)
+                        @foreach($navPages as $page)
                                 @if($page->title == 'Documents')
                                     <li class="nav__item">
                                         <a href="{{ route('front-page-show', $page->id) }}" class="item__link text-uppercase">{{ __('Documents') }}</a>
@@ -294,7 +294,7 @@
                                     </li>
                                 @endif
                             @endforeach
-                        @foreach($pages as $page)
+                        @foreach($navPages as $page)
                                 @if($page->title == 'Press center')
                                     <li class="nav__item">
                                         <a href="{{ route('front-page-show', $page->id) }}" class="item__link text-uppercase">{{ __('Press center') }}</a>
@@ -449,6 +449,28 @@
 {{--                        </div>--}}
 {{--                    </div>--}}
 {{--                </li>--}}
+                <li class="nav-item">
+                    <div class="nav-item-wrapper">
+                        <div class="localization-languages d-flex justify-content-between align-items-center">
+                            <div class="d-flex social-media me-4">
+                                <a href="" class="me-2">
+                                    <img src="{{ asset('front/images/icons/social/Facebook.svg') }}" alt="..." width="30px">
+                                </a>
+                                <a href="" class="me-2">
+                                    <img src="{{ asset('front/images/icons/social/instagram.svg') }}" alt="..." width="30px">
+                                </a>
+                                <a href="" class="me-2">
+                                    <img src="{{ asset('front/images/icons/social/telegram.svg') }}" alt="..." width="30px">
+                                </a>
+                            </div>
+                            <div class="d-flex">
+                                <a href="{{ route('locale', 'kg') }}" class="text-uppercase me-2 @if( App::getLocale() == 'kg')active @endif">Кырг</a>
+                                <a href="{{ route('locale', 'ru') }}" class="text-uppercase me-2 @if( App::getLocale() == 'ru')active @endif">Рус</a>
+                                <a href="{{ route('locale', 'en') }}" class="text-uppercase me-2 @if( App::getLocale() == 'en')active @endif">Eng</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
                 <li class="search">
                     <form action="#" method="POST" class="search-form position-relative d-flex">
                         @csrf
@@ -458,7 +480,7 @@
                         </button>
                     </form>
                 </li>
-                @foreach($pages as $page)
+                @foreach($navPages as $page)
                     <li class="cryptocurrency">
                         <a href="{{ route('front-page-show', $page->id) }}" rel="noreferrer" target="_self">{{ __($page->title) }}</a>
                         @if(count($page->ChildPages) != 0)
@@ -526,28 +548,6 @@
                                     <img src="{{ asset('front/images/icons/map-pin-white.svg ') }}" alt="" class="me-2">
                                     Адрес: бульвар Эркиндик, 58
                                 </p>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <div class="nav-item-wrapper">
-                        <div class="localization-languages d-flex justify-content-between align-items-center">
-                            <div class="d-flex social-media me-4">
-                                <a href="" class="me-2">
-                                    <img src="{{ asset('front/images/icons/social/Facebook.svg') }}" alt="..." width="30px">
-                                </a>
-                                <a href="" class="me-2">
-                                    <img src="{{ asset('front/images/icons/social/instagram.svg') }}" alt="..." width="30px">
-                                </a>
-                                <a href="" class="me-2">
-                                    <img src="{{ asset('front/images/icons/social/telegram.svg') }}" alt="..." width="30px">
-                                </a>
-                            </div>
-                            <div class="d-flex">
-                                <a href="{{ route('locale', 'kg') }}" class="text-uppercase me-2 @if( App::getLocale() == 'kg')active @endif">Кырг</a>
-                                <a href="{{ route('locale', 'ru') }}" class="text-uppercase me-2 @if( App::getLocale() == 'ru')active @endif">Рус</a>
-                                <a href="{{ route('locale', 'en') }}" class="text-uppercase me-2 @if( App::getLocale() == 'en')active @endif">Eng</a>
                             </div>
                         </div>
                     </div>
