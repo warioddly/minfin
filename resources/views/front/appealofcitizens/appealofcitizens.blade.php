@@ -9,6 +9,17 @@
                 <div class="col">
                     {{ Breadcrumbs::render('AppealOfCitizens') }}
                 </div>
+
+                @if($errors->any())
+                    @foreach ($errors->all() as $error)
+                        <x-alert alertType="danger" message="{{ $error }}"></x-alert>
+                    @endforeach
+                @endif
+
+                @if(session('status'))
+                    <x-alert alertType="success" message="{{ session('status') }}"></x-alert>
+                @endif
+
             </div>
         </div>
     </section>
@@ -19,12 +30,12 @@
 
                     <div class="d-flex content-header pb-3 mb-3">
                         <img src="{{ asset('/front/images/icons/appealofcitizens-icon.svg') }}" alt="" class="me-2">
-                        <p class="header-text border-none">{{ __('Appeal of citizens') }}</p>
+                        <p class="header-text border-none">{{ __('Appeal Of Citizens') }}</p>
                     </div>
 
-                    @for($i = 0; $i < 5;$i++)
-                        <x-appeal-of-citizens-block></x-appeal-of-citizens-block>
-                    @endfor
+                    <x-appeal-of-citizens-block
+                        :items="$appealofcitizens"
+                    ></x-appeal-of-citizens-block>
 
                 </div>
                 <div class="col-3">
@@ -32,16 +43,16 @@
                         {{ __('Ask a Question') }}
                         <i class="mdi mdi-message-bulleted"></i>
                     </a>
-                    <form action="#" method="POST">
+                    <form action="{{ route('appeal-search') }}" method="POST">
                         @csrf
                         <div class="form-group d-grid mb-3">
                             <label for="appeal-search-input" class="mb-2 form-lbl">{{ __('Search') }}</label>
-                            <input type="text" maxlength="255" id="appeal-search-input" class="form-input" placeholder="{{ __('Enter text') }}">
+                            <input type="text" maxlength="255" name="search" id="appeal-search-input" class="form-input" placeholder="{{ __('Enter text') }}">
                         </div>
 
                         <div class="form-group d-grid position-relative mb-3">
                             <label for="appeal-search-input" class="mb-2 form-lbl">{{ __('Publication period') }}</label>
-                            <input type="text" name="dates" id="appeal-search-input" class="form-input" value="01/01/2022" />
+                            <input type="text" name="dates" id="appeal-search-input" class="form-input" value="01-01-2022" />
                             <i class="uil-calendar-alt calendar-icon"></i>
                         </div>
 

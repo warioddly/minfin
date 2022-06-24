@@ -32,9 +32,10 @@ Route::middleware(['setLocale'])->group(function(){
         });
         Route::get('/contacts', 'PageController@Contacts')->name('contacts');
         Route::group(["prefix" => "appealofcitizens"], function () {
-            Route::get('/', 'PageController@AppealOfCitizens')->name('appeal-of-citizens');
-            Route::get('/ask-a-question', 'PageController@AskAQuestions')->name('ask-a-question');
-            Route::post('/appeal-question', 'PageController@AppealQuestion')->name('appeal-question');
+            Route::get('/', 'AppealController@Index')->name('appeal-of-citizens');
+            Route::get('/ask-a-question', 'AppealController@AskAQuestions')->name('ask-a-question');
+            Route::post('/appeal-question', 'AppealController@AppealQuestion')->name('appeal-question');
+            Route::post('/appeal-search', 'AppealController@AppealSearch')->name('appeal-search');
         });
     });
 
@@ -102,6 +103,13 @@ Route::middleware(['setLocale'])->group(function(){
             Route::get('/', 'UserController@Index')->name('users')->middleware('can:show-users');
             Route::post('/store', 'UserController@Store')->name('store-user')->middleware('can:add-users');
             Route::patch('/{id}', 'UserController@Update')->name('update-user')->middleware('can:edit-users');
+        });
+
+        Route::group(["namespace" => "AppealController", "prefix" => "appeal"], function () {
+            Route::get('/', 'AppealController@Index')->name('appeal')->middleware('can:show-appeal');
+            Route::get('/{id}', 'AppealController@Show')->name('show-appeal')->middleware('can:show-appeal');
+            Route::post('/{id}/answer', 'AppealController@Answer')->name('appeal-answer')->middleware('can:add-appeal');
+            Route::get('/{id}/{publish}', 'AppealController@Publish')->name('appeal-publish')->middleware('can:edit-appeal');
         });
 
         Route::group(["namespace" => "RoleController", "prefix" => "roles"], function () {

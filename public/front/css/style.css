@@ -1779,6 +1779,7 @@ footer{
 }
 
 #content .appeal_block .appeal-body{
+    word-break: break-word;
     font-family: var(--source-sans-family);
     font-size: 16px;
     line-height: 25px;

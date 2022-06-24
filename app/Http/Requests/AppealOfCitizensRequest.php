@@ -35,6 +35,7 @@ class AppealOfCitizensRequest extends FormRequest
             'category_id' => ['required', 'exists:categories,id'],
             'last_name' => ['required', 'string', 'max:45'],
             'name' => ['required', 'string', 'max:45'],
+            'files[]' => ['nullable', 'array', 'file', 'max:10000'],
         ];
     }
 }

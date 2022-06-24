@@ -51,6 +51,11 @@ class PermissionsSeeder extends Seeder
             'delete-content-settings',
             'edit-content-settings',
 
+            'show-appeal',
+            'add-appeal',
+            'edit-appeal',
+            'delete-appeal',
+
             'show-logs',
             'show-filemanager',
 

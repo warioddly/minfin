@@ -13,13 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
-            $table->id();
-            $table->string("title")->unique();
-            $table->unsignedBigInteger("user_id")->nullable();
-            $table->timestamps();
-
-            $table->foreign('user_id')->on('users')->references('id');
+        Schema::table('documents', function (Blueprint $table) {
+            $table->unsignedBigInteger('appeal_of_citizens_id')->nullable();
+            $table->foreign('appeal_of_citizens_id')->on('appeal_of_citizens')->references('id')->cascadeOnDelete();
         });
     }
 
@@ -30,6 +26,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::table('documents', function (Blueprint $table) {
+            //
+        });
     }
 };

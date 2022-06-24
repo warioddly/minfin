@@ -54,11 +54,11 @@
                 </li>
             @endif
 
-            @if(auth()->user()->can('show-categories'))
+            @if(auth()->user()->can('show-appeal'))
                 <li class="side-nav-item">
-                    <a href="#" class="side-nav-link">
+                    <a href="{{ route('appeal') }}" class="side-nav-link">
                         <i class="dripicons-user-group"></i>
-                        <span> {{ __('Appeal of citizens') }} </span>
+                        <span> {{ __('Appeal Of Citizens') }} </span>
                     </a>
                 </li>
             @endif
@@ -106,7 +106,8 @@
 
             @if(auth()->user()->can('auth-email'))
                 <li class="side-nav-item">
-                    <a href="@if(LaravelGmail::check()) {{ route('email', 'inbox') }} @else {{ route('auth-email') }} @endif" class="side-nav-link">
+{{--                    LaravelGmail::check()--}}
+                    <a href="@if(false) {{ route('email', 'inbox') }} @else {{ route('auth-email') }} @endif" class="side-nav-link">
                         <i class="uil-envelope"></i>
                         <span> {{ __('Email') }} </span>
                     </a>

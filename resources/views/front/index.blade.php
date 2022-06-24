@@ -378,7 +378,7 @@
                 <div class="col-lg-4 col-md-6 col-12 ">
                     <a href="{{ route('appeal-of-citizens') }}" class="white_block_links d-flex pe-1" >
                         <i class="mdi mdi-account-edit-outline py-3 ms-2 ms-lg-3 me-2 d-flex white-link-block-icon"></i>
-                        {{ __("Appeal of citizens") }}
+                        {{ __("Appeal Of Citizens") }}
                     </a>
                 </div>
                 <div class="col-lg-4 col-md-6 col-12 ">

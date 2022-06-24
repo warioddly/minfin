@@ -13,10 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('apeal_of_citizens', function (Blueprint $table) {
+        Schema::create('appeal_of_citizens', function (Blueprint $table) {
             $table->id();
             $table->string('title')->nullable();
             $table->longText('content')->nullable();
+            $table->longText('answer')->nullable();
             $table->string('organization')->nullable();
             $table->string('name')->nullable();
             $table->string('last_name')->nullable();
@@ -25,6 +26,7 @@ return new class extends Migration
             $table->string('region')->nullable();
             $table->string('district')->nullable();
             $table->string('address')->nullable();
+            $table->boolean('is_published')->default(0);
             $table->unsignedBigInteger("category_id")->nullable();
             $table->timestamps();
 

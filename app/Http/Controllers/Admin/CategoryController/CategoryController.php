@@ -45,8 +45,8 @@ class CategoryController extends Controller
         $category = Category::find($id);
 
         if(session('categoryView') == true){
-            $popularPosts = Post::where('publisher_id', $id)->where('views', '!=', 0)->orderBy('views', 'desc')->take(7)->get();
-            $posts = Post::where('publisher_id', $id)->get();
+            $popularPosts = Post::where('category_id', $id)->where('views', '!=', 0)->orderBy('views', 'desc')->take(7)->get();
+            $posts = Post::where('category_id', $id)->get();
         }
         else{
             $popularPosts = Post::where('publisher_id', $id)->where('views', '!=', 0)->orderBy('views', 'desc')->take(7)->get();
@@ -67,7 +67,7 @@ class CategoryController extends Controller
         }
 
         Category::create($data);
-//
+
 //        $translation->addGroupTranslation(session('locale'), 'category', $request->get('title'), $request->get('title'));
 
         return redirect()->back()->with('status', __('Category successfully created'));
