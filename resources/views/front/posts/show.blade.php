@@ -37,10 +37,45 @@
             <div class="col-12 col-md-8 col-lg-9 mb-3 mb-lg-0 post-show-content">
                 <div class="tab-content">
                     <div class="tab-pane show active" id="post">
-                        <div class="show-post-block">
+                        <div class="show-post-block" id="print-post">
                             <p class="p-2 post-title"> {{ __($post->title) }}</p>
+                            <div class="d-flex social-media mb-2 d-print-none">
+                                <ul class="social-list list-inline">
+                                    @foreach($socialMedia as $key => $item)
+                                        @if($key == 5)
+                                            @break
+                                        @endif
+                                        <li class="list-inline-item">
+                                            <a href="{{ $item->url }}"  class="edit-button social-list-item text-secondary d-flex justify-content-center"
+                                               style="font-size: 30px" target="_blank"
+                                            >
+                                                <i class="mdi {{ $item->icon }}"></i>
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
                             <img src="{{ $post->preview_image }}" alt="..." class="img-fluid post-preview-image mt-2 mb-3">
                             <div class="post-content">{!! html_entity_decode( __($post->content) ) !!}</div>
+                            <div class="d-flex social-media mt-5 justify-content-between d-print-none align-items-center">
+                                <ul class="social-list list-inline">
+                                    @foreach($socialMedia as $key => $item)
+                                        @if($key == 5)
+                                            @break
+                                        @endif
+                                        <li class="list-inline-item">
+                                            <a href="{{ $item->url }}"  class="edit-button social-list-item text-blue-light d-flex justify-content-center"
+                                               style="font-size: 30px" target="_blank"
+                                            >
+                                                <i class="mdi {{ $item->icon }}"></i>
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                                <button onclick="printCertificate()" class="print-button">
+                                    <i class="dripicons-print me-2"></i>
+                                    {{ __('Print version') }}</button>
+                            </div>
                         </div>
                     </div>
                     <div class="tab-pane" id="news-documents">
@@ -52,7 +87,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-4 col-lg-3 mb-3">
+            <div class="col-12 col-md-4 col-lg-3 mb-3 ">
                 <div class="p-3 post_information">
                     <p class="header-info-text">{{ __('Publication date') }}</p>
                     <h6 class="mb-lg-4 mt-lg-2 mb-md-3 mt-md-2 mb-2 mt-1 ">{{ Carbon\Carbon::parse($post->created_at)->format("d-m-Y - H:i") }}</h6>
@@ -67,3 +102,15 @@
         </div>
     </div>
 @endsection
+
+@push('footer-scripts')
+    <script>
+        function printCertificate() {
+            const printContents = document.getElementById('print-post').innerHTML;
+            const originalContents = document.body.innerHTML;
+            document.body.innerHTML = printContents;
+            window.print();
+            document.body.innerHTML = originalContents;
+        }
+    </script>
+@endpush

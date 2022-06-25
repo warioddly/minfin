@@ -15,7 +15,7 @@
 
     <ul class="side-nav">
 
-        <li class="side-nav-title side-nav-item">{{ __('Pages') }}</li>
+        <li class="side-nav-title side-nav-item">{{ __('Admin Panel') }}</li>
 
         <li class="side-nav-item">
             <a href="{{ route('dashboard') }}" class="side-nav-link">
@@ -72,20 +72,20 @@
                 </li>
             @endif
 
+            @if(auth()->user()->can('show-archive'))
+                <li class="side-nav-item">
+                    <a href="#" class="side-nav-link">
+                        <i class="dripicons-archive"></i>
+                        <span> {{ __('Archive') }} </span>
+                    </a>
+                </li>
+            @endif
+
             @if(auth()->user()->can('show-translations'))
                 <li class="side-nav-item">
                     <a href="{{ route('translations') }}" class="side-nav-link">
                         <i class="mdi mdi-earth"></i>
                         <span> {{ __('Translations') }} </span>
-                    </a>
-                </li>
-            @endif
-
-            @if(auth()->user()->can('show-content-settings'))
-                <li class="side-nav-item">
-                    <a href="{{ route('settings') }}" class="side-nav-link">
-                        <i class="dripicons-gear noti-icon"></i>
-                        <span> {{ __('Other settings') }} </span>
                     </a>
                 </li>
             @endif
@@ -104,9 +104,18 @@
         @canany(['show-users', 'show-roles', 'show-logs', 'show-email'])
             <li class="side-nav-title side-nav-item">{{ __('Administration') }}</li>
 
+            @if(auth()->user()->can('show-content-settings'))
+                <li class="side-nav-item">
+                    <a href="{{ route('settings') }}" class="side-nav-link">
+                        <i class="dripicons-gear noti-icon"></i>
+                        <span> {{ __('Other settings') }} </span>
+                    </a>
+                </li>
+            @endif
+
             @if(auth()->user()->can('auth-email'))
                 <li class="side-nav-item">
-{{--                    LaravelGmail::check()--}}
+                    {{--                    LaravelGmail::check()--}}
                     <a href="@if(false) {{ route('email', 'inbox') }} @else {{ route('auth-email') }} @endif" class="side-nav-link">
                         <i class="uil-envelope"></i>
                         <span> {{ __('Email') }} </span>
@@ -137,6 +146,15 @@
                     <a href="{{ route('logs') }}" class="side-nav-link">
                         <i class="uil-assistive-listening-systems"></i>
                         <span> {{ __('Logs') }} </span>
+                    </a>
+                </li>
+            @endif
+
+            @if(auth()->user()->can('show-trash'))
+                <li class="side-nav-item">
+                    <a href="#" class="side-nav-link">
+                        <i class="dripicons-trash"></i>
+                        <span> {{ __('Trash') }} </span>
                     </a>
                 </li>
             @endif

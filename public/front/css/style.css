@@ -1886,6 +1886,13 @@ footer{
     padding: 11px 28px !important;
 }
 
+.print-button{
+    border: none;
+    background: none;
+    display: flex;
+    align-items: center;
+}
+
 @media screen and (max-width: 767px) {
 
     .add-col .add-left-arrow{
@@ -2164,5 +2171,4 @@ footer{
     #floatingmes {
         font-size: clamp(0.875rem, 0.6364503816793893rem + 1.0178117048346056vw, 1.125rem);
     }
-
 }

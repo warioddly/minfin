@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Post extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
     protected $table = 'posts';
     protected $guarded = false;
 
@@ -18,7 +19,6 @@ class Post extends Model
     public function publisher(){
         return $this->belongsTo(Category::class, 'publisher_id');
     }
-
 
     public function getUserName($id){
         $user = User::find($id)['name'] ?? "noname";

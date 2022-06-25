@@ -418,6 +418,7 @@
     "Views": "Просмотры",
     "Banner": "Баннер",
     "Reception": "Приемная",
+    "Trash": "Корзина",
     "Helpline": "Телефон доверия",
     "Social sites": "Социальные сети",
     "Receiving emails": "Прием электронных сообщений",
@@ -428,6 +429,8 @@
     "Adding social media": "Добавление соц. сети",
     "Open link": "Открыть ссылку",
     "Social media": "Социальные сети",
+    "Archive": "Архив",
+    "Print version": "Версия для печати",
     "Your request has been received and will be reviewed as soon as possible. The answer will be sent to the email address.": "Ваше обращение получено и будет рассмотрен в ближайшее время. Ответ будет отправлен на адрес электронной почты.",
     "Fields marked with an asterisk are required": "Поля помеченные звездочкой (*) обязательны для заполнения",
     "Cannot be added because data already exists": "Невозможно добавить, так как страница уже существует"
