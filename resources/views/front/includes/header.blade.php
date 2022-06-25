@@ -5,25 +5,31 @@
                 <div class="col d-flex minfin-address ">
                     <p class="me-3">
                         <img src="{{ asset('front/images/icons/phone-icon.svg') }}" alt="" class="me-2">
-                        Тел: +996 312 607 080
+                        Тел: {{ $сontactData->phone }}
                     </p>
                     <p>
                         <img src="{{ asset('front/images/icons/map-pin.svg ') }}" alt="" class="me-2">
-                        Адрес: бульвар Эркиндик, 58
+                        Адрес: {{ $сontactData->address }}
                     </p>
                 </div>
                 <div class="col d-flex justify-content-end">
                     <div class="d-flex social-media me-4">
-                        <a href="" class="me-2">
-                            <img src="{{ asset('front/images/icons/social/Facebook.svg') }}" alt="">
-                        </a>
-                        <a href="" class="me-2">
-                            <img src="{{ asset('front/images/icons/social/instagram.svg') }}" alt="">
-                        </a>
-                        <a href="" class="me-2">
-                            <img src="{{ asset('front/images/icons/social/telegram.svg') }}" alt="">
-                        </a>
+                        <ul class="social-list list-inline">
+                            @foreach($socialMedia as $key => $item)
+                                @if($key == 3)
+                                    @break
+                                @endif
+                                <li class="list-inline-item">
+                                    <a href="{{ $item->url }}"  class="edit-button social-list-item border-primary text-primary d-flex justify-content-center"
+                                        style="font-size: 20px" target="_blank"
+                                    >
+                                        <i class="mdi {{ $item->icon }}"></i>
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
                     </div>
+
                     <div class="localization-languages d-flex">
                         <a href="{{ route('locale', 'kg') }}" class="text-uppercase me-2 @if( App::getLocale() == 'kg')active @endif">Кырг</a>
                         <a href="{{ route('locale', 'ru') }}" class="text-uppercase me-2 @if( App::getLocale() == 'ru')active @endif">Рус</a>

@@ -21,44 +21,41 @@
                 <div class="col-12 col-md-4 col-sm-12">
                     <ul class="contact-data_items contact-data mb-sm-4 mb-3 p-3">
                         <li class="contact-data_item mb-4">
-                            Адрес: <p class="mt-2">Lorem ipsum dolor sit amet, consectetur</p>
+                            {{ __('Address') }}: <p class="mt-2">{{ $сontactData->address }}</p>
                         </li>
                         <li class="contact-data_item mb-4">
-                            Применая: <p class="mt-2">Lorem ipsum dolor sit.</p>
+                            {{ __('Reception') }}: <p class="mt-2">{{ $сontactData->reception }}</p>
                         </li>
                         <li class="contact-data_item mb-4">
-                            Сектор по связям с общественностью: <p class="mt-2">Lorem ipsum dolor sit amet.</p>
+                            {{ __('Public Relations Sector') }}: <p class="mt-2">{{ $сontactData->relations_sector }}</p>
                         </li>
                         <li class="contact-data_item mb-4">
-                            Прием электронных сообщений: <p class="mt-2">Lorem ipsum dolor sit amet, consectetur.</p>
+                            {{ __('Receiving emails') }}: <p class="mt-2">{{ $сontactData->email }}</p>
                         </li>
                         <li class="contact-data_item mb-4">
-                            Телефон доверия: <p class="mt-2">Lorem ipsum.</p>
+                            {{ __('Helpline') }}: <p class="mt-2">{{ $сontactData->helpline }}</p>
                         </li>
                         <li class="contact-data_item mb-4">
-                            Общественная приемная: <p class="mt-2">Lorem ipsum dolor sit amet.</p>
+                            {{ __('Public reception') }}: <p class="mt-2">{{ $сontactData->public_reception }}</p>
                         </li>
                         <li class="social-media contact-data_item">
-                            <p class="social-media mb-3">Социальные сети</p>
-                            <ul class="d-flex">
-                                <li>
-                                    <img src="{{ asset('front/images/icons/social/Facebook.svg') }}" alt="">
-
-                                </li>
-                                <li>
-                                    <img src="{{ asset('front/images/icons/social/instagram.svg') }}" alt="">
-                                </li>
-                                <li>
-                                    <img src="{{ asset('front/images/icons/social/telegram.svg') }}" alt="">
-                                </li>
+                            <p class="social-media mb-3">{{ __('Social media') }}</p>
+                            <ul class="social-list list-inline">
+                                @foreach($socialMedia as $key => $item)
+                                    <li class="list-inline-item me-2">
+                                        <a href="{{ $item->url }}"  class="edit-button social-list-item border-primary text-primary d-flex justify-content-center"
+                                           style="font-size: 20px" target="_blank"
+                                        >
+                                            <i class="mdi {{ $item->icon }}"></i>
+                                        </a>
+                                    </li>
+                                @endforeach
                             </ul>
                         </li>
                     </ul>
                 </div>
-                <div class="col ">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2925.3593866972697!2d74.58038980973456!3d42.84414412205675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x389ec9b8bdad69ed%3A0xce76e22493fb67a0!2sAkademiya%20Tsifrovykh%20Innovatsiy!5e0!3m2!1sen!2skg!4v1654160742266!5m2!1sen!2skg"
-                            style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="google-map-address">
-                    </iframe>
+                <div class="col google-iframe">
+                    {!! html_entity_decode( $сontactData->google_iframe ) !!}
                 </div>
             </div>
         </div>

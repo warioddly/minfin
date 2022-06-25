@@ -6,4 +6,5 @@ return array (
   'dawawawawawawawawawawawawawawawawawawawawawdawdawdawdawdawdawdawdawd
 awddddddddd' => 'dawawawawawawawawawawawawawawawawawawawawawdawdawdawdawdawdawdawdawd
 awddddddddd',
+  'вфцвфцв' => 'вфцвфцв',
 );

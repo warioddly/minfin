@@ -353,17 +353,17 @@
        <div class="container">
            <div class="row">
                <div class="col-3 position-relative add-col add-left-col">
-                   <img src="https://wallpaperaccess.com/full/2651909.jpg" alt="" class="add-img">
+                   <img src="{{ $banner->first_image_path }}" alt="" class="add-img">
                    <img src="{{ asset('/front/images/add-arrow-right.svg') }}" alt="" class="position-absolute add-left-arrow d-none d-sm-block">
                    <img src="{{ asset('/front/images/add-arrow-right-mobile.svg') }}" alt="" class="position-absolute add-left-arrow d-block d-sm-none">
                </div>
                <div class="col-6 position-relative add-col add-center-col justify-content-center">
-                    <p>Вложения в 12-месячные ГКВ стали выгоднее на 20.8%</p>
+                    <p>{{ $banner->content }}</p>
                </div>
                <div class="col-3 position-relative add-col add-right-col">
                    <img src="{{ asset('/front/images/add-arrow-right.svg') }}" alt="" class="position-absolute add-right-arrow d-none d-sm-block">
                    <img src="{{ asset('/front/images/add-arrow-right-mobile.svg') }}" alt="" class="position-absolute add-right-arrow d-block d-sm-none">
-                   <img src="https://wallpaperaccess.com/full/2651913.jpg" alt="" class="add-img">
+                   <img src="{{ $banner->second_image_path }}" alt="" class="add-img">
                </div>
            </div>
        </div>

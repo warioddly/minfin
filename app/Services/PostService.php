@@ -53,6 +53,8 @@ class PostService
             if($data['is_published'] == 'on'){
                 $data['is_published'] = true;
             }
+        }else{
+            $data['is_published'] = false;
         }
 
         return $data;

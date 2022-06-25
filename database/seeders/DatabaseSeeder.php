@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Banner;
+use App\Models\MinFinContact;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -45,5 +47,14 @@ class DatabaseSeeder extends Seeder
 
         $superUser->assignRole('super user');
 
+        Banner::create([
+            'content' => 'this default value',
+            'first_image_path' => 'https://wallpaperaccess.com/full/5003203.jpg',
+            'second_image_path' => 'https://wallpaperaccess.com/full/5052370.jpg',
+        ]);
+
+        MinFinContact::create([
+            'address' => 'г. Бишкек',
+        ]);
     }
 }

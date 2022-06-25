@@ -108,8 +108,10 @@ Route::middleware(['setLocale'])->group(function(){
         Route::group(["namespace" => "AppealController", "prefix" => "appeal"], function () {
             Route::get('/', 'AppealController@Index')->name('appeal')->middleware('can:show-appeal');
             Route::get('/{id}', 'AppealController@Show')->name('show-appeal')->middleware('can:show-appeal');
-            Route::post('/{id}/answer', 'AppealController@Answer')->name('appeal-answer')->middleware('can:add-appeal');
-            Route::get('/{id}/{publish}', 'AppealController@Publish')->name('appeal-publish')->middleware('can:edit-appeal');
+            Route::patch('/{id}/answer', 'AppealController@Answer')->name('appeal-answer')->middleware('can:add-appeal');
+            Route::patch('/{id}/edit', 'AppealController@Edit')->name('appeal-edit')->middleware('can:edit-appeal');
+            Route::get('/{id}/to/{publish}', 'AppealController@Publish')->name('appeal-publish')->middleware('can:edit-appeal');
+            Route::get('/is/{is_published}/', 'AppealController@PublishedAppeals')->name('published-appeals')->middleware('can:show-appeal');
         });
 
         Route::group(["namespace" => "RoleController", "prefix" => "roles"], function () {
@@ -126,13 +128,17 @@ Route::middleware(['setLocale'])->group(function(){
         Route::group(["namespace" => "FeatureController", "prefix" => "features"], function () {
             Route::get('/', 'LogController@Index')->name('logs')->middleware('can:show-logs');
             Route::get('/translations', 'FeatureController@Translations')->name('translations')->middleware('can:show-translations');
-            Route::get('/manager', 'FeatureController@fileManager')->name('file-manager')->middleware('can:show-filemanager');;
+            Route::get('/manager', 'FeatureController@fileManager')->name('file-manager')->middleware('can:show-filemanager');
             Route::get('/{theme}', 'FeatureController@changeAdminTheme')->name('theme');
             Route::get('/{type}/isDirectory', 'FeatureController@isDirectory')->name('isDirectory');
             Route::get('/{type}/isCategory', 'FeatureController@isCategory')->name('isCategory');
             Route::get('/{style}/style', 'FeatureController@postListStyle')->name('post-style')->middleware('can:show-posts');
             Route::post('/notes/store', 'NoteController@Store')->name('store-notes');
             Route::delete('/notes/{id}', 'NoteController@Delete')->name('delete-notes');
+            Route::patch('/banner-update', 'BannerController@Update')->name('update-banner');
+            Route::post('/social-media/store', 'ContactController@StoreSocial')->name('store-social-media');
+            Route::patch('/social-media/update/{id}', 'ContactController@UpdateSocial')->name('update-social-media');
+            Route::patch('/contacts/update/', 'ContactController@UpdateContacts')->name('update-contacts');
         });
 
         Route::group(["namespace" => "EmailController", "prefix" => "email"], function () {

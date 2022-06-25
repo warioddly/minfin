@@ -144,6 +144,13 @@ return array (
 <p>&nbsp;</p>',
     ),
   ),
+  '<p><iframe frameborder="0" height="500" src="https://eco' => 
+  array (
+    'akipress' => 
+    array (
+      'org/weather/date:2022-06-26/?embed" width="100%"></iframe></p>' => '<p><iframe frameborder="0" height="500" src="https://eco.akipress.org/weather/date:2022-06-26/?embed" width="100%"></iframe></p>',
+    ),
+  ),
   '<p>IMOOOOOOO Привет</p>' => '<p>IMOOOOOOO Привет1</p>',
   '<p>awdawdawdawdawdawdawdawdawdawd</p>' => '<p>awdawdawdawdawdawdawdawdawdawd</p>',
 );

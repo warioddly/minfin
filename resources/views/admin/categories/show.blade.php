@@ -19,22 +19,9 @@
                     <div class="align-self-center w-100">
                         <div class="py-3">
                             <div class="chart chart-xs">
-                                <canvas id="chartjs-dashboard-pie"></canvas>
+                                <div id="circle-angle-radial" class="apex-charts"></div>
                             </div>
                         </div>
-
-                        <table class="table mb-0">
-                            <tbody>
-                            <tr>
-                                <td>{{ __('Amount of posts') }}</td>
-                                <td class="text-end">{{ count($category->posts) }}</td>
-                            </tr>
-                            <tr>
-                                <td>{{ __('Total post views') }}</td>
-                                <td class="text-end">{{ $category->TotalPostViews() }}</td>
-                            </tr>
-                            </tbody>
-                        </table>
                     </div>
                 </div>
             </div>
@@ -72,31 +59,43 @@
     <div class="row">
         <x-post-output-card :items="$posts"></x-post-output-card>
     </div>
+
 @endsection
 
 @push('footer-scripts')
-    <script src="{{ asset('admin/js/vendor/Chart.bundle.min.js') }}"></script>
+    <script src="{{ asset('/admin/js/vendor/apexcharts.min.js') }}"></script>
+
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            new Chart(document.getElementById("chartjs-dashboard-pie"), {
-                type: "line",
-                data: {
-                    labels: ["{{ __('Amount of posts') }}", "{{ __('Total post views') }}"],
-                    datasets: [{
-                        data: [{{ count($category->posts) }}, {{ $category->TotalPostViews() }}],
-                        backgroundColor: [ '#3edcd9', '#ba0909', '#e59d36' ],
-                        borderWidth: 5
-                    }]
+        let data = [];
+        @if($category->publisher == true)
+            data =[{{ count($category->publisherPosts) }}, {{ $category->publisherPosts->sum('views') }}];
+        @else
+            data = [{{ count($category->posts) }}, {{ $category->posts->sum('views') }}];
+        @endif
+
+        colors = ["#ffbc00", "#727cf5"];
+        options = {
+            chart: { height: 380, type: "radialBar" },
+            plotOptions: { radialBar: { offsetY: -30, startAngle: 0, endAngle: 270, hollow: { margin: 5, size: "30%", background: "transparent", image: void 0 }, dataLabels: { name: { show: !1 }, value: { show: !1 } } } },
+            colors: colors,
+            series: data,
+            labels: ["{{ __('Posts') }}", "{{ __('Views') }}"],
+            legend: {
+                show: !0,
+                floating: !0,
+                fontSize: "13px",
+                position: "left",
+                offsetX: 10,
+                offsetY: 10,
+                labels: { useSeriesColors: !0 },
+                markers: { size: 0 },
+                formatter: function (o, a) {
+                    return o + ":  " + a.w.globals.series[a.seriesIndex];
                 },
-                options: {
-                    responsive: !window.MSInputMethodContext,
-                    maintainAspectRatio: false,
-                    legend: {
-                        display: false
-                    },
-                    cutoutPercentage: 75
-                }
-            });
-        });
+                itemMargin: { horizontal: 1 },
+            },
+            responsive: [{ breakpoint: 480, options: { legend: { show: !1 } } }],
+        };
+        (chart = new ApexCharts(document.querySelector("#circle-angle-radial"), options)).render();
     </script>
 @endpush

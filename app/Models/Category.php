@@ -15,6 +15,10 @@ class Category extends Model
         return $this->hasMany(Post::class, 'category_id');
     }
 
+    public function publisherPosts(){
+        return $this->hasMany(Post::class, 'publisher_id');
+    }
+
     public function TotalPostViews(){
         return $this->hasMany(Post::class)->sum('views');
     }

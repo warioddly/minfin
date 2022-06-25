@@ -13,10 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('min_fin_contacts', function (Blueprint $table) {
+        Schema::create('banners', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('path');
+            $table->string('first_image_path')->nullable();
+            $table->string('second_image_path')->nullable();
+            $table->string('content');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('min_fin_contacts');
+        Schema::dropIfExists('banners');
     }
 };

@@ -71,7 +71,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Cancel') }}</button>
-                        <button type="submit" id="item-delete" class="btn btn-danger">{{ __('Remove') }}</button>
+                        <button type="submit" class="btn btn-danger item-delete">{{ __('Remove') }}</button>
                     </div>
                 </div>
             </div>
@@ -81,5 +81,5 @@
 
 <x-scripts
     type="post"
-    :urls="['','', route('post-delete')]"
+    :urls="['','', route('post-delete'), '', '', '']"
 ></x-scripts>

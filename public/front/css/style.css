@@ -925,6 +925,10 @@ footer{
     font-weight: 600;
 }
 
+#content .google-iframe iframe{
+    width: 100%;
+}
+
 #content .contact-data_items li{
     margin-bottom: 6px;
 }

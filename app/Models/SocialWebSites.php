@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MinFinContact extends Model
+class SocialWebSites extends Model
 {
     use HasFactory;
-    protected $table = 'minfin_contacts';
+    protected $table = 'social_web_sites';
     protected $guarded = false;
 }

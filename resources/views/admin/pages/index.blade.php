@@ -105,5 +105,5 @@
 
 <x-scripts
     type="pages"
-    :urls="[route('get-pages'), route('directory-update-parent-page', ''), '']"
+    :urls="[route('get-pages'), route('directory-update-parent-page', ''), '', '', '']"
 ></x-scripts>

@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Post;
 use App\Services\CheckPermissionService;
-use JoeDixon\Translation\Drivers\Translation;
 
 class PostController extends Controller
 {

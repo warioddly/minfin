@@ -27,17 +27,16 @@
                         <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="dripicons-dots-3"></i>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-end">
-                            @can('edit-appeal')
+                        @can('edit-appeal')
+                            <div class="dropdown-menu dropdown-menu-end">
                                 @if($appealofcitizen->is_published == true)
                                     <a href="{{ route('appeal-publish', [$appealofcitizen->id, 'Unpublish']) }}" class="dropdown-item"><i class="mdi mdi-exit-to-app me-1"></i>{{ __('Unpublish') }}</a>
                                 @else
                                     <a href="{{ route('appeal-publish', [$appealofcitizen->id, 'publish']) }}" class="dropdown-item"><i class="mdi mdi-exit-to-app me-1"></i>{{ __('Publish') }}</a>
                                 @endif
-                            @endcan
-                            <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-pencil me-1"></i>{{ __('Edit') }}</a>
-                            <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-delete me-1"></i>{{ __('Delete') }}</a>
-                        </div>
+                                <a data-bs-toggle="modal" href="#edit" role="button" class="dropdown-item"><i class="mdi mdi-pencil me-1"></i>{{ __('Edit') }}</a>
+                            </div>
+                        @endcan
                     </div>
 
                     <h3 class="mt-0">{{ $appealofcitizen->title }}</h3>
@@ -80,6 +79,7 @@
                     <h4 class="mt-0 mb-3">{{ __('Answer') }}</h4>
                     <form action="{{ route('appeal-answer', $appealofcitizen->id) }}" method="post">
                         @csrf
+                        @method('PATCH')
                         <textarea class="form-control form-control-light mb-2" name="answer"
                                   placeholder="{{ __('Write message') }}" id="example-textarea"
                                   rows="13" maxlength="2000">{{ $appealofcitizen->answer ?? '' }}</textarea>
@@ -161,7 +161,52 @@
     </div>
 @endsection
 
+@push('modal')
+    @can('edit-users')
+        <div class="modal fade" id="edit" aria-hidden="true"
+             aria-labelledby="editModalLabel"
+             tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered" style="max-width: 1016px">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalToggleLabel">{{ __('Editing') }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="{{ route('appeal-edit', $appealofcitizen->id) }}" method="POST" id="edit-form" class="p-3">
+                        @csrf
+                        @method('PATCH')
+                        <div class="row justify-content-between">
+                            <label for="subject" class="mb-1">{{ __('Appeal subject') }}</label>
+                            <input type="text" maxlength="45" id="subject" name="title" class="form-control mb-3" value="{{ $appealofcitizen->title }}" required>
+
+                            <label for="category_id" class="mb-1">{{ __('Category') }}</label>
+                            <select name="category_id" id="category_id" class="form-control mb-3" required>
+                                @foreach($categories as $category)
+                                    @if($category->id == $appealofcitizen->id)
+                                        <option value="{{ $category->id }}" selected>{{ __($category->title) }}</option>
+                                        @continue
+                                    @endif
+                                    <option value="{{ $category->id }}">{{ __($category->title) }}</option>
+                                @endforeach
+                            </select>
+
+                            <label for="content" class="mb-1">{{ __('Appeal') }}</label>
+                            <textarea class="form-control form-control-light mb-2" name="content" id="content"
+                                      placeholder="{{ __('Write message') }}" id="example-textarea"
+                                      rows="13" maxlength="2000" required>{{ $appealofcitizen->content }}</textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Cancel') }}</button>
+                            <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    @endcan
+@endpush
+
 <x-scripts
-    type="appealofcitizens"
-    :urls="['', '', '']"
+    type="appeal"
+    :urls="['', '', route('delete-appeal'), '', '']"
 ></x-scripts>

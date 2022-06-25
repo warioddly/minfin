@@ -28,5 +28,5 @@
 
 <x-scripts
     type="logs"
-    :urls="['', '', '']"
+    :urls="['', '', '', '', '']"
 ></x-scripts>

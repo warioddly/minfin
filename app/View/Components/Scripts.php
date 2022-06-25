@@ -18,7 +18,6 @@ class Scripts extends Component
 
     public function __construct($urls, $type, $pageParentId = null)
     {
-
         $this->urls = $urls;
         $this->type = $type;
         $this->pageParentId = $pageParentId;

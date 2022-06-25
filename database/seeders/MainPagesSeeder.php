@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Banner;
+use App\Models\MinFinContact;
 use App\Models\Page;
 use Illuminate\Database\Seeder;
 
@@ -28,5 +30,6 @@ class MainPagesSeeder extends Seeder
                 'title' => $page,
             ]);
         }
+
     }
 }

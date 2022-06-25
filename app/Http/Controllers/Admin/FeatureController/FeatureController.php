@@ -57,4 +57,5 @@ class FeatureController extends Controller
     public function Translations(){
         return view('admin.vendor.translations');
     }
+
 }

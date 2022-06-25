@@ -58,6 +58,7 @@ class PagePostController extends Controller
     }
 
     public function Update(PostRequest $request, PostService $service,  DocumentService $documentService, $id){
+
         $post = Post::find($id);
         $data = $service->validateUpdateData($request, $id);
         $post->update($data);

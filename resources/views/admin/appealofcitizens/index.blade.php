@@ -23,6 +23,19 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
+                    <div class="row mb-2">
+                        <div class="col">
+                            <div class="text-sm-end">
+                                <div class="btn-group mb-3">
+                                    <a href="{{ route('appeal') }}" class="btn @if($is_published == 'all')btn-primary  @else btn-light @endif">{{ __('All') }}</a>
+                                </div>
+                                <div class="btn-group mb-3 ms-1">
+                                    <a href="{{ route('published-appeals', 'published') }}" class="btn @if($is_published == 1)btn-primary  @else btn-light @endif">{{ __('Publishes') }}</a>
+                                    <a href="{{ route('published-appeals', 'unpublished') }}" class="btn @if($is_published == 0)btn-primary  @else btn-light @endif">{{ __('Inedited') }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
                         @foreach($appealofcitizens as $item)
                             <div class="col-3 mb-2">
@@ -33,6 +46,11 @@
                                             <span class="badge bg-secondary">{{ __('unanswered') }}</span>
                                         @else
                                             <span class="badge bg-success">{{ __('answered') }}</span>
+                                        @endif
+                                        @if($item->is_published == null)
+                                            <span class="badge bg-secondary">{{ __('unpublished') }}</span>
+                                        @else
+                                            <span class="badge bg-success">{{ __('published') }}</span>
                                         @endif
 
                                         <h5 class="mt-2 mb-2">
@@ -51,17 +69,25 @@
                                             </span>
                                         </p>
 
-                                        <div class="dropdown float-end">
-                                            <a href="#" class="dropdown-toggle text-muted arrow-none" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="mdi mdi-dots-vertical font-18"></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-end">
-                                                <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-pencil me-1"></i>Edit</a>
-                                                <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-delete me-1"></i>Delete</a>
-                                                <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-plus-circle-outline me-1"></i>Add People</a>
-                                                <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-exit-to-app me-1"></i>Leave</a>
+                                        @canany(['edit-appeal', 'delete-appeal'])
+                                            <div class="dropdown float-end">
+                                                <a href="#" class="dropdown-toggle text-muted arrow-none" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <i class="mdi mdi-dots-vertical font-18"></i>
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-end">
+                                                    @can('edit-appeal')
+                                                        @if($item->is_published == true)
+                                                            <a href="{{ route('appeal-publish', [$item->id, 'Unpublish']) }}" class="dropdown-item"><i class="mdi-comment-off me-1"></i>{{ __('Unpublish') }}</a>
+                                                        @else
+                                                            <a href="{{ route('appeal-publish', [$item->id, 'publish']) }}" class="dropdown-item"><i class="mdi mdi-publish me-1"></i>{{ __('Publish') }}</a>
+                                                        @endif
+                                                    @endcan
+                                                    @can('delete-appeal')
+                                                        <a data-bs-toggle="modal" href="#delete" role="button" class="dropdown-item delete-button" data-id="{{ $item->id }}"><i class="mdi mdi-delete me-1"></i>{{ __('Delete') }}</a>
+                                                    @endcan
+                                                </div>
                                             </div>
-                                        </div>
+                                        @endcanany
 
                                         <p class="mb-0">
                                             <i class=" uil-user-check"></i>
@@ -84,7 +110,31 @@
     </div>
 @endsection
 
+@push('modal')
+    @can('delete-users')
+        <div class="modal fade" id="delete" aria-hidden="true"
+             aria-labelledby="deleteModalLabel"
+             tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered" >
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalToggleLabel">{{ __('Removing') }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h5>{{ __('Are you sure you want to delete this?') }}</h5>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Cancel') }}</button>
+                        <button type="submit" class="btn btn-danger item-delete">{{ __('Remove') }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endcan
+@endpush
+
 <x-scripts
-    type="appealofcitizens"
-    :urls="['', '', '']"
+    type="appeal"
+    :urls="['', '', route('delete-appeal'), '', '']"
 ></x-scripts>

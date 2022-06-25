@@ -94,7 +94,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Cancel') }}</button>
-                            <button type="submit" id="item-delete" class="btn btn-danger">{{ __('Remove') }}</button>
+                            <button type="submit" class="btn btn-danger item-delete">{{ __('Remove') }}</button>
                         </div>
                     </div>
                 </div>
@@ -209,7 +209,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Cancel') }}</button>
-                            <button type="submit" id="item-delete" class="btn btn-danger">{{ __('Remove') }}</button>
+                            <button type="submit" class="btn btn-danger item-delete">{{ __('Remove') }}</button>
                         </div>
                     </div>
                 </div>
@@ -241,13 +241,13 @@
     @if(session('postView') == true)
         <x-scripts
             type="post"
-            :urls="['','', route('post-delete')]"
+            :urls="['','', route('post-delete'), '', '', '', '']"
         ></x-scripts>
     @else
         <x-scripts
             type="pages"
             :pageParentId="$parentId"
-            :urls="[route('get-pages'), route('directory-update-child-page', array_merge([$parentId], [''])), route('delete-page')]"
+            :urls="[route('get-pages'), route('directory-update-child-page', array_merge([$parentId], [''])), route('delete-page'), '', '']"
         ></x-scripts>
     @endif
 @endpush

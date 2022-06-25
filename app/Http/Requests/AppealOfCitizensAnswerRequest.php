@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AppealOfCitizensUpdateRequest extends FormRequest
+class AppealOfCitizensAnswerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,7 @@ class AppealOfCitizensUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['required', 'string', 'max:45'],
-            'content' => ['required', 'string', 'max:2000'],
-            'category_id' => ['required', 'exists:categories,id'],
+            'answer' => ['required', 'string', 'max:2000'],
         ];
     }
 }

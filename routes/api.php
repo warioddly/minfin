@@ -50,5 +50,11 @@ Route::group(["namespace" => "App\Http\Controllers\Admin", "prefix" => "dashboar
 
     Route::group(["prefix" => "settings"], function () {
         Route::post('/deleteCarouselItem', 'ApiController@deleteCarouselItem')->name('delete-carousel-item');
+        Route::post('/deleteSocialMedia', 'ApiController@deleteSocialMedia')->name('delete-social-media');
     });
+
+    Route::group(["prefix" => "appeal"], function () {
+        Route::post('/deleteAppeal', 'ApiController@deleteAppeal')->name('delete-appeal');
+    });
+
 });

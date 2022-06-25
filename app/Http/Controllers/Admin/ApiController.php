@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\AppealOfCitizens;
 use App\Models\CarouselItem;
 use App\Models\Category;
 use App\Models\Page;
 use App\Models\Post;
+use App\Models\SocialWebSites;
 use App\Models\User;
 use \App\Models\Document;
 use Spatie\Permission\Models\Permission;
@@ -69,8 +71,7 @@ class ApiController extends Controller
     }
 
     public function deleteUser(){
-        $user = User::find(request()->get('id'));
-        $user->delete();
+        User::whereId(request()->get('id'))->delete();
     }
 
     public function deletePost(){
@@ -110,5 +111,13 @@ class ApiController extends Controller
 
     public function deleteCarouselItem(){
         CarouselItem::whereId(request()->get('id'))->delete();
+    }
+
+    public function deleteAppeal(){
+        AppealOfCitizens::whereId(request()->get('id'))->delete();
+    }
+
+    public function deleteSocialMedia(){
+        SocialWebSites::whereId(request()->get('id'))->delete();
     }
 }
