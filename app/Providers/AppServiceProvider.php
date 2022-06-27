@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\MinFinContact;
 use App\Models\Page;
+use App\Models\Post;
 use App\Models\SocialWebSites;
 use App\Models\User;
 use Illuminate\Pagination\Paginator;
@@ -37,5 +38,6 @@ class AppServiceProvider extends ServiceProvider
         View::share('navPages', Page::where('parent_id', null)->get());
         View::share('сontactData', MinFinContact::first());
         View::share('socialMedia', SocialWebSites::all());
+        View::share('archives', Post::archives());
     }
 }

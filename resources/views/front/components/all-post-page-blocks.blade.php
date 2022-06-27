@@ -700,6 +700,13 @@
                             </x-main-second-post-block>
                         </div>
                         @continue
+                    @else
+                        <div class="col-12 col-sm-4">
+                            <x-main-second-post-block
+                                :items="[$item]"
+                            >
+                            </x-main-second-post-block>
+                        </div>
                     @endif
 
                     @php $old_item = $item @endphp

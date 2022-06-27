@@ -1905,6 +1905,23 @@ footer{
     height: 100%;
 }
 
+.right-sidebar li{
+    margin-bottom: 12px;
+}
+
+.right-sidebar li a{
+    font-size: 18px;
+    font-family: var(--source-sans-family);
+    color: var(--secindary-color);
+    transition: .3s;
+}
+
+.right-sidebar li a:hover{
+    font-size: 18px;
+    font-family: var(--source-sans-family);
+    color: var(--heading-color);
+}
+
 @media screen and (max-width: 767px) {
 
     .add-col .add-left-arrow{

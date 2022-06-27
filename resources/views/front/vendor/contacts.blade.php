@@ -11,7 +11,7 @@
                 </div>
             </div>
             <div class="d-flex align-items-center">
-                <p class="header-text mb-3">Контактные данные</p>
+                <p class="header-text mb-3">{{ __('Contacts') }}</p>
             </div>
         </div>
     </section>

@@ -37,6 +37,10 @@ Route::middleware(['setLocale'])->group(function(){
             Route::post('/appeal-question', 'AppealController@AppealQuestion')->name('appeal-question');
             Route::post('/appeal-search', 'AppealController@AppealSearch')->name('appeal-search');
         });
+        Route::group(["prefix" => "archive"], function () {
+            Route::get('/', 'ArchiveController@Index')->name('archive');
+            Route::get('/{year}/{month}', 'ArchiveController@ShowWithMonth')->name('archive-with-month');
+        });
     });
 
     // ADMIN CONTROLLERS

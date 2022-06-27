@@ -29,4 +29,11 @@ class BannerRequest extends FormRequest
             'second_image' => ['nullable', 'file', 'max:5000'],
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'validation.uploaded' => __('Maximum file size exceeded'),
+        ];
+    }
 }
