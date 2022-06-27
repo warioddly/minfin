@@ -17,35 +17,38 @@
     </section>
     <section id="third-post-subsection" class="mb-3 mb-md-5">
         <div class="container">
-            <div class="row">
+            <div class="row mb-5">
                 <div class="col-12 col-sm-2">
-                    <div class="form-group d-flex">
-                        <select name="month" class="archive-select">
-                            <option value="January">{{ __('January') }}</option>
-                            <option value="February">{{ __('February') }}</option>
-                            <option value="March">{{ __('March') }}</option>
-                            <option value="April">{{ __('April') }}</option>
-                            <option value="May">{{ __('May') }}</option>
-                            <option value="June">{{ __('June') }}</option>
-                            <option value="July">{{ __('July') }}</option>
-                            <option value="August">{{ __('August') }}</option>
-                            <option value="September">{{ __('September') }}</option>
-                            <option value="October">{{ __('October') }}</option>
-                            <option value="November">{{ __('November') }}</option>
-                            <option value="December">{{ __('December') }}</option>
-                        </select>
-                        @php
-                            foreach ($archives as $item){
-                                $years[] = $item['year'];
-                            }
-                            $years = array_unique($years);
-                        @endphp
-                        <select name="year" class="archive-select">
-                            @for($i = 0; $i < count($years); $i++) {
+                    <form action="" method="GET">
+                        <div class="form-group d-flex">
+                            <select name="Month" class="archive-select">
+                                <option value="January">{{ __('January') }}</option>
+                                <option value="February">{{ __('February') }}</option>
+                                <option value="March">{{ __('March') }}</option>
+                                <option value="April">{{ __('April') }}</option>
+                                <option value="May">{{ __('May') }}</option>
+                                <option value="June">{{ __('June') }}</option>
+                                <option value="July">{{ __('July') }}</option>
+                                <option value="August">{{ __('August') }}</option>
+                                <option value="September">{{ __('September') }}</option>
+                                <option value="October">{{ __('October') }}</option>
+                                <option value="November">{{ __('November') }}</option>
+                                <option value="December">{{ __('December') }}</option>
+                            </select>
+                            @php
+                                foreach ($archives as $item){
+                                    $years[] = $item['year'];
+                                }
+                                $years = array_unique($years);
+                            @endphp
+                            <select name="Year" class="archive-select">
+                                @for($i = 0; $i < count($years); $i++) {
                                 <option value="{{ $years[$i] }}">{{ $years[$i] }}</option>
-                            @endfor
-                        </select>
-                    </div>
+                                @endfor
+                            </select>
+                        </div>
+                        <button type="submit">{{ __("Show") }}</button>
+                    </form>
                 </div>
             </div>
             <div>
