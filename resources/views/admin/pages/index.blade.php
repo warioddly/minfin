@@ -16,7 +16,7 @@
                         <div class="col-12 col-md-12 col-lg-8">
                             <x-data-table
                                 :items="$pages"
-                                :excepts="['updated_at', 'id', 'type', 'icon', 'level', 'parent_id', 'icon_type', 'description', 'visible_on_main_page']"
+                                :excepts="['updated_at', 'id', 'type', 'icon', 'level', 'parent_id', 'icon_type', 'description', 'visible_on_main_page', 'deleted_at']"
                                 :links="['', 'show-pages', null, null]"
                                 :actions="$userCanActions"
                                 :withactions="true"
@@ -105,5 +105,5 @@
 
 <x-scripts
     type="pages"
-    :urls="[route('get-pages'), route('directory-update-parent-page', ''), '', '', '']"
+    :urls="[route('get-pages'), route('directory-update-parent-page', ''), '', '', '', '', '']"
 ></x-scripts>

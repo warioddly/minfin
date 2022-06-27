@@ -125,6 +125,10 @@ Route::middleware(['setLocale'])->group(function(){
             Route::patch('/{id}', 'ProfileController@Update')->name('update-profile');
         });
 
+        Route::group(["namespace" => "FeatureController", "prefix" => "trash"], function () {
+            Route::get('/', 'TrashController@Index')->name('trash');
+        });
+
         Route::group(["namespace" => "FeatureController", "prefix" => "features"], function () {
             Route::get('/', 'LogController@Index')->name('logs')->middleware('can:show-logs');
             Route::get('/translations', 'FeatureController@Translations')->name('translations')->middleware('can:show-translations');

@@ -33,7 +33,7 @@
                         <div class="col">
                             <x-data-table
                                 :items="$categories"
-                                :excepts="['updated_at', 'id', 'publisher']"
+                                :excepts="['updated_at', 'id', 'deleted_at', 'publisher']"
                                 :links="['', 'show-category', null, null]"
                                 :actions="$userCanActions"
                                 type="category"

@@ -3,7 +3,12 @@
 namespace App\Http\Controllers\Admin\FeatureController;
 
 use App\Http\Controllers\Controller;
+use App\Models\Banner;
+use App\Models\CarouselItem;
 use App\Models\Logs;
+use App\Models\MinFinContact;
+use App\Models\Page;
+use App\Models\SocialWebSites;
 
 class FeatureController extends Controller
 {
@@ -57,5 +62,4 @@ class FeatureController extends Controller
     public function Translations(){
         return view('admin.vendor.translations');
     }
-
 }

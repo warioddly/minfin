@@ -19,7 +19,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-4 col-sm-12">
-                    <ul class="contact-data_items contact-data mb-sm-4 mb-3 p-3">
+                    <ul class="contact-data_items contact-data p-3">
                         <li class="contact-data_item mb-4">
                             {{ __('Address') }}: <p class="mt-2">{{ $сontactData->address }}</p>
                         </li>

@@ -72,15 +72,6 @@
                 </li>
             @endif
 
-            @if(auth()->user()->can('show-archive'))
-                <li class="side-nav-item">
-                    <a href="#" class="side-nav-link">
-                        <i class="dripicons-archive"></i>
-                        <span> {{ __('Archive') }} </span>
-                    </a>
-                </li>
-            @endif
-
             @if(auth()->user()->can('show-translations'))
                 <li class="side-nav-item">
                     <a href="{{ route('translations') }}" class="side-nav-link">
@@ -115,8 +106,8 @@
 
             @if(auth()->user()->can('auth-email'))
                 <li class="side-nav-item">
-                    {{--                    LaravelGmail::check()--}}
-                    <a href="@if(false) {{ route('email', 'inbox') }} @else {{ route('auth-email') }} @endif" class="side-nav-link">
+                    {{--                {{ route('email', 'inbox') }}    LaravelGmail::check()--}}
+                    <a href="@if(false) # @else {{ route('auth-email') }} @endif" class="side-nav-link">
                         <i class="uil-envelope"></i>
                         <span> {{ __('Email') }} </span>
                     </a>
@@ -152,13 +143,12 @@
 
             @if(auth()->user()->can('show-trash'))
                 <li class="side-nav-item">
-                    <a href="#" class="side-nav-link">
+                    <a href="{{ route('trash') }}" class="side-nav-link">
                         <i class="dripicons-trash"></i>
                         <span> {{ __('Trash') }} </span>
                     </a>
                 </li>
             @endif
-
         @endcanany
     </ul>
 

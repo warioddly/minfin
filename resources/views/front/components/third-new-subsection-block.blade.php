@@ -38,7 +38,7 @@
 </div>
 
 <div class="row">
-    <div class="d-none d-md-block col-12 col-md-6 col-lg-8 mb-3 mb-sm-3 mb-lg-0 pe-lg-2 pe-md-0">
+    <div class="d-none d-md-block col-12 col-md-6 col-lg-8 mb-3 mb-sm-3 mb-lg-0 pe-lg-2 pe-md-0" style="max-height: 596px;">
         <x-main-second-post-block
             :items="[$items[8]]"
             textSize="large"

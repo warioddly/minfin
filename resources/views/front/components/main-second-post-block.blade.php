@@ -1,6 +1,6 @@
 @if(count($items) == 1)
     <div class="new__block">
-        <span class="new__image_overflow "></span>
+        <span class="new__image_overflow"></span>
         <img src="{{ $items[0]->preview_image }}" alt="" class="img-fluid new__image">
         <div class="new_information position-absolute bottom-0 py-4">
             <a href="{{ route('front-post-show',  $items[0]->id) }}" class="new_title mb-3"
@@ -35,10 +35,10 @@
             <hr class="m-2 ms-0 me-2"/>
 
             <a href="{{ route('front-post-show', $items[1]->id) }}" class="">
-                    <span>
-                        @for($j = 0; $j < 9; $j++) {{ explode(" ", $items[1]->title)[$j] ?? '' }}@endfor...
-                        <span class="new_block__read_more">{{ __('read more') }}</span>
-                    </span>
+                <span>
+                    @for($j = 0; $j < 9; $j++) {{ explode(" ", $items[1]->title)[$j] ?? '' }}@endfor...
+                    <span class="new_block__read_more">{{ __('read more') }}</span>
+                </span>
             </a>
             <div class="d-flex justify-content-between align-items-end ">
                 <div class="d-flex align-items-end">

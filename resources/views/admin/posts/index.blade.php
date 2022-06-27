@@ -38,7 +38,7 @@
                         <div class="row">
                             <x-data-table
                                 :items="$posts"
-                                :excepts="['id', 'content', 'is_published', 'updated_at', 'description', 'preview_image', 'page_id', 'icon', 'sheet']"
+                                :excepts="['id', 'content', 'is_published', 'updated_at', 'deleted_at',  'description', 'preview_image', 'page_id', 'icon', 'sheet']"
                                 :links="['null', 'post-show', 'post-edit', 'post-delete', 'id']"
                                 :actions="$userCanActions"
                             ></x-data-table>

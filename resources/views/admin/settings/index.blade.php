@@ -68,7 +68,7 @@
                                         </div>
                                         <div class="col-12 col-sm-6 mb-2">
                                             <label for="phone">{{ __('Phone') }}</label>
-                                            <input type="number" maxlength="14" name="phone" id="phone" class="form-control" value="{{ $contactData->phone }}">
+                                            <input type="number" maxlength="15" name="phone" id="phone" class="form-control" value="{{ $contactData->phone }}">
                                         </div>
                                         <div class="col-12 col-sm-6 mb-2">
                                             <label for="email">{{ __('Email') }}</label>
@@ -86,7 +86,7 @@
                                         </div>
                                         <div class="col-12 col-sm-6 mb-2">
                                             <label for="helpline">{{ __('Helpline') }}</label>
-                                            <input type="number" maxlength="14" name="helpline" id="helpline" class="form-control" value="{{ $contactData->helpline }}">
+                                            <input type="number" maxlength="15" name="helpline" id="helpline" class="form-control" value="{{ $contactData->helpline }}">
                                         </div>
                                         <div class="col-12 col-sm-6 mb-2">
                                             <label for="public_reception">{{ __('Public reception') }}</label>

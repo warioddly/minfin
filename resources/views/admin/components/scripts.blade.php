@@ -1,6 +1,7 @@
 @push('footer-scripts')
     <script>
         let id = null;
+        let restoreUrl = null;
 
         function bridge(url, id, typeResponse = false) {
             return $.ajax({
@@ -154,6 +155,16 @@
 
         $(".delete-button").click(function() {
             id = $(this).data('id');
+        });
+
+        $(".restore-button").click(function() {
+            id = $(this).data('id');
+            restoreUrl = $(this).data('restore-url');
+        });
+
+        $(".restore-item").click(() => {
+            bridge(restoreUrl, id, false);
+
         });
 
         $(".item-delete").click((event) => {

@@ -27,6 +27,7 @@ Route::group(["namespace" => "App\Http\Controllers\Admin", "prefix" => "dashboar
 
     Route::group(["prefix" => "posts"], function () {
         Route::post('/deletePost', 'ApiController@deletePost')->name('post-delete');
+        Route::post('/restore/post', 'ApiController@restorePost')->name('restore-post');
     });
 
     Route::group(["prefix" => "categories"], function () {
@@ -35,6 +36,7 @@ Route::group(["namespace" => "App\Http\Controllers\Admin", "prefix" => "dashboar
 
     Route::group(["prefix" => "documents"], function () {
         Route::post('/deleteDocument', 'ApiController@deleteDocument')->name('delete-document');
+        Route::post('/restore/document', 'ApiController@restoreDocument')->name('restore-document');
     });
 
     Route::group(["prefix" => "roles"], function () {
@@ -46,6 +48,7 @@ Route::group(["namespace" => "App\Http\Controllers\Admin", "prefix" => "dashboar
         Route::post('/getPages', 'ApiController@getPageData')->name('get-pages');
         Route::post('/deletePage', 'ApiController@deletePage')->name('delete-page');
         Route::post('/getSelectedPages', 'ApiController@getSelectedPages')->name('get-selected-page');
+        Route::post('/restore/page', 'ApiController@restorePage')->name('restore-page');
     });
 
     Route::group(["prefix" => "settings"], function () {
@@ -55,6 +58,8 @@ Route::group(["namespace" => "App\Http\Controllers\Admin", "prefix" => "dashboar
 
     Route::group(["prefix" => "appeal"], function () {
         Route::post('/deleteAppeal', 'ApiController@deleteAppeal')->name('delete-appeal');
+        Route::post('/restore/appeal', 'ApiController@restoreAppeal')->name('restore-appeal');
+
     });
 
 });

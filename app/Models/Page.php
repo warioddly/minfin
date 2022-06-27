@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Page extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
     protected $table = 'pages';
     protected $fillable = [
         'title',
@@ -28,7 +29,7 @@ class Page extends Model
 
     public function ParentPage()
     {
-        return $this->belongsTo(Page::class, 'parent_id');
+        return $this->belongsTo(Page::class, 'parent_id')->withTrashed();
     }
 
     public function posts()

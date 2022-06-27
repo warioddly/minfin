@@ -142,7 +142,7 @@
                                         </div>
                                     </div>
                                     <div class="col ps-0">
-                                        <a href="{{ $document->path }}" target="_blank" class="text-muted fw-bold">{{ $document->title }}</a>
+                                        <a href="{{ $document->path }}" target="_blank" class="text-muted fw-bold">{{ \Illuminate\Support\Str::limit($document->title, $limit=20, $end="...." . $document->extension) }}</a>
                                         <p class="mb-0">{{ $document->size }} kB</p>
                                     </div>
                                     <div class="col-auto">

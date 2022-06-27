@@ -28,7 +28,7 @@
                     @if(session('postListStyle') == 'list')
                     <x-data-table
                         :items="$documents"
-                        :excepts="['id', 'path', 'icon', 'updated_at', 'post_id', 'preview_image']"
+                        :excepts="['id', 'path', 'icon', 'updated_at', 'post_id', 'preview_image', 'deleted_at', 'appeal_of_citizens_id']"
                         :links="['null', 'post-show', 'post-edit', 'post-delete', 'id']"
                         :actions="$userCanActions"
                         orederable="false"

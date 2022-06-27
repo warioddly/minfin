@@ -1,5 +1,5 @@
 <div class="table-responsive">
-    <table class="table table-centered table-borderless table-hover w-100 dt-responsive nowrap" id="x-datatable">
+    <table class="table table-centered table-borderless table-hover w-100 dt-responsive nowrap " id="{{ $id }}-datatable">
         <thead class="table-light">
         <tr>
             @foreach($items as $key => $item)
@@ -87,7 +87,7 @@
                                 @continue
                         @endif
 
-                        @if($key == 'created_at')
+                        @if($key == 'deleted_at')
                             <td>{{ $item->created_at->toDateTime()->format('d-m-Y') }}</td>
                             @continue
                         @endif
@@ -126,52 +126,26 @@
                         @endif
 
                     @endforeach
-                    @if($withactions)
-                        <td class="d-flex">
-                        @if(in_array('1', $actions))
-                            <a href="@if($links[1]){{ route($links[1], $item->id) }} @else#view @endif"
-                               @if(!$links[0]) data-bs-toggle="modal" data-id="{{ $item->id }}" role="button" @endif
-                               class="action-icon view-button"><i class="mdi mdi-eye"></i>
-                            </a>
-                        @endif
-                        @if(in_array('2', $actions))
-                            <a href="@if($links[2]){{ route($links[2], $item->id) }} @else#edit @endif"
-                               @if(!$links[2]) data-bs-toggle="modal" data-id="{{ $item->id }}" @if($item->title) data-title="{{ $item->title }}" @endif role="button" @endif
-                               class="action-icon edit-button"><i class="mdi mdi-square-edit-outline"></i>
-                            </a>
-                        @endif
-                        @if(in_array('3', $actions))
-                            <a data-bs-toggle="modal" href="#delete" data-id="{{ $item->id }}" role="button"
-                               class="action-icon delete-button"> <i class="mdi mdi-delete"></i></a>
-                        @endif
+                    <td class="d-flex justify-content-center">
+                        <a data-bs-toggle="modal" href="#restore" role="button"
+                           data-id="{{ $item->id }}" data-restore-url="@if($links[1]){{ route($links[1], '') }}@endif"
+                           class="action-icon restore-button font-22 me-2 text-success"><i class="mdi mdi-cached"></i>
+                        </a>
+                        <a data-bs-toggle="modal" href="#delete" role="button"
+                           data-id="{{ $item->id }}" data-recover-url="@if($links[1]){{ route($links[1], '') }} @endif"
+                           class="action-icon delete-button font-20"><i class="dripicons-trash"></i>
+                        </a>
                     </td>
-                    @endif
                 </tr>
             @endforeach
         </tbody>
     </table>
 </div>
 
-
-@push('head-scripts')
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link href="{{ asset('/admin/plugins/DataTables/css/dataTables.bootstrap5.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('/admin/plugins/bootstrap/css/responsive.bootstrap5.css') }}" rel="stylesheet" type="text/css" />
-    <style>
-        div.dataTables_wrapper div.dataTables_length, div.dataTables_wrapper div.dataTables_filter, div.dataTables_wrapper div.dataTables_info, div.dataTables_wrapper div.dataTables_paginate{
-            text-align: end !important;
-        }
-    </style>
-@endpush
-
 @push('footer-scripts')
-    <script src="{{ asset('/admin/plugins/DataTables/jquery.dataTables.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('/admin/plugins/DataTables/dataTables.bootstrap5.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('/admin/plugins/DataTables/dataTables.responsive.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('/admin/plugins/DataTables/dataTables.buttons.min.js') }}" type="text/javascript"></script>
     <script>
         $(document).ready( function () {
-            $('#x-datatable').DataTable({
+            $('#{{ $id }}-datatable').DataTable({
                 responsive: true,
                 columnDefs: [
                     {

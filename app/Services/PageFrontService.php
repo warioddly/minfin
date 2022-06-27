@@ -27,7 +27,7 @@ class PageFrontService
                         'ids' => array_merge(
                             !$type || $item->type === $type ? [$item->id] : [],
                             array_filter(array_map(function ($v) use ($type) {
-                                if ($type === $v['page']->type) {
+                                if (!$type || $type === $v['page']->type) {
                                     return $v['childs']['ids'][0];
                                 }
                             }, $allChilds), function ($v) {

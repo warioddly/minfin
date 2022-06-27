@@ -152,5 +152,27 @@ return array (
     ),
   ),
   '<p>IMOOOOOOO Привет</p>' => '<p>IMOOOOOOO Привет1</p>',
+  '<p>awd</p>' => '<p>awd</p>',
+  '<p>awdawd</p>' => '<p>awdawd</p>',
   '<p>awdawdawdawdawdawdawdawdawdawd</p>' => '<p>awdawdawdawdawdawdawdawdawdawd</p>',
+  '<p>awdddddddddddddddd\\</p>
+
+<p>awdddddddddddddddd</p>
+
+<p>awddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawdddddddddddddddd</p>
+
+<p>awdddddddddddddddd</p>
+
+<p>awddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawdddddddddddddddd</p>' => '<p>awdddddddddddddddd\\</p>
+
+<p>awdddddddddddddddd</p>
+
+<p>awddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawdddddddddddddddd</p>
+
+<p>awdddddddddddddddd</p>
+
+<p>awddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawddddddddddddddddawdddddddddddddddd</p>',
+  '<p>dawdawdawd</p>' => '<p>dawdawdawd</p>',
+  '<p>wadawdawd</p>' => '<p>wadawdawd</p>',
+  '<p>фцвфцвфцв</p>' => '<p>фцвфцвфцв</p>',
 );

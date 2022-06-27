@@ -40,37 +40,93 @@
                         <div class="show-post-block" id="print-post">
                             <p class="p-2 post-title"> {{ __($post->title) }}</p>
                             <div class="d-flex social-media mb-2 d-print-none">
-                                <ul class="social-list list-inline">
-                                    @foreach($socialMedia as $key => $item)
-                                        @if($key == 5)
-                                            @break
-                                        @endif
-                                        <li class="list-inline-item">
-                                            <a href="{{ $item->url }}"  class="edit-button social-list-item text-secondary d-flex justify-content-center"
-                                               style="font-size: 30px" target="_blank"
-                                            >
-                                                <i class="mdi {{ $item->icon }}"></i>
-                                            </a>
-                                        </li>
-                                    @endforeach
+                                <ul class="social-list list-inline head-social-media">
+                                    <li class="list-inline-item">
+                                        <a href="#"  class="edit-button social-list-item text-muted d-flex justify-content-center"
+                                           style="font-size: 30px" target="_blank"><i class="mdi mdi-facebook"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#"  class="edit-button social-list-item text-muted d-flex justify-content-center"
+                                           style="font-size: 30px" target="_blank"><i class="mdi mdi-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#"  class="edit-button social-list-item text-muted d-flex justify-content-center"
+                                           style="font-size: 30px" target="_blank"><i class="mdi mdi-telegram"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#"  class="edit-button social-list-item text-muted d-flex justify-content-center"
+                                           style="font-size: 30px" target="_blank"><i class="mdi mdi-linkedin"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#"  class="edit-button social-list-item text-muted d-flex justify-content-center"
+                                           style="font-size: 30px" target="_blank"><i class="mdi mdi-instagram"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#"  class="edit-button social-list-item text-muted d-flex justify-content-center"
+                                           style="font-size: 30px" target="_blank"><i class="mdi mdi-whatsapp"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#"  class="edit-button social-list-item text-muted d-flex justify-content-center"
+                                           style="font-size: 30px" target="_blank"><i class="mdi mdi-odnoklassniki"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#"  class="edit-button social-list-item text-muted d-flex justify-content-center"
+                                           style="font-size: 30px" target="_blank"><i class="mdi mdi-vk"></i>
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                             <img src="{{ $post->preview_image }}" alt="..." class="img-fluid post-preview-image mt-2 mb-3">
                             <div class="post-content">{!! html_entity_decode( __($post->content) ) !!}</div>
                             <div class="d-flex social-media mt-5 justify-content-between d-print-none align-items-center">
                                 <ul class="social-list list-inline">
-                                    @foreach($socialMedia as $key => $item)
-                                        @if($key == 5)
-                                            @break
-                                        @endif
-                                        <li class="list-inline-item">
-                                            <a href="{{ $item->url }}"  class="edit-button social-list-item text-blue-light d-flex justify-content-center"
-                                               style="font-size: 30px" target="_blank"
-                                            >
-                                                <i class="mdi {{ $item->icon }}"></i>
-                                            </a>
-                                        </li>
-                                    @endforeach
+                                    <li class="list-inline-item">
+                                        <a href="#"  class="edit-button social-list-item text-blue-light d-flex justify-content-center"
+                                           style="font-size: 30px" target="_blank"><i class="mdi mdi-facebook"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#"  class="edit-button social-list-item text-blue-light d-flex justify-content-center"
+                                           style="font-size: 30px" target="_blank"><i class="mdi mdi-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#"  class="edit-button social-list-item text-blue-light d-flex justify-content-center"
+                                           style="font-size: 30px" target="_blank"><i class="mdi mdi-telegram"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#"  class="edit-button social-list-item text-blue-light d-flex justify-content-center"
+                                           style="font-size: 30px" target="_blank"><i class="mdi mdi-linkedin"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#"  class="edit-button social-list-item text-blue-light d-flex justify-content-center"
+                                           style="font-size: 30px" target="_blank"><i class="mdi mdi-instagram"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#"  class="edit-button social-list-item text-blue-light d-flex justify-content-center"
+                                           style="font-size: 30px" target="_blank"><i class="mdi mdi-whatsapp"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#"  class="edit-button social-list-item text-blue-light d-flex justify-content-center"
+                                           style="font-size: 30px" target="_blank"><i class="mdi mdi-odnoklassniki"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#"  class="edit-button social-list-item text-blue-light d-flex justify-content-center"
+                                           style="font-size: 30px" target="_blank"><i class="mdi mdi-vk"></i>
+                                        </a>
+                                    </li>
                                 </ul>
                                 <button onclick="printCertificate()" class="print-button">
                                     <i class="dripicons-print me-2"></i>

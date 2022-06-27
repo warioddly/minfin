@@ -44,7 +44,7 @@
         <div class="row">
             <x-data-table
                 :items="$posts"
-                :excepts="['id', 'content', 'is_published', 'updated_at', 'description', 'preview_image', 'childType', 'page_id', 'icon', 'sheet']"
+                :excepts="['id', 'content', 'is_published', 'updated_at', 'description', 'preview_image', 'childType', 'page_id', 'icon', 'sheet', 'deleted_at']"
                 :links="['', 'post-show', 'post-edit', 'post-delete', 'id']"
                 :actions="$userCanActions"
             ></x-data-table>
@@ -59,7 +59,7 @@
         <div class="col-12 col-md-12 col-lg-8">
             <x-data-table
                 :items="$ChildPages"
-                :excepts="['updated_at', 'id', 'icon', 'parent_id', 'description', 'type', 'content', 'level', 'icon_type', 'visible_on_main_page']"
+                :excepts="['updated_at', 'id', 'icon', 'parent_id', 'description', 'type', 'content', 'level', 'icon_type', 'visible_on_main_page', 'deleted_at']"
                 :links="['', 'show-pages', null, null]"
                 :actions="$userCanActions"
                 :showLinks="$parentId"
@@ -241,13 +241,13 @@
     @if(session('postView') == true)
         <x-scripts
             type="post"
-            :urls="['','', route('post-delete'), '', '', '', '']"
+            :urls="['','', route('post-delete'), '', '', '', '', '', '']"
         ></x-scripts>
     @else
         <x-scripts
             type="pages"
             :pageParentId="$parentId"
-            :urls="[route('get-pages'), route('directory-update-child-page', array_merge([$parentId], [''])), route('delete-page'), '', '']"
+            :urls="[route('get-pages'), route('directory-update-child-page', array_merge([$parentId], [''])), route('delete-page'), '', '', '', '']"
         ></x-scripts>
     @endif
 @endpush
