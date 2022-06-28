@@ -49,7 +49,7 @@ table {
 
 :root {
     --main-bg-color: #F1F2F2;
-    --secindary-color: #1068B1;
+    --secindary-color: #0b4678;
     --primary-hover-color: #2E58A2;
     --primary-default-color: #153B86;
     --heading-color: #0a2b4b;
@@ -1656,7 +1656,7 @@ footer{
     border-radius: 15px;
     font-family: var(--source-sans-family);
     font-weight: 600;
-    font-size: 24px;
+    font-size: clamp(1rem, 0.35785953177257523rem + 1.3377926421404682vw, 1.5rem);
     line-height: 150.6%;
     align-items: flex-start;
     justify-content: space-between;
@@ -1692,7 +1692,7 @@ footer{
     transition: .3s;
 
     font-family: var(--source-sans-family);
-    font-size: 18px;
+    font-size: clamp(0.9375rem, 0.6966973244147157rem + 0.5016722408026756vw, 1.125rem);
     display: flex;
     align-items: center;
     color: rgba(8, 60, 111, 0.8);
@@ -1708,7 +1708,7 @@ footer{
     position: absolute;
     bottom: 17px;
     right: 28px;
-    font-size: 23px;
+    font-size: clamp(1rem, 0.35785953177257523rem + 1.3377926421404682vw, 1.5rem);
     color: rgba(8, 60, 111, 0.8);
 }
 
@@ -1717,11 +1717,11 @@ footer{
     background: #083C6F;
     border: 0.5px solid #000000;
     border-radius: 15px;
-    padding: 10px;
     width: 100%;
+    padding: 10px;
     font-family: var(--source-sans-family);
     font-weight: 600;
-    font-size: 24px;
+    font-size: clamp(1rem, 0.35785953177257523rem + 1.3377926421404682vw, 1.5rem);
     line-height: 150.6%;
     display: flex;
     align-items: center;
@@ -1830,7 +1830,7 @@ footer{
 #content .ask-a-questions .secondary-text{
     font-family: var(--source-sans-family);
     font-weight: 300;
-    font-size: 18px;
+    font-size: clamp(0.875rem, 0.7803985872855701rem + 0.4036326942482341vw, 1.125rem);
     line-height: 20px;
     color: #393B3E;
 }
@@ -1841,7 +1841,7 @@ footer{
     border: 1px solid rgba(0, 0, 0, 0);
     transition: .3s;
     font-family: var(--source-sans-family);
-    font-size: 24px;
+    font-size: clamp(1rem, 0.35785953177257523rem + 1.3377926421404682vw, 1.5rem);
     line-height: 150.6%;
     display: flex;
     align-items: center;
@@ -1864,9 +1864,32 @@ footer{
     font-size: 24px;
 }
 
+.archive-form .archive-select{
+    border: none;
+}
+
+.archive-form .ask-question-btn{
+    background: #083C6F;
+    border-radius: 9px;
+    font-family: var(--source-sans-family);
+    font-weight: 600;
+    font-size: 19px;
+    line-height: 150.6%;
+    align-items: flex-start;
+    justify-content: space-between;
+    color: #FFFFFF;
+    padding: 6px 21px;
+    transition: .3s;
+}
+
+.archive-form .ask-question-btn:hover{
+    background: #072b50;;
+    color: #ffffff;
+}
+
 #content .ask-question-file-input{
     font-weight: 600;
-    font-size: 24px;
+    font-size: clamp(1rem, 0.35785953177257523rem + 1.3377926421404682vw, 1.5rem);
     cursor: pointer;
     background: none;
     padding-left: 0;
@@ -1924,6 +1947,28 @@ footer{
 
 @media screen and (max-width: 767px) {
 
+    body:not(.justwidget-iframe--content) #widget-root{
+        height: auto !important;
+    }
+
+    #content .appeal-answered-block {
+        margin-left: clamp(0rem, -7.752862595419848rem + 33.078880407124686vw, 8.125rem);
+    }
+
+    #content .ask-a-questions-submit-btn{
+        width: clamp(7.625rem, 3.748568702290076rem + 16.539440203562343vw, 11.6875rem);
+        padding: clamp(0.3125rem, 0.014312977099236623rem + 1.272264631043257vw, 0.625rem);
+        border-radius: clamp(0.5625rem, 0.20467557251908397rem + 1.5267175572519085vw, 0.9375rem);
+    }
+
+    #content .appeal_block .appeal-body {
+        font-family: var(--source-sans-family);
+        font-size: clamp(0.75rem, 0.6307251908396947rem + 0.5089058524173028vw, 0.875rem);
+        line-height: clamp(1.1875rem, 0.829675572519084rem + 1.5267175572519085vw, 1.5625rem);
+        letter-spacing: 0.03em;
+        color: #083C6F;
+    }
+
     .add-col .add-left-arrow{
         left: 57px;
         top: 0;
@@ -1968,6 +2013,14 @@ footer{
         order: 2;
     }
     #economic-map .row > .static{
+        order: 1;
+    }
+
+    .appeals{
+        order: 2;
+    }
+
+    .action-block{
         order: 1;
     }
 

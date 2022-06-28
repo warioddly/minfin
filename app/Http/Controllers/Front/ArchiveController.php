@@ -17,10 +17,13 @@ class ArchiveController extends Controller
         return view('front.vendor.archive', compact('posts'));
     }
 
-    public function ShowWithMonth($month, $year){
+    public function ShowWithMonth(){
+        $month = request()->get('month');
+        $year = request()->get('year');
         $posts = Post::latest()
             ->filter(['month' => $month, 'year' => $year])
             ->paginate(23);
+
         return view('front.vendor.archive', compact('posts'));
     }
 }

@@ -19,39 +19,61 @@
         <div class="container">
             <div class="row mb-5">
                 <div class="col-12 col-sm-2">
-                    <form action="" method="GET">
+                    <form action="{{ route('archive-with-month') }}" method="GET" class="archive-form">
+                        @csrf
+                        @php
+                            foreach ($archives as $item){
+                                $years[] = $item['year'];
+                            }
+                            $years = array_unique($years);
+
+                            $month = [
+                                    'January',
+                                    'February',
+                                    'March',
+                                    'April',
+                                    'May',
+                                    'June',
+                                    'July',
+                                    'August',
+                                    'September',
+                                    'October',
+                                    'November',
+                                    'December',
+                                ]
+                        @endphp
                         <div class="form-group d-flex">
-                            <select name="Month" class="archive-select">
-                                <option value="January">{{ __('January') }}</option>
-                                <option value="February">{{ __('February') }}</option>
-                                <option value="March">{{ __('March') }}</option>
-                                <option value="April">{{ __('April') }}</option>
-                                <option value="May">{{ __('May') }}</option>
-                                <option value="June">{{ __('June') }}</option>
-                                <option value="July">{{ __('July') }}</option>
-                                <option value="August">{{ __('August') }}</option>
-                                <option value="September">{{ __('September') }}</option>
-                                <option value="October">{{ __('October') }}</option>
-                                <option value="November">{{ __('November') }}</option>
-                                <option value="December">{{ __('December') }}</option>
-                            </select>
-                            @php
-                                foreach ($archives as $item){
-                                    $years[] = $item['year'];
-                                }
-                                $years = array_unique($years);
-                            @endphp
-                            <select name="Year" class="archive-select">
-                                @for($i = 0; $i < count($years); $i++) {
-                                <option value="{{ $years[$i] }}">{{ $years[$i] }}</option>
+                            <select name="month" class="archive-select ask-question-select me-2">
+                                @for($i = 0; $i < count($month); $i++) {
+
+                                    @if(now()->format('F') == $month[$i])
+                                        <option value="{{ $month[$i] }}" selected>{{ __($month[$i]) }}</option>
+                                        @continue
+                                    @endif
+                                    <option value="{{ $month[$i] }}">{{ __($month[$i]) }}</option>
                                 @endfor
                             </select>
+
+                            <select name="year" class="archive-select me-2">
+                                @for($i = 0; $i < count($years); $i++) {
+
+                                    @if(now()->format('Y') == $years[$i])
+                                        <option value="{{ $years[$i] }}" selected>{{ $years[$i] }}</option>
+                                        @continue
+                                    @endif
+                                    <option value="{{ $years[$i] }}">{{ $years[$i] }}</option>
+                                @endfor
+                            </select>
+                            <button type="submit" class="ask-question-btn">{{ __("Show") }}</button>
+
                         </div>
-                        <button type="submit">{{ __("Show") }}</button>
                     </form>
                 </div>
             </div>
             <div>
+                @if(count($posts) == 0)
+                    <p class="header-text border-0 p-0 text-center">{{ __('No posts found') }}!</p>
+                @endif
                 <x-all-post-page-blocks :items="$posts"></x-all-post-page-blocks>
                 <div class="pagination-block">
                     {{ $posts->links() }}

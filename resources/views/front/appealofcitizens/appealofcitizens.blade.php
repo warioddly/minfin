@@ -26,9 +26,14 @@
     <section id="content" class="mb-5">
         <div class="container">
             <div class="row justify-content-between">
-                <div class="col-12 col-md-8">
+                <div class="d-flex content-header pb-3 mb-3 d-lg-none">
+                    <img src="{{ asset('/front/images/icons/appealofcitizens-icon.svg') }}" alt="" class="me-2">
+                    <p class="header-text border-none">{{ __('Appeal Of Citizens') }}</p>
+                </div>
 
-                    <div class="d-flex content-header pb-3 mb-3">
+                <div class="col-12 col-md-8 col-lg-8 appeals">
+
+                    <div class="content-header pb-3 mb-3 d-none d-lg-flex">
                         <img src="{{ asset('/front/images/icons/appealofcitizens-icon.svg') }}" alt="" class="me-2">
                         <p class="header-text border-none">{{ __('Appeal Of Citizens') }}</p>
                     </div>
@@ -36,9 +41,8 @@
                     <x-appeal-of-citizens-block
                         :items="$appealofcitizens"
                     ></x-appeal-of-citizens-block>
-
                 </div>
-                <div class="col-3">
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xxl-3 action-block mb-3">
                     <a href="{{ route('ask-a-question') }}" class="d-flex ask-question-btn mb-3">
                         {{ __('Ask a Question') }}
                         <i class="mdi mdi-message-bulleted"></i>

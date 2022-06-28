@@ -1,14 +1,14 @@
 <div class="navbar-custom topnav-navbar topnav-navbar-dark">
     <div class="container-fluid">
 
-{{--        <a href="/" class="topnav-logo d-none d-sm-block d-lg-block">--}}
-{{--            <span class="topnav-logo-lg">--}}
-{{--                <img src="{{ asset('front/images/Logo.svg') }}" alt="" height="60">--}}
-{{--            </span>--}}
-{{--            <span class="topnav-logo-sm">--}}
-{{--                <img src="{{ asset('front/images/Logo.svg') }}" alt="" height="50">--}}
-{{--            </span>--}}
-{{--        </a>--}}
+        <a href="/" class="topnav-logo d-none d-sm-block d-lg-block">
+            <span class="topnav-logo-lg">
+                <img src="{{ asset('front/images/Logo.svg') }}" alt="" height="60">
+            </span>
+            <span class="topnav-logo-sm">
+                <img src="{{ asset('front/images/Logo.svg') }}" alt="" height="50">
+            </span>
+        </a>
 
         <ul class="list-unstyled topbar-menu float-end mb-0">
 

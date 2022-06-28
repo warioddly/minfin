@@ -39,7 +39,7 @@ Route::middleware(['setLocale'])->group(function(){
         });
         Route::group(["prefix" => "archive"], function () {
             Route::get('/', 'ArchiveController@Index')->name('archive');
-            Route::get('/{year}/{month}', 'ArchiveController@ShowWithMonth')->name('archive-with-month');
+            Route::get('/getArchivedPosts', 'ArchiveController@ShowWithMonth')->name('archive-with-month');
         });
     });
 
@@ -65,6 +65,13 @@ Route::middleware(['setLocale'])->group(function(){
             Route::get('/{id}', 'CategoryController@Show')->name('show-category')->middleware('can:show-categories');
             Route::post('/store', 'CategoryController@Store')->name('store-category')->middleware('can:add-categories');
             Route::patch('/{id}', 'CategoryController@Update')->name('update-category')->middleware('can:edit-categories');
+        });
+
+        Route::group(["namespace" => "SettingController", "prefix" => "settings"], function () {
+            Route::get('/', 'SettingController@Index')->name('settings')->middleware('can:show-content-settings');
+            Route::post('/storeCarousel', 'SettingController@StoreCarousel')->name('store-carousel')->middleware('can:add-content-settings');
+            Route::patch('/{id}', 'SettingController@UpdateCarousel')->name('update-carousel')->middleware('can:edit-content-settings');
+            Route::post('/changeBlocks', 'SettingController@ChangeBlocks')->name('changeBlocks')->middleware('can:edit-content-settings');
         });
 
         Route::group(["namespace" => "SettingController", "prefix" => "settings"], function () {
@@ -147,6 +154,7 @@ Route::middleware(['setLocale'])->group(function(){
             Route::post('/social-media/store', 'ContactController@StoreSocial')->name('store-social-media');
             Route::patch('/social-media/update/{id}', 'ContactController@UpdateSocial')->name('update-social-media');
             Route::patch('/contacts/update/', 'ContactController@UpdateContacts')->name('update-contacts');
+            Route::get('/chart/update/', 'ChartController@Index')->name('update-chart');
         });
 
         Route::group(["namespace" => "EmailController", "prefix" => "email"], function () {
