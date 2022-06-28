@@ -37,7 +37,7 @@
                         </div>
 
                         <div class="nav flex-column nav-pills nav-justified" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                            <a class="nav-link d-flex align-items-center" id="v-pills-home-tab" data-bs-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home"
+                            <a class="nav-link active show d-flex align-items-center" id="v-pills-home-tab" data-bs-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home"
                                aria-selected="true">
                                 <i class="mdi mdi-file-phone font-18 align-middle me-2"></i>
                                 <span class="d-md-block">{{ __('Contacts') }}</span>
@@ -52,16 +52,11 @@
                                 <i class="dripicons-flag font-18 align-middle me-2"></i>
                                 <span class="d-md-block">{{ __('Banner') }}</span>
                             </a>
-                            <a class="nav-link d-flex active show align-items-center" id="v-pills-chart-tab" data-bs-toggle="pill" href="#v-pills-chart" role="tab" aria-controls="v-pills-chart"
-                               aria-selected="false">
-                                <i class="mdi mdi-file-chart font-18 align-middle me-2"></i>
-                                <span class="d-md-block">{{ __('Chart') }}</span>
-                            </a>
                         </div>
                     </div>
                     <div class="page-aside-right">
                         <div class="tab-content" id="v-pills-tabContent">
-                            <div class="tab-pane fade" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                            <div class="tab-pane fade active show" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                                 <p class="h3 mt-0 mb-3">{{ __('Contacts') }}</p>
                                 <form action="{{ route('update-contacts') }}" method="post">
                                     @csrf
@@ -180,12 +175,6 @@
                                     </div>
                                     <button type="submit" class="btn btn-primary " style="float: right"><i class="mdi mdi-content-save me-2"></i>{{ __('Save') }}</button>
                                 </form>
-                            </div>
-                            <div class="tab-pane fade  active show" id="v-pills-chart" role="tabpanel" aria-labelledby="v-pills-chart-tab">
-                               <div class="d-flex">
-                                   <p class="h3 mt-0 mb-3">{{ __('Chart') }}</p>
-                                   <a href="{{ route('update-chart') }}" class="btn btn-primary">Обновить</a>
-                               </div>
                             </div>
                         </div>
                     </div>

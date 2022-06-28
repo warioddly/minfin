@@ -158,6 +158,10 @@ class ApiController extends Controller
         AppealOfCitizens::withTrashed()->find(request()->get('id'))->restore();
     }
 
+    public function restoreCategory(){
+        Category::withTrashed()->find(request()->get('id'))->restore();
+    }
+
     public function restoreParents($parentPage){
         while(true){
             if($parentPage->deleted_at != null){

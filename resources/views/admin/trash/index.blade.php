@@ -76,7 +76,7 @@
                                     <x-deleted-data-table
                                         :items="$categories"
                                         :excepts="['id', 'is_published', 'updated_at', 'created_at','description', 'publisher']"
-                                        :links="['null', 'post-show', 'post-edit', 'post-delete', 'id']"
+                                        :links="['null', 'restore-category', '', '', '']"
                                         :actions="[]"
                                         id="categories"
                                     ></x-deleted-data-table>

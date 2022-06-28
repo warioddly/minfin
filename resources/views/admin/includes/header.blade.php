@@ -5,31 +5,25 @@
                 <div class="col d-flex minfin-address ">
                     <p class="me-3">
                         <img src="{{ asset('front/images/icons/phone-icon.svg') }}" alt="" class="me-2">
-                        Тел: {{ $сontactData->phone }}
+                        Тел: +996 312 607 080
                     </p>
                     <p>
                         <img src="{{ asset('front/images/icons/map-pin.svg ') }}" alt="" class="me-2">
-                        Адрес: {{ $сontactData->address }}
+                        Адрес: бульвар Эркиндик, 58
                     </p>
                 </div>
                 <div class="col d-flex justify-content-end">
                     <div class="d-flex social-media me-4">
-                        <ul class="social-list list-inline">
-                            @foreach($socialMedia as $key => $item)
-                                @if($key == 3)
-                                    @break
-                                @endif
-                                <li class="list-inline-item">
-                                    <a href="{{ $item->url }}"  class="edit-button social-list-item border-primary text-primary d-flex justify-content-center"
-                                        style="font-size: 20px" target="_blank"
-                                    >
-                                        <i class="mdi {{ $item->icon }}"></i>
-                                    </a>
-                                </li>
-                            @endforeach
-                        </ul>
+                        <a href="" class="me-2">
+                            <img src="{{ asset('front/images/icons/social/Facebook.svg') }}" alt="">
+                        </a>
+                        <a href="" class="me-2">
+                            <img src="{{ asset('front/images/icons/social/instagram.svg') }}" alt="">
+                        </a>
+                        <a href="" class="me-2">
+                            <img src="{{ asset('front/images/icons/social/telegram.svg') }}" alt="">
+                        </a>
                     </div>
-
                     <div class="localization-languages d-flex">
                         <a href="{{ route('locale', 'kg') }}" class="text-uppercase me-2 @if( App::getLocale() == 'kg')active @endif">Кырг</a>
                         <a href="{{ route('locale', 'ru') }}" class="text-uppercase me-2 @if( App::getLocale() == 'ru')active @endif">Рус</a>
@@ -46,7 +40,7 @@
             <div class="row brand__row align-items-center ">
                 <div class="col-9 col-xs-6 col-sm-8 col-md-7 col-lg-6 @if(App::getLocale() == 'en')col-xl-5 @else col-xl-6 @endif  pe-0">
                     <a href="{{ route('index') }}" class="d-flex align-items-center ">
-                        <img src="{{ asset('front/images/logo/Logo.png') }}" alt="" class="rounded-circle me-1 me-lg-3 brand-logo">
+                        <img src="{{ asset('front/images/logo/Logo.svg') }}" alt="" class="rounded-circle me-1 me-lg-3 brand-logo">
                         <span class="text-uppercase brand-name">{{ __('Ministry of Finance of the Kyrgyz Republic') }}</span>
                     </a>
                 </div>

@@ -37,6 +37,7 @@ Route::group(["namespace" => "App\Http\Controllers\Admin", "prefix" => "dashboar
 
     Route::group(["prefix" => "categories"], function () {
         Route::post('/deleteCategory', 'ApiController@deleteCategory')->name('delete-category');
+        Route::post('/restore/category', 'ApiController@restoreCategory')->name('restore-category');
     });
 
     Route::group(["prefix" => "documents"], function () {

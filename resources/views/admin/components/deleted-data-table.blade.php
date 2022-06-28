@@ -64,7 +64,7 @@
 
                         @if($key == 'title')
                             <td >
-                                <a href="@if($showLinks){{ route($links[1], $item->id) }}@elseif($links[1]){{ route($links[1], $item->id) }}@endif" class="text-body fw-semibold">
+                                <a href="#" class="text-body fw-semibold">
                                     {{ \Illuminate\Support\Str::limit(__($item->title) , $limit = 35, $end = '...') }}
                                 </a>
                             </td>

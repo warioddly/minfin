@@ -1,14 +1,14 @@
 <div class="navbar-custom topnav-navbar topnav-navbar-dark">
     <div class="container-fluid">
 
-        <a href="/" class="topnav-logo d-none d-sm-block d-lg-block">
-            <span class="topnav-logo-lg">
-                <img src="{{ asset('front/images/Logo.svg') }}" alt="" height="60">
-            </span>
-            <span class="topnav-logo-sm">
-                <img src="{{ asset('front/images/Logo.svg') }}" alt="" height="50">
-            </span>
-        </a>
+        {{--        <a href="/" class="topnav-logo d-none d-sm-block d-lg-block">--}}
+        {{--            <span class="topnav-logo-lg">--}}
+        {{--                <img src="{{ asset('front/images/Logo.svg') }}" alt="" height="60">--}}
+        {{--            </span>--}}
+        {{--            <span class="topnav-logo-sm">--}}
+        {{--                <img src="{{ asset('front/images/Logo.svg') }}" alt="" height="50">--}}
+        {{--            </span>--}}
+        {{--        </a>--}}
 
         <ul class="list-unstyled topbar-menu float-end mb-0">
 
@@ -133,11 +133,11 @@
                 </div>
             </li>
 
-{{--            <li class="notification-list">--}}
-{{--                <a class="nav-link end-bar-toggle" href="javascript: void(0);">--}}
-{{--                    <i class="dripicons-gear noti-icon"></i>--}}
-{{--                </a>--}}
-{{--            </li>--}}
+            {{--            <li class="notification-list">--}}
+            {{--                <a class="nav-link end-bar-toggle" href="javascript: void(0);">--}}
+            {{--                    <i class="dripicons-gear noti-icon"></i>--}}
+            {{--                </a>--}}
+            {{--            </li>--}}
 
             <li class="dropdown notification-list">
                 <a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown" id="topbar-userdrop" href="#" role="button" aria-haspopup="true"
@@ -172,6 +172,8 @@
                         <span>{{ __('Help') }}</span>
                     </a>
 
+
+
                     @if(session('theme') == 'dark')
                         <a href="{{ route('theme', 'light') }}" class="dropdown-item notify-item">
                             <i class="uil-brightness me-1"></i>
@@ -183,6 +185,12 @@
                             <span> {{ __('Dark theme') }}</span>
                         </a>
                     @endif
+
+                    <a href="{{ route('index') }}" class="dropdown-item notify-item">
+                        <i class="dripicons-home me-1"></i>
+                        <span>{{ __('Home') }}</span>
+                    </a>
+
                     <hr class="my-1" />
                     <a class="dropdown-item notify-item" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
