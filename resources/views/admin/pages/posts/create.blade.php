@@ -74,11 +74,39 @@
                                     <textarea id="editor" name="content"></textarea>
                                 </div>
 
-                                <div class="form-group mt-2">
-                                    <strong>{{ __('Attach document') }}</strong>
-                                    <input type="file" name="documents[]" id="attachment-files" class="form-control" multiple>
-                                    <div class="" id="uploadPreviewTemplate"></div>
-                                </div>
+                                <div>
+                                   <ul class="nav nav-tabs nav-justified nav-bordered mb-3 mt-3">
+                                       <li class="nav-item">
+                                           <a href="#attach-file-tab" data-bs-toggle="tab" aria-expanded="false" class="nav-link active">
+                                               <i class="mdi mdi-home-variant d-md-none d-block"></i>
+                                               <span class="d-none d-md-block">{{ __('Attach document') }}</span>
+                                           </a>
+                                       </li>
+                                       <li class="nav-item">
+                                           <a href="#gallery-tab" data-bs-toggle="tab" aria-expanded="true" class="nav-link">
+                                               <i class="mdi mdi-account-circle d-md-none d-block"></i>
+                                               <span class="d-none d-md-block">{{ __('Gallery') }}</span>
+                                           </a>
+                                       </li>
+                                   </ul>
+
+                                   <div class="tab-content">
+                                       <div class="tab-pane show active" id="attach-file-tab">
+                                           <div class="form-group mt-2">
+                                               <strong>{{ __('Attach document') }}</strong>
+                                               <input type="file" name="documents[]" id="attachment-files" class="form-control w-25" multiple>
+                                               <div class="row" id="uploadPreviewTemplate"></div>
+                                           </div>
+                                       </div>
+                                       <div class="tab-pane" id="gallery-tab">
+                                           <div class="form-group mt-2">
+                                               <strong>{{ __('Gallery') }}</strong>
+                                               <input type="file" name="galleries[]" id="gallery-files" class="form-control w-25" accept="image/*" multiple>
+                                               <div class="row" id="galleryImages"></div>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
 
                                 <div class="form-group">
                                     <div class="d-flex justify-content-end">
@@ -102,6 +130,7 @@
 
 @push('footer-scripts')
     <script src="{{ asset('admin/plugins/UploadFile/FileUploader.js') }}"></script>
+    <script src="{{ asset('admin/plugins/UploadFile/GalleryUploader.js') }}"></script>
     <script type="text/javascript">
         initSample();
     </script>

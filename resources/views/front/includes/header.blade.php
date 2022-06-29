@@ -5,11 +5,11 @@
                 <div class="col d-flex minfin-address ">
                     <p class="me-3">
                         <img src="{{ asset('front/images/icons/phone-icon.svg') }}" alt="" class="me-2">
-                        Тел: {{ $сontactData->phone }}
+                        {{ \Illuminate\Support\Str::limit(__('Phone'), $limit=3, $end='') }}: {{ $сontactData->phone }}
                     </p>
                     <p>
                         <img src="{{ asset('front/images/icons/map-pin.svg ') }}" alt="" class="me-2">
-                        Адрес: {{ $сontactData->address }}
+                        {{ __('Address') }}: {{ $сontactData->address }}
                     </p>
                 </div>
                 <div class="col d-flex justify-content-end">
@@ -20,7 +20,7 @@
                                     @break
                                 @endif
                                 <li class="list-inline-item">
-                                    <a href="{{ $item->url }}"  class="edit-button social-list-item border-primary text-primary d-flex justify-content-center"
+                                    <a href="{{ $item->url }}"  class="edit-button border-primary text-primary d-flex justify-content-center"
                                         style="font-size: 20px" target="_blank"
                                     >
                                         <i class="mdi {{ $item->icon }}"></i>
@@ -443,36 +443,28 @@
     <div id="mobile-menu" class="wrapper cf d-none">
         <nav id="main-nav">
             <ul class="first-nav">
-{{--                <li class="nav-item">--}}
-{{--                    <div class="nav-item-wrapper">--}}
-{{--                        <div class="localization-languages d-flex justify-content-between align-items-center">--}}
-{{--                            <div class="d-flex">--}}
-{{--                                <a href="{{ route('locale', 'kg') }}" class="text-uppercase me-2 @if( App::getLocale() == 'kg')active @endif">Кырг</a>--}}
-{{--                                <a href="{{ route('locale', 'ru') }}" class="text-uppercase me-2 @if( App::getLocale() == 'ru')active @endif">Рус</a>--}}
-{{--                                <a href="{{ route('locale', 'en') }}" class="text-uppercase me-2 @if( App::getLocale() == 'en')active @endif">Eng</a>--}}
-{{--                            </div>--}}
-{{--                            <a href="{{ route('login') }}"><i class="mdi mdi-login" style="font-size: 21px; color: var(--heading-color);"></i></a>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </li>--}}
                 <li class="nav-item">
                     <div class="nav-item-wrapper">
                         <div class="localization-languages d-flex justify-content-between align-items-center">
-                            <div class="d-flex social-media me-4">
-                                <a href="" class="me-2">
-                                    <img src="{{ asset('front/images/icons/social/Facebook.svg') }}" alt="..." width="30px">
-                                </a>
-                                <a href="" class="me-2">
-                                    <img src="{{ asset('front/images/icons/social/instagram.svg') }}" alt="..." width="30px">
-                                </a>
-                                <a href="" class="me-2">
-                                    <img src="{{ asset('front/images/icons/social/telegram.svg') }}" alt="..." width="30px">
-                                </a>
+                            <div class="d-flex social-media">
+                                @foreach($socialMedia as $key => $item)
+                                    @if($key == 3)
+                                        @break
+                                    @endif
+                                    <div class="list-inline-item">
+                                        <a href="{{ $item->url }}"  class="edit-button text-primary d-flex justify-content-center"
+                                           style="font-size: 20px" target="_blank"
+                                        >
+                                            <i class="mdi {{ $item->icon }}"></i>
+                                        </a>
+                                    </div>
+                                @endforeach
                             </div>
-                            <div class="d-flex">
+                            <div class="d-flex align-items-center">
                                 <a href="{{ route('locale', 'kg') }}" class="text-uppercase me-2 @if( App::getLocale() == 'kg')active @endif">Кырг</a>
                                 <a href="{{ route('locale', 'ru') }}" class="text-uppercase me-2 @if( App::getLocale() == 'ru')active @endif">Рус</a>
                                 <a href="{{ route('locale', 'en') }}" class="text-uppercase me-2 @if( App::getLocale() == 'en')active @endif">Eng</a>
+                                <a href="{{ route('login') }}"><i class="mdi mdi-login" style="font-size: 21px; color: var(--heading-color);"></i></a>
                             </div>
                         </div>
                     </div>
@@ -548,11 +540,11 @@
                             <div class="col minfin-address ">
                                 <p class="mb-3 d-flex align-items-center">
                                     <img src="{{ asset('front/images/icons/phone-white-icon.svg') }}" alt="" class="me-2">
-                                    Тел: +996 312 607 080
+                                    {{ \Illuminate\Support\Str::limit(__('Phone'), $limit=3, $end='') }}: {{ $сontactData->phone }}
                                 </p>
                                 <p class="d-flex align-items-center">
                                     <img src="{{ asset('front/images/icons/map-pin-white.svg ') }}" alt="" class="me-2">
-                                    Адрес: бульвар Эркиндик, 58
+                                    {{ __('Address') }}: {{ $сontactData->address }}
                                 </p>
                             </div>
                         </div>

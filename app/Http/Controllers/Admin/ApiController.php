@@ -6,12 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Models\AppealOfCitizens;
 use App\Models\CarouselItem;
 use App\Models\Category;
+use App\Models\Gallery;
 use App\Models\Page;
 use App\Models\Post;
 use App\Models\SocialWebSites;
 use App\Models\User;
 use \App\Models\Document;
 use App\Services\PageFrontService;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -111,6 +114,13 @@ class ApiController extends Controller
 
     public function deleteDocument(){
         Document::whereId(request()->get('id'))->delete();
+    }
+
+    public function deleteGalleryImage(){
+        $image = Gallery::whereId(request()->get('id'))->first();
+        File::delete(public_path($image->full_size_image));
+        File::delete(public_path($image->thumbnail_image));
+        $image->delete();
     }
 
     public function deleteCarouselItem(){

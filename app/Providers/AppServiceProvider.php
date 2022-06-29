@@ -8,6 +8,7 @@ use App\Models\Post;
 use App\Models\SocialWebSites;
 use App\Models\User;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -31,6 +32,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if(session(['locale']) === null){
+            session(['locale' => 'ru']);
+            App::setLocale('ru');
+        }
 //        URL::forceScheme('http');
         Paginator::useBootstrap();
         $latestUsers = User::latest()->take(3)->get();

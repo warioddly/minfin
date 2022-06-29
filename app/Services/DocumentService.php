@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Storage;
 
 class DocumentService
 {
-
     public function validateData($documents, $id, $type='post'){
         foreach ($documents as $document){
             $name = md5(Carbon::now() . "_" . $document->getClientOriginalName()) . '.' . $document->getClientOriginalExtension();

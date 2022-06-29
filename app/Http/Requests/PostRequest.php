@@ -33,6 +33,7 @@ class PostRequest extends FormRequest
             'content' => ['nullable', 'string', 'max:860000'],
             'page_id' => ['nullable', 'integer'],
             'documents[]' => ['nullable', 'file', 'max:50240'],
+            'galleries[]' => ['nullable', 'image', 'max:50240'],
         ];
     }
 }

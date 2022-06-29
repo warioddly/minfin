@@ -38,7 +38,7 @@
                     </div>
                     <div class="row">
                         @foreach($appealofcitizens as $item)
-                            <div class="col-3 mb-2">
+                            <div class="col-12 col-md-4 col-lg-3 mb-2">
                                 <div class="card mb-0">
                                     <div class="card-body p-3">
                                         <small class="float-end text-muted">{{ $item->created_at->format('d m Y') }}</small>

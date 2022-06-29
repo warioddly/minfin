@@ -50,21 +50,30 @@ class PagePostController extends Controller
             $documentService->validateData($request['documents'], $lastCreatedPostId);
         }
 
-        $translation->addGroupTranslation(session('locale'), 'post-description', $request->get('description'), $request->get('description'));
-        $translation->addGroupTranslation(session('locale'), 'post-content', $request->get('content'), $request->get('content'));
-        $translation->addGroupTranslation(session('locale'), 'post-title', $request->get('title'), $request->get('title'));
+        if($request->hasFile('galleries')) {
+            $postService->putGalleryImages($request['galleries'], $lastCreatedPostId);
+        }
+
+        $translation->addGroupTranslation(session('locale'), 'post-description', 'description-' . $lastCreatedPostId, $request->get('description'));
+        $translation->addGroupTranslation(session('locale'), 'post-content', 'content-' . $lastCreatedPostId, $request->get('content'));
+        $translation->addGroupTranslation(session('locale'), 'post-title', 'title-' . $lastCreatedPostId, $request->get('title'));
 
         return redirect()->route('show-pages', $parentId);
     }
 
-    public function Update(PostRequest $request, PostService $service,  DocumentService $documentService, $id){
-
+    public function Update(PostRequest $request, PostService $postService,  DocumentService $documentService, $id){
         $post = Post::find($id);
-        $data = $service->validateUpdateData($request, $id);
+        $data = $postService->validateUpdateData($request);
         $post->update($data);
+
 
         if($request->hasFile('documents')) {
             $documentService->validateData($request['documents'], $id);
+        }
+
+
+        if($request->hasFile('galleries')) {
+            $postService->putGalleryImages($request['galleries'], $id);
         }
 
         return redirect()->route('post-show', $request->id);

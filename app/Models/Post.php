@@ -48,6 +48,10 @@ class Post extends Model
         }
     }
 
+    public function TotalSize(){
+        return $this->hasMany(Gallery::class)->sum('size');
+    }
+
     public static function archives()
     {
         $archives = static::selectRaw('year(created_at) year, monthname(created_at) month,
@@ -86,5 +90,10 @@ class Post extends Model
             case "December":
                 return "Декабрь";
         }
+    }
+
+    public function galleries()
+    {
+        return $this->hasMany(Gallery::class, 'post_id');
     }
 }

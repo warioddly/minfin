@@ -52,6 +52,11 @@
                                 <i class="dripicons-flag font-18 align-middle me-2"></i>
                                 <span class="d-md-block">{{ __('Banner') }}</span>
                             </a>
+                            <a class="nav-link d-flex align-items-center" id="v-pills-chart-tab" data-bs-toggle="pill" href="#v-pills-chart" role="tab" aria-controls="v-pills-chart"
+                               aria-selected="false">
+                                <i class="mdi mdi-file-chart font-18 align-middle me-2"></i>
+                                <span class="d-md-block">{{ __('Chart') }}</span>
+                            </a>
                         </div>
                     </div>
                     <div class="page-aside-right">
@@ -175,6 +180,12 @@
                                     </div>
                                     <button type="submit" class="btn btn-primary " style="float: right"><i class="mdi mdi-content-save me-2"></i>{{ __('Save') }}</button>
                                 </form>
+                            </div>
+                            <div class="tab-pane fade" id="v-pills-chart" role="tabpanel" aria-labelledby="v-pills-chart-tab">
+                                <div class="d-flex justify-content-between mb-3">
+                                    <p class="h3 mt-0">{{ __('Banner') }}</p>
+                                    <a href="{{ route('update-chart') }}" class="btn btn-primary">{{ __('Update') }}</a>
+                                </div>
                             </div>
                         </div>
                     </div>

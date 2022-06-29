@@ -33,6 +33,7 @@ Route::group(["namespace" => "App\Http\Controllers\Admin", "prefix" => "dashboar
     Route::group(["prefix" => "posts"], function () {
         Route::post('/deletePost', 'ApiController@deletePost')->name('post-delete');
         Route::post('/restore/post', 'ApiController@restorePost')->name('restore-post');
+        Route::post('/deleteGalleryImage', 'ApiController@deleteGalleryImage')->name('delete-gallery-image');
     });
 
     Route::group(["prefix" => "categories"], function () {

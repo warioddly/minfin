@@ -86,36 +86,95 @@
                                     <input type="hidden" name="page_id" value="{{ $post->page_id }}">
                                 </div>
 
-                                <div class="form-group mt-2">
-                                    <strong>{{ __('Attach document') }}</strong>
-                                        <input type="file" name="documents[]" id="attachment-files" class="form-control" multiple>
-                                    <div class="" id="uploadPreviewTemplate">
-                                        @foreach($post->attachmentFiles as $file)
-                                            <div class="card mt-1 mb-0 shadow-none border">
-                                                <div class="p-2">
-                                                    <div class="row align-items-center">
-                                                        <div class="col-auto">
-                                                            @if(in_array($file->extension, ['img', 'svg', 'image', 'ico', 'jpeg', 'gif']))
-                                                                <img data-dz-thumbnail src="{{ $file->path }}" class="avatar-sm rounded bg-light " style="object-fit: cover" alt="">
-                                                            @else
-                                                                <i class="mdi mdi-file-document-outline font-24 px-2" ></i>
-                                                            @endif
-                                                            </div>
-                                                        <div class="col ps-0">
-                                                            <a href="{{ $file->path }}" class="text-muted fw-bold" data-dz-name>{{ $file->title }}</a>
-                                                            <p class="mb-0" data-dz-size>{{ $file->size }}</p>
-                                                            </div>
-                                                        <div class="col-auto">
-                                                            <p class="btn btn-link btn-lg text-muted m-0 remove-old-file-btn" data-dz-remove data-name="{{ $file->title }}" data-id="{{ $file->id }}">
-                                                                <i class="dripicons-cross"></i>
-                                                                </p>
+                                <div>
+                                    <ul class="nav nav-tabs nav-justified nav-bordered mb-3 mt-3">
+                                        <li class="nav-item">
+                                            <a href="#attach-file-tab" data-bs-toggle="tab" aria-expanded="false" class="nav-link active">
+                                                <i class="mdi mdi-home-variant d-md-none d-block"></i>
+                                                <span class="d-none d-md-block">{{ __('Attach document') }}</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#gallery-tab" data-bs-toggle="tab" aria-expanded="true" class="nav-link">
+                                                <i class="mdi mdi-account-circle d-md-none d-block"></i>
+                                                <span class="d-none d-md-block">{{ __('Gallery') }}</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content">
+                                        <div class="tab-pane show active" id="attach-file-tab">
+                                            <div class="form-group mt-2">
+                                                <strong>{{ __('Attach document') }}</strong>
+                                                <input type="file" name="documents[]" id="attachment-files" class="form-control w-25" multiple>
+                                                <div class="row" id="uploadPreviewTemplate">
+                                                    @foreach($post->attachmentFiles as $file)
+                                                        <div class="col-12 col-md-3 mt-1 mb-0 preview_boxes">
+                                                            <div class="card mb-0 shadow-none border">
+                                                                <div class="p-2">
+                                                                    <div class="row align-items-center">
+                                                                        <div class="col-auto">
+                                                                            <div class="avatar-sm">
+                                                                                <span class="avatar-title rounded text-uppercase">{{ $file->extension }}</span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col ps-0">
+                                                                            <a href="{{ $file->path }}" class="text-muted fw-bold" data-dz-name
+                                                                               style="overflow:hidden; white-space:nowrap;display:inline-block; text-overflow:ellipsis; width: 200px">{{ $file->title }}</a>
+                                                                            <p class="mb-0" data-dz-size>{{ $file->size }}kb</p>
+                                                                        </div>
+                                                                        <div class="col-auto">
+                                                                            <p class="btn btn-link btn-lg text-muted m-0 remove-old-file-btn" data-dz-remove data-name="{{ $file->title }}" data-id="{{ $file->id }}">
+                                                                                <i class="dripicons-cross"></i>
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    @endforeach
                                                 </div>
-                                        @endforeach
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane" id="gallery-tab">
+                                            <div class="form-group mt-2">
+                                                <strong>{{ __('Gallery') }}</strong>
+                                                <input type="file" name="galleries[]" id="gallery-files" class="form-control w-25" accept="image/*" multiple>
+                                                <div class="row" id="galleryImages">
+                                                    @foreach($post->galleries as $key => $image)
+                                                        <div class="col-12 col-md-3 mt-1 mb-0 preview_boxes">
+                                                            <div class="card mb-0 shadow-none border">
+                                                                <div class="p-2">
+                                                                    <div class="row align-items-center">
+                                                                        <div class="col-auto">
+                                                                            <div class="avatar-sm">
+                                                                                <div class="avatar-sm">
+                                                                                    <img src="{{ $image->thumbnail_image }}" alt="" class="avatar-sm">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col ps-0">
+                                                                            <a href="{{ $image->full_size_image }}" class="text-muted fw-bold" data-dz-name
+                                                                               style="overflow:hidden; white-space:nowrap;display:inline-block; text-overflow:ellipsis; width: 200px">{{ __('Image') }} {{ $key + 1 }}</a>
+                                                                            <p class="mb-0" data-dz-size>{{ $image->size }}kb</p>
+                                                                        </div>
+                                                                        <div class="col-auto">
+                                                                            <p class="btn btn-link btn-lg text-muted m-0 remove-gallery-file-btn" data-dz-remove data-name="{{ $image->title }}" data-id="{{ $image->id }}">
+                                                                                <i class="dripicons-cross"></i>
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
+
                                 </div>
+
 
                                 <div class="form-group">
                                     <div class="d-flex justify-content-end">
@@ -139,17 +198,25 @@
 
 @push('footer-scripts')
     <script src="{{ asset('admin/plugins/UploadFile/FileUploader.js') }}"></script>
+    <script src="{{ asset('admin/plugins/UploadFile/GalleryUploader.js') }}"></script>
 
     <script type="text/javascript">
 
-        const removeButton = document.querySelector('.remove-old-file-btn');
-
         $('.remove-old-file-btn').click((event) => {
             let id = $(event.currentTarget).data('id');
-            $(event.currentTarget).parent().closest('div.card.shadow-none').remove();
-            console.log(id);
+            $(event.currentTarget).parent().closest('.preview_boxes').remove();
             $.ajax({
                 url: '{{ route('delete-document') }}',
+                type: "POST",
+                data: { id: id },
+            });
+        });
+
+        $('.remove-gallery-file-btn').click((event) => {
+            let id = $(event.currentTarget).data('id');
+            $(event.currentTarget).parent().closest('.preview_boxes').remove();
+            $.ajax({
+                url: '{{ route('delete-gallery-image') }}',
                 type: "POST",
                 data: { id: id },
             });

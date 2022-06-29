@@ -21,12 +21,12 @@
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
                             <a href="#post" data-bs-toggle="tab" aria-expanded="false" class="nav-link active">
-                                <span class="d-md-block">Новость</span>
+                                <span class="d-md-block">{{ __('New') }}</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="#news-documents" data-bs-toggle="tab" aria-expanded="true" class="nav-link ">
-                                <span class=" d-md-block">Прикрепленные документы</span>
+                                <span class=" d-md-block">{{ __('Attached documents') }}</span>
                             </a>
                         </li>
                     </ul>
@@ -42,89 +42,132 @@
                             <div class="d-flex social-media mb-2 d-print-none">
                                 <ul class="social-list list-inline head-social-media">
                                     <li class="list-inline-item">
-                                        <a href="#"  class="edit-button social-list-item text-muted d-flex justify-content-center"
-                                           style="font-size: 30px" target="_blank"><i class="mdi mdi-facebook"></i>
+                                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ route('front-post-show', $post->id) }}&t={{ $post->title }}"
+                                           class="edit-button social-media-item text-muted d-flex justify-content-center"
+                                           style="" target="_blank"><i class="mdi mdi-facebook"></i>
                                         </a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="#"  class="edit-button social-list-item text-muted d-flex justify-content-center"
-                                           style="font-size: 30px" target="_blank"><i class="mdi mdi-twitter"></i>
+                                        <a href="https://twitter.com/intent/tweet?text={{ $post->title }}&url={{ route('front-post-show', $post->id) }}"
+                                           class="edit-button social-media-item text-muted d-flex justify-content-center"
+                                           style="" target="_blank"><i class="mdi mdi-twitter"></i>
                                         </a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="#"  class="edit-button social-list-item text-muted d-flex justify-content-center"
-                                           style="font-size: 30px" target="_blank"><i class="mdi mdi-telegram"></i>
+                                        <a href="https://t.me/share/url?url={{ route('front-post-show', $post->id) }}&text={{ $post->title }}"
+                                           class="edit-button social-media-item text-muted d-flex justify-content-center"
+                                           style="" target="_blank"><i class="mdi mdi-telegram"></i>
                                         </a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="#"  class="edit-button social-list-item text-muted d-flex justify-content-center"
-                                           style="font-size: 30px" target="_blank"><i class="mdi mdi-linkedin"></i>
+                                        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ route('front-post-show', $post->id) }}"
+                                           class="edit-button social-media-item text-muted d-flex justify-content-center"
+                                           style="" target="_blank"><i class="mdi mdi-linkedin"></i>
                                         </a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="#"  class="edit-button social-list-item text-muted d-flex justify-content-center"
-                                           style="font-size: 30px" target="_blank"><i class="mdi mdi-instagram"></i>
+                                        <a href="https://wa.me/?text={{ __($post->title) }} {{ route('front-post-show', $post->id) }}"
+                                           class="edit-button social-media-item text-muted d-flex justify-content-center"
+                                           style="" target="_blank"><i class="mdi mdi-whatsapp"></i>
                                         </a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="#"  class="edit-button social-list-item text-muted d-flex justify-content-center"
-                                           style="font-size: 30px" target="_blank"><i class="mdi mdi-whatsapp"></i>
+                                        <a href="https://connect.ok.ru/offer?url={{ route('front-post-show', $post->id) }}&title={{ __($post->title) }}&imageUrl={{ $post->preview_image }}"
+                                           class="edit-button social-media-item text-muted d-flex justify-content-center"
+                                           style="" target="_blank"><i class="mdi mdi-odnoklassniki"></i>
                                         </a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="#"  class="edit-button social-list-item text-muted d-flex justify-content-center"
-                                           style="font-size: 30px" target="_blank"><i class="mdi mdi-odnoklassniki"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#"  class="edit-button social-list-item text-muted d-flex justify-content-center"
-                                           style="font-size: 30px" target="_blank"><i class="mdi mdi-vk"></i>
+                                        <a href="https://vk.com/share.php?url={{ route('front-post-show', $post->id) }}"
+                                           class="edit-button social-media-item text-muted d-flex justify-content-center"
+                                           style="" target="_blank"><i class="mdi mdi-vk"></i>
                                         </a>
                                     </li>
                                 </ul>
                             </div>
                             <img src="{{ $post->preview_image }}" alt="..." class="img-fluid post-preview-image mt-2 mb-3">
-                            <div class="post-content">{!! html_entity_decode( __($post->content) ) !!}</div>
-                            <div class="d-flex social-media mt-5 justify-content-between d-print-none align-items-center">
+                            <div class="post-content mb-5">{!! html_entity_decode( __($post->content) ) !!}</div>
+                            @if(count($post->galleries) !=0)
+                                <div class="post-gallery">
+                                <p class="text-muted mb-2 g-info-text">{{ __('Gallery') }}</p>
+                                <div id="gallery" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                                    <div class="carousel-inner">
+                                        @foreach($post->galleries as $key => $item)
+                                            @if($key == 5)
+                                                @break
+                                            @endif
+                                            <div class="carousel-item @if($key == 0)active @endif">
+                                                <img src="{{ $item->thumbnail_image }}" class="d-block w-100" alt="...">
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#gallery" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#gallery" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                                    <div class="carousel-indicators">
+                                        @foreach($post->galleries as $key => $item)
+                                            @if($key == 5)
+                                                @break
+                                            @endif
+                                            <button type="button" data-bs-target="#gallery"
+                                                    data-bs-slide-to="{{ $key }}" @if($key == 0)class="active" @endif aria-current="true" aria-label="Slide {{ $key + 1 }}">
+                                                <img class="d-block gallery-thumbnail" src="{{ $item->thumbnail_image }}" alt=""/>
+                                            </button>
+                                        @endforeach
+                                    </div>
+                                </div>
+                                <div class="mt-2 d-flex justify-content-between align-items-center">
+                                    <div class="d-flex">
+                                        <p class="text-muted g-info-text me-2">{{ count($post->galleries) }} {{ __('photos') }}</p>
+                                        <p class="text-muted g-info-text">{{ number_format($post->TotalSize() / 1048576,2) }}MB</p>
+                                    </div>
+                                    <a href="{{ route('front-post-download', $post->id) }}" class="gallery-download-btn">{{ __('Download gallery') }}</a>
+                                </div>
+                            </div>
+                            @endif
+                            <div class="d-flex social-media mt-5 mb-3 justify-content-between d-print-none align-items-center">
                                 <ul class="social-list list-inline">
                                     <li class="list-inline-item">
-                                        <a href="#"  class="edit-button social-list-item text-blue-light d-flex justify-content-center"
-                                           style="font-size: 30px" target="_blank"><i class="mdi mdi-facebook"></i>
+                                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ route('front-post-show', $post->id) }}&t={{ $post->title }}"  class="edit-button social-media-item text-blue-light d-flex justify-content-center"
+                                           style="" target="_blank"><i class="mdi mdi-facebook"></i>
                                         </a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="#"  class="edit-button social-list-item text-blue-light d-flex justify-content-center"
-                                           style="font-size: 30px" target="_blank"><i class="mdi mdi-twitter"></i>
+                                        <a href="https://twitter.com/intent/tweet?text={{ $post->title }}&url={{ route('front-post-show', $post->id) }}"
+                                           class="edit-button social-media-item text-blue-light d-flex justify-content-center"
+                                           style="" target="_blank"><i class="mdi mdi-twitter"></i>
                                         </a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="#"  class="edit-button social-list-item text-blue-light d-flex justify-content-center"
-                                           style="font-size: 30px" target="_blank"><i class="mdi mdi-telegram"></i>
+                                        <a href="https://t.me/share/url?url={{ route('front-post-show', $post->id) }}&text={{ $post->title }}"  class="edit-button social-media-item text-blue-light d-flex justify-content-center"
+                                           style="" target="_blank"><i class="mdi mdi-telegram"></i>
                                         </a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="#"  class="edit-button social-list-item text-blue-light d-flex justify-content-center"
-                                           style="font-size: 30px" target="_blank"><i class="mdi mdi-linkedin"></i>
+                                        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ route('front-post-show', $post->id) }}"
+                                           class="edit-button social-media-item text-blue-light d-flex justify-content-center"
+                                           style="" target="_blank"><i class="mdi mdi-linkedin"></i>
                                         </a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="#"  class="edit-button social-list-item text-blue-light d-flex justify-content-center"
-                                           style="font-size: 30px" target="_blank"><i class="mdi mdi-instagram"></i>
+                                        <a href="https://wa.me/?text={{ __($post->title) }} {{ route('front-post-show', $post->id) }}"
+                                           class="edit-button social-media-item text-blue-light d-flex justify-content-center"
+                                           style="" target="_blank"><i class="mdi mdi-whatsapp"></i>
                                         </a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="#"  class="edit-button social-list-item text-blue-light d-flex justify-content-center"
-                                           style="font-size: 30px" target="_blank"><i class="mdi mdi-whatsapp"></i>
+                                        <a href="https://connect.ok.ru/offer?url={{ route('front-post-show', $post->id) }}&title={{ __($post->title) }}&imageUrl={{ $post->preview_image }}"  class="edit-button social-media-item text-blue-light d-flex justify-content-center"
+                                           style="" target="_blank"><i class="mdi mdi-odnoklassniki"></i>
                                         </a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="#"  class="edit-button social-list-item text-blue-light d-flex justify-content-center"
-                                           style="font-size: 30px" target="_blank"><i class="mdi mdi-odnoklassniki"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#"  class="edit-button social-list-item text-blue-light d-flex justify-content-center"
-                                           style="font-size: 30px" target="_blank"><i class="mdi mdi-vk"></i>
+                                        <a href="https://vk.com/share.php?url={{ route('front-post-show', $post->id) }}"  class="edit-button social-media-item text-blue-light d-flex justify-content-center"
+                                           style="" target="_blank"><i class="mdi mdi-vk"></i>
                                         </a>
                                     </li>
                                 </ul>
@@ -135,11 +178,11 @@
                         </div>
                     </div>
                     <div class="tab-pane" id="news-documents">
-                       <div class="main-documents mt-3 px-2 px-md-0">
-                           <x-post-document-download
-                               :items="$post['attachmentFiles']"
-                           ></x-post-document-download>
-                       </div>
+                        <div class="main-documents mt-3 px-2 px-md-0">
+                            <x-post-document-download
+                                :items="$post['attachmentFiles']"
+                            ></x-post-document-download>
+                        </div>
                     </div>
                 </div>
             </div>

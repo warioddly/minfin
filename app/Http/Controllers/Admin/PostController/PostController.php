@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\PostController;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Gallery;
 use App\Models\Post;
 use App\Services\CheckPermissionService;
 
