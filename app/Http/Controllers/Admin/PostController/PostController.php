@@ -4,18 +4,19 @@ namespace App\Http\Controllers\Admin\PostController;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
-use App\Models\Gallery;
 use App\Models\Post;
 use App\Services\CheckPermissionService;
+use App\Services\TranslateService;
 
 class PostController extends Controller
 {
-    public function Index(CheckPermissionService $permissionService){
+    public function Index(TranslateService $translateService, CheckPermissionService $permissionService){
         $posts = Post::where('sheet', 0)->latest()->get();
 
         $is_published = 'all';
 
         $userCanActions = $permissionService->permissionsInPosts();
+        $translateService->translatePosts($posts);
 
         return view('admin.posts.index', compact('posts', 'is_published', 'userCanActions'));
     }
@@ -34,8 +35,10 @@ class PostController extends Controller
         return view('admin.posts.index', compact('posts', 'is_published', 'userCanActions'));
     }
 
-    public function Show($id){
+    public function Show(TranslateService $translateService, $id){
         $post = Post::find($id);
+        $translateService->translate($post);
+
         return view('admin.posts.show', compact('post'));
     }
 

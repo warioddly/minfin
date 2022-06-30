@@ -131,10 +131,6 @@
                            data-id="{{ $item->id }}" data-restore-url="@if($links[1]){{ route($links[1], '') }}@endif"
                            class="action-icon restore-button font-22 me-2 text-success"><i class="mdi mdi-cached"></i>
                         </a>
-                        <a data-bs-toggle="modal" href="#delete" role="button"
-                           data-id="{{ $item->id }}" data-recover-url="@if($links[1]){{ route($links[1], '') }} @endif"
-                           class="action-icon delete-button font-20"><i class="dripicons-trash"></i>
-                        </a>
                     </td>
                 </tr>
             @endforeach

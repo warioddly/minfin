@@ -17,11 +17,57 @@
                             <form action="{{ route('page-post-store', $parentId) }}" method="POST" enctype="multipart/form-data"
                                   class="" id="myAwesomeDropzone">
                                 @csrf
-                                <div class="form-group mt-2">
-                                    <div class="row">
-                                        <div class="col">
-                                            <strong>{{__('Title')}}:</strong>
-                                            <input type="text" name="title" placeholder="{{ __('Post title') }}" maxlength="255" class="form-control" data-toggle="maxlength" data-threshold="255" required>
+
+                                <ul class="nav nav-tabs nav-justified nav-bordered mb-3">
+                                    <li class="nav-item">
+                                        <a href="#russian" data-bs-toggle="tab" aria-expanded="true" data-lang="russian" class="nav-link active tab">
+                                            <i class="mdi mdi-home-variant d-md-none d-block"></i>
+                                            <span class="d-none d-md-block">Русский</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#kyrgyz" data-bs-toggle="tab" aria-expanded="false" data-lang="kyrgyz" class="nav-link tab">
+                                            <i class="mdi mdi-account-circle d-md-none d-block"></i>
+                                            <span class="d-none d-md-block">Кыргызча</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#english" data-bs-toggle="tab" aria-expanded="false" data-lang="english" class="nav-link tab">
+                                            <i class="mdi mdi-settings-outline d-md-none d-block"></i>
+                                            <span class="d-none d-md-block">English</span>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <div class="tab-pane show active" id="russian">
+                                        <div class="form-group mt-2">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <strong>{{__('Title')}}:</strong>
+                                                    <input type="text" name="title" placeholder="{{ __('Post title') }}" maxlength="255" class="form-control" data-toggle="maxlength" data-threshold="255" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="kyrgyz">
+                                        <div class="form-group mt-2">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <strong>{{__('Title')}}:</strong>
+                                                    <input type="text" name="kg_title" placeholder="{{ __('Post title') }}" maxlength="255" class="form-control" data-toggle="maxlength" data-threshold="255" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="english">
+                                        <div class="form-group mt-2">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <strong>{{__('Title')}}:</strong>
+                                                    <input type="text" name="en_title" placeholder="{{ __('Post title') }}" maxlength="255" class="form-control" data-toggle="maxlength" data-threshold="255" required>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -64,14 +110,46 @@
                                     <input name="preview_image" type="file" class="form-control" accept="image/*" required>
                                 </div>
 
-                                <div class="form-group mt-2">
-                                    <strong>{{__('Description')}}:</strong>
-                                    <textarea name="description" id="" cols="30" rows="3" placeholder="{{__('Post description')}}" class="form-control" maxlength="500" data-toggle="maxlength" data-threshold="500" required></textarea>
+                                <div class="tab-content" id="tab-description">
+                                    <div class="tab-pane show active" id="russian-description">
+                                        <div class="form-group mt-2">
+                                            <strong>{{__('Description')}}:</strong>
+                                            <textarea name="description" id="" cols="30" rows="3" placeholder="{{__('Post description')}}" class="form-control" maxlength="500" data-toggle="maxlength" data-threshold="500" required></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="kyrgyz-description">
+                                        <div class="form-group mt-2">
+                                            <strong>{{__('Description')}}:</strong>
+                                            <textarea name="kg_description" id="" cols="30" rows="3" placeholder="{{__('Post description')}}" class="form-control" maxlength="500" data-toggle="maxlength" data-threshold="500" required></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="english-description">
+                                        <div class="form-group mt-2">
+                                            <strong>{{__('Description')}}:</strong>
+                                            <textarea name="en_description" id="" cols="30" rows="3" placeholder="{{__('Post description')}}" class="form-control" maxlength="500" data-toggle="maxlength" data-threshold="500" required></textarea>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <div class="form-group mt-2">
-                                    <strong>{{ __('Content') }}</strong>
-                                    <textarea id="editor" name="content"></textarea>
+                                <div class="tab-content" id="tab-content">
+                                    <div class="tab-pane show active" id="russian-content">
+                                        <div class="form-group mt-2">
+                                            <strong>{{ __('Content') }}</strong>
+                                            <textarea id="editor" name="content"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="kyrgyz-content">
+                                        <div class="form-group mt-2">
+                                            <strong>{{ __('Content') }}</strong>
+                                            <textarea id="editor2" name="kg_content"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="english-content">
+                                        <div class="form-group mt-2">
+                                            <strong>{{ __('Content') }}</strong>
+                                            <textarea id="editor3" name="en_content"></textarea>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div>
@@ -106,7 +184,7 @@
                                            </div>
                                        </div>
                                    </div>
-                               </div>
+                                </div>
 
                                 <div class="form-group">
                                     <div class="d-flex justify-content-end">
@@ -132,6 +210,28 @@
     <script src="{{ asset('admin/plugins/UploadFile/FileUploader.js') }}"></script>
     <script src="{{ asset('admin/plugins/UploadFile/GalleryUploader.js') }}"></script>
     <script type="text/javascript">
+
+        $('.tab').click((event) => {
+            let lang = $(event.currentTarget).data('lang');
+
+            $('#tab-description .tab-pane').removeClass('active').removeClass('show');
+            $('#tab-content .tab-pane').removeClass('active').removeClass('show');
+            $('#tab-description #' + lang + '-description').addClass('active').addClass('show');
+            $('#tab-content #' + lang + '-content').addClass('active').addClass('show');
+
+        });
+
+
+        CKEDITOR.replace( 'editor' );
+        CKEDITOR.add
+
+        CKEDITOR.replace( 'editor2' );
+        CKEDITOR.add
+
+        CKEDITOR.replace( 'editor3' );
+        CKEDITOR.add
+
         initSample();
     </script>
+
 @endpush

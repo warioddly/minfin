@@ -7,9 +7,11 @@ use App\Http\Requests\PostRequest;
 use App\Models\Category;
 use App\Models\Page;
 use App\Models\Post;
+use App\Models\PostTranslate;
 use App\Services\CheckPermissionService;
 use App\Services\DocumentService;
 use App\Services\PostService;
+use App\Services\PostTranslateService;
 use JoeDixon\Translation\Drivers\Translation;
 
 class PagePostController extends Controller
@@ -40,37 +42,44 @@ class PagePostController extends Controller
         return view('admin.pages.posts.create', compact('categories', 'publishers', 'parentId'));
     }
 
-    public function Store(Translation $translation, PostRequest $request, PostService $postService, DocumentService $documentService, $parentId){
+    public function Store(PostRequest $request, PostService $postService, DocumentService $documentService, PostTranslateService $translateService, $parentId){
         $data = $postService->validateData($request, $request->route('id'), $parentId);
 
         Page::whereId($parentId)->update(['type' => 3 ]);
         $lastCreatedPostId = Post::create($data)->id;
 
+        $translateData = $translateService->validateData($request, $lastCreatedPostId);
+
+        PostTranslate::create($translateData);
+
         if($request->hasFile('documents')) {
             $documentService->validateData($request['documents'], $lastCreatedPostId);
         }
-
         if($request->hasFile('galleries')) {
             $postService->putGalleryImages($request['galleries'], $lastCreatedPostId);
         }
 
-        $translation->addGroupTranslation(session('locale'), 'post-description', 'description-' . $lastCreatedPostId, $request->get('description'));
-        $translation->addGroupTranslation(session('locale'), 'post-content', 'content-' . $lastCreatedPostId, $request->get('content'));
-        $translation->addGroupTranslation(session('locale'), 'post-title', 'title-' . $lastCreatedPostId, $request->get('title'));
-
         return redirect()->route('show-pages', $parentId);
     }
 
-    public function Update(PostRequest $request, PostService $postService,  DocumentService $documentService, $id){
+    public function Update(PostRequest $request, PostService $postService,  DocumentService $documentService, PostTranslateService $translateService, $id){
         $post = Post::find($id);
         $data = $postService->validateUpdateData($request);
         $post->update($data);
 
+        $translateData = $translateService->validateData($request, $id);
+
+        $translates = PostTranslate::where('post_id', $id)->first();
+        if($translates == null || $translates == []){
+            $translates->create($translateData);
+        }
+        else{
+            $translates->update($translateData);
+        }
 
         if($request->hasFile('documents')) {
             $documentService->validateData($request['documents'], $id);
         }
-
 
         if($request->hasFile('galleries')) {
             $postService->putGalleryImages($request['galleries'], $id);

@@ -15,6 +15,12 @@ class PostService
         $data = $request->all();
         unset($data['documents']);
         unset($data['galleries']);
+        unset($data['kg_title']);
+        unset($data['en_title']);
+        unset($data['kg_description']);
+        unset($data['en_description']);
+        unset($data['kg_content']);
+        unset($data['en_content']);
 
         if($request->hasFile('preview_image')) {
             $image = $data['preview_image'];
@@ -44,6 +50,12 @@ class PostService
         $data = $request->all();
         unset($data['documents']);
         unset($data['galleries']);
+        unset($data['kg_title']);
+        unset($data['en_title']);
+        unset($data['kg_description']);
+        unset($data['en_description']);
+        unset($data['kg_content']);
+        unset($data['en_content']);
 
         if($request->hasFile('preview_image')) {
             $image = $data['preview_image'];

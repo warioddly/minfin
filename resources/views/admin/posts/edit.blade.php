@@ -21,14 +21,67 @@
                             <form action="{{ route('page-post-update', $post->id) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PATCH')
-                                <div class="form-group mt-2">
-                                    <div class="row">
-                                        <div class="col">
-                                            <strong>{{__('Title')}}:</strong>
-                                            <input type="text" name="title" placeholder="{{ __('Post title') }}" maxlength="255" value="{{ $post->title }}" class="form-control" required>
+
+                                <ul class="nav nav-tabs nav-justified nav-bordered mb-3">
+                                    <li class="nav-item">
+                                        <a href="#russian" data-bs-toggle="tab" aria-expanded="true" data-lang="russian" class="nav-link active tab">
+                                            <i class="mdi mdi-home-variant d-md-none d-block"></i>
+                                            <span class="d-none d-md-block">Русский</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#kyrgyz" data-bs-toggle="tab" aria-expanded="false" data-lang="kyrgyz" class="nav-link tab">
+                                            <i class="mdi mdi-account-circle d-md-none d-block"></i>
+                                            <span class="d-none d-md-block">Кыргызча</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#english" data-bs-toggle="tab" aria-expanded="false" data-lang="english" class="nav-link tab">
+                                            <i class="mdi mdi-settings-outline d-md-none d-block"></i>
+                                            <span class="d-none d-md-block">English</span>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <div class="tab-pane show active" id="russian">
+                                        <div class="form-group mt-2">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <strong>{{__('Title')}}:</strong>
+                                                    <input type="text" name="title" placeholder="{{ __('Post title') }}"
+                                                           maxlength="255" value="{{ $post->title }}" class="form-control"
+                                                           data-toggle="maxlength" data-threshold="255" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="kyrgyz">
+                                        <div class="form-group mt-2">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <strong>{{__('Title')}}:</strong>
+                                                    <input type="text" name="kg_title" placeholder="{{ __('Post title') }}"
+                                                           maxlength="255" class="form-control" value="{{ $post->translates->kg_title ?? ''}}"
+                                                           data-toggle="maxlength" data-threshold="255" >
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="english">
+                                        <div class="form-group mt-2">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <strong>{{__('Title')}}:</strong>
+                                                    <input type="text" name="en_title" placeholder="{{ __('Post title') }}"
+                                                           maxlength="255" class="form-control" value="{{ $post->translates->en_title ?? ''}}"
+                                                           data-toggle="maxlength" data-threshold="255" >
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="form-group mt-2">
                                     <div class="row">
                                         <div class="col col-md-6 col-lg-6 col-xl-6">
@@ -50,7 +103,7 @@
                                                 <option value="" disabled selected>-- {{ __('Select publisher') }} --</option>
                                                 @foreach($publishers as $publisher)
                                                     @if($publisher->id == $post->publisher_id)
-                                                        <option value="{{ $publisher->id }}" selected>{{ $publisher->title }}</option>
+                                                        <option value="{{ $publisher->id }}" selected>{{ $publisher->title}}</option>
                                                         @continue
                                                     @endif
                                                     <option value="{{ $publisher->id }}">{{ $publisher->title }}</option>
@@ -75,15 +128,56 @@
                                     <input name="preview_image" type="file" class="form-control" accept="image/*">
                                 </div>
 
-                                <div class="form-group mt-2">
-                                    <strong>{{__('Description')}}:</strong>
-                                    <textarea name="description" id="" cols="30" rows="4" placeholder="{{__('Post description')}}" class="form-control" maxlength="500" data-toggle="maxlength" data-threshold="500"  required>{{ $post->description }}</textarea>
+                                <input type="hidden" name="page_id" value="{{ $post->page_id }}">
+                                <div class="tab-content" id="tab-description">
+                                    <div class="tab-pane show active" id="russian-description">
+                                        <div class="form-group mt-2">
+                                            <strong>{{__('Description')}}:</strong>
+                                            <textarea name="description" id="" cols="30"
+                                                      rows="3" placeholder="{{__('Post description')}}"
+                                                      class="form-control" maxlength="500" data-toggle="maxlength"
+                                                      data-threshold="500" required>{{ $post->description }}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="kyrgyz-description">
+                                        <div class="form-group mt-2">
+                                            <strong>{{__('Description')}}:</strong>
+                                            <textarea name="kg_description" id="" cols="30"
+                                                      rows="3" placeholder="{{__('Post description')}}"
+                                                      class="form-control" maxlength="500" data-toggle="maxlength"
+                                                      data-threshold="500" >{{ $post->translates->kg_description ?? ''}}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="english-description">
+                                        <div class="form-group mt-2">
+                                            <strong>{{__('Description')}}:</strong>
+                                            <textarea name="en_description" id="" cols="30"
+                                                      rows="3" placeholder="{{__('Post description')}}"
+                                                      class="form-control" maxlength="500" data-toggle="maxlength"
+                                                      data-threshold="500" >{{ $post->translates->en_description ?? ''}}</textarea>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <div class="form-group mt-2">
-                                    <strong>Редактор</strong>
-                                    <textarea id="editor" name="content">{{ $post->content }}</textarea>
-                                    <input type="hidden" name="page_id" value="{{ $post->page_id }}">
+                                <div class="tab-content" id="tab-content">
+                                    <div class="tab-pane show active" id="russian-content">
+                                        <div class="form-group mt-2">
+                                            <strong>{{ __('Content') }}</strong>
+                                            <textarea id="editor" name="content">{{ $post->content }}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="kyrgyz-content">
+                                        <div class="form-group mt-2">
+                                            <strong>{{ __('Content') }}</strong>
+                                            <textarea id="editor2" name="kg_content">{{ $post->translates->kg_content ?? ''}}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="english-content">
+                                        <div class="form-group mt-2">
+                                            <strong>{{ __('Content') }}</strong>
+                                            <textarea id="editor3" name="en_content">{{ $post->translates->en_content ?? ''}}</textarea>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div>
@@ -175,7 +269,6 @@
 
                                 </div>
 
-
                                 <div class="form-group">
                                     <div class="d-flex justify-content-end">
                                         <a href="{{ url()->previous() }}" class="btn btn-secondary mt-3 me-1">{{__('Cancel')}}</a>
@@ -221,6 +314,27 @@
                 data: { id: id },
             });
         });
+
+        $('.tab').click((event) => {
+            let lang = $(event.currentTarget).data('lang');
+
+            $('#tab-description .tab-pane').removeClass('active').removeClass('show');
+            $('#tab-content .tab-pane').removeClass('active').removeClass('show');
+            $('#tab-description #' + lang + '-description').addClass('active').addClass('show');
+            $('#tab-content #' + lang + '-content').addClass('active').addClass('show');
+
+        });
+
+
+        CKEDITOR.replace( 'editor' );
+        CKEDITOR.add
+
+        CKEDITOR.replace( 'editor2' );
+        CKEDITOR.add
+
+        CKEDITOR.replace( 'editor3' );
+        CKEDITOR.add
+
 
         initSample();
 

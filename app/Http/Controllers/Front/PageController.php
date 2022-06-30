@@ -10,6 +10,7 @@ use App\Models\Page;
 use App\Models\Post;
 use App\Services\DocumentService;
 use App\Services\PageFrontService;
+use App\Services\TranslateService;
 
 class PageController extends Controller
 {
@@ -19,7 +20,7 @@ class PageController extends Controller
         return view('front.pages.index', compact('pages'));
     }
 
-    public function Show(PageFrontService $service,$id){
+    public function Show(TranslateService $translateService, PageFrontService $service,$id){
         $page = Page::findOrFail($id);
 
         if($page->type == 2){
@@ -30,6 +31,7 @@ class PageController extends Controller
         $childPagesIds = $service->getAllChildPages($page, null);
 
         $posts = Post::whereIn('page_id', array_merge($childPagesIds, [$page->id]))->where('sheet', false)->where('is_published', true)->latest()->paginate(10);
+        $translateService->translatePosts($posts);
 
         return view('front.pages.show', compact('page', 'posts'));
     }

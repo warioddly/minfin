@@ -63,6 +63,15 @@
                 </li>
             @endif
 
+            @if(auth()->user()->can('show-gallery'))
+                <li class="side-nav-item">
+                    <a href="{{ route('gallery') }}" class="side-nav-link">
+                        <i class="uil-picture"></i>
+                        <span> {{ __('Gallery') }} </span>
+                    </a>
+                </li>
+            @endif
+
             @if(auth()->user()->can('show-documents'))
                 <li class="side-nav-item">
                     <a href="{{ route('documents') }}" class="side-nav-link">

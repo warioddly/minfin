@@ -96,4 +96,10 @@ class Post extends Model
     {
         return $this->hasMany(Gallery::class, 'post_id');
     }
+
+    public function translates()
+    {
+        return $this->hasOne(PostTranslate::class, 'post_id');
+    }
+
 }

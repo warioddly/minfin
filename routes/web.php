@@ -75,13 +75,6 @@ Route::middleware(['setLocale'])->group(function(){
             Route::post('/changeBlocks', 'SettingController@ChangeBlocks')->name('changeBlocks')->middleware('can:edit-content-settings');
         });
 
-        Route::group(["namespace" => "SettingController", "prefix" => "settings"], function () {
-            Route::get('/', 'SettingController@Index')->name('settings')->middleware('can:show-content-settings');
-            Route::post('/storeCarousel', 'SettingController@StoreCarousel')->name('store-carousel')->middleware('can:add-content-settings');
-            Route::patch('/{id}', 'SettingController@UpdateCarousel')->name('update-carousel')->middleware('can:edit-content-settings');
-            Route::post('/changeBlocks', 'SettingController@ChangeBlocks')->name('changeBlocks')->middleware('can:edit-content-settings');
-        });
-
         Route::group(["namespace" => "PageController", "prefix" => "pages"], function () {
             Route::get('/', 'PageController@Index')->name('pages')->middleware('can:show-pages');
             Route::patch('/directory/{id}', 'PageController@DirectoryParentUpdate')->name('directory-update-parent-page')->middleware('can:edit-pages');
@@ -137,25 +130,32 @@ Route::middleware(['setLocale'])->group(function(){
             Route::patch('/{id}', 'ProfileController@Update')->name('update-profile');
         });
 
-        Route::group(["namespace" => "FeatureController", "prefix" => "trash"], function () {
-            Route::get('/', 'TrashController@Index')->name('trash');
-        });
+        Route::group(["namespace" => "FeatureController"], function () {
+            Route::group(["prefix" => "features"], function () {
+                Route::get('/', 'LogController@Index')->name('logs')->middleware('can:show-logs');
+                Route::get('/translations', 'FeatureController@Translations')->name('translations')->middleware('can:show-translations');
+                Route::get('/manager', 'FeatureController@fileManager')->name('file-manager')->middleware('can:show-filemanager');
+                Route::get('/{theme}', 'FeatureController@changeAdminTheme')->name('theme');
+                Route::get('/{type}/isDirectory', 'FeatureController@isDirectory')->name('isDirectory');
+                Route::get('/{type}/isCategory', 'FeatureController@isCategory')->name('isCategory');
+                Route::get('/{style}/style', 'FeatureController@postListStyle')->name('post-style')->middleware('can:show-posts');
+                Route::post('/notes/store', 'NoteController@Store')->name('store-notes');
+                Route::delete('/notes/{id}', 'NoteController@Delete')->name('delete-notes');
+                Route::patch('/banner-update', 'BannerController@Update')->name('update-banner');
+                Route::post('/social-media/store', 'ContactController@StoreSocial')->name('store-social-media');
+                Route::patch('/social-media/update/{id}', 'ContactController@UpdateSocial')->name('update-social-media');
+                Route::patch('/contacts/update/', 'ContactController@UpdateContacts')->name('update-contacts');
+                Route::get('/chart/update/', 'ChartController@Index')->name('update-chart');
+            });
 
-        Route::group(["namespace" => "FeatureController", "prefix" => "features"], function () {
-            Route::get('/', 'LogController@Index')->name('logs')->middleware('can:show-logs');
-            Route::get('/translations', 'FeatureController@Translations')->name('translations')->middleware('can:show-translations');
-            Route::get('/manager', 'FeatureController@fileManager')->name('file-manager')->middleware('can:show-filemanager');
-            Route::get('/{theme}', 'FeatureController@changeAdminTheme')->name('theme');
-            Route::get('/{type}/isDirectory', 'FeatureController@isDirectory')->name('isDirectory');
-            Route::get('/{type}/isCategory', 'FeatureController@isCategory')->name('isCategory');
-            Route::get('/{style}/style', 'FeatureController@postListStyle')->name('post-style')->middleware('can:show-posts');
-            Route::post('/notes/store', 'NoteController@Store')->name('store-notes');
-            Route::delete('/notes/{id}', 'NoteController@Delete')->name('delete-notes');
-            Route::patch('/banner-update', 'BannerController@Update')->name('update-banner');
-            Route::post('/social-media/store', 'ContactController@StoreSocial')->name('store-social-media');
-            Route::patch('/social-media/update/{id}', 'ContactController@UpdateSocial')->name('update-social-media');
-            Route::patch('/contacts/update/', 'ContactController@UpdateContacts')->name('update-contacts');
-            Route::get('/chart/update/', 'ChartController@Index')->name('update-chart');
+            Route::group(["prefix" => "trash"], function () {
+                Route::get('/', 'TrashController@Index')->name('trash');
+            });
+
+            Route::group(["prefix" => "gallery"], function () {
+                Route::get('/', 'GalleryController@Index')->name('gallery');
+                Route::get('/{id}', 'GalleryController@Show')->name('show-gallery');
+            });
         });
 
         Route::group(["namespace" => "EmailController", "prefix" => "email"], function () {

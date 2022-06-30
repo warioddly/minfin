@@ -6,13 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Models\CarouselItem;
 use App\Models\Page;
 use App\Models\Post;
+use App\Services\TranslateService;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use ZipArchive;
 
 class PostController extends Controller
 {
-    public function Show($id){
+    public function Show(TranslateService $translateService, $id){
         $post = Post::findOrFail($id);
 
         if($post->is_published == 0){
@@ -20,6 +21,7 @@ class PostController extends Controller
         }
 
         $post->increment('views', 1);
+        $translateService->translate($post);
 
         return view('front.posts.show', compact('post'));
     }
