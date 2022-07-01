@@ -9,6 +9,7 @@ use App\Models\Page;
 use App\Models\Post;
 use App\Services\CheckPermissionService;
 use App\Services\PageService;
+use JoeDixon\Translation\Drivers\Translation;
 
 class PageController extends Controller
 {
@@ -51,11 +52,13 @@ class PageController extends Controller
             'ChildPages', 'parentId', 'parentPages', 'is_published', 'posts'));
     }
 
-    public function DirectoryStore(PageStoreRequest $request, PageService $service, $parentId){
+    public function DirectoryStore(Translation $translation, PageStoreRequest $request, PageService $service, $parentId){
 
         $data = $service->validateData($request, $parentId);
         Page::create($data);
         Page::where('id', $parentId)->update(['type' => 1]);
+
+        $translation->addGroupTranslation('ru', 'page', $data['title'], $data['title']);
 
         return redirect()->back()->with('status', __('Page successfully created'));
     }

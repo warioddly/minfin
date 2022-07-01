@@ -42,6 +42,8 @@ class PostController extends Controller
             Storage::delete('public/files/shares/Новости/Пост-' . $id . '/' . $fileName);
         }
 
+        try {
+
         if ($zip->open($dir . '/' . $fileName, ZipArchive::CREATE) === TRUE){
             $files = File::files($dir);
 
@@ -53,5 +55,9 @@ class PostController extends Controller
         }
 
         return response()->download($dir . '/' . $fileName );
+        }
+        catch (\Exception $exception){
+            return redirect()->back()->with(['status' => 'Unable to download gallery']);
+        }
     }
 }

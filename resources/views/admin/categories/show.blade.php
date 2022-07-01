@@ -26,6 +26,8 @@
                 </div>
             </div>
         </div>
+        {{ __($category->title) }}
+
 
         <div class="col-12 col-lg-8 col-xxl-9 d-flex">
             <div class="card flex-fill">

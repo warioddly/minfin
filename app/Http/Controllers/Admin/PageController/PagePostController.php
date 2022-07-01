@@ -71,7 +71,7 @@ class PagePostController extends Controller
 
         $translates = PostTranslate::where('post_id', $id)->first();
         if($translates == null || $translates == []){
-            $translates->create($translateData);
+            PostTranslate::create($translateData);
         }
         else{
             $translates->update($translateData);

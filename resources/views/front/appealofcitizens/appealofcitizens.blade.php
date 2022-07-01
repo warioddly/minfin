@@ -12,12 +12,12 @@
 
                 @if($errors->any())
                     @foreach ($errors->all() as $error)
-                        <x-alert alertType="danger" message="{{ $error }}"></x-alert>
+                        <x-alert alertType="danger" message="{{ __($error) }}"></x-alert>
                     @endforeach
                 @endif
 
                 @if(session('status'))
-                    <x-alert alertType="success" message="{{ session('status') }}"></x-alert>
+                    <x-alert alertType="success" message="{{ __(session('status')) }}"></x-alert>
                 @endif
 
             </div>

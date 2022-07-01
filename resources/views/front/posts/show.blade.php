@@ -7,6 +7,11 @@
         <div class="row mt-4 mb-3">
             <div class="col">
                 {{ Breadcrumbs::render('Post', $post) }}
+
+                @if(session('status'))
+                    <x-alert alertType="danger" message="{{ __(session('status')) }}"></x-alert>
+                @endif
+
             </div>
         </div>
         <div class="row mb-4 mb-md-5">

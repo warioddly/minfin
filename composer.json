@@ -8,6 +8,8 @@
         "php": "^8.0.2",
         "ext-curl": "*",
         "ext-http": "*",
+        "ext-zip": "*",
+        "barryvdh/laravel-translation-manager": "^0.6.3",
         "dacastro4/laravel-gmail": "^6.0",
         "davejamesmiller/laravel-breadcrumbs": "*",
         "google/apiclient": "*",
@@ -18,8 +20,8 @@
         "laravel/tinker": "^2.7",
         "laravel/ui": "^3.4",
         "spatie/laravel-permission": "^5.5",
-        "unisharp/laravel-filemanager": "master",
-      "ext-zip": "*"
+        "tanmuhittin/laravel-google-translate": "^2.1",
+        "unisharp/laravel-filemanager": "master"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

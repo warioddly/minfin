@@ -76,7 +76,6 @@
                             @continue
                         @endif
 
-
                         @if($key == 'category_id')
                                 <td>{{ __($item->category->title) }}</td>
                                 @continue

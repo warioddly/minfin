@@ -23,17 +23,13 @@ class PageSheetController extends Controller
         return view('admin.pages.sheets.create', compact('parentId'));
     }
 
-    public function Store(Translation $translation, PostSheetRequest $request, PageSheetService $sheetService,  DocumentService $documentService){
+    public function Store(PostSheetRequest $request, PageSheetService $sheetService,  DocumentService $documentService){
         $data = $sheetService->validateData($request, true);
         $sheet = Post::create($data);
 
         if($request->hasFile('documents')) {
             $documentService->validateData($request['documents'], $sheet->id);
         }
-
-//        $translation->addGroupTranslation(session('locale'), 'sheet-description', $request->get('description'), $request->get('description'));
-//        $translation->addGroupTranslation(session('locale'), 'sheet-content', $request->get('content'), $request->get('content'));
-//        $translation->addGroupTranslation(session('locale'), 'sheet-title', $request->get('title'), $request->get('title'));
 
         return redirect()->route('page-sheet-show', $sheet->id);
     }
