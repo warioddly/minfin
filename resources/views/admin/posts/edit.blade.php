@@ -286,7 +286,6 @@
 
 @push('head-scripts')
     <script src="{{ asset('admin/plugins/Ckeditor/ckeditor.js') }}"></script>
-    <script src="{{ asset('admin/plugins/Ckeditor/editor.js') }}"></script>
 @endpush
 
 @push('footer-scripts')
@@ -334,9 +333,6 @@
 
         CKEDITOR.replace( 'editor3' );
         CKEDITOR.add
-
-
-        initSample();
 
     </script>
 @endpush

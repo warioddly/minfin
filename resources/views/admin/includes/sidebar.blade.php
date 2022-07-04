@@ -113,15 +113,15 @@
                 </li>
             @endif
 
-            @if(auth()->user()->can('auth-email'))
-                <li class="side-nav-item">
-                    {{--                {{ route('email', 'inbox') }}    LaravelGmail::check()--}}
-                    <a href="@if(false) # @else {{ route('auth-email') }} @endif" class="side-nav-link">
-                        <i class="uil-envelope"></i>
-                        <span> {{ __('Email') }} </span>
-                    </a>
-                </li>
-            @endif
+{{--            @if(auth()->user()->can('auth-email'))--}}
+{{--                <li class="side-nav-item">--}}
+{{--                    --}}{{--                {{ route('email', 'inbox') }}    LaravelGmail::check()--}}
+{{--                    <a href="@if(false) # @else {{ route('auth-email') }} @endif" class="side-nav-link">--}}
+{{--                        <i class="uil-envelope"></i>--}}
+{{--                        <span> {{ __('Email') }} </span>--}}
+{{--                    </a>--}}
+{{--                </li>--}}
+{{--            @endif--}}
 
             @if(auth()->user()->can('show-users'))
                 <li class="side-nav-item">

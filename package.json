@@ -31,6 +31,8 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
+        "@ckeditor/ckeditor5-ckbox": "^34.2.0",
+        "@ckeditor/ckeditor5-editor-classic": "^34.2.0",
         "autoprefixer": "10.4.5"
     }
 }

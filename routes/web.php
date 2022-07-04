@@ -21,6 +21,7 @@ Route::middleware(['setLocale'])->group(function(){
 
     Route::group(["namespace" => "App\Http\Controllers\Front"], function () {
         Route::get('/', 'IndexController@Index')->name('index');
+        Route::get('/search', 'IndexController@Search')->name('search');
         Route::group(['prefix' => 'posts'], function () {
             Route::get('/', 'PostController@Index')->name('front-posts');
             Route::get('/{id}', 'PostController@Show')->name('front-post-show');

@@ -828,6 +828,7 @@ nav .desktop-menu{
     border-radius: 5px;
     padding: 10px 0;
     transition: .3s;
+    word-break: break-word;
 }
 
 .white_block_links img{
@@ -1153,6 +1154,7 @@ footer{
 }
 
 #pages .page_show__header{
+    word-break: break-word;
     font-family: var(--source-sans-family);
     font-size: clamp(1.75rem, 1.1881270903010033rem + 1.1705685618729096vw, 2.1875rem);
     line-height: clamp(2rem, 1.3578595317725752rem + 1.3377926421404682vw, 2.5rem);

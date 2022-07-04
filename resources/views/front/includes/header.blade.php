@@ -390,45 +390,84 @@
                             <div class="dropdownContain">
                                 <div class="searchDropOut">
                                     <div class=" searchDropRow">
-                                        <form action="#" method="POST">
+                                        <form action="{{ route('search') }}" method="GET">
                                             <div class="form-group d-flex">
-                                                <input type="search" name="search" id="search-input">
+                                                <input type="search" name="query" id="search-input">
                                                 <button type="submit" class="text-uppercase">{{ __('Search') }}</button>
                                             </div>
                                         </form>
                                     </div>
                                     <div class="d-flex p-4">
                                         <div class="col">
-                                            <p class="header-text">физические лица</p>
+                                            <p class="header-text">{{ __('Individuals') }}</p>
                                             <ul class="items">
-                                                <li class="item"><a href="#" class="item__link">Среднесрочный прогноз бюджета</a></li>
-                                                <li class="item"><a href="#" class="item__link">Финансовые отчеты</a></li>
-                                                <li class="item"><a href="#" class="item__link">Состав и контакты</a></li>
+                                                @foreach($navPages as $page)
+                                                    @if($page->title == 'Individuals')
+                                                        @if(count($page->ChildPages) != 0)
+                                                            @forelse($page->ChildPages ?? [] as $secondKey => $secondChild)
+                                                                @if($secondKey == 6)
+                                                                    @break
+                                                                @endif
+                                                                <li class="item"><a href="{{ route('front-page-show', $secondChild->id) }}" class="item__link">{{ \Illuminate\Support\Str::limit(__($secondChild->title), $limit=20) }}</a></li>
+                                                            @empty
+                                                            @endforelse
+                                                        @endif
+                                                    @endif
+                                                @endforeach
                                             </ul>
                                         </div>
                                         <div class="col">
-                                            <p class="header-text">юридические лица</p>
+                                            <p class="header-text">{{ __('Legal entities') }}</p>
                                             <ul class="items">
-                                                <li class="item"><a href="#" class="item__link">Сообщи о коррупции</a></li>
-                                                <li class="item"><a href="#" class="item__link">Проект бюджета</a></li>
-                                                <li class="item"><a href="#" class="item__link">Капитальные вложения</a></li>
-                                                <li class="item"><a href="#" class="item__link">Поддержка Бюджета</a></li>
+                                                @foreach($navPages as $page)
+                                                    @if($page->title == 'Legal entities')
+                                                        @if(count($page->ChildPages) != 0)
+                                                            @forelse($page->ChildPages ?? [] as $secondKey => $secondChild)
+                                                                @if($secondKey == 6)
+                                                                    @break
+                                                                @endif
+                                                                <li class="item"><a href="{{ route('front-page-show', $secondChild->id) }}" class="item__link">{{ __($secondChild->title) }}</a></li>
+                                                            @empty
+                                                            @endforelse
+                                                        @endif
+                                                    @endif
+                                                @endforeach
                                             </ul>
                                         </div>
                                         <div class="col">
-                                            <p class="header-text">Донорам</p>
+                                            <p class="header-text">{{ __('Donor') }}</p>
                                             <ul class="items">
-                                                <li class="item"><a href="#" class="item__link">Проекты, вынесенные на обсуждение</a></li>
-                                                <li class="item"><a href="#" class="item__link">Итоги обсуждения проектов</a></li>
+                                                @foreach($navPages as $page)
+                                                    @if($page->title == 'Donor')
+                                                        @if(count($page->ChildPages) != 0)
+                                                            @forelse($page->ChildPages ?? [] as $secondKey => $secondChild)
+                                                                @if($secondKey == 6)
+                                                                    @break
+                                                                @endif
+                                                                <li class="item"><a href="{{ route('front-page-show', $secondChild->id) }}" class="item__link">{{ __($secondChild->title) }}</a></li>
+                                                            @empty
+                                                            @endforelse
+                                                        @endif
+                                                    @endif
+                                                @endforeach
                                             </ul>
                                         </div>
                                         <div class="col">
-                                            <p class="header-text">вакансии</p>
+                                            <p class="header-text">{{ __('Vacancies') }}</p>
                                             <ul class="items">
-                                                <li class="item"><a href="#" class="item__link">Состав и контакты</a></li>
-                                                <li class="item"><a href="#" class="item__link">Семинары и курсы повышения </a></li>
-                                                <li class="item"><a href="#" class="item__link">Кассовый план</a></li>
-                                                <li class="item"><a href="#" class="item__link">Результаты служебных расследований</a></li>
+                                                @foreach($navPages as $page)
+                                                    @if($page->title == 'Vacancies')
+                                                        @if(count($page->ChildPages) != 0)
+                                                            @forelse($page->ChildPages ?? [] as $secondKey => $secondChild)
+                                                                @if($secondKey == 6)
+                                                                    @break
+                                                                @endif
+                                                                <li class="item"><a href="{{ route('front-page-show', $secondChild->id) }}" class="item__link">{{ __($secondChild->title) }}</a></li>
+                                                            @empty
+                                                            @endforelse
+                                                        @endif
+                                                    @endif
+                                                @endforeach
                                             </ul>
                                         </div>
                                     </div>
@@ -470,9 +509,9 @@
                     </div>
                 </li>
                 <li class="search">
-                    <form action="#" method="POST" class="search-form position-relative d-flex">
+                    <form action="{{ route('search') }}" method="GET" class="search-form position-relative d-flex">
                         @csrf
-                        <input type="text" maxlength="255" placeholder="{{ __('Keyword search') }}">
+                        <input type="search" name="query" maxlength="255" placeholder="{{ __('Keyword search') }}">
                         <button type="submit" class="search-icon-btn">
                             <i class="mdi mdi-magnify" style="color: var(--heading-color) !important;"></i>
                         </button>

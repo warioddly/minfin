@@ -11,6 +11,11 @@ Breadcrumbs::for('Posts', function ($trail) {
     $trail->push(__('Posts'), route('front-posts'));
 });
 
+Breadcrumbs::for('Search', function ($trail) {
+    $trail->parent('home');
+    $trail->push(__('Search'));
+});
+
 Breadcrumbs::for('Pages', function ($trail) {
     $trail->parent('home');
     $trail->push(__('Pages'), route('front-pages'));

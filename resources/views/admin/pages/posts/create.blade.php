@@ -203,12 +203,13 @@
 
 @push('head-scripts')
     <script src="{{ asset('admin/plugins/Ckeditor/ckeditor.js') }}"></script>
-    <script src="{{ asset('admin/plugins/Ckeditor/editor.js') }}"></script>
+{{--    <script src="{{ asset('admin/plugins/Ckeditor/editor.js') }}"></script>--}}
 @endpush
 
 @push('footer-scripts')
     <script src="{{ asset('admin/plugins/UploadFile/FileUploader.js') }}"></script>
     <script src="{{ asset('admin/plugins/UploadFile/GalleryUploader.js') }}"></script>
+
     <script type="text/javascript">
 
         $('.tab').click((event) => {
@@ -221,7 +222,6 @@
 
         });
 
-
         CKEDITOR.replace( 'editor' );
         CKEDITOR.add
 
@@ -231,7 +231,6 @@
         CKEDITOR.replace( 'editor3' );
         CKEDITOR.add
 
-        initSample();
     </script>
 
 @endpush
