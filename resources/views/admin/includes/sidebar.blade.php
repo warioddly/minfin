@@ -24,7 +24,8 @@
             </a>
         </li>
 
-        @canany(['show-posts', 'show-translates', 'show-categories', 'show-documents', 'show-pages', 'show-content-settings', ])
+        @canany(['show-posts', 'show-translates', 'show-publishers',
+            'show-documents', 'show-pages', 'show-content-settings', 'show-tags', 'show-appeal', 'show-gallery'])
             <li class="side-nav-title side-nav-item">{{ __('Content') }}</li>
 
             @if(auth()->user()->can('show-posts'))
@@ -45,11 +46,20 @@
                 </li>
             @endif
 
-            @if(auth()->user()->can('show-categories'))
+            @if(auth()->user()->can('show-publishers'))
                 <li class="side-nav-item">
                     <a href="{{ route('categories') }}" class="side-nav-link">
-                        <i class="dripicons-checklist"></i>
-                        <span> {{ __('Categories') }} </span>
+                        <i class="mdi mdi-account-arrow-right"></i>
+                        <span> {{ __('Publishers') }} </span>
+                    </a>
+                </li>
+            @endif
+
+            @if(auth()->user()->can('show-tags'))
+                <li class="side-nav-item">
+                    <a href="{{ route('tags') }}" class="side-nav-link">
+                        <i class="dripicons-tags"></i>
+                        <span> {{ __('Tags') }} </span>
                     </a>
                 </li>
             @endif
@@ -101,7 +111,7 @@
 
         @endcanany
 
-        @canany(['show-users', 'show-roles', 'show-logs', 'show-email'])
+        @canany(['show-users', 'show-roles', 'show-logs', 'show-content-settings', 'show-trash'])
             <li class="side-nav-title side-nav-item">{{ __('Administration') }}</li>
 
             @if(auth()->user()->can('show-content-settings'))
@@ -137,6 +147,15 @@
                     <a href="{{ route('roles') }}" class="side-nav-link">
                         <i class="uil-check"></i>
                         <span> {{ __('Roles') }} </span>
+                    </a>
+                </li>
+            @endif
+
+            @if(auth()->user()->can('show-roles'))
+                <li class="side-nav-item">
+                    <a href="{{ route('botman') }}" class="side-nav-link">
+                        <i class="mdi mdi-robot-dead"></i>
+                        <span> {{ __('Bot settings') }}</span>
                     </a>
                 </li>
             @endif

@@ -30,6 +30,11 @@ Route::group(["namespace" => "App\Http\Controllers\Admin", "prefix" => "dashboar
         Route::post('/deleteUser', 'ApiController@deleteUser')->name('delete-user');
     });
 
+    Route::group(["prefix" => "botman"], function () {
+        Route::post('/getBotmanData', 'ApiController@getBotmanData')->name('get-botman-message');
+        Route::post('/deleteBotmanMessage', 'ApiController@deleteBotmanMessage')->name('delete-botman-message');
+    });
+
     Route::group(["prefix" => "posts"], function () {
         Route::post('/deletePost', 'ApiController@deletePost')->name('post-delete');
         Route::post('/restore/post', 'ApiController@restorePost')->name('restore-post');
@@ -39,6 +44,11 @@ Route::group(["namespace" => "App\Http\Controllers\Admin", "prefix" => "dashboar
     Route::group(["prefix" => "categories"], function () {
         Route::post('/deleteCategory', 'ApiController@deleteCategory')->name('delete-category');
         Route::post('/restore/category', 'ApiController@restoreCategory')->name('restore-category');
+    });
+
+    Route::group(["prefix" => "tags"], function () {
+        Route::post('/deleteTag', 'ApiController@deleteTag')->name('delete-tag');
+        Route::post('/restore/tag', 'ApiController@restoreTag')->name('restore-tag');
     });
 
     Route::group(["prefix" => "documents"], function () {
@@ -68,5 +78,8 @@ Route::group(["namespace" => "App\Http\Controllers\Admin", "prefix" => "dashboar
         Route::post('/restore/appeal', 'ApiController@restoreAppeal')->name('restore-appeal');
 
     });
+});
 
+Route::group(["namespace" => "App\Http\Controllers\Admin", 'prefix' => 'laravel-filemanager'], function (){
+    Route::post('/upload', 'ApiController@UploadFile');
 });

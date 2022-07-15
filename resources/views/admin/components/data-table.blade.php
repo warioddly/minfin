@@ -30,6 +30,14 @@
                 <tr>
                     @foreach($item->toArray() as $key => $value)
 
+                        @if($key == 'name' && $type == 'roles')
+                            <td class="table-user">
+                                <a href="#" class="text-body fw-semibold" target="_blank">
+                                    {{ \Illuminate\Support\Str::limit(__($item->name) , $limit = 35, $end = '...') }}
+                                </a>
+                            </td>
+                            @continue
+                        @endif
                         @if($key == 'name')
                             <td class="table-user">
                                 @if($item->avatar)
@@ -57,6 +65,24 @@
                                 @endif
                                 <a href="{{ $item->path }}" class="text-body fw-semibold" target="_blank">
                                     {{ \Illuminate\Support\Str::limit(__($item->title) , $limit = 35, $end = '...') }}
+                                </a>
+                            </td>
+                            @continue
+                        @endif
+
+                        @if($key == 'title'&& $type == 'posts')
+                            <td >
+                                <a href="@if($showLinks){{ route($links[1], $item->id) }}@elseif($links[1]){{ route($links[1], $item->id) }}@endif" class="text-body fw-semibold">
+                                    {{ \Illuminate\Support\Str::limit( $item->title , $limit = 35, $end = '...') }}
+                                </a>
+                            </td>
+                            @continue
+                        @endif
+
+                        @if($key == 'message')
+                            <td >
+                                <a href="@if($showLinks){{ route($links[1], $item->id) }}@elseif($links[1]){{ route($links[1], $item->id) }}@endif" class="text-body fw-semibold">
+                                    {{ \Illuminate\Support\Str::limit( $item->message , $limit = 35, $end = '...') }}
                                 </a>
                             </td>
                             @continue
@@ -123,7 +149,6 @@
                                 {{ __($value) }}
                             </td>
                         @endif
-
                     @endforeach
                     @if($withactions)
                         <td class="d-flex">
@@ -145,7 +170,7 @@
                         @endif
                     </td>
                     @endif
-                </tr>
+
             @endforeach
         </tbody>
     </table>

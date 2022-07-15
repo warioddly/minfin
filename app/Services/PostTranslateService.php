@@ -22,6 +22,7 @@ class PostTranslateService
         unset($data['preview_image']);
         unset($data['page_id']);
         unset($data['_method']);
+        unset($data['tags']);
         $data['post_id'] = $id;
 
         return $data;

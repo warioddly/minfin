@@ -10542,7 +10542,9 @@ body[data-layout-mode="boxed"][data-layout="topnav"] .navbar-custom {
   margin-top: 20px; }
 
 .page-title-box .breadcrumb {
-  padding-top: 8px; }
+  padding-top: 8px;
+    padding-bottom: 8px;
+}
 
 .page-title-box-sm .page-title {
   line-height: 1 !important;

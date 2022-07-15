@@ -8,6 +8,7 @@ use App\Http\Requests\PageUpdateRequest;
 use App\Models\Page;
 use App\Models\Post;
 use App\Services\CheckPermissionService;
+use App\Services\PageFrontService;
 use App\Services\PageService;
 use JoeDixon\Translation\Drivers\Translation;
 
@@ -41,6 +42,11 @@ class PageController extends Controller
             }
         }
 
+        $moveToPages = Page::query()
+            ->where('level', '!=', 4)
+            ->where('type', '!=', 3)
+            ->get();
+
         $parentPages = Page::where('parent_id', null)->get();
         $ChildPages = Page::where('parent_id', $parentId)->get();
         $posts = Post::where('page_id', $parentId)->get();
@@ -49,7 +55,7 @@ class PageController extends Controller
         $userCanActions = $permissionService->permissionsInPages();
 
         return view('admin.pages.show', compact('page', 'userCanActions',
-            'ChildPages', 'parentId', 'parentPages', 'is_published', 'posts'));
+            'ChildPages', 'parentId', 'parentPages', 'is_published', 'posts', 'moveToPages'));
     }
 
     public function DirectoryStore(Translation $translation, PageStoreRequest $request, PageService $service, $parentId){
@@ -58,15 +64,22 @@ class PageController extends Controller
         Page::create($data);
         Page::where('id', $parentId)->update(['type' => 1]);
 
-        $translation->addGroupTranslation('ru', 'page', $data['title'], $data['title']);
+        $translation->addGroupTranslation('ru', 'single', $data['title'], $data['title']);
 
         return redirect()->back()->with('status', __('Page successfully created'));
     }
 
     public function DirectoryUpdate(PageUpdateRequest $request, PageService $service, $parentId){
 
+        $page = Page::find($request->route('id'));
+        $parentPage = Page::find($page->parent_id);
+
         $data = $service->validateData($request, $parentId);
         Page::where('id', $request->route('id'))->update($data);
+
+        if(count($parentPage->posts) == 0 && count($parentPage->ChildPages) == 0){
+            $parentPage->update(['type' => 0 ]);
+        }
 
         return redirect()->back()->with('status', __('Page successfully created'));
     }

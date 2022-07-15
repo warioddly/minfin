@@ -13,7 +13,7 @@
                             <p class="text-muted mb-4">{{ __('Enter your email address and password to access admin panel.') }}</p>
                         </div>
 
-                        <form action="{{ route('login') }}" method="POST">
+                        <form action="{{ route('login') }}" method="POST" >
                             @csrf
                             <div class="mb-3">
                                 <label for="email" class="form-label">{{ __('Email address') }}</label>

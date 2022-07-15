@@ -18,13 +18,32 @@
         </div>
     </div>
 
-    <section id="third-post-subsection" class="mb-3 mb-md-5">
-        <div class="container">
-            <p class="header-text mb-4">{{ __('Latest news-2') }}</p>
-            <x-all-post-page-blocks :items="$posts"></x-all-post-page-blocks>
+    <section class="mb-3 mb-md-5">
+        <div class="container" id="pages">
+            <div class="mb-2 mb-md-5">
+                <div class="row page_posts__row mb-4">
+                    <div class="col d-flex justify-content-between align-items-center">
+                        <p class="header-text mb-4">{{ __('Latest news-2') }}</p>
+                    </div>
+                </div>
+                <div class="row justify-content-md-around justify-content-lg-around d-none d-lg-flex d-md-flex g-3">
+                    <x-post-blocks
+                        :items="$posts"
+                        limit="28"
+                    ></x-post-blocks>
+                </div>
+                <div class="row" id="news-section">
+                    <div class="news_block d-block d-lg-none d-md-none">
+                        <x-post-mini-block
+                            :items="$posts"
+                        ></x-post-mini-block>
+                    </div>
+                </div>
+            </div>
             <div class="pagination-block">
                 {{ $posts->links() }}
             </div>
         </div>
     </section>
+
 @endsection

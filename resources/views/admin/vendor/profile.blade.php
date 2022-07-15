@@ -144,7 +144,7 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="mb-3">
-                                            <label for="avatar" class="form-label">{{ __('About') }}</label>
+                                            <label for="avatar" class="form-label">{{ __('Select image') }}</label>
                                             <input type="file" class="form-control" name="avatar" id="avatar" accept="image/*">
                                         </div>
                                     </div>

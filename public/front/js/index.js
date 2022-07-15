@@ -1,10 +1,10 @@
 $('.owl-carousel').owlCarousel({
     loop: true,
-    margin: 10,
+    margin: 20,
     dots: false,
     nav: true,
     autoWidth:false,
-    center:true,
+    center:false,
     autoplay:true,
     autoplayTimeout: 6000,
     autoplayHoverPause:false,
@@ -15,28 +15,17 @@ $('.owl-carousel').owlCarousel({
     responsive : {
         320 : {
             items: 2,
-            autoWidth:true,
         },
         425 : {
-            items: 3,
-            autoWidth:true,
+            items: 2,
         },
         768 : {
+            items: 3,
+        },
+        1024 : {
             items: 4,
-            autoWidth:true,
         }
     }
-})
-
-$('.owl-carousel.third-carousel').owlCarousel({
-    rtl: false,
-    loop:true,
-    margin:10,
-    nav:true,
-    items:1,
-    autoplay:true,
-    autoplayTimeout: 1000,
-    autoplayHoverPause:true,
 })
 
 getChartData()
@@ -50,12 +39,9 @@ getChartData()
         dataChart[item['city']] = item;
     }
 
-    let labelData = [`Факт</br><p class="ms-lg-3 ms-md-2 apex-chart-info-text">${ separator(dataChart['Chui']['tax_fact']) } тыс. сом</p>`,
-    `План</br><p class="ms-lg-3 ms-md-2 apex-chart-info-text position-absolute">${ separator(dataChart['Chui']['tax_plan']) } тыс. сом</p>`]
-
     let options = {
         series: [dataChart['Chui']['tax_fact'], dataChart['Chui']['tax_plan']],
-        labels: labelData,
+        labels: getLabel([dataChart['Chui']['tax_fact'], dataChart['Chui']['tax_plan']]),
         chart: {
             type: 'donut',
             height: '160px',
@@ -587,8 +573,13 @@ getChartData()
         }
     };
 
+    let options2 = {...options}
+
+    options2['series'] = [dataChart['Chui']['local_budget_fact'], dataChart['Chui']['local_budget_plan']];
+    options2['labels'] = getLabel([dataChart['Chui']['local_budget_fact'], dataChart['Chui']['local_budget_plan']]);
+
     let chart_1 = new ApexCharts(document.querySelector("#economic-chart-1"), options);
-    let chart_2 = new ApexCharts(document.querySelector("#economic-chart-2"), options);
+    let chart_2 = new ApexCharts(document.querySelector("#economic-chart-2"), options2);
 
     chart_1.render();
     chart_2.render();

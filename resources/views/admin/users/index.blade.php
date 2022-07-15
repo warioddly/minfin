@@ -1,6 +1,13 @@
 @extends('admin.layouts.app')
 
 @section('page-information')
+    <div class="page-title-box">
+        <div class="page-title-right">
+            <ol class="breadcrumb m-0">
+                {{ Breadcrumbs::render('users') }}
+            </ol>
+        </div>
+    </div>
     <x-page-inform
         title="Users"
         :breadcrumbs="['Users']"
@@ -90,7 +97,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 col-md-6">
+                        <div class="col-12 col-md-6 ">
                             <label for="roles-multiselect" class="form-label">{{ __('Roles') }}</label>
                             <select class="select2 form-control select2-multiple" name="roles[]" data-toggle="select2" id="multiselect-create"
                                     multiple="multiple" data-placeholder="Choose ..." required>
@@ -214,3 +221,4 @@
     type="user"
     :urls="[route('get-users'), route('update-user', ''), route('delete-user'), '', '']"
 ></x-scripts>
+

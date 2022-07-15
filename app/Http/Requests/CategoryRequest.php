@@ -25,7 +25,6 @@ class CategoryRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string', 'max:255', 'unique:categories,title'],
-            'publisher' => ['nullable', 'string'],
         ];
     }
 

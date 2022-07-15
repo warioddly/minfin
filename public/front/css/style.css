@@ -514,7 +514,8 @@ nav .desktop-menu{
 .owl-carousel .owl-stage{display: flex;}
 
 #secondary-carousel .owl-carousel .item{
-    width: clamp(9.375rem, 5.8274470232088795rem + 15.136226034308779vw, 18.75rem);
+    margin-left: 15px;
+    width: clamp(13.4375rem, 6.373954849498329rem + 14.71571906354515vw, 18.9375rem);
     justify-content: center;
     display: flex;
     align-items: flex-start;
@@ -2008,6 +2009,45 @@ footer{
     font-size: 16px;
 }
 
+
+.wp-block-separator {
+    border-top: 1px solid rgba(0, 0, 0, 0.555);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.555);
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.041);
+    height: 1px;
+    margin-top: 40px;
+}
+
+.tag-button{
+    display: inline-flex;
+    font-family: var(--source-sans-family);
+    background-color: rgba(198, 198, 198, 0.32);
+    padding: 5px 20px;
+    color: #616161;
+    border-radius: 20px;
+    border: 1px solid #ffffff;
+    transition: .3s;
+}
+
+.tag-button:hover{
+    background-color: rgba(168, 168, 168, 0.32);
+    color: #616161;
+    border: 1px solid #d2d2d2;
+}
+
+.tags-block{
+    width: 500px;
+}
+
+/*.wds_share:hover .wds_share_icon,*/
+/*.wds_share_block{*/
+/*    display:block;*/
+/*}*/
+/*.wds_share:hover .wds_share_block {*/
+/*    display:block;*/
+/*}*/
+
 @media screen and (max-width: 767px) {
 
     .g-info-text{
@@ -2182,6 +2222,8 @@ footer{
 
     #secondary-carousel .owl-carousel .item{
         padding: 10px 5px 0;
+        width: auto;
+        margin-left: 0;
     }
 
     .main-new__block{
@@ -2359,6 +2401,14 @@ footer{
 
     .social-media-item{
         font-size: clamp(1.1875rem, 0.5314885496183206rem + 2.7989821882951653vw, 1.875rem);
+    }
+
+    .tag-button{
+        font-size: clamp(0.75rem, 0.39217557251908397rem + 1.5267175572519085vw, 1.125rem);
+    }
+
+    .tags-block{
+        width: auto;
     }
 
 }

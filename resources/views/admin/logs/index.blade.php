@@ -1,6 +1,13 @@
 @extends('admin.layouts.app')
 
 @section('page-information')
+    <div class="page-title-box">
+        <div class="page-title-right">
+            <ol class="breadcrumb m-0">
+                {{ Breadcrumbs::render('logs') }}
+            </ol>
+        </div>
+    </div>
     <x-page-inform
         title="Logs"
         :breadcrumbs="['Logs']"

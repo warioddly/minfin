@@ -148,7 +148,23 @@
 
                     $("#multiselect-edit").val(data['permissions']).trigger("change");
                 }
+            @elseif($type == 'botman')
+                url = "{{ $urls[1] }}" + "/" + id;
 
+            getPermissions()
+
+                async function getPermissions() {
+                    let data = await bridge('{{ $urls[0] }}', id, true)
+                    data = data['message'];
+
+                    $("#edit-modal-form").attr('action', url);
+                    $("#botman_message").val(data['message']);
+
+                    if(data['is_answer'] === 1){
+                        $("#switch_edit").attr('checked', true);
+                    }
+
+                }
             @endif
 
         });

@@ -5,7 +5,7 @@
     <title>@yield('title-page') {{ __('Ministry of Finance of the Kyrgyz Republic') }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="{{ env('APP_DESCRIPTION') }}" name="{{ env('APP_AUTHOR') }}" />
-    <link rel="shortcut icon" href="{{ asset('front/images/Logo.svg') }}">
+    <link rel="shortcut icon" href="{{ asset('front/images/logo/Logo1.png') }}">
 
     <link href="{{ asset('admin/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     @if(session('theme') == 'dark')
@@ -14,7 +14,6 @@
         <link href="{{ asset('admin/css/app-modern.min.css ') }}" rel="stylesheet" type="text/css" id="light-style" />
     @endif
     @stack('head-scripts')
-
 </head>
 
 <body class="loading" data-layout="detached"
@@ -46,7 +45,7 @@
 
                 </div>
 
-                @include('admin.layouts.footer')
+                @include('admin.includes.footer')
 
             </div>
         </div>
@@ -54,13 +53,14 @@
 
     @stack('modal')
 
+    <style>
+        .breadcrumb{
+            padding: 0;
+            margin: 0;
+        }
+    </style>
     <script src="{{ asset('admin/js/vendor.min.js') }}"></script>
     <script src="{{ asset('admin/js/app.js') }}"></script>
-    @if(request()->routeIs('dashboard'))
-        <script src="{{ asset('admin/js/vendor/Chart.bundle.min.js') }}"></script>
-        <script src="{{ asset('admin/js/vendor/apexcharts.min.js') }}"></script>
-        <script src="{{ asset('admin/js/vendor/dashboard.js ') }}"></script>
-    @endif
     @stack('footer-scripts')
 </body>
 </html>

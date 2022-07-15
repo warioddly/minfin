@@ -14,12 +14,7 @@ class CategoryController extends Controller
 {
     public function Index(CheckPermissionService $permissionService){
 
-        if(session('categoryView') == true){
-            $categories = Category::where('publisher', 0)->latest()->get();
-        }
-        else{
-            $categories = Category::where('publisher', 1)->latest()->get();
-        }
+        $categories = Category::where('publisher', 1)->latest()->get();
 
         $popularCategory = '';
         $temp = $categories[0]->TotalPostViews() ?? '';
@@ -44,14 +39,8 @@ class CategoryController extends Controller
     public function Show($id){
         $category = Category::find($id);
 
-        if(session('categoryView') == true){
-            $popularPosts = Post::where('category_id', $id)->where('views', '!=', 0)->orderBy('views', 'desc')->take(7)->get();
-            $posts = Post::where('category_id', $id)->get();
-        }
-        else{
-            $popularPosts = Post::where('publisher_id', $id)->where('views', '!=', 0)->orderBy('views', 'desc')->take(7)->get();
-            $posts = Post::where('publisher_id', $id)->get();
-        }
+        $popularPosts = Post::where('publisher_id', $id)->where('views', '!=', 0)->orderBy('views', 'desc')->take(7)->get();
+        $posts = Post::where('publisher_id', $id)->get();
 
         return view('admin.categories.show', compact('category', 'posts', 'popularPosts'));
     }
@@ -59,16 +48,11 @@ class CategoryController extends Controller
     public function Store(Translation $translation, CategoryRequest $request){
         $data = $request->all();
         $data['user_id'] = auth()->user()['id'];
-        if(isset($data['publisher'])){
-            $data['publisher'] = true;
-        }
-        else{
-            $data['publisher'] = false;
-        }
+        $data['publisher'] = true;
 
         Category::create($data);
 
-        $translation->addGroupTranslation('ru', 'category', $data['title'], $data['title']);
+        $translation->addGroupTranslation('ru', 'single', $data['title'], $data['title']);
 
         return redirect()->back()->with('status', __('Category successfully created'));
     }

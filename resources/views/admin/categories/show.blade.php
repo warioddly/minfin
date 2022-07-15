@@ -1,6 +1,13 @@
 @extends('admin.layouts.app')
 
 @section('page-information')
+    <div class="page-title-box">
+        <div class="page-title-right">
+            <ol class="breadcrumb m-0">
+                {{ Breadcrumbs::render('show-category', $category) }}
+            </ol>
+        </div>
+    </div>
     <x-page-inform
         title="Categories"
         :breadcrumbs="['Categories']"
@@ -26,8 +33,6 @@
                 </div>
             </div>
         </div>
-        {{ __($category->title) }}
-
 
         <div class="col-12 col-lg-8 col-xxl-9 d-flex">
             <div class="card flex-fill">

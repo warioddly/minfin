@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="row mb-4 mb-md-5">
-            <p class="main-post-header mb-3 d-none d-sm-block d-md-block d-xl-block">{{ __('Latest news-2') }}</p>
+            <p class="main-post-header mb-3 d-none d-sm-block d-md-block d-xl-block">{{ __('All sections') }}</p>
             <a href="{{ route('index') }}" class="back-to-list-btn">
                 <i class="mdi mdi-arrow-left me-2"></i>{{ __('Back') }}
             </a>
@@ -25,11 +25,11 @@
                     <div class="accordion" id="accordionPanelsStayOpenExample">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-                                <button class="accordion-button page_show__header" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne_{{ $page->id }}" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                                    {{ __('Subsection') }} {{ __($page->title) }}
+                                <button class="accordion-button page_show__header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne_{{ $page->id }}" aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
+                                    {{ __($page->title) }}
                                 </button>
                             </h2>
-                            <div id="panelsStayOpen-collapseOne_{{ $page->id }}" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                            <div id="panelsStayOpen-collapseOne_{{ $page->id }}" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
                                 <div class="accordion-body px-0 row g-3 pt-4 justify-content-center">
                                     <x-white-link-block
                                         :items="$page['childPages']"

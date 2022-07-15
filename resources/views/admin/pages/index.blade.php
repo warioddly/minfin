@@ -20,6 +20,7 @@
                                 :links="['', 'show-pages', null, null]"
                                 :actions="$userCanActions"
                                 :withactions="true"
+                                type="pages"
                             ></x-data-table>
                         </div>
                         <div class="col col-md-12 col-lg-4 mt-3">

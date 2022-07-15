@@ -30,7 +30,7 @@ class PostRequest extends FormRequest
             'description' => ['required', 'string', 'max:500'],
             'kg_description' => ['nullable', 'string', 'max:500'],
             'en_description' => ['nullable', 'string', 'max:500'],
-            'category_id' => ['nullable', 'exists:categories,id'],
+//            'category_id' => ['nullable', 'exists:categories,id'],
             'publisher_id' => ['nullable', 'exists:categories,id'],
             'preview_image' => ['nullable', 'image', 'max:10240'],
             'is_published' => ['nullable', 'string'],
@@ -40,6 +40,7 @@ class PostRequest extends FormRequest
             'page_id' => ['nullable', 'integer'],
             'documents[]' => ['nullable', 'file', 'max:50240'],
             'galleries[]' => ['nullable', 'image', 'max:50240'],
+            'tags[]' => ['nullable'],
         ];
     }
 }

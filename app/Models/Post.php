@@ -13,7 +13,7 @@ class Post extends Model
     protected $guarded = false;
 
     public function category(){
-        return $this->belongsTo(Category::class, 'category_id');
+        return $this->belongsTo(Page::class, 'page_id');
     }
 
     public function publisher(){
@@ -95,6 +95,12 @@ class Post extends Model
     public function galleries()
     {
         return $this->hasMany(Gallery::class, 'post_id');
+    }
+
+    public function tags()
+    {
+        $tagids = $this->hasMany(PostTag::class, 'post_id')->get()->pluck('tag_id');
+        return Tag::whereIn('id', $tagids)->get();
     }
 
     public function translates()

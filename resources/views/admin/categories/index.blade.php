@@ -1,9 +1,16 @@
 @extends('admin.layouts.app')
 
 @section('page-information')
+    <div class="page-title-box">
+        <div class="page-title-right">
+            <ol class="breadcrumb m-0">
+                {{ Breadcrumbs::render('publishers') }}
+            </ol>
+        </div>
+    </div>
     <x-page-inform
-        title="Categories"
-        :breadcrumbs="['Categories']"
+        title="Publishers"
+        :breadcrumbs="['Publishers']"
     ></x-page-inform>
 @endsection
 
@@ -36,7 +43,7 @@
                                 :excepts="['updated_at', 'id', 'deleted_at', 'publisher']"
                                 :links="['', 'show-category', null, null]"
                                 :actions="$userCanActions"
-                                type="category"
+                                type="publishers"
                             ></x-data-table>
                         </div>
 
@@ -57,7 +64,6 @@
                                                 <td>{{ __($popularCategory) }}</td>
                                             </tr>
                                         @endif
-
                                         <tr>
                                             <td>{{ __('Average views') }}</td>
                                             <td>{{ substr($averageViews, 0, 5) }}%</td>
@@ -90,14 +96,6 @@
                     <div class="modal-body">
                         <label for="create-input" class="form-label">{{ __('Enter name-2') }}</label>
                         <input name="title" type="text" id="create-input" class="form-control" required>
-
-                        <div class="form-group mt-2 d-flex align-items-center">
-                            <strong class="me-2" style="margin-top: -6px;">{{__('As a publisher')}}:</strong>
-                            <span>
-                                <input type="checkbox" id="switch" name="publisher" data-switch="primary"/>
-                                <label for="switch" data-on-label="{{ __('Yes') }}" data-off-label="{{ __('No') }}"></label>
-                            </span>
-                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Cancel') }}</button>

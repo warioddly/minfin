@@ -21,10 +21,10 @@ class PermissionsSeeder extends Seeder
             'delete-posts',
             'edit-posts',
 
-            'show-categories',
-            'add-categories',
-            'delete-categories',
-            'edit-categories',
+//            'show-categories',
+//            'add-categories',
+//            'delete-categories',
+//            'edit-categories',
 
             'show-users',
             'add-users',

@@ -1,10 +1,14 @@
 @extends('admin.layouts.app')
 
 @section('page-information')
-    <x-page-inform
-        title="Appeal Of Citizens"
-        :breadcrumbs="['Appeal Of Citizens']"
-    ></x-page-inform>
+    <div class="page-title-box">
+        <div class="page-title-right">
+            <ol class="breadcrumb m-0">
+                {{ Breadcrumbs::render('appeal') }}
+            </ol>
+        </div>
+    </div>
+    <h4 class="page-title">{{ __('Appeal Of Citizens')  }}</h4>
 @endsection
 
 @section('content')

@@ -82,7 +82,7 @@
                             <p class="new_block__description text-break">{{ \Illuminate\Support\Str::limit($posts[0]->description , $limit = 255, $end = '...') }}
                             </p>
                             <a href="{{ route('front-post-show', $posts[0]->id) }}" class="new_block__read_more">{{ __('read more') }}</a>
-                            <p class="new_block__category bottom-0 mb-md-2 mb-lg-3">{{ $posts[0]->category->title }}</p>
+                            <p class="new_block__category bottom-0 mb-md-2 mb-lg-3">{{ __($posts[0]->category->title) }}</p>
                         </div>
                     </div>
                 </div>
@@ -108,7 +108,7 @@
                                                 @for($i = 0; $i < 11; $i++) {{ explode(" ", $post->title)[$i] ?? '' }} @endfor...
                                                 <a class="new_block__read_more">{{ __('read more') }}</a>
                                             </p>
-                                            <p class="new_block__category bottom-0 pb-2">{{ $post->category->title }}</p>
+                                            <p class="new_block__category bottom-0 pb-2">{{ __($post->category->title) }}</p>
                                         </div>
                                     </a>
                                 </span>
@@ -130,7 +130,7 @@
                                         @for($i = 0; $i < 11; $i++) {{ explode(" ", $post->title)[$i] ?? '' }} @endfor...
                                         <a class="new_block__read_more" href="{{ route('front-post-show', $post->id) }}">{{ __('read more') }}</a>
                                     </p>
-                                    <p class="new_block__category bottom-0 pb-2">{{ $post->category->title }}</p>
+                                    <p class="new_block__category bottom-0 pb-2">{{ __($post->category->title) }}</p>
                                 </div>
                             </span>
                         </div>
@@ -341,14 +341,16 @@
             </div>
         </div>
     </section>
-    <section id="third-post-subsection" class="mb-3 mb-md-5 mt-4 mt-md-0">
-        <div class="container">
-            <p class="header-text mb-4">{{ __('News') }} о министерстве</p>
-            <x-third-new-subsection-block
-                :items="$posts"
-            ></x-third-new-subsection-block>
-        </div>
-    </section>
+    @if(count($ministerPosts) != 0 && count($ministerPosts) > 6)
+        <section id="third-post-subsection" class="mb-3 mb-md-5 mt-4 mt-md-0">
+            <div class="container">
+                <p class="header-text mb-4">{{ __('News') }} о министерстве</p>
+                <x-third-new-subsection-block
+                    :items="$ministerPosts"
+                ></x-third-new-subsection-block>
+            </div>
+        </section>
+    @endif
     <section class="add mb-3 mb-md-5">
        <div class="container">
            <div class="row">
@@ -371,7 +373,7 @@
     <section id="page-links" class="mb-3 mb-lg-5">
         <div class="container">
             <p class="header-text">{{ __('Subsections') }}</p>
-            <div class="row mt-2 g-3 justify-content-center">
+            <div class="row mt-2 g-3">
                 <x-white-link-block
                     :items="$selectedMainPages"
                 ></x-white-link-block>

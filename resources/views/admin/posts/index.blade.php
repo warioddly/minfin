@@ -1,10 +1,14 @@
 @extends('admin.layouts.app')
 
 @section('page-information')
-    <x-page-inform
-        title="Posts"
-        :breadcrumbs="['Posts']"
-    ></x-page-inform>
+    <div class="page-title-box">
+        <div class="page-title-right">
+            <ol class="breadcrumb m-0">
+                {{ Breadcrumbs::render('posts') }}
+            </ol>
+        </div>
+    </div>
+    <h4 class="page-title">{{ __('Posts')  }}</h4>
 @endsection
 
 @section('content')
@@ -13,6 +17,11 @@
             <div class="card">
                 <div class="card-body">
                     <div class="row mb-2">
+                        <div class="col-sm-4">
+                            @can('add-posts')
+                                <a href="{{ route('post-create', '') }}" class="btn btn-primary mb-2"><i class="mdi mdi-rss"></i> {{ __('Create') }} {{ __('post') }}</a>
+                            @endcan
+                        </div>
                         <div class="col">
                             <div class="text-sm-end">
                                 <div class="btn-group mb-3">
@@ -37,16 +46,18 @@
                     @if(session('postListStyle') == 'list')
                         <div class="row">
                             <x-data-table
-                                :items="$posts"
-                                :excepts="['id', 'content', 'is_published', 'updated_at', 'deleted_at',  'description', 'preview_image', 'page_id', 'icon', 'sheet']"
+                                :items="$dataPosts"
+                                :excepts="['id', 'content', 'is_published', 'translates','updated_at', 'deleted_at',  'description', 'preview_image', 'page_id', 'icon', 'sheet']"
                                 :links="['null', 'post-show', 'post-edit', 'post-delete', 'id']"
                                 :actions="$userCanActions"
+                                type="posts"
                             ></x-data-table>
                         </div>
                     @else
                         <div class="row">
                             <x-post-output-card :items="$posts"></x-post-output-card>
                         </div>
+                        {{ $posts->links() }}
                     @endif
                 </div>
             </div>

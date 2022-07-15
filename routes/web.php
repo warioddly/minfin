@@ -19,8 +19,11 @@ Route::middleware(['setLocale'])->group(function(){
 
     // FRONT CONTROLLERS
 
+    Route::match(['get', 'post'], '/botman', 'App\Http\Controllers\Botman\BotManController@handle');
+
     Route::group(["namespace" => "App\Http\Controllers\Front"], function () {
         Route::get('/', 'IndexController@Index')->name('index');
+
         Route::get('/search', 'IndexController@Search')->name('search');
         Route::group(['prefix' => 'posts'], function () {
             Route::get('/', 'PostController@Index')->name('front-posts');
@@ -33,6 +36,7 @@ Route::middleware(['setLocale'])->group(function(){
             Route::get('sheet/{id}', 'PageController@ShowSheet')->name('front-sheet-show');
         });
         Route::get('/contacts', 'PageController@Contacts')->name('contacts');
+        Route::get('/tag/{id}', 'TagController@Show')->name('front-show-tag');
         Route::group(["prefix" => "appealofcitizens"], function () {
             Route::get('/', 'AppealController@Index')->name('appeal-of-citizens');
             Route::get('/ask-a-question', 'AppealController@AskAQuestions')->name('ask-a-question');
@@ -52,6 +56,7 @@ Route::middleware(['setLocale'])->group(function(){
 
         Route::group(["namespace" => "PostController", "prefix" => "posts"], function () {
             Route::get('/', 'PostController@Index')->name('posts')->middleware('can:show-posts');
+            Route::get('/create', 'PostController@Create')->name('post-create')->middleware('can:add-posts');
             Route::get('/is/{is_published}', 'PostController@PublishedPosts')->name('published-posts')->middleware('can:show-posts');
             Route::get('/{id}', 'PostController@Show')->name('post-show')->middleware('can:show-posts');
             Route::get('/{id}/edit', 'PostController@Edit')->name('post-edit')->middleware('can:edit-posts');
@@ -63,10 +68,24 @@ Route::middleware(['setLocale'])->group(function(){
         });
 
         Route::group(["namespace" => "CategoryController", "prefix" => "categories"], function () {
-            Route::get('/', 'CategoryController@Index')->name('categories')->middleware('can:show-categories');
-            Route::get('/{id}', 'CategoryController@Show')->name('show-category')->middleware('can:show-categories');
-            Route::post('/store', 'CategoryController@Store')->name('store-category')->middleware('can:add-categories');
-            Route::patch('/{id}', 'CategoryController@Update')->name('update-category')->middleware('can:edit-categories');
+            Route::get('/', 'CategoryController@Index')->name('categories')->middleware('can:show-publishers');
+            Route::get('/{id}', 'CategoryController@Show')->name('show-category')->middleware('can:show-publishers');
+            Route::post('/store', 'CategoryController@Store')->name('store-category')->middleware('can:add-publishers');
+            Route::patch('/{id}', 'CategoryController@Update')->name('update-category')->middleware('can:edit-publishers');
+        });
+
+        Route::group(["namespace" => "BotmanController", "prefix" => "botman"], function () {
+            Route::get('/', 'BotmanController@Index')->name('botman')->middleware('can:show-botman');
+            Route::get('/{id}', 'BotmanController@Show')->name('show-botman-message')->middleware('can:show-botman-messages');
+            Route::post('/store', 'BotmanController@Store')->name('store-botman-message')->middleware('can:add-botman-messages');
+            Route::patch('/{id}', 'BotmanController@Update')->name('update-botman-message')->middleware('can:edit-botman-messages');
+        });
+
+        Route::group(["namespace" => "TagController", "prefix" => "tags"], function () {
+            Route::get('/', 'TagController@Index')->name('tags')->middleware('can:show-tags');
+            Route::get('/{id}', 'TagController@Show')->name('show-tag')->middleware('can:show-tags');
+            Route::post('/store', 'TagController@Store')->name('store-tag')->middleware('can:add-tags');
+            Route::patch('/{id}', 'TagController@Update')->name('update-tag')->middleware('can:edit-tags');
         });
 
         Route::group(["namespace" => "SettingController", "prefix" => "settings"], function () {
@@ -89,7 +108,7 @@ Route::middleware(['setLocale'])->group(function(){
             Route::group(["prefix" => "posts"], function () {
                 Route::get('/', 'PagePostController@Index')->name('page-posts')->middleware('can:show-posts');
                 Route::get('{parentId}/is/{is_published}/', 'PagePostController@PublishedPosts')->name('page-published-posts')->middleware('can:show-posts');
-                Route::get('/{parentId}/create', 'PagePostController@Create')->name('page-post-create')->middleware('can:create-posts');
+                Route::get('/{parentId}/create', 'PagePostController@Create')->name('page-post-create')->middleware('can:add-posts');
                 Route::get('/{id}', 'PagePostController@Show')->name('page-post-show')->middleware('can:show-posts');
                 Route::post('/{parentId}/store', 'PagePostController@Store')->name('page-post-store')->middleware('can:add-posts');
                 Route::patch('/{id}/', 'PagePostController@Update')->name('page-post-update')->middleware('can:edit-posts');

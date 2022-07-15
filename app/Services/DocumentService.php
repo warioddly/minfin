@@ -20,7 +20,7 @@ class DocumentService
                     'post_id' => $id,
                     'icon' => $document->getClientOriginalExtension(),
                     'path' => '/storage/files/shares/Документы/' . $name,
-                    'author' => auth()->user()['name'],
+                    'author' => auth()->user()['name'] ?? '',
                     'size' => $document->getSize(),
                 ]);
             }
@@ -31,7 +31,7 @@ class DocumentService
                     'appeal_of_citizens_id' => $id,
                     'icon' => $document->getClientOriginalExtension(),
                     'path' => '/storage/files/shares/Документы/' . $name,
-                    'author' => auth()->user()['name'],
+                    'author' => auth()->user()['name'] ?? '',
                     'size' => $document->getSize(),
                 ]);
             }

@@ -21,6 +21,7 @@ class PostService
         unset($data['en_description']);
         unset($data['kg_content']);
         unset($data['en_content']);
+        unset($data['tags']);
 
         if($request->hasFile('preview_image')) {
             $image = $data['preview_image'];
@@ -56,6 +57,7 @@ class PostService
         unset($data['en_description']);
         unset($data['kg_content']);
         unset($data['en_content']);
+        unset($data['tags']);
 
         if($request->hasFile('preview_image')) {
             $image = $data['preview_image'];
@@ -100,9 +102,8 @@ class PostService
             $filepath = Storage::disk('public')->putFileAs($dir, $image, $name);
 
             try {
-
                 Image::make(Storage::disk('public')->get($filepath))
-                    ->resize(320, 240)
+                    ->resize(520, 420)
                     ->save('storage/' . $dir . '/thumbs/thumb_' . $name);
 
                 $data['full_size_image'] = '/storage/' . $filepath;

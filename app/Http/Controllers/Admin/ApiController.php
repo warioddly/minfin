@@ -4,15 +4,18 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\AppealOfCitizens;
+use App\Models\Botman;
 use App\Models\CarouselItem;
 use App\Models\Category;
 use App\Models\Gallery;
 use App\Models\Page;
 use App\Models\Post;
 use App\Models\SocialWebSites;
+use App\Models\Tag;
 use App\Models\User;
 use \App\Models\Document;
 use App\Services\PageFrontService;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Spatie\Permission\Models\Permission;
@@ -54,6 +57,12 @@ class ApiController extends Controller
         return response()->json(['page' => $page]);
     }
 
+    public function getBotmanData(){
+        $message = Botman::find(request()->get('id'));
+
+        return response()->json(['message' => $message]);
+    }
+
     public function getSelectedPages(){
         $pages = Page::where('visible_on_main_page', 1)->pluck('id');
 
@@ -78,6 +87,12 @@ class ApiController extends Controller
         User::whereId(request()->get('id'))->delete();
     }
 
+    public function deleteBotmanMessage(){
+        $message = Botman::find(request()->get('id'));
+        $message->getChilds()->delete();
+        $message->delete();
+    }
+
     public function deletePost(){
         $post = Post::find(request()->get('id'));
 
@@ -94,6 +109,11 @@ class ApiController extends Controller
         $category = Category::find(request()->get('id'));
         $category->posts()->delete();
         $category->delete();
+    }
+
+    public function deleteTag(){
+        $tag = Tag::find(request()->get('id'));
+        $tag->delete();
     }
 
     public function deletePage(PageFrontService $service){
@@ -172,6 +192,10 @@ class ApiController extends Controller
         Category::withTrashed()->find(request()->get('id'))->restore();
     }
 
+    public function restoreTag(){
+        Tag::withTrashed()->find(request()->get('id'))->restore();
+    }
+
     public function restoreParents($parentPage){
         while(true){
             if($parentPage->deleted_at != null){
@@ -188,5 +212,13 @@ class ApiController extends Controller
                 break;
             }
         }
+    }
+
+    public function UploadFile(){
+        $data = request()->all();
+        $data = $data['upload'];
+        $name = md5(Carbon::now() . "_" . $data->getClientOriginalName()) . '.' . $data->getClientOriginalExtension();
+        $filepath = Storage::disk('public')->putFileAs('/files/shares/Загрузки', $data, $name);
+        return response()->json(['path' => 'storage/' . $filepath]);
     }
 }

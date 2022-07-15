@@ -1,10 +1,14 @@
 @extends('admin.layouts.app')
 
 @section('page-information')
-    <x-page-inform
-        title="Posts"
-        :breadcrumbs="['Posts']"
-    ></x-page-inform>
+    <div class="page-title-box">
+        <div class="page-title-right">
+            <ol class="breadcrumb m-0">
+                {{ Breadcrumbs::render('show-post', $post) }}
+            </ol>
+        </div>
+    </div>
+    <h4 class="page-title">{{ __('Posts')  }}</h4>
 @endsection
 
 @section('content')
@@ -55,6 +59,13 @@
                             <p class="font-13"><strong>Категория</strong> <span class="float-end">{{ $post->category->title }}</span></p>
                             <p class="font-13"><strong>{{ __('Publisher') }}</strong> <span class="float-end">{{ $post->publisher->title ?? '' }}</span></p>
                             <p class="font-13"><strong>{{ __('Author') }}</strong> <span class="float-end">{{ $post->getUserName($post->user_id) }}</span></p>
+                            <p class="font-13"><strong>{{ __('Tags') }}</strong>
+                                @foreach($post->tags() as $tag)
+                                    <span class="float-end badge badge-outline-primary me-1">
+                                        {{ $tag->title }}
+                                    </span>
+                                @endforeach
+                            </p>
                         </div>
                     </div>
                 </div>

@@ -93,4 +93,4 @@ CKEDITOR.config.templates_files = [
  * @cfg {Boolean}
  * @member CKEDITOR.config
  */
-CKEDITOR.config.templates_replaceContent = true;
+CKEDITOR.config.templates_replaceContent = false;

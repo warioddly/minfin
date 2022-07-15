@@ -12,6 +12,7 @@ use App\Models\MinFinContact;
 use App\Models\Page;
 use App\Models\Post;
 use App\Models\SocialWebSites;
+use App\Models\Tag;
 
 class TrashController extends Controller
 {
@@ -21,8 +22,9 @@ class TrashController extends Controller
         $documents = Document::latest()->onlyTrashed()->get();
         $appeals = AppealOfCitizens::latest()->onlyTrashed()->get();
         $pages = Page::latest()->onlyTrashed()->get();
+        $tags = Tag::latest()->onlyTrashed()->get();
 
-        return view('admin.trash.index', compact('posts', 'pages', 'categories', 'documents', 'appeals'));
+        return view('admin.trash.index', compact('posts', 'pages', 'tags', 'categories', 'documents', 'appeals'));
     }
 
 }

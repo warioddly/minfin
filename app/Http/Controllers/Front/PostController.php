@@ -27,7 +27,7 @@ class PostController extends Controller
     }
 
     public function Index(){
-        $posts = Post::where('sheet', false)->latest()->paginate(23);
+        $posts = Post::where('sheet', false)->where('is_published', true)->latest()->paginate(23);
 
         return view('front.posts.index', compact('posts'));
     }

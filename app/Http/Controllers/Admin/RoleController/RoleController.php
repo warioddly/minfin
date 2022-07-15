@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RoleRequest;
 use App\Services\CheckPermissionService;
+use JoeDixon\Translation\Drivers\Translation;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -18,7 +19,7 @@ class RoleController extends Controller
         return view('admin.roles.index', compact('roles', 'permissions', 'userCanActions'));
     }
 
-    public function Store(RoleRequest $request){
+    public function Store(Translation $translation, RoleRequest $request){
 
         $newRole = Role::create([
             'name' => $request->name
@@ -27,6 +28,8 @@ class RoleController extends Controller
         $permissions = Permission::whereIn('id', $request->permissions)->get();
 
         $newRole->syncPermissions($permissions);
+
+        $translation->addGroupTranslation('ru', 'single', $request['name'], $request['name']);
 
         return redirect()->back()->with('status', __('Role added successfully'));
     }

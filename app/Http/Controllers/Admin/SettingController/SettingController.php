@@ -7,6 +7,7 @@ use App\Http\Requests\BlocksInMainPage;
 use App\Http\Requests\CarouselRequest;
 use App\Models\Banner;
 use App\Models\CarouselItem;
+use App\Models\Chart;
 use App\Models\MinFinContact;
 use App\Models\Page;
 use App\Models\SocialWebSites;
@@ -21,8 +22,9 @@ class SettingController extends Controller
         $socialMedia = SocialWebSites::all();
         $contactData = MinFinContact::first();
         $pages = Page::latest()->get();
+        $chartData = Chart::all();
 
-        return view('admin.settings.index', compact('carouselItems', 'pages', 'banner', 'socialMedia', 'contactData'));
+        return view('admin.settings.index', compact('carouselItems', 'pages', 'banner', 'socialMedia', 'contactData', 'chartData'));
     }
 
     public function ChangeBlocks(BlocksInMainPage $request){

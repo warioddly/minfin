@@ -2,6 +2,13 @@
 
 
 @section('page-information')
+    <div class="page-title-box">
+        <div class="page-title-right">
+            <ol class="breadcrumb m-0">
+                {{ Breadcrumbs::render('trash') }}
+            </ol>
+        </div>
+    </div>
     <x-page-inform
         title="Trash"
         :breadcrumbs="['Trash']"
@@ -49,6 +56,11 @@
                                aria-selected="true">
                                 <i class="dripicons-user font-18 align-middle me-2"></i>
                                 <span class="d-md-block">{{ __('Appeals') }}</span>
+                            </a>
+                            <a class="nav-link d-flex align-items-center" id="v-pills-tags-tab" data-bs-toggle="pill" href="#v-pills-tags" role="tab" aria-controls="v-pills-tags"
+                               aria-selected="true">
+                                <i class="dripicons-tags font-18 align-middle me-2"></i>
+                                <span class="d-md-block">{{ __('Tags') }}</span>
                             </a>
                         </div>
                     </div>
@@ -115,6 +127,18 @@
                                         :links="['null', 'restore-page', '', '', '']"
                                         :actions="[]"
                                         id="pages"
+                                    ></x-deleted-data-table>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="v-pills-tags" role="tabpanel" aria-labelledby="v-pills-tags-tab">
+                                <p class="h3 mt-0 mb-3">{{ __('Tags') }}</p>
+                                <div class="row">
+                                    <x-deleted-data-table
+                                        :items="$tags"
+                                        :excepts="['id', 'updated_at', 'created_at']"
+                                        :links="['null', 'restore-tag', '', '', '']"
+                                        :actions="[]"
+                                        id="tags"
                                     ></x-deleted-data-table>
                                 </div>
                             </div>

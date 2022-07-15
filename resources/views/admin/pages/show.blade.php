@@ -41,6 +41,9 @@
                             </div>
                             @endcan
                         </div>
+                        <div class="border p-3 mt-4 mt-lg-0 rounded d-grid justify-content-end">
+                            <x-page-to-tree></x-page-to-tree>
+                        </div>
                     @endif
                 </div>
             </div>

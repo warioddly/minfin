@@ -44,56 +44,10 @@
                     <div class="tab-pane show active" id="post">
                         <div class="show-post-block" id="print-post">
                             <p class="p-2 post-title"> {{ __($post->title) }}</p>
-                            <div class="d-flex social-media mb-2 d-print-none">
-                                <ul class="social-list list-inline head-social-media">
-                                    <li class="list-inline-item">
-                                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ route('front-post-show', $post->id) }}&t={{ $post->title }}"
-                                           class="edit-button social-media-item text-muted d-flex justify-content-center"
-                                           style="" target="_blank"><i class="mdi mdi-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="https://twitter.com/intent/tweet?text={{ $post->title }}&url={{ route('front-post-show', $post->id) }}"
-                                           class="edit-button social-media-item text-muted d-flex justify-content-center"
-                                           style="" target="_blank"><i class="mdi mdi-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="https://t.me/share/url?url={{ route('front-post-show', $post->id) }}&text={{ $post->title }}"
-                                           class="edit-button social-media-item text-muted d-flex justify-content-center"
-                                           style="" target="_blank"><i class="mdi mdi-telegram"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ route('front-post-show', $post->id) }}"
-                                           class="edit-button social-media-item text-muted d-flex justify-content-center"
-                                           style="" target="_blank"><i class="mdi mdi-linkedin"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="https://wa.me/?text={{ __($post->title) }} {{ route('front-post-show', $post->id) }}"
-                                           class="edit-button social-media-item text-muted d-flex justify-content-center"
-                                           style="" target="_blank"><i class="mdi mdi-whatsapp"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="https://connect.ok.ru/offer?url={{ route('front-post-show', $post->id) }}&title={{ __($post->title) }}&imageUrl={{ $post->preview_image }}"
-                                           class="edit-button social-media-item text-muted d-flex justify-content-center"
-                                           style="" target="_blank"><i class="mdi mdi-odnoklassniki"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="https://vk.com/share.php?url={{ route('front-post-show', $post->id) }}"
-                                           class="edit-button social-media-item text-muted d-flex justify-content-center"
-                                           style="" target="_blank"><i class="mdi mdi-vk"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
                             <img src="{{ $post->preview_image }}" alt="..." class="img-fluid post-preview-image mt-2 mb-3">
                             <div class="post-content mb-5">{!! html_entity_decode( __($post->content) ) !!}</div>
-                            @if(count($post->galleries) !=0)
-                                <div class="post-gallery">
+                            @if(count($post->galleries) != 0)
+                                <div class="post-gallery mb-3">
                                 <p class="text-muted mb-2 g-info-text">{{ __('Gallery') }}</p>
                                 <div id="gallery" class="carousel slide carousel-fade" data-bs-ride="carousel">
                                     <div class="carousel-inner">
@@ -135,51 +89,27 @@
                                 </div>
                             </div>
                             @endif
-                            <div class="d-flex social-media mt-5 mb-3 justify-content-between d-print-none align-items-center">
-                                <ul class="social-list list-inline">
-                                    <li class="list-inline-item">
-                                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ route('front-post-show', $post->id) }}&t={{ $post->title }}"  class="edit-button social-media-item text-blue-light d-flex justify-content-center"
-                                           style="" target="_blank"><i class="mdi mdi-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="https://twitter.com/intent/tweet?text={{ $post->title }}&url={{ route('front-post-show', $post->id) }}"
-                                           class="edit-button social-media-item text-blue-light d-flex justify-content-center"
-                                           style="" target="_blank"><i class="mdi mdi-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="https://t.me/share/url?url={{ route('front-post-show', $post->id) }}&text={{ $post->title }}"  class="edit-button social-media-item text-blue-light d-flex justify-content-center"
-                                           style="" target="_blank"><i class="mdi mdi-telegram"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ route('front-post-show', $post->id) }}"
-                                           class="edit-button social-media-item text-blue-light d-flex justify-content-center"
-                                           style="" target="_blank"><i class="mdi mdi-linkedin"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="https://wa.me/?text={{ __($post->title) }} {{ route('front-post-show', $post->id) }}"
-                                           class="edit-button social-media-item text-blue-light d-flex justify-content-center"
-                                           style="" target="_blank"><i class="mdi mdi-whatsapp"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="https://connect.ok.ru/offer?url={{ route('front-post-show', $post->id) }}&title={{ __($post->title) }}&imageUrl={{ $post->preview_image }}"  class="edit-button social-media-item text-blue-light d-flex justify-content-center"
-                                           style="" target="_blank"><i class="mdi mdi-odnoklassniki"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="https://vk.com/share.php?url={{ route('front-post-show', $post->id) }}"  class="edit-button social-media-item text-blue-light d-flex justify-content-center"
-                                           style="" target="_blank"><i class="mdi mdi-vk"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <button onclick="printCertificate()" class="print-button">
-                                    <i class="dripicons-print me-2"></i>
-                                    {{ __('Print version') }}</button>
-                            </div>
+                            <div class="wds_share mb-3">
+                                    <p class="text-muted mb-2 g-info-text">{{ __('Share') }}</p>
+{{--                                    <div class="wds_share_icon">--}}
+{{--                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px">--}}
+{{--                                            <path d="M 18 2 A 3 3 0 0 0 15 5 A 3 3 0 0 0 15.054688 5.5605469 L 7.9394531 9.7109375 A 3 3 0 0 0 6 9 A 3 3 0 0 0 3 12 A 3 3 0 0 0 6 15 A 3 3 0 0 0 7.9355469 14.287109 L 15.054688 18.439453 A 3 3 0 0 0 15 19 A 3 3 0 0 0 18 22 A 3 3 0 0 0 21 19 A 3 3 0 0 0 18 16 A 3 3 0 0 0 16.0625 16.712891 L 8.9453125 12.560547 A 3 3 0 0 0 9 12 A 3 3 0 0 0 8.9453125 11.439453 L 16.060547 7.2890625 A 3 3 0 0 0 18 8 A 3 3 0 0 0 21 5 A 3 3 0 0 0 18 2 z"/>--}}
+{{--                                        </svg>--}}
+{{--                                    </div>--}}
+                                    <div class="wds_share_block">
+                                        <div class="ya-share2" data-services="vkontakte,odnoklassniki,gplus,twitter,viber,whatsapp,skype,telegram,pinterest,facebook"></div>
+                                    </div>
+                                </div>
+                            @if(count($post->tags()) != 0)
+                                        <div class="tags">
+                                            <p class="text-muted mb-2 mt-2 g-info-text">{{ __('Tags') }}</p>
+                                            <div class="tags-block">
+                                                @foreach($post->tags() as $tag)
+                                                    <a href="{{ route('front-show-tag', $tag->id) }}" class="tag-button">{{ $tag->title }} </a>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    @endif
                         </div>
                     </div>
                     <div class="tab-pane" id="news-documents">
@@ -195,12 +125,10 @@
                 <div class="p-3 post_information">
                     <p class="header-info-text">{{ __('Publication date') }}</p>
                     <h6 class="mb-lg-4 mt-lg-2 mb-md-3 mt-md-2 mb-2 mt-1 ">{{ Carbon\Carbon::parse($post->created_at)->format("d-m-Y - H:i") }}</h6>
-                    <p class="header-info-text">{{ __('Publication date') }}</p>
-                    <h6 class="mb-lg-4 mt-lg-2 mb-md-3 mt-md-2 mb-2 mt-1">{{ __($post->category->title ?? '') }}</h6>
                     <p class="header-info-text">{{ __('Published') }}</p>
                     <h6 class="mb-lg-4 mt-lg-2 mb-md-3 mt-md-2 mb-2 mt-1 info-blue-text">{{ __($post->publisher->title ?? '') }}</h6>
                     <p class="header-info-text mb-2">{{ __('Direction') }}</p>
-                    <a href="#" class="mt-lg-2 mt-md-2 mt-2 info-blue-text">{{ __($post->InPage->title) }}</a>
+                    <a href="#" class="mt-lg-2 mt-md-2 mt-2 info-blue-text mb-2">{{ __($post->InPage->title) }}</a>
                 </div>
             </div>
         </div>
@@ -208,6 +136,8 @@
 @endsection
 
 @push('footer-scripts')
+    <script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
+    <script src="//yastatic.net/share2/share.js"></script>
     <script>
         function printCertificate() {
             const printContents = document.getElementById('print-post').innerHTML;

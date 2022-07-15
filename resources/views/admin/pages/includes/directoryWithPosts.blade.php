@@ -63,6 +63,7 @@
                 :links="['', 'show-pages', null, null]"
                 :actions="$userCanActions"
                 :showLinks="$parentId"
+                type="pages"
             ></x-data-table>
         </div>
         <div class="col col-md-12 col-lg-4 mt-3">
@@ -169,6 +170,17 @@
                                           data-toggle="maxlength" data-threshold="700"
                                           rows="5"
                                 ></textarea>
+
+                                <label for="description" class="form-label">{{ __('Move section') }}</label>
+                                <select name="parent_id" id="move_directory" class="form-control">
+                                    @foreach($moveToPages as $item)
+                                        @if($item->id == $page->id)
+                                            <option value="{{ $item->id }}" selected>{{ __($item->title) }}</option>
+                                            @continue
+                                        @endif
+                                        <option value="{{ $item->id }}">{{ __($item->title) }}</option>
+                                    @endforeach
+                                </select>
 
                                 <label for="page-image-icon" class="form-label mt-3">{{ __('Choice icon') }}</label>
                                 <input name="image" type="file" id="page-image-icon" class="form-control mb-3" accept="image/*">

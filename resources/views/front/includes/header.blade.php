@@ -16,7 +16,7 @@
                     <div class="d-flex social-media me-4">
                         <ul class="social-list list-inline">
                             @foreach($socialMedia as $key => $item)
-                                @if($key == 3)
+                                @if($key == 4)
                                     @break
                                 @endif
                                 <li class="list-inline-item">
@@ -46,7 +46,7 @@
             <div class="row brand__row align-items-center ">
                 <div class="col-9 col-xs-6 col-sm-8 col-md-7 col-lg-6 @if(App::getLocale() == 'en')col-xl-5 @else col-xl-6 @endif  pe-0">
                     <a href="{{ route('index') }}" class="d-flex align-items-center ">
-                        <img src="{{ asset('front/images/logo/Logo.png') }}" alt="" class="rounded-circle me-1 me-lg-3 brand-logo">
+                        <img src="{{ asset('front/images/logo/Logo1.png') }}" alt="" class="rounded-circle me-1 me-lg-3 brand-logo">
                         <span class="text-uppercase brand-name">{{ __('Ministry of Finance of the Kyrgyz Republic') }}</span>
                     </a>
                 </div>
@@ -100,7 +100,7 @@
                                                                                                                                 @empty
                                                                                                                                 @endforelse
                                                                                                                                 <li class="thirdList">
-                                                                                                                                    <a href="{{ route('front-page-show', $fourthChild->id) }}" class="nav-item-link text-capitalize">{{ __('View all') }}</a>
+                                                                                                                                    <a href="{{ route('front-page-show', $fourthChild->id) }}" class="nav-item-link" style="text-transform: inherit">{{ __('View all') }}</a>
                                                                                                                                 </li>
                                                                                                                             </ul>
                                                                                                                             <span class="menu-arrow"></span>
@@ -111,7 +111,7 @@
                                                                                                         @empty
                                                                                                         @endforelse
                                                                                                         <li class="thirdList">
-                                                                                                            <a href="{{ route('front-page-show', $thirdChild->id) }}" class="nav-item-link text-capitalize text-capitalize">{{ __('View all') }}</a>
+                                                                                                            <a href="{{ route('front-page-show', $thirdChild->id) }}" class="nav-item-link " style="text-transform: inherit">{{ __('View all') }}</a>
                                                                                                         </li>
                                                                                                     </ul>
                                                                                                     <span class="menu-arrow"></span>
@@ -122,7 +122,7 @@
                                                                                 @empty
                                                                                 @endforelse
                                                                                 <li class="secondList">
-                                                                                    <a href="{{ route('front-page-show', $secondChild->id) }}" class="nav-item-link text-capitalize">{{ __('View all') }}</a>
+                                                                                    <a href="{{ route('front-page-show', $secondChild->id) }}" class="nav-item-link " style="text-transform: inherit">{{ __('View all') }}</a>
                                                                                 </li>
                                                                             </ul>
                                                                             <span class="menu-arrow"></span>
@@ -134,7 +134,7 @@
                                                         @endforelse
                                                         <li class="firstList">
                                                             <div class="d-flex justify-content-between align-items-center">
-                                                                <a href="{{ route('front-page-show', $page->id) }}" class="nav-item-link text-capitalize">{{ __('View all') }}</a>
+                                                                <a href="{{ route('front-page-show', $page->id) }}" class="nav-item-link " style="text-transform: inherit">{{ __('View all') }}</a>
                                                             </div>
                                                         </li>
                                                     </ul>
@@ -180,7 +180,7 @@
                                                                                                                             @empty
                                                                                                                             @endforelse
                                                                                                                             <li class="thirdList">
-                                                                                                                                <a href="{{ route('front-page-show', $fourthChild->id) }}" class="nav-item-link text-capitalize">{{ __('View all') }}</a>
+                                                                                                                                <a href="{{ route('front-page-show', $fourthChild->id) }}" class="nav-item-link " style="text-transform: inherit">{{ __('View all') }}</a>
                                                                                                                             </li>
                                                                                                                         </ul>
                                                                                                                         <span class="menu-arrow"></span>
@@ -191,7 +191,7 @@
                                                                                                     @empty
                                                                                                     @endforelse
                                                                                                     <li class="thirdList">
-                                                                                                        <a href="{{ route('front-page-show', $thirdChild->id) }}" class="nav-item-link text-capitalize">{{ __('View all') }}</a>
+                                                                                                        <a href="{{ route('front-page-show', $thirdChild->id) }}" class="nav-item-link " style="text-transform: inherit">{{ __('View all') }}</a>
                                                                                                     </li>
                                                                                                 </ul>
                                                                                                 <span class="menu-arrow"></span>
@@ -202,7 +202,7 @@
                                                                             @empty
                                                                             @endforelse
                                                                             <li class="secondList">
-                                                                                <a href="{{ route('front-page-show', $secondChild->id) }}" class="nav-item-link text-capitalize">{{ __('View all') }}</a>
+                                                                                <a href="{{ route('front-page-show', $secondChild->id) }}" class="nav-item-link " style="text-transform: inherit">{{ __('View all') }}</a>
                                                                             </li>
                                                                         </ul>
                                                                         <span class="menu-arrow"></span>
@@ -213,7 +213,7 @@
                                                     @empty
                                                     @endforelse
                                                     <li class="firstList">
-                                                        <a href="{{ route('front-page-show', $page->id) }}" class="nav-item-link text-capitalize">{{ __('View all') }}</a>
+                                                        <a href="{{ route('front-page-show', $page->id) }}" class="nav-item-link " style="text-transform: inherit">{{ __('View all') }}</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -258,7 +258,7 @@
                                                                                                                                 @empty
                                                                                                                                 @endforelse
                                                                                                                                 <li class="thirdList">
-                                                                                                                                    <a href="{{ route('front-page-show', $fourthChild->id) }}" class="nav-item-link text-capitalize">{{ __('View all') }}</a>
+                                                                                                                                    <a href="{{ route('front-page-show', $fourthChild->id) }}" class="nav-item-link " style="text-transform: inherit">{{ __('View all') }}</a>
                                                                                                                                 </li>
                                                                                                                             </ul>
                                                                                                                             <span class="menu-arrow"></span>
@@ -269,7 +269,7 @@
                                                                                                         @empty
                                                                                                         @endforelse
                                                                                                         <li class="thirdList">
-                                                                                                            <a href="{{ route('front-page-show', $thirdChild->id) }}" class="nav-item-link text-capitalize">{{ __('View all') }}</a>
+                                                                                                            <a href="{{ route('front-page-show', $thirdChild->id) }}" class="nav-item-link " style="text-transform: inherit">{{ __('View all') }}</a>
                                                                                                         </li>
                                                                                                     </ul>
                                                                                                     <span class="menu-arrow"></span>
@@ -280,7 +280,7 @@
                                                                                 @empty
                                                                                 @endforelse
                                                                                 <li class="secondList">
-                                                                                    <a href="{{ route('front-page-show', $secondChild->id) }}" class="nav-item-link text-capitalize">{{ __('View all') }}</a>
+                                                                                    <a href="{{ route('front-page-show', $secondChild->id) }}" class="nav-item-link " style="text-transform: inherit">{{ __('View all') }}</a>
                                                                                 </li>
                                                                             </ul>
                                                                             <span class="menu-arrow"></span>
@@ -291,7 +291,7 @@
                                                         @empty
                                                         @endforelse
                                                         <li class="firstList">
-                                                            <a href="{{ route('front-page-show', $page->id) }}" class="nav-item-link text-capitalize">{{ __('View all') }}</a>
+                                                            <a href="{{ route('front-page-show', $page->id) }}" class="nav-item-link " style="text-transform: inherit">{{ __('View all') }}</a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -309,7 +309,7 @@
                                                 <div class="dropOut">
                                                     <ul class="firstChild sub_nav__items p-0">
                                                         @forelse($page->ChildPages ?? [] as $secondKey =>$secondChild)
-                                                            @if($secondKey + 1 <= 6)
+                                                            @if($secondKey + 1 <= 5)
                                                                 <li class="firstList">
                                                                     <div class="d-flex justify-content-between align-items-center">
                                                                         <a href="{{ route('front-page-show', $secondChild->id) }}" class="nav-item-link p-0">{{ __($secondChild->title) }}</a>
@@ -336,7 +336,7 @@
                                                                                                                                 @empty
                                                                                                                                 @endforelse
                                                                                                                                 <li class="thirdList">
-                                                                                                                                    <a href="{{ route('front-page-show', $fourthChild->id) }}" class="nav-item-link text-capitalize">{{ __('View all') }}</a>
+                                                                                                                                    <a href="{{ route('front-page-show', $fourthChild->id) }}" class="nav-item-link " style="text-transform: inherit">{{ __('View all') }}</a>
                                                                                                                                 </li>
                                                                                                                             </ul>
                                                                                                                             <span class="menu-arrow"></span>
@@ -347,7 +347,7 @@
                                                                                                         @empty
                                                                                                         @endforelse
                                                                                                         <li class="thirdList">
-                                                                                                            <a href="{{ route('front-page-show', $thirdChild->id) }}" class="nav-item-link text-capitalize">{{ __('View all') }}</a>
+                                                                                                            <a href="{{ route('front-page-show', $thirdChild->id) }}" class="nav-item-link " style="text-transform: inherit">{{ __('View all') }}</a>
                                                                                                         </li>
                                                                                                     </ul>
                                                                                                     <span class="menu-arrow"></span>
@@ -358,7 +358,7 @@
                                                                                 @empty
                                                                                 @endforelse
                                                                                 <li class="secondList">
-                                                                                    <a href="{{ route('front-page-show', $secondChild->id) }}" class="nav-item-link text-capitalize">{{ __('View all') }}</a>
+                                                                                    <a href="{{ route('front-page-show', $secondChild->id) }}" class="nav-item-link " style="text-transform: inherit">{{ __('View all') }}</a>
                                                                                 </li>
                                                                             </ul>
                                                                             <span class="menu-arrow"></span>
@@ -369,7 +369,10 @@
                                                         @empty
                                                         @endforelse
                                                         <li class="firstList">
-                                                            <a href="{{ route('front-page-show', $page->id) }}" class="nav-item-link text-capitalize">{{ __('View all') }}</a>
+                                                            <a href="http://minfin.kg" class="nav-item-link p-0" target="_blank">{{ __('Old website') }}</a>
+                                                        </li>
+                                                        <li class="firstList">
+                                                            <a href="{{ route('front-page-show', $page->id) }}" class="nav-item-link" style="text-transform: inherit">{{ __('View all') }}</a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -487,7 +490,7 @@
                         <div class="localization-languages d-flex justify-content-between align-items-center">
                             <div class="d-flex social-media">
                                 @foreach($socialMedia as $key => $item)
-                                    @if($key == 3)
+                                    @if($key == 4)
                                         @break
                                     @endif
                                     <div class="list-inline-item">
@@ -558,20 +561,6 @@
                     </li>
                 @endforeach
             </ul>
-{{--            <ul role="menu" aria-level="1" class="bottom-nav">--}}
-{{--                <li class="nav-item">--}}
-{{--                    <div class="nav-item-wrapper">--}}
-{{--                        <div class="localization-languages d-flex justify-content-between align-items-center">--}}
-{{--                            <div class="d-flex">--}}
-{{--                                <a href="{{ route('locale', 'kg') }}" class="text-uppercase me-2 @if( App::getLocale() == 'kg')active @endif">Кырг</a>--}}
-{{--                                <a href="{{ route('locale', 'ru') }}" class="text-uppercase me-2 @if( App::getLocale() == 'ru')active @endif">Рус</a>--}}
-{{--                                <a href="{{ route('locale', 'en') }}" class="text-uppercase me-2 @if( App::getLocale() == 'en')active @endif">Eng</a>--}}
-{{--                            </div>--}}
-{{--                            <a href="{{ route('login') }}"><i class="mdi mdi-login" style="font-size: 21px; color: var(--heading-color);"></i></a>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </li>--}}
-{{--            </ul>--}}
             <ul role="menu" aria-level="1" class="bottom-nav">
                 <li class="nav-item">
                     <div class="nav-item-wrapper">

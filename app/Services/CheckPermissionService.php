@@ -21,6 +21,34 @@ class CheckPermissionService
         return $userPermissions;
     }
 
+    public function permissionsInTags(): array
+    {
+        $userPermissions = [null, null, null];
+
+        if(auth()->user()->can('edit-tags')){
+            $userPermissions[1] = 2;
+        }
+        if(auth()->user()->can('delete-tags')){
+            $userPermissions[2] = 3;
+        }
+
+        return $userPermissions;
+    }
+
+    public function permissionsInBotman(): array
+    {
+        $userPermissions = [null, null, null];
+
+        if(auth()->user()->can('edit-botman-messages')){
+            $userPermissions[1] = 2;
+        }
+        if(auth()->user()->can('delete-botman-messages')){
+            $userPermissions[2] = 3;
+        }
+
+        return $userPermissions;
+    }
+
     public function permissionsInPosts(): array
     {
         $userPermissions = [null, null, null];

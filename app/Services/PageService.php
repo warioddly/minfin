@@ -33,17 +33,29 @@ class PageService
         unset($data['_method']);
 
         if($child){
-            $parentPage = Page::find($id);
+            if(isset($data['parent_id'])){
+                $movetoPage = Page::find($data['parent_id']);
 
-            if($parentPage->level + 1 != 4 && $parentPage->level != 4){
-                $data['level'] = $parentPage->level + 1;
+                if($movetoPage->level + 1 != 4 && $movetoPage->level != 4){
+                    $data['level'] = $movetoPage->level + 1;
+                }
+                else{
+                    $data['level'] = 4;
+                }
+
+                $movetoPage->update(['type' => 1]);
             }
             else{
-                $data['level'] = 4;
-            }
-
-            if(!isset($data['parent_id'])){
-                $data['parent_id'] = $id;
+                $parentPage = Page::find($id);
+                if($parentPage->level + 1 != 4 && $parentPage->level != 4){
+                    $data['level'] = $parentPage->level + 1;
+                }
+                else{
+                    $data['level'] = 4;
+                }
+                if(!isset($data['parent_id'])){
+                    $data['parent_id'] = $id;
+                }
             }
         }
 

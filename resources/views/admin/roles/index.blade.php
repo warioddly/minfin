@@ -1,6 +1,13 @@
 @extends('admin.layouts.app')
 
 @section('page-information')
+    <div class="page-title-box">
+        <div class="page-title-right">
+            <ol class="breadcrumb m-0">
+                {{ Breadcrumbs::render('roles') }}
+            </ol>
+        </div>
+    </div>
     <x-page-inform
         title="Roles"
         :breadcrumbs="['Roles']"
@@ -35,6 +42,7 @@
                         :links="[null, null, null, null]"
                         :actions="$userCanActions"
                         orederable="false"
+                        type="roles"
                     ></x-data-table>
                 </div>
             </div>

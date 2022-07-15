@@ -49,7 +49,7 @@
 				CKEDITOR.once( 'log', function( evt ) {
 					evt.cancel();
 
-					assert.areEqual( 'exportpdf-no-token-url', evt.data.errorCode, 'There should be URL error log.' );
+					assert.areEqual( '1', evt.data.errorCode, 'There should be URL error log.' );
 				} );
 
 				createEditor( { exportPdf_tokenUrl: '' } );

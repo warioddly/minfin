@@ -1,10 +1,14 @@
 @extends('admin.layouts.app')
 
 @section('page-information')
-    <x-page-inform
-        title="Posts"
-        :breadcrumbs="['Posts']"
-    ></x-page-inform>
+    <div class="page-title-box">
+        <div class="page-title-right">
+            <ol class="breadcrumb m-0">
+                {{ Breadcrumbs::render('show-gallery', $post) }}
+            </ol>
+        </div>
+    </div>
+    <h4 class="page-title">{{ __('Gallery')  }}</h4>
 @endsection
 
 @section('content')

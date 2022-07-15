@@ -6,7 +6,7 @@
 CKEDITOR.editorConfig = function( config ) {
     config.language = 'ru';
     config.uiColor = '#ffffff';
-    config.height = 300;
+    config.height = 500;
     config.toolbarCanCollapse = true;
     config.removeButtons = 'About';
     config.plugins = 'dialogui,dialog,about,a11yhelp,dialogadvtab,basicstyles,bidi,blockquote,button,panelbutton,panel,' +
@@ -17,10 +17,10 @@ CKEDITOR.editorConfig = function( config ) {
         'pastefromgdocs,pastefromlibreoffice,pastefromword,preview,print,removeformat,save,selectall,showblocks,showborders,sourcearea,' +
         'specialchar,scayt,stylescombo,tab,table,tabletools,tableselection,undo,lineutils,widgetselection,widget,notificationaggregator,' +
         'uploadwidget,bootstrapTabs,btgrid,chart,colorinput,computedfont,contents,zoom,youtube,ckawesome,googlesearch,googledocs,' +
-        'ckeditor-gwf-plugin,html5video,html5audio,codesnippet,pastefromexcel,video,qrc,image,slideshow,widgettemplatemenu';
+        'ckeditor-gwf-plugin,html5video,html5audio,codesnippet,pastefromexcel,video,qrc,image,slideshow';
     config.allowedContent = true;
     config.filebrowserBrowseUrl = '/laravel-filemanager?type=Files';
-    config.filebrowserUploadUrl = '/laravel-filemanager/upload?type=Files&_token=';
-    config.filebrowserWindowWidth = '1000';
+    config.filebrowserUploadUrl = '/api/laravel-filemanager/upload';
+    config.filebrowserWindowWidth = '1200';
     config.filebrowserWindowHeight = '700';
 };

@@ -7,7 +7,9 @@ use App\Http\Requests\PostRequest;
 use App\Models\Category;
 use App\Models\Page;
 use App\Models\Post;
+use App\Models\PostTag;
 use App\Models\PostTranslate;
+use App\Models\Tag;
 use App\Services\CheckPermissionService;
 use App\Services\DocumentService;
 use App\Services\PostService;
@@ -32,21 +34,46 @@ class PagePostController extends Controller
             $is_published = 0;
         }
 
+        $moveToPages = Page::query()
+            ->where('level', '!=', 4)
+            ->where('type', '!=', 3)
+            ->get();
+
         return view('admin.pages.show', compact('page', 'userCanActions',
-            'ChildPages', 'parentId', 'parentPages', 'is_published', 'posts'));
+            'ChildPages', 'parentId', 'parentPages', 'is_published', 'posts', 'moveToPages'));
     }
 
     public function Create($parentId){
         $categories = Category::where('publisher', false)->latest()->get();
         $publishers = Category::where('publisher', true)->latest()->get();
-        return view('admin.pages.posts.create', compact('categories', 'publishers', 'parentId'));
+        $tags = Tag::latest()->get();
+        $pages = Page::query()
+            ->where('type', '!=', 2)
+            ->where('parent_id', '!=', null)
+            ->get();
+
+        return view('admin.pages.posts.create', compact('categories', 'tags', 'publishers', 'parentId', 'pages'));
     }
 
     public function Store(PostRequest $request, PostService $postService, DocumentService $documentService, PostTranslateService $translateService, $parentId){
+
+        if($parentId == '-1'){
+            $parentId = $request->page_id;
+        }
+
         $data = $postService->validateData($request, $request->route('id'), $parentId);
 
         Page::whereId($parentId)->update(['type' => 3 ]);
         $lastCreatedPostId = Post::create($data)->id;
+
+        $tags = $request->get('tags');
+
+        foreach($tags as $tag){
+            PostTag::create([
+                'tag_id' => $tag,
+                'post_id' => $lastCreatedPostId
+            ]);
+        }
 
         $translateData = $translateService->validateData($request, $lastCreatedPostId);
 
@@ -66,6 +93,16 @@ class PagePostController extends Controller
         $post = Post::find($id);
         $data = $postService->validateUpdateData($request);
         $post->update($data);
+
+        $tags = $request->get('tags');
+        PostTag::where('post_id', $id)->delete();
+
+        foreach($tags as $tag){
+            PostTag::create([
+                'tag_id' => $tag,
+                'post_id' => $id
+            ]);
+        }
 
         $translateData = $translateService->validateData($request, $id);
 
