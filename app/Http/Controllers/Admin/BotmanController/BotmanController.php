@@ -30,8 +30,16 @@ class BotmanController extends Controller
         if($data['parent_message_id'] == 'null'){
             unset($data['parent_message_id']);
         }
+        else{
+           $parent_message_id = Botman::find($data['parent_message_id']);
+
+           if($parent_message_id->is_answer && count($parent_message_id->getChilds) != 0){
+               return redirect()->back()->with('error', __("Can't add items because it's already answered here"));
+           }
+        }
 
         Botman::create($data);
+
         $translation->addGroupTranslation('ru', 'single', $data['message'], $data['message']);
 
         return redirect()->back()->with('status', __('Successfully added'));

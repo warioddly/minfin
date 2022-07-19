@@ -1,5 +1,6 @@
 @extends('admin.layouts.app')
 
+@section('title-page'){{ __('Gallery')  }} | @endsection
 @section('page-information')
     <div class="page-title-box">
         <div class="page-title-right">

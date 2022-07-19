@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CarouselItem;
 use App\Models\Page;
 use App\Models\Post;
+use App\Models\PostTag;
 use App\Services\TranslateService;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -21,9 +22,17 @@ class PostController extends Controller
         }
 
         $post->increment('views', 1);
-        $translateService->translate($post);
 
-        return view('front.posts.show', compact('post'));
+        $tagsIds = $post->tags()->pluck('id')->toArray();
+        $relatedTags = PostTag::whereIn('tag_id', $tagsIds)->pluck('post_id')->toArray();
+        $relatedPosts = Post::query()
+            ->whereIn('id', $relatedTags)->latest()->get()
+            ->except(['id', $post->id]);
+
+        $translateService->translate($post);
+        $translateService->translatePosts($relatedPosts);
+
+        return view('front.posts.show', compact('post', 'relatedPosts'));
     }
 
     public function Index(){

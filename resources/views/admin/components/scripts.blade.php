@@ -158,7 +158,7 @@
                     data = data['message'];
 
                     $("#edit-modal-form").attr('action', url);
-                    $("#botman_message").val(data['message']);
+                    editEditor.setData(data['message']);
 
                     if(data['is_answer'] === 1){
                         $("#switch_edit").attr('checked', true);

@@ -80,7 +80,25 @@
                                             <select name="page_id" class="form-control" required>
                                                 <option value="" disabled selected>-- {{ __('Select subsection') }} --</option>
                                                 @foreach($pages as $page)
-                                                    <option value="{{ $page->id }}">{{ $page->title }}</option>
+                                                    <optgroup label="{{ __($page->title) }}">
+                                                        <option value="{{ $page->id }}">{{ __($page->title) }}</option>
+                                                        @forelse($page->childPages as $firstChild)
+                                                            <option value="{{ $firstChild->id }}">{{ __($firstChild->title) }}</option>
+                                                            @forelse($firstChild->childPages as $secondChild)
+                                                                <option value="{{ $secondChild->id }}">{{ __($secondChild->title) }}</option>
+                                                                @forelse($secondChild->childPages as $thirdChild)
+                                                                    <option value="{{ $thirdChild->id }}">{{ __($thirdChild->title) }}</option>
+                                                                    @forelse($thirdChild->childPages as $fourthChild)
+                                                                        <option value="{{ $fourthChild->id }}">{{ __($fourthChild->title) }}</option>
+                                                                    @empty
+                                                                    @endforelse
+                                                                @empty
+                                                                @endforelse
+                                                            @empty
+                                                            @endforelse
+                                                        @empty
+                                                        @endforelse
+                                                    </optgroup>
                                                 @endforeach
                                             </select>
                                         </div>

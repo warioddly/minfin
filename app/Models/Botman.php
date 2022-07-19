@@ -19,4 +19,9 @@ class Botman extends Model
     {
         return $this->hasMany(Botman::class, 'parent_message_id');
     }
+
+    public function parent()
+    {
+        return $this->belongsTo(Botman::class, 'parent_message_id');
+    }
 }

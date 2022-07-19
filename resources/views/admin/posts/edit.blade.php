@@ -1,5 +1,6 @@
 @extends('admin.layouts.app')
 
+@section('title-page'){{ __('Posts')  }} | {{ __('Editing') }} |@endsection
 @section('page-information')
     <div class="page-title-box">
         <div class="page-title-right">

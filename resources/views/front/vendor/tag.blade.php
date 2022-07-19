@@ -15,9 +15,6 @@
                 <p class="page_show__header">{{ __($tag->title) }}</p>
             </div>
         </div>
-        <div class="row page_description__row mb-5">
-            awdawdawd
-        </div>
         @if(count($posts) != 0)
             <div class="mb-2 mb-md-5">
                 <div class="row page_posts__row mb-4">

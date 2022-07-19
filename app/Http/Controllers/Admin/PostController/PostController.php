@@ -49,7 +49,7 @@ class PostController extends Controller
     }
 
     public function Show(TranslateService $translateService, $id){
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
         $translateService->translate($post);
         return view('admin.posts.show', compact('post', ));
     }
@@ -81,7 +81,7 @@ class PostController extends Controller
         $tags = Tag::latest()->get();
         $pages = Page::query()
             ->where('type', '!=', 2)
-            ->where('parent_id', '!=', null)
+            ->where('parent_id', null)
             ->get();
 
         $parentId = -1;

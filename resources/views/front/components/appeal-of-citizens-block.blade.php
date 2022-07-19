@@ -8,10 +8,10 @@
             <p class="appeal-body mb-lg-4 mb-2">{{ $item->content }}</p>
             <div class="d-flex align-items-center justify-content-between mb-lg-4 mb-2">
                 <p class="appeal-category">{{ $item->category->title }}</p>
-                <p class="appeal-views text-muted d-flex">
-                    <i class="mdi mdi-eye me-1"></i>
-                    122
-                </p>
+{{--                <p class="appeal-views text-muted d-flex">--}}
+{{--                    <i class="mdi mdi-eye me-1"></i>--}}
+{{--                    122--}}
+{{--                </p>--}}
             </div>
             @if($item->answer != null)
                 <div class="d-flex justify-content-end">

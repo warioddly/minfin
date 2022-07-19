@@ -41,6 +41,10 @@ class IndexController extends Controller
             'created_at', '>=', Carbon::now()->startOfMonth()->subMonth()->toDateString()
         )->get()->sum('views');
 
+        $postViewsCount =  Post::where(
+            'created_at', '>=', Carbon::now()->startOfMonth()->subMonth()->toDateString()
+        )->get()->sum('views');
+
         $viewsPercent = 0;
         if(count($revenueMonth) != 0 && $viewCountCurrentMonth != 0){
             $viewsPercent = count($revenueMonth) / $viewCountCurrentMonth * 100;
@@ -48,7 +52,7 @@ class IndexController extends Controller
 
         return view('admin.index', compact('postsCount', 'categoryCount',
             'viewsPercent', 'notes', 'popularPosts', 'appeals', 'latestCategory',
-            'documentCount', 'latestPage', 'calendarData'
+            'documentCount', 'latestPage', 'calendarData', 'postViewsCount'
         ));
     }
 }

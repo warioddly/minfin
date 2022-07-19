@@ -21,7 +21,6 @@
             @else
                 <p class="">{{ __('Found') }} <strong>{{ count($pages) }}</strong> @if(count($pages) == 1) {{ __('section') }} @elseif(count($pages) < 1 && count($pages) < 10) {{ __('sections') }} @else {{ __('sections-2') }} @endif,
                     <strong>{{ count($posts) }}</strong> @if(count($posts) == 1) {{ __('new') }} @else {{ __('news') }} @endif,
-                    <strong>{{ count($categories) }}</strong> @if(count($categories) == 1) {{ __('category') }} @else {{ __('categories') }} @endif </p>
             @endif
         </div>
         @if(count($pages) != 0)

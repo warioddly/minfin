@@ -49,7 +49,7 @@ class PagePostController extends Controller
         $tags = Tag::latest()->get();
         $pages = Page::query()
             ->where('type', '!=', 2)
-            ->where('parent_id', '!=', null)
+            ->where('parent_id',  null)
             ->get();
 
         return view('admin.pages.posts.create', compact('categories', 'tags', 'publishers', 'parentId', 'pages'));

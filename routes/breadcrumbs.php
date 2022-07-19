@@ -21,6 +21,11 @@ Breadcrumbs::for('Pages', function ($trail) {
     $trail->push(__('Pages'), route('front-pages'));
 });
 
+Breadcrumbs::for('botman', function ($trail) {
+    $trail->parent('home');
+    $trail->push(__('Botman'), route('botman'));
+});
+
 Breadcrumbs::for('Post', function ($trail, $post) {
     $trail->parent('Posts');
     $trail->push(\Illuminate\Support\Str::limit(__($post->title), $limit=25, $end='...'), route('front-page-show', $post->id));

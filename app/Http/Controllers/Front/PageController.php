@@ -45,4 +45,5 @@ class PageController extends Controller
     public function Contacts(){
         return view('front.vendor.contacts');
     }
+
 }

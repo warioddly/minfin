@@ -24,7 +24,10 @@ Route::middleware(['setLocale'])->group(function(){
     Route::group(["namespace" => "App\Http\Controllers\Front"], function () {
         Route::get('/', 'IndexController@Index')->name('index');
 
+        Route::get('/contacts', 'PageController@Contacts')->name('contacts');
+        Route::get('/tag/{id}', 'TagController@Show')->name('front-show-tag');
         Route::get('/search', 'IndexController@Search')->name('search');
+
         Route::group(['prefix' => 'posts'], function () {
             Route::get('/', 'PostController@Index')->name('front-posts');
             Route::get('/{id}', 'PostController@Show')->name('front-post-show');
@@ -33,15 +36,17 @@ Route::middleware(['setLocale'])->group(function(){
         Route::group(['prefix' => 'pages'], function () {
             Route::get('/', 'PageController@Index')->name('front-pages');
             Route::get('/{id}', 'PageController@Show')->name('front-page-show');
-            Route::get('sheet/{id}', 'PageController@ShowSheet')->name('front-sheet-show');
+            Route::get('/sheet/{id}', 'PageController@ShowSheet')->name('front-sheet-show');
         });
-        Route::get('/contacts', 'PageController@Contacts')->name('contacts');
-        Route::get('/tag/{id}', 'TagController@Show')->name('front-show-tag');
         Route::group(["prefix" => "appealofcitizens"], function () {
             Route::get('/', 'AppealController@Index')->name('appeal-of-citizens');
             Route::get('/ask-a-question', 'AppealController@AskAQuestions')->name('ask-a-question');
             Route::post('/appeal-question', 'AppealController@AppealQuestion')->name('appeal-question');
             Route::post('/appeal-search', 'AppealController@AppealSearch')->name('appeal-search');
+        });
+        Route::group(["prefix" => "anti-corruption"], function () {
+            Route::get('/', 'AntiCorruptionController@Index')->name('anti-corruption');
+            Route::post('/sendMessage', 'AntiCorruptionController@SendMessage')->name('send-corruption');
         });
         Route::group(["prefix" => "archive"], function () {
             Route::get('/', 'ArchiveController@Index')->name('archive');

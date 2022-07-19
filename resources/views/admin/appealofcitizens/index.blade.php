@@ -1,5 +1,6 @@
 @extends('admin.layouts.app')
 
+@section('title-page'){{ __('Appeal Of Citizens')  }} | @endsection
 @section('page-information')
     <div class="page-title-box">
         <div class="page-title-right">
@@ -81,7 +82,7 @@
                                                 <div class="dropdown-menu dropdown-menu-end">
                                                     @can('edit-appeal')
                                                         @if($item->is_published == true)
-                                                            <a href="{{ route('appeal-publish', [$item->id, 'Unpublish']) }}" class="dropdown-item"><i class="mdi-comment-off me-1"></i>{{ __('Unpublish') }}</a>
+                                                            <a href="{{ route('appeal-publish', [$item->id, 'Unpublish']) }}" class="dropdown-item"><i class="mdi mdi-comment-off me-1"></i>{{ __('Unpublish') }}</a>
                                                         @else
                                                             <a href="{{ route('appeal-publish', [$item->id, 'publish']) }}" class="dropdown-item"><i class="mdi mdi-publish me-1"></i>{{ __('Publish') }}</a>
                                                         @endif

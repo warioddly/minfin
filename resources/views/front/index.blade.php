@@ -92,34 +92,30 @@
                             @break
                         @endif
                         @if($key == 0)
-                            <div class="main-new__mobile_block col-md-12 col-lg-12 col new_block mb-lg-3 mb-2">
+
+                            <div class="col-md-12 col-lg-12 col new_block d-block d-sm-block d-md-none mb-lg-3 mb-2">
                                 <span class="p-0 d-flex">
-                                    <a href="{{ route('front-post-show', $post->id) }}">
-                                        <div class="position-relative">
-                                            <img src="{{ $post->preview_image  }}" alt="" class="new_block__image">
-                                        </div>
-                                        <div class="position-relative new_text-information">
-                                            <p class="new_block__date pb-1 pb-lg-2 pb-md-1 pt-2">{{ $post->created_at->toDateTime()->format('d.m.Y H:s') }}</p>
-                                            <p class="new_block__title d-block d-sm-none d-md-none d-md-none">
-                                                @for($i = 0; $i < 6; $i++) {{ explode(" ", $post->title)[$i] ?? '' }} @endfor...
-                                                <a class="new_block__read_more">{{ __('read more') }}</a>
-                                            </p>
-                                            <p class="new_block__title d-none d-sm-block d-md-block d-lg-block">
-                                                @for($i = 0; $i < 11; $i++) {{ explode(" ", $post->title)[$i] ?? '' }} @endfor...
-                                                <a class="new_block__read_more">{{ __('read more') }}</a>
-                                            </p>
-                                            <p class="new_block__category bottom-0 pb-2">{{ __($post->category->title) }}</p>
-                                        </div>
-                                    </a>
-                                </span>
+                            <img src="{{ $post->preview_image  }}" alt="" class="new_block__image">
+                            <div class="position-relative new_text-information">
+                                <p class="new_block__date pb-1 pb-lg-2 pb-md-1 pt-2">{{ $post->created_at->toDateTime()->format('d.m.Y H:s') }}</p>
+                                <p class="new_block__title d-block d-sm-none d-md-none d-md-none">
+                                    @for($i = 0; $i < 6; $i++) {{ explode(" ", $post->title)[$i] ?? '' }} @endfor...
+                                    <a class="new_block__read_more" href="{{ route('front-post-show', $post->id) }}">{{ __('read more') }}</a>
+                                </p>
+                                <p class="new_block__title d-none d-sm-block d-md-block d-lg-block">
+                                    @for($i = 0; $i < 11; $i++) {{ explode(" ", $post->title)[$i] ?? '' }} @endfor...
+                                    <a class="new_block__read_more" href="{{ route('front-post-show', $post->id) }}">{{ __('read more') }}</a>
+                                </p>
+                                <p class="new_block__category bottom-0 pb-2">{{ __($post->category->title) }}</p>
                             </div>
+                        </span>
+                            </div>
+
                             @continue
                         @endif
                         <div class="col-md-12 col-lg-12 col new_block mb-lg-3 mb-2">
                             <span class="p-0 d-flex">
-                                <div class="position-relative">
-                                    <img src="{{ $post->preview_image  }}" alt="" class="new_block__image">
-                                </div>
+                                <img src="{{ $post->preview_image  }}" alt="" class="new_block__image">
                                 <div class="position-relative new_text-information">
                                     <p class="new_block__date pb-1 pb-lg-2 pb-md-1 pt-2">{{ $post->created_at->toDateTime()->format('d.m.Y H:s') }}</p>
                                     <p class="new_block__title d-block d-sm-none d-md-none d-md-none">

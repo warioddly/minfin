@@ -6,14 +6,17 @@ use App\Http\Controllers\Controller;
 
 class BotManController extends Controller
 {
-    /**
-     * Place your BotMan logic here.
-     */
     public function handle()
     {
+        $this->greet = false;
         $botman = app('botman');
         $botman->typesAndWaits(1);
-        $botman->startConversation(new QuickReplyConversation($botman));
+
+        $botman->hears('{message}', function($botman, $message) {
+            $botman->startConversation(new QuickReplyConversation($botman));
+        });
+
+        $botman->listen();
     }
 }
 

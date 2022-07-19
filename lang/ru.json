@@ -20,6 +20,7 @@
     "Talas region": "Таласская область",
     "Talas": "Талас",
     "Kara-Buura district": "Кара-Бууринский район",
+    "Can't add items because it's already answered here": "Невозможно добавить пункты, потому что здесь уже дан ответ",
     "Manas district": "Манасский район",
     "Talas district": "Таласский район",
     "Bakai-Ata district": "Бакай-Атинский район",
@@ -284,7 +285,7 @@
     "Create directory": "Создать директорию",
     "post": "пост",
     "Add": "Добавить",
-    "Related posts": "Связанные посты",
+    "Related posts": "Связанные новости",
     "Tag statistic": "Статистика тега",
     "page-2": "страницу",
     "Old website": "Старый сайт",
@@ -479,5 +480,6 @@
     "Select subsection": "Выберите раздел",
     "Результаты конкурсов": "Результаты конкурсов",
     "Move section": "Переместить раздел",
-    "Enter your message": "Введите ваше сообщение"
+    "Enter your message": "Введите ваше сообщение",
+    "views-2": "просмотров"
 }

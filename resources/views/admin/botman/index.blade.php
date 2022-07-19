@@ -4,13 +4,13 @@
     <div class="page-title-box">
         <div class="page-title-right">
             <ol class="breadcrumb m-0">
-                {{ Breadcrumbs::render('users') }}
+                {{ Breadcrumbs::render('botman') }}
             </ol>
         </div>
     </div>
     <x-page-inform
-        title="Users"
-        :breadcrumbs="['Users']"
+        title="Botman"
+        :breadcrumbs="['Botman']"
     ></x-page-inform>
 @endsection
 
@@ -68,7 +68,7 @@
                     <div class="modal-body">
                         <div class="form-group mb-2">
                             <label for="create-input" class="form-label" >{{ __('Enter message') }}</label>
-                            <textarea type="text" name="message" class="form-control"  maxlength="700" data-toggle="maxlength" data-threshold="700"></textarea>
+                            <textarea type="text" name="message" class="form-control" rows="10" maxlength="700" data-toggle="maxlength" data-threshold="700"></textarea>
                             <input type="hidden" name="parent_message_id" value="null">
                         </div>
                         <div class="form-group d-flex align-items-center">
@@ -106,7 +106,7 @@
                     <div class="modal-body">
                         <div class="form-group mb-2">
                             <label for="create-input" class="form-label" >{{ __('Enter message') }}</label>
-                            <textarea type="text" id="botman_message" name="message" class="form-control" maxlength="700" data-toggle="maxlength" data-threshold="700"></textarea>
+                            <textarea type="text" id="botman_message" name="message" class="form-control" rows="10" maxlength="700" data-toggle="maxlength" data-threshold="700"></textarea>
                             <input type="hidden" name="parent_message_id" value="null">
                         </div>
                         <div class="form-group d-flex align-items-center">

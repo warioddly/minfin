@@ -38,7 +38,7 @@
                 </div>
             </div>
         @endif
-        <div class="row mb-3">
+        <div class="row mb-1 mb-md-3">
             <div class="col-12 col-md-8 col-lg-9 mb-3 mb-lg-0 post-show-content">
                 <div class="tab-content">
                     <div class="tab-pane show active" id="post">
@@ -89,27 +89,30 @@
                                 </div>
                             </div>
                             @endif
-                            <div class="wds_share mb-3">
-                                    <p class="text-muted mb-2 g-info-text">{{ __('Share') }}</p>
-{{--                                    <div class="wds_share_icon">--}}
-{{--                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px">--}}
-{{--                                            <path d="M 18 2 A 3 3 0 0 0 15 5 A 3 3 0 0 0 15.054688 5.5605469 L 7.9394531 9.7109375 A 3 3 0 0 0 6 9 A 3 3 0 0 0 3 12 A 3 3 0 0 0 6 15 A 3 3 0 0 0 7.9355469 14.287109 L 15.054688 18.439453 A 3 3 0 0 0 15 19 A 3 3 0 0 0 18 22 A 3 3 0 0 0 21 19 A 3 3 0 0 0 18 16 A 3 3 0 0 0 16.0625 16.712891 L 8.9453125 12.560547 A 3 3 0 0 0 9 12 A 3 3 0 0 0 8.9453125 11.439453 L 16.060547 7.2890625 A 3 3 0 0 0 18 8 A 3 3 0 0 0 21 5 A 3 3 0 0 0 18 2 z"/>--}}
-{{--                                        </svg>--}}
-{{--                                    </div>--}}
-                                    <div class="wds_share_block">
-                                        <div class="ya-share2" data-services="vkontakte,odnoklassniki,gplus,twitter,viber,whatsapp,skype,telegram,pinterest,facebook"></div>
+                            <div class="row ">
+                                <div class="col-12 col-sm-6  mb-3">
+                                    <p class="text-muted mb-2 g-info-text">{{ __('Views') }}</p>
+                                    <p class="text-muted g-info-text"><i class="mdi mdi-eye"></i> {{ $post->views }} </p>
+                                </div>
+                                <div class="col-12 col-sm-6 d-md-flex justify-content-end">
+                                    <div class="wds_share mb-3">
+                                        <p class="text-muted mb-2 g-info-text text-md-end text-start">{{ __('Share') }}</p>
+                                        <div class="wds_share_block">
+                                            <div class="ya-share2" data-services="vkontakte,odnoklassniki,gplus,twitter,viber,whatsapp,skype,telegram,pinterest,facebook"></div>
+                                        </div>
                                     </div>
                                 </div>
+                            </div>
                             @if(count($post->tags()) != 0)
-                                        <div class="tags">
-                                            <p class="text-muted mb-2 mt-2 g-info-text">{{ __('Tags') }}</p>
-                                            <div class="tags-block">
-                                                @foreach($post->tags() as $tag)
-                                                    <a href="{{ route('front-show-tag', $tag->id) }}" class="tag-button">{{ $tag->title }} </a>
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    @endif
+                                <div class="tags">
+                                    <p class="text-muted mb-2 mt-2 g-info-text">{{ __('Tags') }}</p>
+                                    <div class="tags-block">
+                                        @foreach($post->tags() as $tag)
+                                            <a href="{{ route('front-show-tag', $tag->id) }}" class="tag-button">{{ $tag->title }} </a>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            @endif
                         </div>
                     </div>
                     <div class="tab-pane" id="news-documents">
@@ -121,7 +124,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-4 col-lg-3 mb-3 ">
+            <div class="col-12 col-md-4 col-lg-3 mb-2">
                 <div class="p-3 post_information">
                     <p class="header-info-text">{{ __('Publication date') }}</p>
                     <h6 class="mb-lg-4 mt-lg-2 mb-md-3 mt-md-2 mb-2 mt-1 ">{{ Carbon\Carbon::parse($post->created_at)->format("d-m-Y - H:i") }}</h6>
@@ -132,7 +135,37 @@
                 </div>
             </div>
         </div>
+        @if(count($relatedPosts) !=0)
+            <div class="row">
+                <p class="main-post-header mb-3">{{ __("Related posts") }}</p>
+            </div>
+        @endif
     </div>
+    <section id="" class="mb-lg-5 mb-md-3">
+        <div class="container">
+            <div class="row related-posts">
+                @foreach($relatedPosts as $key => $post)
+                    <div class="col-12 col-md-6 col-lg-6 new_block mb-lg-3 mb-2">
+                        <span class="p-0 d-flex related-span">
+                            <img src="{{ $post->preview_image  }}" alt="" class="new_block__image">
+                            <div class="position-relative new_text-information">
+                                <p class="new_block__date pb-1 pb-lg-2 pb-md-1 pt-2">{{ $post->created_at->toDateTime()->format('d.m.Y H:s') }}</p>
+                                <p class="new_block__title d-block d-sm-none d-md-none d-md-none">
+                                    @for($i = 0; $i < 6; $i++) {{ explode(" ", $post->title)[$i] ?? '' }} @endfor...
+                                    <a class="new_block__read_more" href="{{ route('front-post-show', $post->id) }}">{{ __('read more') }}</a>
+                                </p>
+                                <p class="new_block__title d-none d-sm-block d-md-block d-lg-block">
+                                    @for($i = 0; $i < 11; $i++) {{ explode(" ", $post->title)[$i] ?? '' }} @endfor...
+                                    <a class="new_block__read_more" href="{{ route('front-post-show', $post->id) }}">{{ __('read more') }}</a>
+                                </p>
+                                <p class="new_block__category bottom-0 pb-2">{{ __($post->category->title) }}</p>
+                            </div>
+                        </span>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
 @endsection
 
 @push('footer-scripts')

@@ -556,6 +556,9 @@
                                 </li>
                                 @empty
                                 @endforelse
+                                @if($page->title == 'Press center')
+                                    <li><a href="http://minfin.kg" target="_blank">{{ __('Old website') }}</a></li>
+                                @endif
                             </ul>
                         @endif
                     </li>

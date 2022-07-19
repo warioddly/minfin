@@ -12,18 +12,7 @@
 
         <ul class="list-unstyled topbar-menu float-end mb-0">
 
-            <li class="dropdown notification-list d-xl-none">
-                <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                    <i class="dripicons-search noti-icon"></i>
-                </a>
-                <div class="dropdown-menu dropdown-menu-animated dropdown-lg p-0">
-                    <form class="p-3">
-                        <input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient's username">
-                    </form>
-                </div>
-            </li>
-
-            <li class="dropdown notification-list topbar-dropdown d-none d-lg-block">
+            <li class="dropdown notification-list topbar-dropdown d-lg-block">
                 <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" id="topbar-languagedrop" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                     @if( App::getLocale() == 'en')
                         <img src=" {{ asset('admin/images/flags/us.jpg') }}" alt="user-image" class="me-1" height="12"> <span class="align-middle">English</span> <i class="mdi mdi-chevron-down"></i>
@@ -52,93 +41,6 @@
                 </div>
             </li>
 
-{{--            <li class="dropdown notification-list">--}}
-{{--                <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" id="topbar-notifydrop" role="button" aria-haspopup="true" aria-expanded="false">--}}
-{{--                    <i class="dripicons-bell noti-icon"></i>--}}
-{{--                    <span class="noti-icon-badge"></span>--}}
-{{--                </a>--}}
-{{--                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated dropdown-lg" aria-labelledby="topbar-notifydrop">--}}
-
-{{--                    <div class="dropdown-item noti-title">--}}
-{{--                        <h5 class="m-0">--}}
-{{--                            <span class="float-end">--}}
-{{--                                <a href="javascript: void(0);" class="text-dark">--}}
-{{--                                    <small>Clear All</small>--}}
-{{--                                </a>--}}
-{{--                            </span>Notification--}}
-{{--                        </h5>--}}
-{{--                    </div>--}}
-
-{{--                    <div style="max-height: 230px;" data-simplebar>--}}
-{{--                        <a href="javascript:void(0);" class="dropdown-item notify-item">--}}
-{{--                            <div class="notify-icon bg-primary">--}}
-{{--                                <i class="mdi mdi-comment-account-outline"></i>--}}
-{{--                            </div>--}}
-{{--                            <p class="notify-details">Caleb Flakelar commented on Admin--}}
-{{--                                <small class="text-muted">1 min ago</small>--}}
-{{--                            </p>--}}
-{{--                        </a>--}}
-
-{{--                        <a href="javascript:void(0);" class="dropdown-item notify-item">--}}
-{{--                            <div class="notify-icon bg-info">--}}
-{{--                                <i class="mdi mdi-account-plus"></i>--}}
-{{--                            </div>--}}
-{{--                            <p class="notify-details">New user registered.--}}
-{{--                                <small class="text-muted">5 hours ago</small>--}}
-{{--                            </p>--}}
-{{--                        </a>--}}
-
-{{--                        <a href="javascript:void(0);" class="dropdown-item notify-item">--}}
-{{--                            <div class="notify-icon">--}}
-{{--                                <img src="#" class="img-fluid rounded-circle" alt="" /> </div>--}}
-{{--                            <p class="notify-details">Cristina Pride</p>--}}
-{{--                            <p class="text-muted mb-0 user-msg">--}}
-{{--                                <small>Hi, How are you? What about our next meeting</small>--}}
-{{--                            </p>--}}
-{{--                        </a>--}}
-
-{{--                        <a href="javascript:void(0);" class="dropdown-item notify-item">--}}
-{{--                            <div class="notify-icon bg-primary">--}}
-{{--                                <i class="mdi mdi-comment-account-outline"></i>--}}
-{{--                            </div>--}}
-{{--                            <p class="notify-details">Caleb Flakelar commented on Admin--}}
-{{--                                <small class="text-muted">4 days ago</small>--}}
-{{--                            </p>--}}
-{{--                        </a>--}}
-
-{{--                        <a href="javascript:void(0);" class="dropdown-item notify-item">--}}
-{{--                            <div class="notify-icon">--}}
-{{--                                <img src="#" class="img-fluid rounded-circle" alt="" /> </div>--}}
-{{--                            <p class="notify-details">Karen Robinson</p>--}}
-{{--                            <p class="text-muted mb-0 user-msg">--}}
-{{--                                <small>Wow ! this admin looks good and awesome design</small>--}}
-{{--                            </p>--}}
-{{--                        </a>--}}
-
-{{--                        <a href="javascript:void(0);" class="dropdown-item notify-item">--}}
-{{--                            <div class="notify-icon bg-info">--}}
-{{--                                <i class="mdi mdi-heart"></i>--}}
-{{--                            </div>--}}
-{{--                            <p class="notify-details">Carlos Crouch liked--}}
-{{--                                <b>Admin</b>--}}
-{{--                                <small class="text-muted">13 days ago</small>--}}
-{{--                            </p>--}}
-{{--                        </a>--}}
-{{--                    </div>--}}
-
-{{--                    <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">--}}
-{{--                        View All--}}
-{{--                    </a>--}}
-
-{{--                </div>--}}
-{{--            </li>--}}
-
-            {{--            <li class="notification-list">--}}
-            {{--                <a class="nav-link end-bar-toggle" href="javascript: void(0);">--}}
-            {{--                    <i class="dripicons-gear noti-icon"></i>--}}
-            {{--                </a>--}}
-            {{--            </li>--}}
-
             <li class="dropdown notification-list">
                 <a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown" id="topbar-userdrop" href="#" role="button" aria-haspopup="true"
                    aria-expanded="false">
@@ -159,20 +61,13 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown" aria-labelledby="topbar-userdrop">
                     <div class=" dropdown-header noti-title">
-                        <h6 class="text-overflow m-0">Welcome !</h6>
+                        <h6 class="text-overflow m-0">Welcome! Warioddly</h6>
                     </div>
 
                     <a href="{{ route('profile') }}" class="dropdown-item notify-item">
                         <i class="mdi mdi-account-circle me-1"></i>
                         <span>{{ __('Profile') }}</span>
                     </a>
-
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="mdi mdi-lifebuoy me-1"></i>
-                        <span>{{ __('Help') }}</span>
-                    </a>
-
-
 
                     @if(session('theme') == 'dark')
                         <a href="{{ route('theme', 'light') }}" class="dropdown-item notify-item">
