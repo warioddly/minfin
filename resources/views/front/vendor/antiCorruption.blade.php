@@ -7,7 +7,7 @@
         <div class="container">
             <div class="row mt-4 mb-3">
                 <div class="col">
-                    {{ Breadcrumbs::render('AskAQuestions') }}
+                    {{ Breadcrumbs::render('AntiCorruption') }}
                 </div>
             </div>
         </div>
@@ -22,6 +22,10 @@
                     @endforeach
                 @endif
 
+                @if(session('success'))
+                    <x-alert alertType="success" message="{{ __(session('success')) }}"></x-alert>
+                @endif
+
                 <div class="content-header pb-3 mb-4">
                     <p class="header-text border-none mb-3 text-uppercase">{{ __('Report Corruption') }}</p>
                     <p class="secondary-text border-none">{{ __('Fields marked with an asterisk are required') }}</p>
@@ -30,17 +34,17 @@
                     @csrf
                     <div class="form-group d-block d-md-flex justify-content-between mb-3">
                         <div class="col">
-                            <input type="text" name="title" class="ask-question-input" maxlength="45" placeholder="{{ __('Subject') }}*" required>
+                            <input type="text" name="subject" class="ask-question-input" maxlength="45" placeholder="{{ __('Subject') }}*" required>
                         </div>
                     </div>
                     <div class="form-group d-block d-md-flex justify-content-between mb-3">
                         <div class="col">
-                            <textarea type="text" name="content" rows="5" class="ask-question-input" maxlength="2000" placeholder="{{ __('Your question') }}*" required></textarea>
+                            <textarea type="text" name="body" rows="5" class="ask-question-input" maxlength="2000" placeholder="{{ __('Your message') }}*" required></textarea>
                         </div>
                     </div>
                     <div class="form-group d-block d-md-flex justify-content-between mb-3">
                         <div class="col-12 col-md-5">
-                            <input type="file" name="files[]" class="ask-question-input form-control ask-question-file-input" placeholder="{{ __('Last name') }}*" multiple>
+                            <input type="file" name="attachment" class="ask-question-input form-control ask-question-file-input">
                         </div>
                     </div>
                     <div class="col">

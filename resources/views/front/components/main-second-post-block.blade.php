@@ -10,7 +10,7 @@
             </a>
             <div class="d-flex">
                 <p class="new_date me-3">{{  $items[0]->created_at->toDateTime()->format('d.m.Y') }}</p>
-                <p class="new_category">{{  $items[0]->category->title ?? '' }}</p>
+                <p class="new_category">{{  __($items[0]->category->title) ?? '' }}</p>
             </div>
         </div>
     </div>
@@ -26,7 +26,7 @@
             <div class="d-flex justify-content-between align-items-end ">
                 <div class="d-flex align-items-end">
                     <p class="new_date me-3">{{ $items[0]->created_at->toDateTime()->format('d.m.Y') }}</p>
-                    <p class="new_category">{{ $items[0]->category->title ?? ''}}</p>
+                    <p class="new_category">{{ __($items[0]->category->title) ?? ''}}</p>
                 </div>
                 <div class="text-muted new_date">
                     <i class="mdi mdi-eye-check pe-2 mt-2"></i><span>{{ $items[0]->views }}</span>
@@ -43,7 +43,7 @@
             <div class="d-flex justify-content-between align-items-end ">
                 <div class="d-flex align-items-end">
                     <p class="new_date me-3">{{ $items[1]->created_at->toDateTime()->format('d.m.Y') }}</p>
-                    <p class="new_category">{{ $items[1]->category->title ?? ''}}</p>
+                    <p class="new_category">{{ __($items[1]->category->title) ?? ''}}</p>
                 </div>
                 <div class="text-muted new_date">
                     <i class="mdi mdi-eye-check pe-2 mt-2"></i><span>{{ $items[1]->views }}</span>

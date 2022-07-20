@@ -56,6 +56,11 @@ Breadcrumbs::for('AskAQuestions', function ($trail) {
     $trail->push(__('Ask a Questions'));
 });
 
+Breadcrumbs::for('AntiCorruption', function ($trail) {
+    $trail->parent('home');
+    $trail->push(__('Anti-Corruption policy'), route('anti-corruption'));
+});
+
 Breadcrumbs::for('Page', function ($trail, $page) {
     $trail->parent('home');
 

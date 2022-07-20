@@ -47,7 +47,7 @@
                 <div class="row page_posts__row mb-4">
                     <div class="col d-flex justify-content-between align-items-center">
                         <p class="header-text">{{ __('Subsection News') }}</p>
-                        <a href="#" class="view_all-news-btn">{{ __('View all news') }}</a>
+                        <a href="{{ route('front-posts') }}" class="view_all-news-btn">{{ __('View all news') }}</a>
                     </div>
                 </div>
                 <div class="row justify-content-md-around justify-content-lg-around d-none d-lg-flex d-md-flex g-3">

@@ -23,7 +23,6 @@ Route::middleware(['setLocale'])->group(function(){
 
     Route::group(["namespace" => "App\Http\Controllers\Front"], function () {
         Route::get('/', 'IndexController@Index')->name('index');
-
         Route::get('/contacts', 'PageController@Contacts')->name('contacts');
         Route::get('/tag/{id}', 'TagController@Show')->name('front-show-tag');
         Route::get('/search', 'IndexController@Search')->name('search');

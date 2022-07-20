@@ -337,16 +337,16 @@
             </div>
         </div>
     </section>
-    @if(count($ministerPosts) != 0 && count($ministerPosts) > 6)
+{{--    @if(count($ministerPosts) != 0 && count($ministerPosts) > 6)--}}
         <section id="third-post-subsection" class="mb-3 mb-md-5 mt-4 mt-md-0">
             <div class="container">
                 <p class="header-text mb-4">{{ __('News') }} о министерстве</p>
                 <x-third-new-subsection-block
-                    :items="$ministerPosts"
+                    :items="$posts"
                 ></x-third-new-subsection-block>
             </div>
         </section>
-    @endif
+{{--    @endif--}}
     <section class="add mb-3 mb-md-5">
        <div class="container">
            <div class="row">
