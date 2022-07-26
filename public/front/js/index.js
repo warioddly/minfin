@@ -747,6 +747,22 @@ function separator(number){
 }
 
 function getLabel(data){
-    return [`Факт</br><p class="ms-lg-3 ms-md-2 apex-chart-info-text">${ separator(data[0]) } тыс. сом</p>`,
-        `План</br><p class="ms-lg-3 ms-md-2 apex-chart-info-text position-absolute">${ separator(data[1]) } тыс. сом</p>`]
+    let locale = $('html').attr('lang');
+    let money = 'тыс. '
+    let val = 'сом.'
+    let fact = 'Факт'
+    let plan = 'План'
+
+    if(locale === 'kg'){
+        money = 'мин. '
+    }
+    if(locale === 'en'){
+        money = 'th. '
+        val = 'som.'
+        fact = 'Fact'
+        plan = 'Plan'
+    }
+
+    return [`${fact}</br><p class="ms-lg-3 ms-md-2 apex-chart-info-text">${ separator(data[0]) } ${money + val}</p>`,
+        `${plan}</br><p class="ms-lg-3 ms-md-2 apex-chart-info-text position-absolute">${ separator(data[1]) } ${money + val}</p>`]
 }

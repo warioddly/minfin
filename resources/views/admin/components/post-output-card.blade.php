@@ -11,10 +11,11 @@
                         <a href="{{ route('post-edit', $item->id) }}" class="dropdown-item"><i class="mdi mdi-pencil me-1"></i>{{ __('Edit') }}</a>
                         <a data-bs-toggle="modal" href="#delete" data-id="{{ $item->id }}" role="button"
                            class="dropdown-item delete-button"> <i class="mdi mdi-delete me-1"></i>{{ __('Delete') }}</a>
-                        @if($item->is_published == 0)
-                            <a href="{{ route('post-publish', $item->id) }}" class="dropdown-item"><i class="mdi mdi-publish me-1"></i>{{ __('Publish') }}</a>
-                        @endif
-                        <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-share-variant me-1"></i>{{ __('Share') }}</a>
+                        @can('delete-posts')
+                            @if($item->is_published == 0)
+                                <a href="{{ route('post-publish', $item->id) }}" class="dropdown-item"><i class="mdi mdi-publish me-1"></i>{{ __('Publish') }}</a>
+                            @endif
+                        @endcan
                     </div>
                 </div>
                 <h4 class="mt-0">

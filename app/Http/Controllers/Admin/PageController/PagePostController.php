@@ -14,6 +14,7 @@ use App\Services\CheckPermissionService;
 use App\Services\DocumentService;
 use App\Services\PostService;
 use App\Services\PostTranslateService;
+use App\Services\TranslateService;
 use JoeDixon\Translation\Drivers\Translation;
 
 class PagePostController extends Controller
@@ -55,38 +56,43 @@ class PagePostController extends Controller
         return view('admin.pages.posts.create', compact('categories', 'tags', 'publishers', 'parentId', 'pages'));
     }
 
-    public function Store(PostRequest $request, PostService $postService, DocumentService $documentService, PostTranslateService $translateService, $parentId){
+    public function Store(PostRequest $request, PostService $postService, DocumentService $documentService, PostTranslateService $validateService, TranslateService $postTranslateService, CheckPermissionService $permissionService, $parentId)
+    {
 
-        if($parentId == '-1'){
+        if ($parentId == '-1') {
             $parentId = $request->page_id;
         }
 
         $data = $postService->validateData($request, $request->route('id'), $parentId);
 
-        Page::whereId($parentId)->update(['type' => 3 ]);
+        Page::whereId($parentId)->update(['type' => 3]);
         $lastCreatedPostId = Post::create($data)->id;
 
         $tags = $request->get('tags');
 
-        foreach($tags as $tag){
+        foreach ($tags as $tag) {
             PostTag::create([
                 'tag_id' => $tag,
                 'post_id' => $lastCreatedPostId
             ]);
         }
 
-        $translateData = $translateService->validateData($request, $lastCreatedPostId);
+        $translateData = $validateService->validateData($request, $lastCreatedPostId);
 
         PostTranslate::create($translateData);
 
-        if($request->hasFile('documents')) {
+        if ($request->hasFile('documents')) {
             $documentService->validateData($request['documents'], $lastCreatedPostId);
         }
-        if($request->hasFile('galleries')) {
+        if ($request->hasFile('galleries')) {
             $postService->putGalleryImages($request['galleries'], $lastCreatedPostId);
         }
 
-        return redirect()->route('show-pages', $parentId);
+        if (auth()->user()->can('show-pages')){
+             return redirect()->route('show-pages', $parentId);
+        }
+        return redirect()->route('posts');
+
     }
 
     public function Update(PostRequest $request, PostService $postService,  DocumentService $documentService, PostTranslateService $translateService, $id){

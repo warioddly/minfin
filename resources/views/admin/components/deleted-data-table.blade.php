@@ -77,8 +77,8 @@
                         @endif
 
                         @if($key == 'category_id')
-                                <td>{{ __($item->category->title) }}</td>
-                                @continue
+                            <td>{{ __($item->category->title ?? '') }}</td>
+                            @continue
                         @endif
 
                         @if($key == 'user_id')
@@ -155,7 +155,7 @@
                 "bLengthChange" : false,
                 "pageLength": 10,
                 "language": {
-                    "url": "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Russian.json"
+                    "url": "/storage/files/shares/ru.json"
                 },
             });
         });

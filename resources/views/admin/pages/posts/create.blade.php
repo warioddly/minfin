@@ -112,13 +112,16 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <div class="col col-md-6 col-lg-6 col-xl-6 d-flex align-items-center mt-2">
-                                            <strong class="me-2 mt-1" style="margin-top: -6px;">{{__('Publish')}}:</strong>
-                                            <span>
-                                                <input type="checkbox" id="switch" name="is_published" data-switch="primary"/>
-                                                <label for="switch" class="mt-2" data-on-label="{{ __('Yes') }}" data-off-label="{{ __('No') }}"></label>
-                                            </span>
-                                        </div>
+                                        @can('delete-posts')
+                                            <div class="col col-md-6 col-lg-6 col-xl-6 d-flex align-items-center mt-2">
+                                                <strong class="me-2 mt-1" style="margin-top: -6px;">{{__('Publish')}}:</strong>
+                                                <span>
+                                                    <input type="checkbox" id="switch" name="is_published" data-switch="primary"/>
+                                                    <label for="switch" class="mt-2" data-on-label="{{ __('Yes') }}" data-off-label="{{ __('No') }}"></label>
+                                                </span>
+                                            </div>
+                                        @endcan
+
                                     </div>
                                 </div>
 

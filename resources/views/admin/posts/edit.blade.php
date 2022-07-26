@@ -93,19 +93,6 @@
                                 <div class="form-group mt-2">
                                     <div class="row">
                                         <div class="col col-md-6 col-lg-6 col-xl-6">
-                                            <strong>{{__('Category')}}:</strong>
-                                            <select name="category_id" class="form-control category" required>
-                                                <option value="" disabled selected>-- {{ __('Select category') }} --</option>
-                                                @foreach($categories as $category)
-                                                @if($category->id == $post->category_id)
-                                                        <option value="{{ $category->id }}" selected>{{ $category->title }}</option>
-                                                        @continue
-                                                    @endif
-                                                    <option value="{{ $category->id }}">{{ $category->title }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                        <div class="col col-md-6 col-lg-6 col-xl-6">
                                             <strong>{{__('Publisher')}}:</strong>
                                             <select name="publisher_id" class="form-control publisher" required>
                                                 <option value="" disabled selected>-- {{ __('Select publisher') }} --</option>
@@ -118,16 +105,17 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group mt-2">
-                                    <div class="col-12 col-md-3 col-lg-3 col-xl-3 d-flex align-items-center pt-2">
-                                        <strong class="me-2" style="margin-top: -6px;">{{__('Publish')}}:</strong>
-                                        <span>
-                                            <input type="checkbox" id="switch" name="is_published" @if($post->is_published)checked @endif data-switch="primary"/>
-                                            <label for="switch" data-on-label="{{ __('Yes') }}" data-off-label="{{ __('No') }}"></label>
-                                        </span>
+                                        @can('delete-posts')
+                                        <div class="col col-md-6 col-lg-6 col-xl-6">
+                                            <div class="form-group mt-2  d-flex align-items-center pt-2">
+                                                <strong class="me-2" style="margin-top: -6px;">{{__('Publish')}}:</strong>
+                                                <span>
+                                                    <input type="checkbox" id="switch" name="is_published" @if($post->is_published)checked @endif data-switch="primary"/>
+                                                    <label for="switch" data-on-label="{{ __('Yes') }}" data-off-label="{{ __('No') }}"></label>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        @endcan
                                     </div>
                                 </div>
 
