@@ -102,8 +102,20 @@ class PostService
             $filepath = Storage::disk('public')->putFileAs($dir, $image, $name);
 
             try {
+                $imageSize = getimagesize($image);
+                $width = $imageSize[0] ;
+                $height = $imageSize[1];
+
+                if($width >= 540 ){
+                    $width = $imageSize[0] / 2;
+                }
+
+                if($height >= 540){
+                    $height = $imageSize[1] / 2;
+                }
+
                 Image::make(Storage::disk('public')->get($filepath))
-                    ->resize(520, 420)
+                    ->resize($width, $height)
                     ->save('storage/' . $dir . '/thumbs/thumb_' . $name);
 
                 $data['full_size_image'] = '/storage/' . $filepath;

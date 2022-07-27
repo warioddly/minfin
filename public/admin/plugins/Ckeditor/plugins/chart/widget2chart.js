@@ -70,7 +70,7 @@ if ( typeof document.addEventListener !== 'undefined' )
 			var chartType = el.getAttribute( 'data-chart' ),
 				values = JSON.parse( el.getAttribute( 'data-chart-value' ) );
 
-			// Malformed element, exit.
+        // Malformed element, exit.
 			if ( !values || !values.length || !chartType )
 				return;
 

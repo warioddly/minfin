@@ -43,9 +43,14 @@
                 <div class="tab-content">
                     <div class="tab-pane show active" id="post">
                         <div class="show-post-block" id="print-post">
-                            <p class="p-2 post-title"> {{ __($post->title) }}</p>
                             <img src="{{ $post->preview_image }}" alt="..." class="img-fluid post-preview-image mt-2 mb-3">
-                            <div class="post-content mb-5">{!! html_entity_decode( __($post->content) ) !!}</div>
+                            <p class="p-2 post-title"> {{ __($post->description ?? '') }}</p>
+                            <div class="post-content mb-5">
+                                @php
+                                    $post->content = str_replace('&quot', "'", $post->content)
+                                @endphp
+                                {!! html_entity_decode($post->content) !!}
+                            </div>
                             @if(count($post->galleries) != 0)
                                 <div class="post-gallery mb-3">
                                 <p class="text-muted mb-2 g-info-text">{{ __('Gallery') }}</p>
@@ -167,6 +172,12 @@
         </div>
     </section>
 @endsection
+
+@push('head-scripts')
+    <link rel="stylesheet" href="{{ asset('/js/chart/chart.css') }}">
+    <script src="{{ asset('/js/chart/chart.js') }}"></script>
+    <script src="{{ asset('/js/chart/widget2chart.js') }}"></script>
+@endpush
 
 @push('footer-scripts')
     <script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>

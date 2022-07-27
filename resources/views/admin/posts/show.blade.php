@@ -29,7 +29,10 @@
 
                     <div class="row mt-4">
                         <div class="col">
-                            {!! html_entity_decode( $post->content ) !!}
+                            @php
+                                $post->content = str_replace('&quot', "'", $post->content)
+                            @endphp
+                            {!! html_entity_decode($post->content) !!}
                         </div>
                     </div>
 
@@ -153,3 +156,12 @@
         </div>
     </div>
 @endsection
+
+@push('head-scripts')
+    <link rel="stylesheet" href="{{ asset('/js/chart/chart.css') }}">
+    <script src="{{ asset('/js/chart/chart.js') }}"></script>
+    <script src="{{ asset('/js/chart/widget2chart.js') }}"></script>
+@endpush
+
+
+
