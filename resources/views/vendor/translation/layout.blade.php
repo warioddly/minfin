@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name') }}</title>
+    <title>{{ __('Ministry of Finance of the Kyrgyz Republic') }}</title>
     <link rel="stylesheet" href="{{ asset('/vendor/translation/css/main.css') }}">
     <style>
         .panel{

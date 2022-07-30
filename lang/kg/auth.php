@@ -1,7 +1,7 @@
 <?php
 
 return array (
-  'failed' => 'These credentials do not match our records.',
-  'password' => 'The provided password is incorrect.',
-  'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+  'failed' => 'Бул маалымат биздин жазууларга дал келбейт',
+  'password' => 'Берилген сырсөз туура эмес.',
+  'throttle' => 'Кирүү аракети өтө көп. Сураныч, :секунд секунддан кийин кайра аракет кылыңыз.',
 );

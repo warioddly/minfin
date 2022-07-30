@@ -20,6 +20,7 @@ Route::middleware(['setLocale'])->group(function(){
     // FRONT CONTROLLERS
 
     Route::match(['get', 'post'], '/botman', 'App\Http\Controllers\Botman\BotManController@handle');
+    Route::get('/botmenChat', 'App\Http\Controllers\Botman\BotManController@Chat')->name('botmenChat');
 
     Route::group(["namespace" => "App\Http\Controllers\Front"], function () {
         Route::get('/', 'IndexController@Index')->name('index');
@@ -69,6 +70,8 @@ Route::middleware(['setLocale'])->group(function(){
 
         Route::group(["namespace" => "DocumentController", "prefix" => "documents"], function () {
             Route::get('/', 'DocumentController@Index')->name('documents')->middleware('can:show-documents');
+            Route::get('/create', 'DocumentController@Create')->name('create-document')->middleware('can:create-documents');
+            Route::post('/store', 'DocumentController@Store')->name('store-document')->middleware('can:create-documents');
         });
 
         Route::group(["namespace" => "CategoryController", "prefix" => "categories"], function () {

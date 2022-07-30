@@ -30,7 +30,7 @@
                                 </button>
                             </h2>
                             <div id="panelsStayOpen-collapseOne_{{ $page->id }}" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
-                                <div class="accordion-body px-0 row g-3 pt-4 justify-content-center">
+                                <div class="accordion-body px-0 row g-3 pt-4">
                                     <x-white-link-block
                                         :items="$page['childPages']"
                                     ></x-white-link-block>

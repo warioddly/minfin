@@ -1,6 +1,6 @@
 <nav class="header">
 
-    <h1 class="text-lg px-6">{{ config('app.name') }}</h1>
+    <h1 class="text-lg px-6">{{ __('Ministry of Finance of the Kyrgyz Republic') }}</h1>
 
     <ul class="flex-grow justify-end pr-2">
         <li>

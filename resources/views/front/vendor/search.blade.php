@@ -20,29 +20,15 @@
                 <p class="">{{ __('Unfortunately, your search returned no results') }}</p>
             @else
                 <p class="">{{ __('Found') }} <strong>{{ count($pages) }}</strong> @if(count($pages) == 1) {{ __('section') }} @elseif(count($pages) < 1 && count($pages) < 10) {{ __('sections') }} @else {{ __('sections-2') }} @endif,
-                    <strong>{{ count($posts) }}</strong> @if(count($posts) == 1) {{ __('new') }} @else {{ __('news') }} @endif,
+                    <strong>{{ count($posts) }}</strong> @if(count($posts) == 1) {{ __('new') }} @else {{ __('news') }} @endif
             @endif
+            <form action="{{ route('search') }}" method="GET" class="search-form position-relative d-flex mt-4">
+                <input type="search" name="query" maxlength="255" placeholder="{{ __('Keyword search') }}" value="{{ $search }}">
+                <button type="submit" class="search-icon-btn">
+                    <i class="mdi mdi-magnify" style="color: var(--heading-color) !important;"></i>
+                </button>
+            </form>
         </div>
-        @if(count($pages) != 0)
-            <div class="row page_accordion__row mb-5">
-                <div class="accordion" id="accordionPanelsStayOpenExample">
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-                        <button class="accordion-button page_show__header" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                            {{ __('Sections') }}
-                        </button>
-                    </h2>
-                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
-                        <div class="accordion-body px-0 row g-3 pt-4 justify-content-center">
-                            <x-white-link-block
-                                :items="$pages"
-                            ></x-white-link-block>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </div>
-        @endif
         @if(count($posts) != 0)
             <div class="mb-2 mb-md-5">
                 <div class="row page_posts__row mb-4">

@@ -1,9 +1,9 @@
 <?php
 
 return array (
-  'reset' => 'Your password has been reset!',
-  'sent' => 'We have emailed your password reset link!',
-  'throttled' => 'Please wait before retrying.',
-  'token' => 'This password reset token is invalid.',
-  'user' => 'We can\'t find a user with that email address.',
+  'reset' => 'Сырсөзүңүз баштапкы абалга келтирилди!',
+  'sent' => 'Биз электрондук почта аркылуу сырсөздү калыбына келтирүү шилтемесин жөнөттүк!',
+  'throttled' => 'Кайра аракет кылуудан мурун күтө туруңуз.',
+  'token' => 'Бул сырсөздү баштапкы абалга келтирүү белгиси жараксыз.',
+  'user' => 'Бул электрондук почта дареги бар колдонуучуну таба албайбыз.',
 );

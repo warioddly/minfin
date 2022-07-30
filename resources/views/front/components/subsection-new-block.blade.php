@@ -10,7 +10,7 @@
         </a>
         <div class="d-flex align-items-end">
             <p class="subsection_new__date text-muted">{{ $item->created_at->toDateTime()->format('d.m.Y') }}</p>
-            <p class="subsection_new__category">{{ $item->category->title }}</p>
+            <p class="subsection_new__category">{{ __($item->category->title  ?? '') }}</p>
         </div>
     </div>
 </div>

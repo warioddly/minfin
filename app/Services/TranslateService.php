@@ -49,4 +49,19 @@ class TranslateService
         return $items;
     }
 
+    public function translateDocuments($items){
+        if(session('locale') == 'kg'){
+            foreach ($items as $item){
+                $item['description'] = $item['kg_description'] ?? $item['description'];
+            }
+        }
+        if(session('locale') == 'en'){
+            foreach ($items as $item){
+                $item['description'] = $item['en_description'] ?? $item['description'];
+            }
+        }
+
+        return $items;
+    }
+
 }

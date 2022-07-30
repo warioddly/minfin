@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\AppealOfCitizensRequest;
 use App\Models\AppealOfCitizens;
 use App\Models\Category;
+use App\Models\Document;
 use App\Models\Page;
 use App\Models\Post;
 use App\Services\DocumentService;
@@ -20,7 +21,7 @@ class PageController extends Controller
         return view('front.pages.index', compact('pages'));
     }
 
-    public function Show(TranslateService $translateService, PageFrontService $service,$id){
+    public function Show(TranslateService $translateService, PageFrontService $service, $id){
         $page = Page::findOrFail($id);
 
         if($page->type == 2){
@@ -33,7 +34,11 @@ class PageController extends Controller
         $posts = Post::whereIn('page_id', array_merge($childPagesIds, [$page->id]))->where('sheet', false)->where('is_published', true)->latest()->paginate(10);
         $translateService->translatePosts($posts);
 
-        return view('front.pages.show', compact('page', 'posts'));
+        $documents = Document::where('page_id', $id)->get();
+
+        $translateService->translateDocuments($documents);
+
+        return view('front.pages.show', compact('page', 'posts', 'documents'));
     }
 
     public function ShowSheet($id){

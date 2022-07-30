@@ -18,5 +18,9 @@ class BotManController extends Controller
 
         $botman->listen();
     }
+
+    public function Chat(){
+        return view('vendor.botman-web.chat');
+    }
 }
 

@@ -20,7 +20,11 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-start ">
-                        <span class="h3 m-0">{{ __('Recent') }}</span>
+                        <div class="col-sm-4">
+                            @can('create-documents')
+                                <a href="{{ route('create-document') }}" class="btn btn-primary mb-2"><i class="mdi mdi-file-document"></i> {{ __('Загрузить') }}</a>
+                            @endcan
+                        </div>
                         <div>
                             <div class="btn-group mb-3 ms-2 d-none d-sm-inline-block">
                                 <a href="{{ route('post-style', 'list') }}" class="btn @if(session('postListStyle') == 'list') btn-secondary @else btn-link text-muted @endif">
@@ -35,7 +39,7 @@
                     @if(session('postListStyle') == 'list')
                     <x-data-table
                         :items="$documents"
-                        :excepts="['id', 'path', 'icon', 'updated_at', 'post_id', 'preview_image', 'deleted_at', 'appeal_of_citizens_id']"
+                        :excepts="['id', 'path', 'icon', 'updated_at', 'post_id', 'preview_image', 'deleted_at', 'appeal_of_citizens_id', 'page_id', 'en_description', 'kg_description']"
                         :links="['null', 'post-show', 'post-edit', 'post-delete', 'id']"
                         :actions="$userCanActions"
                         orederable="false"

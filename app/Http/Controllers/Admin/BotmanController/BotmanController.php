@@ -49,8 +49,9 @@ class BotmanController extends Controller
         $message = Botman::find($id);
         $messages = $message->getChilds()->get();
         $userCanActions = $permissionService->permissionsInBotman();
+        $parent_id = $message->parent->id ?? '';
 
-        return view('admin.botman.show', compact('message', 'messages','userCanActions'));
+        return view('admin.botman.show', compact('message', 'messages','userCanActions', 'parent_id'));
     }
 
     public function Update(BotmanRequest $request, $id){

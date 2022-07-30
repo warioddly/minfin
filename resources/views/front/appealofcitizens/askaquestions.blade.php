@@ -122,7 +122,7 @@
                             <select class="ask-question-input ask-question-select" name="category_id" id="category" required>
                                 <option value="" selected disabled>--{{ __('All') }}--</option>
                                 @foreach($categories as $category)
-                                    <option value="{{ $category->id }}">{{ __($category->title) }}</option>
+                                    <option value="{{ $category->id }}">{{ __($category->title ?? '') }}</option>
                                 @endforeach
                             </select>
                         </div>

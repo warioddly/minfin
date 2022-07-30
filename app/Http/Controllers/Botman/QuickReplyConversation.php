@@ -46,29 +46,29 @@ class QuickReplyConversation extends Conversation
                 [
                     'pattern' => 'yes|yep|да|ооба|оа|ова|Ова|Ооба|Да устраивает|',
                     'callback' => function () {
-                        $this->say("Okay - we'll keep going");
+                        $this->say(__('Yes questions'));
                     }
                 ],
                 [
                     'pattern' => 'nah|no|nope|нет|неа|жок',
                     'callback' => function () {
-                        $this->say("PANIC!! Stop the engines NOW!");
+                        $this->say(__('No questions'));
                     }
                 ]
             ]);
         }
         else if(in_array('hasAnswer', $data)){
-            $this->ask('<strong>text</strong>' . $data[0][0]['message'] . '<br /><br /><strong>Если вас устраивает этот ответ</strong>', [
+            $this->ask($data[0][0]['message'] . '<br /><br /><strong>Вы нашли ответ на свой вопрос?</strong>', [
                 [
                     'pattern' => 'yes|yep|да|ооба|оа|ова|Ова|Ооба|Да устраивает|',
                     'callback' => function () {
-                        $this->say("Okay - we'll keep going");
+                        $this->say(__('Yes questions'));
                     }
                 ],
                 [
                     'pattern' => 'nah|no|nope|нет|неа|жок',
                     'callback' => function () {
-                        $this->say("PANIC!! Stop the engines NOW!");
+                        $this->say(__('No questions'));
                     }
                 ]
             ]);

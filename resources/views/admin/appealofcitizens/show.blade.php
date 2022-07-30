@@ -125,6 +125,10 @@
                                             {{ $appealofcitizen->address }}
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td>IP: </td>
+                                        <td>{{ $appealofcitizen->ip ?? 'EMPTY' }}</td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>

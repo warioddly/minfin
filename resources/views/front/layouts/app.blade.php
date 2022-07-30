@@ -54,8 +54,9 @@
 
 <script>
     var botmanWidget = {
-        title:'MINFIN',
-        introMessage: 'Здраствуйе! Чем я могу вам помочь?',
+        frameEndpoint: '{{ route('botmenChat') }}',
+        title:'Минфин чат-бот',
+        introMessage: 'Здраствуйте! Чем я могу вам помочь?',
         placeholderText: '{{ __('Enter your message') }}',
         aboutText: 'МИНИСТЕРСТВО ФИНАНСОВ КР',
         aboutLink: 'https://minfin.24mycrm.com/',
@@ -63,6 +64,7 @@
         mainColor:'#0b4678',
         bubbleBackground:'#0b4678',
     };
+
 </script>
 <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
 

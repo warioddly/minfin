@@ -29,6 +29,7 @@ class AppealController extends Controller
         }
 
         unset($data['files']);
+        $data['ip'] = request()->ip();
 
         $id = AppealOfCitizens::create($data)->id;
 

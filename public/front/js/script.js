@@ -102,3 +102,23 @@ $('.navigation .dropOut ul.third_sub_nav__items .thirdList').hover((event) => {
     $(event.currentTarget).addClass('active');
 })
 
+
+$('#search-img').click(() => {
+    $('#search-input').toggleClass('active');
+})
+
+$('#search-input').keyup(() => {
+
+    let stringText = $('#search-input').val()
+
+    if(stringText == ''){
+        $('.submit-btn').css('display', 'none')
+        $('#search-img').css('display', 'flex')
+    }
+    else{
+        $('.submit-btn').css('display', 'flex')
+        $('#search-img').css('display', 'none')
+    }
+
+})
+

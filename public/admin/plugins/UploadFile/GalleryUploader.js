@@ -13,7 +13,7 @@ $('#gallery-files').change(() => {
             fileType +
             '</div>' +
             '<div class="col ps-0">' +
-            `<a href="javascript:void(0);" class="text-muted fw-bold" data-dz-name style="overflow:hidden; white-space:nowrap;display:inline-block; text-overflow:ellipsis; width: 200px">${file.name}</a>` +
+            `<a href="javascript:void(0);" class="text-muted fw-bold" data-dz-name style="overflow:hidden; white-space:nowrap;display:inline-block; text-overflow:ellipsis; width: 150px">${file.name}</a>` +
             `<p class="mb-0" data-dz-size>${file.size/1000000 + 'mb' }</p>` +
             '</div>' +
             '<div class="col-auto">' +

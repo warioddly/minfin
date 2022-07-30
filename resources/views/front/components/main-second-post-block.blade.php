@@ -9,7 +9,7 @@
                 @for($i = 0; $i < 9; $i++) {{ explode(" ",  $items[0]->title)[$i] ?? '' }} @endfor...
             </a>
             <div class="d-flex">
-                <p class="new_date me-3">{{  $items[0]->created_at->toDateTime()->format('d.m.Y') }}</p>
+                <p class="new_date me-3"></p>
                 <p class="new_category">{{  __($items[0]->category->title) ?? '' }}</p>
             </div>
         </div>
@@ -25,7 +25,7 @@
             </a>
             <div class="d-flex justify-content-between align-items-end ">
                 <div class="d-flex align-items-end">
-                    <p class="new_date me-3">{{ $items[0]->created_at->toDateTime()->format('d.m.Y') }}</p>
+                    <p class="new_date me-3"></p>
                     <p class="new_category">{{ __($items[0]->category->title) ?? ''}}</p>
                 </div>
                 <div class="text-muted new_date">
@@ -42,7 +42,7 @@
             </a>
             <div class="d-flex justify-content-between align-items-end ">
                 <div class="d-flex align-items-end">
-                    <p class="new_date me-3">{{ $items[1]->created_at->toDateTime()->format('d.m.Y') }}</p>
+                    <p class="new_date me-3"></p>
                     <p class="new_category">{{ __($items[1]->category->title) ?? ''}}</p>
                 </div>
                 <div class="text-muted new_date">

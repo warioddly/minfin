@@ -58,6 +58,10 @@
             padding: 0;
             margin: 0;
         }
+
+        *{
+            font-family: "Source Sans Pro", sans-serif !important;
+        }
     </style>
     <script src="{{ asset('admin/js/vendor.min.js') }}"></script>
     <script src="{{ asset('admin/js/app.js') }}"></script>

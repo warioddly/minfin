@@ -5,7 +5,7 @@
                 <img src="{{ $item->preview_image }}" class="card-img-top" alt="...">
                 <div class="card-body">
                    <div class="pb-1 d-flex justify-content-between">
-                       <p class="post_date">{{ $item->created_at->toDateTime()->format('d.m.Y') }}</p>
+                       <p class="post_date">{{ __($item->category->title) }}</p>
                        <div class="d-flex">
                            <i class="mdi mdi-eye text-muted me-1 align-items-center"></i>
                            <p class="post_date">{{ $item->views }}</p>

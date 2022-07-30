@@ -38,6 +38,7 @@
 
                     <div class="d-print-none mt-4">
                         <div class="text-end">
+                            <a href="{{ route('front-post-show', $post->id) }}" class="btn btn-primary"><i class="mdi mdi-eye"></i></a>
                             <a href="{{ route('post-edit', $post->id) }}" class="btn btn-primary"><i class="mdi mdi-file-edit"></i></a>
                             <a href="javascript:window.print()" class="btn btn-primary"><i class="mdi mdi-printer"></i> </a>
                             <a href="{{ url()->previous() }}" class="btn btn-secondary">{{ __('Back') }}</a>
@@ -156,12 +157,8 @@
         </div>
     </div>
 @endsection
-
 @push('head-scripts')
     <link rel="stylesheet" href="{{ asset('/js/chart/chart.css') }}">
     <script src="{{ asset('/js/chart/chart.js') }}"></script>
     <script src="{{ asset('/js/chart/widget2chart.js') }}"></script>
 @endpush
-
-
-

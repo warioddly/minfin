@@ -34,13 +34,19 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <div class="row mb-2">
+                    <div class="row mb-2 justify-content-between">
                         @can('add-users')
                             <x-page-actions
                                 create="Create list"
                                 icon="uil-user-plus"
                                 right-side="export"
                             ></x-page-actions>
+                            <div class="col-auto">
+                                <a href="{{ route('show-botman-message', $parent_id) }}"
+                                   class="btn btn-primary mb-2"> <i class=" me-1"></i> {{ __('Back') }}
+                                </a>
+                            </div>
+
                         @endcan
                     </div>
                     <x-data-table
@@ -71,9 +77,16 @@
                         @csrf
                         <div class="modal-body">
                             <div class="form-group mb-2">
-                                <label for="create-input" class="form-label" >{{ __('Enter message') }}</label>
-                                <textarea type="text" name="message" class="form-control" rows="10" maxlength="700" data-toggle="maxlength" data-threshold="700"></textarea>
-                                <input type="hidden" name="parent_message_id" value="{{ $message->id }}">
+                                @if($message->is_answer == 0)
+                                    <label for="botman-create-input" class="form-label" >{{ __('Enter message') }}</label>
+                                    <input type="hidden" name="parent_message_id" value="{{ $message->id }}">
+                                    <textarea type="text" name="message" class="form-control" id="botman-create-input"  rows="10" maxlength="700" data-toggle="maxlength" data-threshold="700"></textarea>
+                                @else
+                                    <label for="create-input" class="form-label" >{{ __('Enter message') }}</label>
+                                    <div id="create-input"></div>
+                                    <input type="hidden" name="parent_message_id" value="{{ $message->id }}">
+                                    <input type="hidden" name="message" id="botman-create-input" value="">
+                                @endif
                             </div>
                             @if(!$message->is_answer)
                                 <div class="form-group d-flex align-items-center">
@@ -88,7 +101,7 @@
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Cancel') }}</button>
-                            <button type="submit" class="btn btn-primary create-button">{{ __('Create') }}</button>
+                            <button type="submit" class="btn btn-primary @if($message->is_answer == 1) create-button @endif">{{ __('Create') }}</button>
                         </div>
                     </form>
                 </div>
@@ -110,10 +123,16 @@
                         @method('PATCH')
                         <div class="modal-body">
                             <div class="form-group mb-2">
-                                <label for="botman_message" class="form-label" >{{ __('Enter message') }}</label>
-                                <div id="botman_message"></div>
-                                <input type="hidden" name="parent_message_id" value="{{ $message->id }}">
-                                <input type="hidden" name="message" id="botman_message_input" value="">
+                                @if($message->is_answer == 0)
+                                    <label for="botman-create-input" class="form-label" >{{ __('Enter message') }}</label>
+                                    <input type="hidden" name="parent_message_id" value="{{ $message->id }}">
+                                    <textarea type="text" name="message" class="form-control" id="botman-create-input"  rows="10" maxlength="700" data-toggle="maxlength" data-threshold="700"></textarea>
+                                @else
+                                    <label for="botman_message" class="form-label" >{{ __('Enter message') }}</label>
+                                    <div id="botman_message"></div>
+                                    <input type="hidden" name="parent_message_id" value="{{ $message->id }}">
+                                    <input type="hidden" name="message" id="botman_message_input" value="">
+                                @endif
                             </div>
                             @if(!$message->is_answer)
                                 <div class="form-group d-flex align-items-center">
@@ -128,7 +147,7 @@
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Cancel') }}</button>
-                            <button type="submit" class="btn btn-primary save-button">{{ __('Save') }}</button>
+                            <button type="submit" class="btn btn-primary @if($message->is_answer == 1) save-button @endif">{{ __('Save') }}</button>
                         </div>
                     </form>
                 </div>
@@ -192,10 +211,40 @@
                 console.error( error );
             } );
 
+        ClassicEditor
+            .create( document.querySelector('#create-input'), {
+                toolbar: toolbar,
+                link: {
+                    decorators: {
+                        addTargetToExternalLinks: {
+                            mode: 'automatic',
+                            callback: url => /^(https?:)?\/\//.test( url ),
+                            attributes: {
+                                target: '_blank',
+                                rel: 'noopener noreferrer'
+                            }
+                        }
+                    }
+                }
+            })
+            .then(editor => {
+                createEditor = editor;
+            })
+            .catch( error => {
+                console.error( error );
+            } );
+
+
         $('.save-button').click((event) => {
             event.preventDefault();
             $('#botman_message_input').val(editEditor.getData());
             $('#edit-modal-form').submit();
+        });
+
+        $('.create-button').click((event) => {
+            event.preventDefault();
+            $('#botman-create-input').val(createEditor.getData());
+            $('#create-form').submit();
         });
     </script>
 @endpush

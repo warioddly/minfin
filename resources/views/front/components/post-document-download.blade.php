@@ -1,5 +1,5 @@
 @foreach($items as $item)
-    <div class="row align-items-center py-2 mb-2">
+    <div class="row align-items-center justify-content-between py-2 mb-2">
         <div class="col-1 me-2 m-lg-0">
             <img src="{{ asset('front/images/icons/document.svg') }}" class="document-image" style="object-fit: cover" alt="">
         </div>

@@ -11,4 +11,10 @@ class Document extends Model
     use HasFactory, SoftDeletes;
     protected $guarded = false;
     protected $table = 'documents';
+
+    public function page()
+    {
+        return $this->belongsTo(Page::class, 'page_id')->withTrashed();
+    }
+
 }

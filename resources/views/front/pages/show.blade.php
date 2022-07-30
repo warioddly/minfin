@@ -47,7 +47,7 @@
                 <div class="row page_posts__row mb-4">
                     <div class="col d-flex justify-content-between align-items-center">
                         <p class="header-text">{{ __('Subsection News') }}</p>
-                        <a href="{{ route('front-posts') }}" class="view_all-news-btn">{{ __('View all news') }}</a>
+                        <a href="#" class="view_all-news-btn">{{ __('View all news') }}</a>
                     </div>
                 </div>
                 <div class="row justify-content-md-around justify-content-lg-around d-none d-lg-flex d-md-flex g-3">
@@ -65,5 +65,44 @@
                 </div>
             </div>
         @endif
+
+        @if(count($documents) != 0)
+            <div class="mb-2 mb-md-5">
+                <div class="row page_posts__row mb-4">
+                    <div class="col d-flex justify-content-between align-items-center">
+                        <p class="header-text">{{ __('Subsection documents') }}</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    @foreach($documents as $key => $item)
+                        @if($key == 6)
+                            @break
+                        @endif
+                        <div class="col-12 col-md-6 col-lg-6 col news_block ">
+                            <div class="d-flex new_block mb-lg-3 mb-2 related-span">
+                                <a href="{{ $item->path }}" class="p-0 d-contents" download>
+                                    <span class="doc-ico">
+                                        {{ $item->extension ?? 'doc' }}
+                                    </span>
+                                    <div class="position-relative new_text-information">
+                                        <p class="new_block__date pb-1 pb-lg-2 pb-md-1 pt-1"></p>
+                                        <div class="new_block__title d-block d-sm-none d-md-none d-md-none">
+                                            @for($i = 0; $i < 6; $i++) {{ explode(" ", $item->title)[$i] ?? '' }} @endfor...
+                                            <div class="new_block__read_more" >{{ __('read more') }}</div>
+                                        </div>
+                                        <span class="new_block__title d-none d-sm-block d-md-block d-lg-block">
+                                        @for($i = 0; $i < 11; $i++) {{ explode(" ", $item->title)[$i] ?? '' }} @endfor...<span class="new_block__read_more" >{{ __('more') }}</span>
+                                    </span>
+                                        <a href="#" class="new_block__category bottom-0 pb-2">{{ __($item->page->title) }}</a>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        @endif
+
     </div>
 @endsection

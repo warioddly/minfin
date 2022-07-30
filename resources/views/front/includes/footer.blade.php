@@ -26,10 +26,10 @@
                     <p class="pb-3">Тел: {{ $сontactData->phone }}</p>
                     <p class="pb-3">e-mail: <span class="text-warning">{{ $сontactData->email }}</span></p>
                 </div>
-                <div class="col-auto">
+                <div class="col-8 col-md-auto">
                     <p> © {{ now()->year }} Министерство Финансов КР. Все права защищены.</p>
                 </div>
-                <div class="col d-flex justify-content-end">
+                <div class="col d-flex justify-content-end d-none d-md-flex">
                     <!-- Yandex.Metrika informer -->
                     <a href="https://metrika.yandex.ru/stat/?id=89438673&amp;from=informer"
                        target="_blank" rel="nofollow"><img src="https://informer.yandex.ru/informer/89438673/3_1_FFFFFFFF_FFFFFFFF_0_uniques"
